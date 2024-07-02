@@ -1,0 +1,176 @@
+### Planejamento Detalhado da Plataforma de Cursos Online Sem Fins Lucrativos
+
+#### Visão Geral do Projeto
+Uma plataforma de cursos online sem fins lucrativos desenvolvida com Python e Django, com o objetivo de oferecer cursos gratuitos em várias categorias. A plataforma contará com recursos para cursos em andamento e concluídos, ranqueamento de cursos populares, módulos com questionários, emissão de certificados, chat entre usuários, fórum de dúvidas, avaliações de cursos, sistema de gamificação e perfis de usuário. Além disso, haverá um aplicativo em Flutter que irá consultar a plataforma via API.
+
+#### Funcionalidades Principais
+
+1. **Gestão de Cursos**
+    - **Cursos Finalizados e em Andamento**
+        - Exibir uma lista de cursos disponíveis na plataforma, categorizados como "Finalizados" e "Em Andamento".
+    - **Contagem de Views**
+        - Registrar e exibir a quantidade de visualizações de cada curso.
+        - Ranqueamento dos cursos mais visualizados na seção "Em Alta".
+
+2. **Estrutura dos Cursos**
+    - **Módulos e Aulas**
+        - Cada curso será composto por múltiplos módulos.
+        - Dentro de cada módulo, haverá várias aulas.
+    - **Questionários**
+        - Após cada módulo, haverá um questionário.
+        - O estudante precisará atingir um aproveitamento de 70% para avançar para o próximo módulo.
+    - **Emissão de Certificados**
+        - Emissão de certificado de conclusão para os estudantes que completarem todos os módulos e questionários do curso.
+
+3. **Interação e Comunicação**
+    - **Chat 1x1**
+        - Sistema de chat para interação direta entre usuários/estudantes.
+    - **Fórum de Dúvidas**
+        - Fórum para os usuários postarem dúvidas e interagirem com outros estudantes e instrutores.
+
+4. **Avaliações e Feedback**
+    - **Pesquisa de Avaliação**
+        - Após a conclusão do curso, os estudantes podem avaliar o curso com uma pontuação de 1 a 5 estrelas.
+        - Comentários e feedback serão exibidos na página principal do curso (NPS).
+
+5. **Gamificação**
+    - **Achievements/Badges**
+        - Implementação de 20 conquistas/insígnias.
+        - Mostrar o progresso do usuário para a conquista das insígnias no perfil.
+
+6. **Categorias e Listagem**
+    - **Categorias de Cursos**
+        - Listagem de cursos por categorias.
+        - Seção "Cursos Relacionados" para sugerir cursos da mesma categoria.
+
+7. **Perfil do Usuário**
+    - **Informações do Perfil**
+        - Página de perfil do usuário com foto, nome, CPF e achievements.
+
+#### Estrutura do Banco de Dados
+
+1. **Modelo de Usuário**
+    - **Campos**: id, nome, cpf, email, senha, foto, data_de_nascimento, data_de_criacao, ultimo_acesso.
+    - **Relações**: Muitos-para-Muitos com cursos (cursos matriculados), Muitos-para-Muitos com badges.
+
+2. **Modelo de Curso**
+    - **Campos**: id, titulo, descricao, categoria, data_de_criacao, visualizacoes.
+    - **Relações**: Muitos-para-Muitos com usuários, Um-para-Muitos com módulos, Um-para-Muitos com avaliações.
+
+3. **Modelo de Módulo**
+    - **Campos**: id, curso_id, titulo, ordem.
+    - **Relações**: Um-para-Muitos com aulas, Um-para-Um com questionário.
+
+4. **Modelo de Aula**
+    - **Campos**: id, modulo_id, titulo, conteudo, ordem.
+    
+5. **Modelo de Questionário**
+    - **Campos**: id, modulo_id, perguntas.
+    - **Relações**: Um-para-Muitos com perguntas.
+
+6. **Modelo de Pergunta**
+    - **Campos**: id, questionario_id, enunciado, alternativas, resposta_correta.
+
+7. **Modelo de Certificado**
+    - **Campos**: id, usuario_id, curso_id, data_de_emissao, codigo.
+
+8. **Modelo de Chat**
+    - **Campos**: id, remetente_id, destinatario_id, mensagem, data_envio.
+
+9. **Modelo de Fórum**
+    - **Campos**: id, curso_id, usuario_id, titulo, conteudo, data_criacao.
+
+10. **Modelo de Avaliação**
+    - **Campos**: id, curso_id, usuario_id, estrelas, comentario, data.
+
+11. **Modelo de Badge**
+    - **Campos**: id, nome, descricao, criterio, icone.
+    - **Relações**: Muitos-para-Muitos com usuários.
+
+#### Páginas e Interfaces
+
+1. **Home**
+    - Listagem de cursos em alta, finalizados e em andamento.
+    - Seção "Cursos Relacionados".
+
+2. **Página do Curso**
+    - Detalhes do curso, módulos e aulas.
+    - Visualização das avaliações e comentários.
+    - Progresso do curso e acesso ao questionário.
+
+3. **Página de Módulo**
+    - Listagem das aulas do módulo.
+    - Acesso ao questionário após a conclusão das aulas.
+
+4. **Perfil do Usuário**
+    - Informações pessoais, foto, CPF e achievements.
+    - Histórico de cursos e progresso.
+
+5. **Chat**
+    - Interface de chat para interação entre usuários.
+
+6. **Fórum**
+    - Listagem de tópicos e interface para postagem e resposta de dúvidas.
+
+#### Requisitos Técnicos
+
+1. **Backend**
+    - Linguagem: Python
+    - Framework: Django
+    - Banco de Dados: PostgreSQL ou MySQL
+
+2. **Frontend**
+    - HTML, CSS, JavaScript
+    - Frameworks: Bootstrap, Vue.js (opcional)
+
+3. **Autenticação**
+    - Django Allauth para autenticação e autorização.
+
+4. **Implementação de Certificados**
+    - Bibliotecas: ReportLab ou WeasyPrint para geração de PDFs.
+
+5. **Chat**
+    - Django Channels para comunicação em tempo real.
+
+6. **Deploy**
+    - Servidor: VPS (DigitalOcean ou AWS)
+    - Gerenciamento de Servidor: Docker (opcional)
+
+#### Integração com App em Flutter
+
+1. **API**
+    - Django REST Framework para criar APIs para o app Flutter.
+    - Endpoints para autenticação, cursos, módulos, aulas, questionários, chat, fórum, avaliações, e achievements.
+
+2. **App em Flutter**
+    - Autenticação e registro de usuários.
+    - Exibição de cursos, módulos e aulas.
+    - Realização de questionários e visualização de progresso.
+    - Envio e recebimento de mensagens no chat.
+    - Participação no fórum de dúvidas.
+    - Avaliação de cursos.
+    - Exibição de achievements e progresso no perfil do usuário.
+
+#### Cronograma
+
+1. **Planejamento e Design**
+    - 2 semanas: Definição de requisitos detalhados e design das interfaces.
+
+2. **Desenvolvimento Backend**
+    - 4 semanas: Implementação dos modelos, APIs e lógica do servidor.
+
+3. **Desenvolvimento Frontend**
+    - 4 semanas: Desenvolvimento das interfaces de usuário e integração com o backend.
+
+4. **Desenvolvimento do App Flutter**
+    - 4 semanas: Implementação das funcionalidades do app e integração com a API.
+
+5. **Teste e Validação**
+    - 2 semanas: Testes unitários, de integração e de aceitação.
+
+6. **Deploy**
+    - 1 semana: Configuração do servidor e deploy da aplicação.
+
+#### Considerações Finais
+
+O projeto visa criar uma plataforma de aprendizado robusta, intuitiva e acessível, incentivando a educação e o compartilhamento de conhecimento sem fins lucrativos. A gamificação e as interações sociais são chave para manter o engajamento dos usuários e promover uma comunidade de aprendizado colaborativa.
