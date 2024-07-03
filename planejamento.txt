@@ -54,7 +54,7 @@ Uma plataforma de cursos online sem fins lucrativos desenvolvida com Python e Dj
     - **Relações**: Muitos-para-Muitos com cursos (cursos matriculados), Muitos-para-Muitos com badges.
 
 2. **Modelo de Curso**
-    - **Campos**: id, titulo, descricao, categoria, data_de_criacao, visualizacoes.
+    - **Campos**: id, titulo, thumb, descricao, categoria, data_de_criacao, visualizacoes.
     - **Relações**: Muitos-para-Muitos com usuários, Um-para-Muitos com módulos, Um-para-Muitos com avaliações.
 
 3. **Modelo de Módulo**
