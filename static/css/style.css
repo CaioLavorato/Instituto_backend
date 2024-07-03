@@ -1,3 +1,4 @@
+{% load static %}
 body, html {
   height: 100%;
   margin: 0;
@@ -343,7 +344,7 @@ bottom: 0;
   height: 100px;
   /* Ajuste a altura conforme necessário */
   width: 100%;
-  background-image: url('img/banner/banner.png');
+  /* background-image: url('{%static 'image/banner/banner.png' %}');
   /* Atualize com o caminho da sua imagem */
   background-size: cover;
   background-position: center;
