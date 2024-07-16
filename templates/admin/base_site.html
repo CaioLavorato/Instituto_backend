@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% block title %}
+Admin Instituto</title>
+<link rel="icon" type="image/x-icon" href="{% static 'images/logo.ico' %}">
+{% endblock %}
+
+{% block branding %}
+<div id="branding">
+    <h1 id="site-name"><a href="{% url 'admin:index' %}"><img src="{% static 'images/logo3.png' %}" alt="Logo"
+                                                              style="height: 50px;"/></a></h1>
+</div>
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom_style.css' %}">
+{% endblock %}
