@@ -1,23 +1,37 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, is_password_usable
 
 
 # Create your models here.
 
 class Usuario(models.Model):
+    PROFESSOR = 'PR'
+    MEDICO = 'MD'
+    ALUNO = 'AL'
+    TIPO_USUARIO_CHOICES = [
+        (PROFESSOR, 'Professor'),
+        (MEDICO, 'Médico'),
+        (ALUNO, 'Aluno'),
+    ]
+
     nome = models.CharField(max_length=1000)
     cpf = models.CharField(max_length=11)
     email = models.CharField(max_length=100)
     senha = models.CharField(max_length=128)
     foto = models.ImageField(upload_to='thumb_usuarios')
-    data_de_nascimento = models.DateTimeField()
+    data_de_nascimento = models.DateField()
     data_criacao = models.DateTimeField(default=timezone.now)
     ultimo_acesso = models.DateTimeField()
+    tipo = models.CharField(max_length=2, choices=TIPO_USUARIO_CHOICES, default=ALUNO)
+
+    def save(self, *args, **kwargs):
+        if not is_password_usable(self.senha):
+            self.senha = make_password(self.senha)
+        super(Usuario, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.nome
-
 
 # nome, cpf, email, senha, foto, data_de_nascimento, data_de_criacao, ultimo_acesso
 
