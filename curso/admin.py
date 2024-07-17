@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Curso,Usuario,Modulo_usuario,Modulo,Categorias,Questionario,Aula,Chat,Badge,Forum,Avaliacao,Pergunta,Certificado,Alternativas
+from .models import Curso,Usuario,Modulo_usuario,Modulo,Categorias,Questionario,Aula,Chat,Badge,Forum,Avaliacao,Pergunta,Certificado,Alternativas,LaudosMedicos,Agendamento
 
 admin.site.register(Curso)
 admin.site.register(Usuario)
@@ -17,3 +17,5 @@ admin.site.register(Avaliacao)
 admin.site.register(Pergunta)
 admin.site.register(Certificado)
 admin.site.register(Alternativas)
+admin.site.register(LaudosMedicos)
+admin.site.register(Agendamento)

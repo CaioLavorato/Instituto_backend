@@ -9,7 +9,7 @@ class Usuario(models.Model):
     nome = models.CharField(max_length=1000)
     cpf = models.CharField(max_length=11)
     email = models.CharField(max_length=100)
-    password = models.CharField(max_length=128)
+    senha = models.CharField(max_length=128)
     foto = models.ImageField(upload_to='thumb_usuarios')
     data_de_nascimento = models.DateTimeField()
     data_criacao = models.DateTimeField(default=timezone.now)
@@ -19,7 +19,7 @@ class Usuario(models.Model):
         return self.nome
 
 
-#nome, cpf, email, senha, foto, data_de_nascimento, data_de_criacao, ultimo_acesso
+# nome, cpf, email, senha, foto, data_de_nascimento, data_de_criacao, ultimo_acesso
 
 class Categorias(models.Model):
     descricao = models.TextField(max_length=1000)
@@ -29,7 +29,7 @@ class Categorias(models.Model):
         return self.descricao
 
 
-#descricao, data_criacao
+# descricao, data_criacao
 
 class Curso(models.Model):
     titulo = models.CharField(max_length=100)
@@ -43,7 +43,7 @@ class Curso(models.Model):
         return self.titulo
 
 
-#titulo, descricao, categoria, data_de_criacao, visualizacoes
+# titulo, descricao, categoria, data_de_criacao, visualizacoes
 
 class Modulo(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
@@ -54,7 +54,7 @@ class Modulo(models.Model):
         return self.titulo
 
 
-#id, curso_id, titulo, ordem
+# id, curso_id, titulo, ordem
 
 class Modulo_usuario(models.Model):
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
@@ -65,7 +65,7 @@ class Modulo_usuario(models.Model):
         return f"{self.usuario} - {self.modulo}"
 
 
-#modulo,usuario,ind_concluido
+# modulo,usuario,ind_concluido
 
 class Aula(models.Model):
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
@@ -77,7 +77,7 @@ class Aula(models.Model):
         return self.titulo
 
 
-#modulo_id, titulo, conteudo, ordem
+# modulo_id, titulo, conteudo, ordem
 class Questionario(models.Model):
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
 
@@ -94,7 +94,7 @@ class Pergunta(models.Model):
         return self.enunciado
 
 
-#questionario_id, enunciado
+# questionario_id, enunciado
 class Alternativas(models.Model):
     descricao = models.TextField(max_length=1000)
     resposta_correta = models.BooleanField(default=False)
@@ -114,7 +114,7 @@ class Certificado(models.Model):
         return f"{self.usuario} - {self.curso}"
 
 
-#usuario_id, curso_id, data_de_emissao, codigo
+# usuario_id, curso_id, data_de_emissao, codigo
 class Chat(models.Model):
     id_remetente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='remetente_chats')
     id_destinatario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='destinatario_chats')
@@ -125,7 +125,7 @@ class Chat(models.Model):
         return f"{self.id_remetente} - {self.id_destinatario}"
 
 
-#usuario_remetente,usuario_destinatario,mensagem,data_envio
+# usuario_remetente,usuario_destinatario,mensagem,data_envio
 class Forum(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -137,7 +137,7 @@ class Forum(models.Model):
         return self.titulo
 
 
-#curso_id, usuario_id, titulo, conteudo, data_criacao.
+# curso_id, usuario_id, titulo, conteudo, data_criacao.
 class Avaliacao(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -148,7 +148,7 @@ class Avaliacao(models.Model):
         return f"{self.usuario} - {self.curso} - {self.estrelas}"
 
 
-#curso,usuario,estrelas,data_criacao
+# curso,usuario,estrelas,data_criacao
 
 class Badge(models.Model):
     nome = models.CharField(max_length=100)
@@ -159,4 +159,25 @@ class Badge(models.Model):
 
     def __str__(self):
         return self.nome
-#nome,descricao,criterio,icone,usuarios
+
+
+# nome,descricao,criterio,icone,usuarios
+class Agendamento(models.Model):
+    id_paciente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='agendamentos_paciente')
+    id_doutor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='agendamentos_doutor')
+    observacao = models.TextField(max_length=1000)
+    data_agendamento = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.id_doutor} - {self.data_agendamento}"
+
+
+class LaudosMedicos(models.Model):
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='laudos_medicos')
+    documento = models.FileField()
+    observacao = models.TextField(max_length=1000)
+    data_inclusao = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.documento} - {self.id_usuario}"
+
