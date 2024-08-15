@@ -1,17 +1,20 @@
 from django.urls import path
-from .views import homepage, cursos, cursodetalhe, foruns, perfil, documentos, professores, forumdetalhe, redecredenciada, professordetalhe, categorias,categoriadetalhe
+from . import views
 
 urlpatterns = [
-    path('', homepage, name='homepage'),
-    path('cursos/', cursos, name='cursos'),
-    path('cursodetalhe/', cursodetalhe, name='cursodetalhe'),
-    path('foruns/', foruns, name='foruns'),
-    path('perfil/', perfil, name='perfil'),
-    path('documentos/', documentos, name='documentos'),
-    path('professores/', professores, name='professores'),
-    path('forumdetalhe/', forumdetalhe, name='forumdetalhe'),
-    path('redecredenciada/', redecredenciada, name='redecredenciada'),
-    path('professordetalhe/', professordetalhe, name='professordetalhe'),
-    path('categorias/', categorias, name='categorias'),
-    path('categoriadetalhe/', categoriadetalhe, name='categoriadetalhe'),
+    path('', views.homepage, name='homepage'),
+    path('login/', views.login, name='login'),
+    path('meus_cursos/', views.meuscursos, name='meus_cursos'),
+    path('cursos/', views.cursos, name='cursos'),
+    path('cursodetalhe/', views.cursodetalhe, name='cursodetalhe'),
+    path('foruns/', views.foruns, name='foruns'),
+    path('perfil/', views.perfil_view, name='perfil'),
+    path('documentos/', views.documentos, name='documentos'),
+    path('professores/', views.professores, name='professores'),
+    path('forumdetalhe/', views.forumdetalhe, name='forumdetalhe'),
+    path('redecredenciada/', views.redecredenciada, name='redecredenciada'),
+    path('professordetalhe/', views.professordetalhe, name='professordetalhe'),
+    path('categorias/', views.categorias, name='categorias'),
+    path('categoriadetalhe/', views.categoriadetalhe, name='categoriadetalhe'),
+    path('criar_forum/', views.criar_forum, name='criar_forum'),
 ]

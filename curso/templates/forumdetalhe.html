@@ -13,8 +13,8 @@
 							<div class="col-md-12">
 								<nav aria-label="breadcrumb">
 								  	<ol class="breadcrumb">
-								    	<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-								    	<li class="breadcrumb-item"><a href="blog-listing.html">Fórum</a></li>
+								    	<li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+								    	<li class="breadcrumb-item"><a href="{% url 'foruns' %}">Fórum</a></li>
 								    	<li class="breadcrumb-item active" aria-current="page">Egestas volute...</li>
 								  	</ol>
 								</nav>
@@ -202,7 +202,7 @@
 											<div class="col-md-4">
 												<div class="prev-post mb-30 pr-45">
 													<h5 class="h5-xs"><i class="fas fa-arrow-left"></i> Previous Post</h5>
-													<a href="single-post.html">Congue magna eTreeks purus pretium magnis</a>
+													<a href="{% url 'forumdetalhe' %}">Congue magna eTreeks purus pretium magnis</a>
 												</div>
 											</div>
 
@@ -217,7 +217,7 @@
 											<div class="col-md-4 text-right">
 												<div class="next-post mb-30 pl-45">
 													<h5 class="h5-xs">Next Post <i class="fas fa-arrow-right"></i></h5>
-													<a href="single-post.html">8 neque dolor primis a libero tempus blandit</a>
+													<a href="{% url 'forumdetalhe' %}">8 neque dolor primis a libero tempus blandit</a>
 												</div>
 											</div>
 

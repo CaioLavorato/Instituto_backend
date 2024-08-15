@@ -56,14 +56,14 @@
 							<div class="col-md-10">
 								<nav aria-label="breadcrumb">
 								  	<ol class="breadcrumb">
-								    	<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+								    	<li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
 								    	<li class="breadcrumb-item active" aria-current="page">Fórum</li>
 								  	</ol>
 								</nav>
 
 							</div>
 							<div class="col-md-2 mt-2">
-								<button type="submit" class="btn btn-blue tra-black-hover submit">Novo Fórum</button>
+									<a href="{% url 'criar_forum' %}" class="btn btn-blue tra-black-hover last-link">Novo Fórum</a>
 							</div>
 						</div>	 <!-- End row -->
 					</div>	<!-- End container -->
@@ -96,7 +96,7 @@
 
 											<!-- Title -->
 											<h4 class="h4-sm">
-												<a href="single-post.html">Ligula varius magna porta a pretium</a>
+												<a href="{% url 'forumdetalhe' %}">Ligula varius magna porta a pretium</a>
 											</h4>
 
 											<!-- Post Author -->
@@ -132,7 +132,7 @@
 
 											<!-- Title -->
 											<h4 class="h4-sm">
-												<a href="single-post.html">20 magna undo at purus pretium</a>
+												<a href="{% url 'forumdetalhe' %}">20 magna undo at purus pretium</a>
 											</h4>
 
 											<!-- Post Author -->
@@ -167,7 +167,7 @@
 
 											<!-- Title -->
 											<h4 class="h4-sm">
-												<a href="single-post.html">12 dolor primis libero tempus ligula at varius magna porta a pretium</a>
+												<a href="{% url 'forumdetalhe' %}">12 dolor primis libero tempus ligula at varius magna porta a pretium</a>
 											</h4>
 
 											<!-- Post Author -->
@@ -201,7 +201,7 @@
 
 											<!-- Title -->
 											<h4 class="h4-sm">
-												<a href="single-post.html">Ultrice eTreeks justo purus ipsum igula varius magna porta a pretium</a>
+												<a href="{% url 'forumdetalhe' %}">Ultrice eTreeks justo purus ipsum igula varius magna porta a pretium</a>
 											</h4>
 
 											<!-- Post Author -->

@@ -2,6 +2,67 @@
 {% block content %}
 {% load static %}
 
+<!-- INNER PAGE WRAPPER ============================================= -->
+<div class="inner-page-wrapper">
 
+    <!-- BREADCRUMB ============================================= -->
+    <div id="breadcrumb" class="division">
+        <div class="container">
+            <div class="row">
+
+                <!-- BREADCRUMB NAV -->
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </div> <!-- END BREADCRUMB -->
+
+    <!-- PAGE HERO ============================================= -->
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-txt white-color">
+
+                        <!-- Title -->
+                        <h3 class="h3-xs">Perfil do Usuário</h3>
+
+                    </div>
+                </div> <!-- END PAGE HERO TEXT -->
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- END PAGE HERO -->
+
+    <!-- PROFILE FORM SECTION ============================================= -->
+    <section class="wide-70 form-section division">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-holder">
+
+                        <!-- Title -->
+                        <h4 class="h4-sm">Atualizar Perfil</h4>
+
+                        <!-- Profile Form -->
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-blue tra-black-hover last-link">Salvar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- END PROFILE FORM SECTION -->
+
+</div> <!-- END INNER PAGE WRAPPER -->
 
 {% endblock %}

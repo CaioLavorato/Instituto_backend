@@ -32,10 +32,10 @@
 
 
 								<!-- SIMPLE NAVIGATION LINK -->
-								<li class="nl-simple" aria-haspopup="true"><a href="#">Meus Cursos</a></li>
+								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'meus_cursos' %}">Meus Cursos</a></li>
 
 
-								<li class="nl-simple" aria-haspopup="true"><a href="#">Cursos</a></li>
+								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'cursos' %}">Cursos</a></li>
 
 
 								<!-- DROPDOWN MENU -->
@@ -74,7 +74,7 @@
 
 
 								<!-- DROPDOWN MENU -->
-								<li aria-haspopup="true"><a href="#">Categorias <span class="wsarrow"></span></a>
+								<li aria-haspopup="true"><a href="{% url 'categorias' %}">Categorias <span class="wsarrow"></span></a>
 									<ul class="sub-menu">
 										<li aria-haspopup="true"><a href="courses-list.html">Development</a></li>
 										<li aria-haspopup="true"><a href="courses-list.html">Finance & Accounting</a>
@@ -212,12 +212,14 @@
 
 
 								<!-- SIMPLE NAVIGATION LINK -->
-								<li class="nl-simple" aria-haspopup="true"><a href="blog-listing.html">Blog</a></li>
+								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'foruns' %}">Fórum</a></li>
 
 
 								<!-- SIMPLE NAVIGATION LINK -->
-								<li class="nl-simple" aria-haspopup="true"><a href="contacts.html">Contato</a></li>
+								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'professores' %}">Professores</a></li>
 
+								<!-- SIMPLE NAVIGATION LINK -->
+								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'redecredenciada' %}">Rede</a></li>
 
 								<!-- DROPDOWN MENU
 						          	<li aria-haspopup="true">
@@ -237,7 +239,7 @@
 
 								<!-- HEADER BUTTON -->
 								<li class="nl-simple" aria-haspopup="true">
-									<a href="#" class="btn btn-blue tra-black-hover last-link">Perfil</a>
+									<a href="{% url 'perfil' %}" class="btn btn-blue tra-black-hover last-link">Perfil</a>
 								</li>
 								<li class="nl-simple" aria-haspopup="true"><a href="#"><i class="fa fa-power-off"
 											aria-hidden="true"></i>

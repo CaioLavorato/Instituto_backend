@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'baseLogado.html' %}
+{% block content %}
+{% load static %}
 
-</body>
-</html>
+<!-- INNER PAGE WRAPPER ============================================= -->
+<div class="inner-page-wrapper">
+
+    <!-- BREADCRUMB ============================================= -->
+    <div id="breadcrumb" class="division">
+        <div class="container">
+            <div class="row">
+
+                <!-- BREADCRUMB NAV -->
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Criar Fórum</li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </div> <!-- END BREADCRUMB -->
+
+    <!-- PAGE HERO ============================================= -->
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-txt white-color">
+
+                        <!-- Title -->
+                        <h3 class="h3-xs">Criar Fórum</h3>
+
+                    </div>
+                </div> <!-- END PAGE HERO TEXT -->
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- END PAGE HERO -->
+
+    <!-- FORUM FORM ============================================= -->
+    <section id="forum-form" class="wide-70 form-section division">
+        <div class="container">
+            <div class="row">
+
+                <!-- FORM CONTAINER -->
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="form-holder">
+
+                        <!-- Form -->
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-blue tra-black-hover last-link">Criar Fórum</button>
+                            </div>
+
+                        </form>
+
+                    </div> <!-- END FORM HOLDER -->
+                </div> <!-- END FORM CONTAINER -->
+
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- END FORUM FORM -->
+
+</div> <!-- END INNER PAGE WRAPPER -->
+
+{% endblock %}
