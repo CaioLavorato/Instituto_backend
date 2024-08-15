@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4ffa81-d094-4ebf-bd38-82721cbe8e10" name="Changes" comment="Correçao Layout">
-      <change afterPath="$PROJECT_DIR$/curso/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/curso/templates/meuscursos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/categoriadetalhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/categoriadetalhe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/categorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/categorias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/cursodetalhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/cursodetalhe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/cursos.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/cursos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/forumdetalhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/forumdetalhe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/foruns.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/foruns.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/novoforum.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/novoforum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/perfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/perfil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/professordetalhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/professordetalhe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/professores.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/professores.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/templates/redecredenciada.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/redecredenciada.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbarLogado.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbarLogado.html" afterDir="false" />
-    </list>
+    <list default="true" id="4d4ffa81-d094-4ebf-bd38-82721cbe8e10" name="Changes" comment="Correçao Layout" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723694533266</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Correçao Layout">
+      <option name="closed" value="true" />
+      <created>1723697989324</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723697989324</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

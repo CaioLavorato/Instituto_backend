@@ -20,9 +20,9 @@
 
 						<!-- LOGO IMAGE -->
 						<!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 344 x 80 pixels) -->
-						<div class="desktoplogo"><a href="index.html" class="logo-black"><img src="{% static 'images/logo.png' %}"
+						<div class="desktoplogo"><a href="{% url 'cursos' %}" class="logo-black"><img src="{% static 'images/logo.png' %}"
 									width="172" height="40" alt="header-logo"></a></div>
-						<div class="desktoplogo"><a href="index.html" class="logo-white"><img
+						<div class="desktoplogo"><a href="{% url 'cursos' %}" class="logo-white"><img
 									src="{% static 'images/logo-white.png' %}" width="172" height="40" alt="header-logo"></a></div>
 
 
@@ -30,12 +30,13 @@
 						<nav class="wsmenu clearfix">
 							<ul class="wsmenu-list">
 
+								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'cursos' %}">Cursos</a></li>
 
 								<!-- SIMPLE NAVIGATION LINK -->
 								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'meus_cursos' %}">Meus Cursos</a></li>
 
 
-								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'cursos' %}">Cursos</a></li>
+
 
 
 								<!-- DROPDOWN MENU -->
