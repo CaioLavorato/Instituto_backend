@@ -24,6 +24,13 @@ class Usuario(models.Model):
     data_criacao = models.DateTimeField(default=timezone.now)
     ultimo_acesso = models.DateTimeField()
     tipo = models.CharField(max_length=2, choices=TIPO_USUARIO_CHOICES, default=ALUNO)
+    facebook = models.CharField(max_length=1000, null=True, blank=True)
+    linkedin = models.CharField(max_length=1000, null=True, blank=True)
+    google_plus = models.CharField(max_length=1000, null=True, blank=True)
+    descricao = models.TextField(max_length=5000, null=True, blank=True)
+    web_site = models.CharField(max_length=1000, null=True, blank=True)
+
+    categorias = models.ManyToManyField('Categorias', related_name='usuarios')
 
     def save(self, *args, **kwargs):
         if not is_password_usable(self.senha):
@@ -33,7 +40,6 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nome
 
-# nome, cpf, email, senha, foto, data_de_nascimento, data_de_criacao, ultimo_acesso
 
 class Categorias(models.Model):
     descricao = models.TextField(max_length=1000)
