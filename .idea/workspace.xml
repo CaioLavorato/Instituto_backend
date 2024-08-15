@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4ffa81-d094-4ebf-bd38-82721cbe8e10" name="Changes" comment="Correçao Layout">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/Scripts/python.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/Scripts/pythonw.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/pyvenv.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/curso/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="4d4ffa81-d094-4ebf-bd38-82721cbe8e10" name="Changes" comment="Correçao Layout" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,12 +21,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;CaioLavorato&quot;
-  }
-}</component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {}
+}]]></component>
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
+    {
+      "id": {
+        "id": "PR_kwDOMRMV7M50ez8F",
+        "number": 1
+      },
+      "lastSeen": 1723747264889
+    }
+  ]
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/nicholas-ananias/Instituto_backend.git&quot;,
@@ -151,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723700543271</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Correçao Layout">
+      <option name="closed" value="true" />
+      <created>1723747307549</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723747307549</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
