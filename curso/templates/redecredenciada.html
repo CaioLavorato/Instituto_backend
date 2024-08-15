@@ -1,0 +1,872 @@
+{% extends 'baseLogado.html' %}
+{% block content %}
+{% load static %}
+		<!-- INNER PAGE WRAPPER
+			============================================= -->
+		<div class="inner-page-wrapper">
+
+
+
+
+			<!-- BREADCRUMB
+				============================================= -->
+			<div id="breadcrumb" class="division">
+				<div class="container">
+					<div class="row">
+
+						<!-- BREADCRUMB NAV -->
+						<div class="col-md-12">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Rede Credenciada</li>
+								</ol>
+							</nav>
+						</div>
+
+					</div> <!-- End row -->
+				</div> <!-- End container -->
+			</div> <!-- END BREADCRUMB -->
+
+
+
+
+			<!-- PAGE HERO
+				============================================= -->
+			<section class="bg-05 page-hero-section division">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="hero-txt white-color">
+
+								<!-- Title -->
+								<h3 class="h3-xs">Rede Credenciada</h3>
+
+								<!-- Share Icons -->
+								<div class="share-list">
+									<ul class="share-social-icons text-center clearfix">
+										<li>
+											<p><span>64 Institutos</span> encontrados.
+											<p>
+
+										</li>
+										<li>
+										</li>
+										<!-- <li><a href="#" class="share-ico ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+											<li><a href="#" class="share-ico ico-twitter"><i class="fab fa-twitter"></i></a></li>
+											<li><a href="mailto:yourdomain@mail.com" class="share-ico ico-mail"><i class="far fa-envelope"></i></a></li>
+											<li><a href="#" class="share-ico ico-bookmark"><i class="far fa-bookmark"></i> 8.4k</a></li>			 -->
+									</ul>
+								</div>
+
+								<!-- Text -->
+								<!-- <p><span>9,463 students</span> are learning English Language on eTreeks</p> -->
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<form class="d-flex" role="search">
+								 <select class="form-control"" name="ufs" id="ufs">
+                        <option value="">Estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Instituto" id="input-instituto">
+								<button class="btn btn-md" type="button" onclick="getInsitituto()"><i class="fa fa-search" aria-hidden="true"></i></button>
+						      </form>
+						</div>
+						<!-- END PAGE HERO TEXT -->
+					</div> <!-- End row -->
+				</div> <!-- End container -->
+			</section> <!-- END PAGE HERO -->
+
+        <div class="container-xxl container-secundary  mt-4 pt-5 content">
+   <div class="container mt-5">
+                <div class="table-responsive-md mt-5">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Instituto</th>
+                                    <th>UF</th>
+                                    <th>Endereço</th>
+                                    <th>Telefone</th>
+                                    <th>Site</th>
+                                    <th>Localização</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela-rede-referenciada">
+                                <tr>
+                                    <td>UOPECCAN - UNIÃO OESTE PARANAENSE DE ESTUDOS E COMBATE AO CÂNCER</td>
+                                    <td>PR</td>
+                                    <td>RUA ITAQUATIARAS, 769, SANTO ONOFRE</td>
+                                    <td>(45) 21017000</td>
+                                    <td><a href="https://www.uopeccan.org.br"
+                                            target="_blank">https://www.uopeccan.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+ITAQUATIARAS%2C+769%2C+SANTO+ONOFRE"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>TUCCA – ASSOCIAÇÃO PARA CRIANÇAS E ADOLESCENTES COM CÂNCER/HOSPITAL SANTA
+                                        MARCELINA</td>
+                                    <td>SP</td>
+                                    <td>AV. NOVE DE JULHO, 4275</td>
+                                    <td>(11) 23441054</td>
+                                    <td><a href="https://www.tucca.org.br" target="_blank">https://www.tucca.org.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=AV.+NOVE+DE+JULHO%2C+4275"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>SOBOPE – SOCIEDADE BRASILEIRA DE ONCOLOGIA PEDIÁTRICA</td>
+                                    <td>SP</td>
+                                    <td>AV. MOEMA, 94 CONJ. 14</td>
+                                    <td>(11) 50508662</td>
+                                    <td><a href="https://www.sobope.org.b" target="_blank">https://www.sobope.org.b</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=AV.+MOEMA%2C+94+CONJ.+14"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>SANTA CASA DE MISERICÓRDIA DE PORTO ALEGRE – IRMANDADE DA SANTA CASA DE
+                                        MISERICÓRDIA DE PORTO ALEGRE</td>
+                                    <td>RS</td>
+                                    <td>RUA PROF. ANNES DIAS 295</td>
+                                    <td>(51) 32137300</td>
+                                    <td><a href="https://www.santacasa.org.br"
+                                            target="_blank">https://www.santacasa.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+PROF.+ANNES+DIAS+295"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>SANTA CASA DE MARÍLIA – IRMANDADE DA SANTA CASA DE MISERICÓRDIA DE MARÍLIA</td>
+                                    <td>SP</td>
+                                    <td>AVENIDA VICENTE FERREIRA, N.º 828 - BAIRRO CASCATA</td>
+                                    <td>(14) 34025555</td>
+                                    <td><a href="https://www.santacasamarilia.com.br"
+                                            target="_blank">https://www.santacasamarilia.com.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=AVENIDA+VICENTE+FERREIRA%2C+N.%C2%BA+828+-+BAIRRO+CASCATA"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>RFCC-SBO – REDE FEMININA DE COMBATE AO CÂNCER DE SANTA BARBARA D’OESTE</td>
+                                    <td>SP</td>
+                                    <td>RUA SANTA CRUZ, 420 - VILA PIRES - CEP: 13.450-220</td>
+                                    <td>(19) 3455-2303</td>
+                                    <td><a href="https://www.redefemininasbo.org.br"
+                                            target="_blank">https://www.redefemininasbo.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+SANTA+CRUZ%2C+420+-+VILA+PIRES+-+CEP%3A+13.450-220"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>RFCC – SBO – REDE FEMININA DE COMBATE AO CÂNCER</td>
+                                    <td>SP</td>
+                                    <td>RUA SANTA CRUZ, 420</td>
+                                    <td>(91) 934552303</td>
+                                    <td><a href="https://www.redefemininasbo.org.br"
+                                            target="_blank">https://www.redefemininasbo.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+SANTA+CRUZ%2C+420"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>REDE FEMININA DE COMBATE AO CÂNCER – REGIONAL MARINGÁ</td>
+                                    <td>PR</td>
+                                    <td>AVENIDA CERRO AZUL, 1979</td>
+                                    <td>(44) 30287277</td>
+                                    <td><a href="http://www.rfcc.com.br" target="_blank">http://www.rfcc.com.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=AVENIDA+CERRO+AZUL%2C+1979"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ORGANIZAÇÃO VIVER</td>
+                                    <td>PR</td>
+                                    <td>RUA LUCILLA BALALLAI, 391</td>
+                                    <td>(43) 33430044</td>
+                                    <td><a href="https://www.ongviver.org.br"
+                                            target="_blank">https://www.ongviver.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+LUCILLA+BALALLAI%2C+391"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>OASIS – ORGANIZAÇÃO DOS AMIGOS SOLIDÁRIOS À INFÂNCIA E À SAÚDE</td>
+
+                                    <td>MG</td>
+
+                                    <td>RUA MIGUEL ABDANUR, 35</td>
+
+                                    <td>(34) 33120058</td>
+                                    <td>-</td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+LUCILLA+BALALLAI%2C+391"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>NACC – NÚCLEO DE APOIO À CRIANÇA COM CÂNCER</td>
+                                    <td>PE</td>
+                                    <td>RUA DO FUTURO, 855 - AFLITOS</td>
+                                    <td>(81) 32679200</td>
+                                    <td><a href="https://www.nacc.org.br" target="_blank">https://www.nacc.org.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+DO+FUTURO,+855+-+AFLITOS,+PE"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>LIGA FEMININA DE COMBATE AO CÂNCER DE PASSO FUNDO</td>
+                                    <td>RS</td>
+                                    <td>RUA 10 DE ABRIL 205 A</td>
+                                    <td>(54) 30454560</td>
+                                    <td><a href="https://www.ligadecombateaocancerpf.com.br"
+                                            target="_blank">https://www.ligadecombateaocancerpf.com.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+10+DE+ABRIL+205+A,+RS"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>LAR DE MARIA – REDE FEMININA ESTADUAL DE COMBATE AO CÂNCER DO PIAUI</td>
+                                    <td>PI</td>
+                                    <td>AV SÃO RAIMUNDO 1000</td>
+                                    <td>(86) 32159650</td>
+                                    <td><a href="https://www.lardemaria-pi.org.br"
+                                            target="_blank">https://www.lardemaria-pi.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=AV+SÃO+RAIMUNDO+1000,+PI"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ITACI – FUNDAÇÃO CRIANÇA – INSTITUTO DE TRATAMENTO DO CÂNCER INFANTIL</td>
+                                    <td>SP</td>
+                                    <td>RUA GALENO DE ALMEIDA, 148</td>
+                                    <td>(11) 991838280</td>
+                                    <td><a href="https://www.itaci.org.br" target="_blank">https://www.itaci.org.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+GALENO+DE+ALMEIDA,+148,+SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ICIA- INSTITUTO DO CÂNCER INFANTIL DO AGRESTE</td>
+                                    <td>PE</td>
+                                    <td>MARTINS JÚNIOR, 12 CAIXA POSTAL 168 CORREIOS</td>
+                                    <td>(81) 37277137</td>
+                                    <td><a href="https://www.icia.org.br" target="_blank">https://www.icia.org.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=MARTINS+JÚNIOR,+12+CAIXA+POSTAL+168+CORREIOS,+PE"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ICI – INSTITUTO DO CÂNCER INFANTIL</td>
+                                    <td>RS</td>
+                                    <td>RUA SÃO MANUEL, 850, RIO BRANCO</td>
+                                    <td>(51) 33318704</td>
+                                    <td><a href="https://www.ici-rs.org.br"
+                                            target="_blank">https://www.ici-rs.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+SÃO+MANUEL,+850,+RIO+BRANCO,+RS"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>HOSPITAL MARTAGÃO GESTEIRA/LIGA ÁLVARO BAHIA CONTRA A MORTALIDADE INFANTIL</td>
+                                    <td>BA</td>
+                                    <td>RUA JOSÉ DUARTE,114</td>
+                                    <td>(71) 30323752</td>
+                                    <td><a href="https://www.martagaogesteira.com.br"
+                                            target="_blank">https://www.martagaogesteira.com.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+JOSÉ+DUARTE,114,+BA"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>HOSPITAL MARCIO CUNHA- FUNDAÇÃO SÃO FRANCISCO XAVIER</td>
+                                    <td>MG</td>
+                                    <td>AV. KIYOSHI TSUNAWAKI , Nº 41, BAIRRO DAS ÁGUAS</td>
+                                    <td>(31) 38305099</td>
+                                    <td><a href="https://www.fsfx.com.br/hospital-marcio-cunha"
+                                            target="_blank">https://www.fsfx.com.br/hospital-marcio-cunha</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=AV.+KIYOSHI+TSUNAWAKI,+Nº+41,+BAIRRO+DAS+ÁGUAS,+MG"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>HOSPITAL INFANTIL DR. JESER AMARANTE FARIA – HOSPITAL NOSSA SENHORA DAS GRAÇAS –
+                                        UNIDADE JOINVILLE</td>
+                                    <td>SC</td>
+                                    <td>RUA ARARANGUÁ, 554</td>
+                                    <td>(47) 31451654</td>
+                                    <td><a href="https://www.hjaf.org.br" target="_blank">https://www.hjaf.org.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+ARARANGUÁ,+554,+SC"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>HOSPITAL ERASTO GAERTNER – LIGA PARANAENSE DE COMBATE AO CÂNCER</td>
+                                    <td>PR</td>
+                                    <td>DR. OVANDE DO AMARAL, 201</td>
+                                    <td>(41) 33615218</td>
+                                    <td><a href="https://www.erastogaertner.com.br"
+                                            target="_blank">https://www.erastogaertner.com.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=DR.+OVANDE+DO+AMARAL,+201,+PR"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>HOSPITAL DO GACC – GRUPO DE ASSISTÊNCIA À CRIANÇA COM CÂNCER – SÃO JOSÉ DOS
+                                        CAMPOS</td>
+                                    <td>SP</td>
+                                    <td>AVENIDA POSSIDÔNIO JOSÉ DE FREITAS, 1.200, URBANOVA</td>
+                                    <td>(12) 39496024</td>
+                                    <td><a href="https://www.gacc.com.br" target="_blank">https://www.gacc.com.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=AVENIDA+POSSIDÔNIO+JOSÉ+DE+FREITAS,+1.200,+URBANOVA,+SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GRUPO DE APOIO À CRIANÇA COM CÂNCER – GACC – CURITIBA</td>
+                                    <td>PR</td>
+                                    <td>R. ALMIRANTE TAMANDARÉ, 1000</td>
+                                    <td>(41) 30246262</td>
+                                    <td><a href="https://www.gacc.com.br" target="_blank">https://www.gacc.com.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=R.+ALMIRANTE+TAMANDARÉ,+1000,+PR"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GRUPO DE APOIO À CRIANÇA COM CÂNCER – GACC – SÃO JOSÉ DOS CAMPOS</td>
+                                    <td>SP</td>
+                                    <td>R. POSSIDÔNIO JOSÉ DE FREITAS, 1200</td>
+                                    <td>(12) 21351400</td>
+                                    <td><a href="https://www.gacc.com.br" target="_blank">https://www.gacc.com.br</a>
+                                    </td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=R.+POSSIDÔNIO+JOSÉ+DE+FREITAS,+1200,+SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GRAACC – GRUPO DE APOIO AO ADOLESCENTE E À CRIANÇA COM CÂNCER</td>
+                                    <td>SP</td>
+                                    <td>RUA PEDRO DE TOLEDO, 572</td>
+                                    <td>(11) 59081100</td>
+                                    <td><a href="https://www.graacc.org.br"
+                                            target="_blank">https://www.graacc.org.br</a></td>
+                                    <td><a href="https://www.google.com/maps/search/?api=1&query=RUA+PEDRO+DE+TOLEDO,+572,+SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GPACI – GRUPO DE PESQUISA E ASSISTÊNCIA AO CÂNCER INFANTIL</td>
+                                    <td>SP</td>
+                                    <td>ANTÔNIO MIGUEL PEREIRA - 45</td>
+                                    <td>(15) 21016577</td>
+                                    <td><a href="https://www.gpaci.org.br" target="_blank">https://www.gpaci.org.br</a>
+                                    </td>
+                                    <td><a href="https://maps.google.com/?q=ANTÔNIO MIGUEL PEREIRA - 45, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GACC SUL BAHIA -GRUPO DE APOIO À CRIANÇA COM CÂNCER SUL BAHIA</td>
+                                    <td>BA</td>
+                                    <td>R. EUROPA UNIDA, 76 - SÃO JUDAS</td>
+                                    <td>(73) 32119986</td>
+                                    <td><a href="https://www.gaccsulbahia.org.br"
+                                            target="_blank">https://www.gaccsulbahia.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=R. EUROPA UNIDA, 76 - SÃO JUDAS, BA"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GACC – GRUPO DE APOIO À CRIANÇA COM CÂNCER DE RIBEIRÃO PRETO</td>
+                                    <td>SP</td>
+                                    <td>RUA PROFESSOR PEDREIRA DE FREITAS, CASA 06 - CAMPUS DA USP</td>
+                                    <td>(16) 36331731</td>
+                                    <td><a href="https://www.gaccribeiraopreto.com.br"
+                                            target="_blank">https://www.gaccribeiraopreto.com.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA PROFESSOR PEDREIRA DE FREITAS, CASA 06 - CAMPUS DA USP, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GACC -BA – GRUPO DE APOIO À CRIANÇA COM CÂNCER</td>
+                                    <td>BA</td>
+                                    <td>AV. OCEANO PACÍFICO, 210 - CD. RECANTO DAS ILHAS / SÃO MARCOS</td>
+                                    <td>(71) 33992002</td>
+                                    <td><a href="https://www.gaccbahia.org.br"
+                                            target="_blank">https://www.gaccbahia.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=AV. OCEANO PACÍFICO, 210 - CD. RECANTO DAS ILHAS / SÃO MARCOS, BA"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GACC-AM – GRUPO DE APOIO À CRIANÇA E ADOLESCENTE COM CÂNCER DO AMAZONAS</td>
+                                    <td>AM</td>
+                                    <td>AVENIDA DOMINGOS JORGE VELHO, 14, BAIRRO DOM PEDRO I</td>
+                                    <td>(92) 36595000</td>
+                                    <td><a href="https://www.gaccamazonas.com.br"
+                                            target="_blank">https://www.gaccamazonas.com.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=AVENIDA DOMINGOS JORGE VELHO, 14, BAIRRO DOM PEDRO I, AM"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>GAC-PE – GRUPO DE AJUDA À CRIANÇA CARENTE COM CÂNCER – PERNAMBUCO</td>
+                                    <td>PE</td>
+                                    <td>RUA ARNÓBIO MARQUES, 310</td>
+                                    <td>(81) 34237633</td>
+                                    <td><a href="https://www.gac.org.br" target="_blank">https://www.gac.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA ARNÓBIO MARQUES, 310, PE"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>FUNDAÇÃO RICARDO MOYSES JR- FUNDAÇÃO DE APOIO AOS PORTADORES DE NEOPLASIAS
+                                        INFANTIS RICARDO MOYSES JR</td>
+                                    <td>MG</td>
+                                    <td>RUA FRANCISCO VAZ DE MAGALHÃES, 12 - CASCATINHA</td>
+                                    <td>(32) 32290002</td>
+                                    <td><a href="https://www.ricardomoyesjr.org.br"
+                                            target="_blank">https://www.ricardomoyesjr.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA FRANCISCO VAZ DE MAGALHÃES, 12 - CASCATINHA, MG"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>FUNDAÇÃO PRÓ-HEMORIO – FUNDAÇÃO PRÓ INSTITUTO DE HEMATOLOGIA – RJ, FUNDARJ</td>
+                                    <td>RJ</td>
+                                    <td>RUA FREI CANECA 8 - SALA 334 - CENTRO</td>
+                                    <td>(21) 22425090</td>
+                                    <td><a href="https://www.fundacaoprohemorio.org.br"
+                                            target="_blank">https://www.fundacaoprohemorio.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA FREI CANECA 8 - SALA 334 - CENTRO, RJ"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>FUNDAÇÃO DO CÂNCER – FUNDAÇÃO ARY FRAUZINO PARA PESQUISA E CONTROLE DO CÂNCER
+                                    </td>
+                                    <td>RJ</td>
+                                    <td>RUA DOS INVÁLIDOS</td>
+                                    <td>(21) 21574600</td>
+                                    <td><a href="https://www.cancer.org.br"
+                                            target="_blank">https://www.cancer.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA DOS INVÁLIDOS, RJ" target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>FUNDAÇÃO ANTÔNIO DINO</td>
+                                    <td>MA</td>
+                                    <td>RUA SEROA DA MOTA, 131 - APEADOURO</td>
+                                    <td>(98) 30893153</td>
+                                    <td><a href="https://www.fundacaoantoniodino.org.br"
+                                            target="_blank">https://www.fundacaoantoniodino.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA SEROA DA MOTA, 131 - APEADOURO, MA"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>FSAC-MOC – FUNDAÇÃO SARA ALBUQUERQUE COSTA – MONTES CLAROS</td>
+                                    <td>MG</td>
+                                    <td>RUA ANDRÉ LUIZ, 415, CANELAS II</td>
+                                    <td>(38) 32145500</td>
+                                    <td><a href="https://www.fundacaosara.org.br"
+                                            target="_blank">https://www.fundacaosara.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA ANDRÉ LUIZ, 415, CANELAS II, MG"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>FSAC-BH – FUNDAÇÃO SARA ALBUQUERQUE COSTA – BELO HORIZONTE</td>
+                                    <td>MG</td>
+                                    <td>RUA POUSO ALTO, 285, SERRA</td>
+                                    <td>(31) 32847690</td>
+                                    <td><a href="https://www.fundacaosara.org.br"
+                                            target="_blank">https://www.fundacaosara.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA POUSO ALTO, 285, SERRA, MG"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>FAMESP- FUNDAÇÃO PARA O DESENVOLVIMENTO MÉDICO E HOSPITALAR</td>
+                                    <td>SP</td>
+                                    <td>RUA JOÃO BUTGNOLLI, S/Nº</td>
+                                    <td>(14) 38814814</td>
+                                    <td><a href="https://www.famesp.org.br"
+                                            target="_blank">https://www.famesp.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA JOÃO BUTGNOLLI, S/Nº, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>DOMUS – ASSOCIAÇÃO DE AMPARO À CRIANÇA E AO ADOLESCENTE COM CÂNCER DA SERRA
+                                        GAÚCHA</td>
+                                    <td>RS</td>
+                                    <td>DOUTOR PAULO ROBERTO ALMEIDA, 471</td>
+                                    <td>(54) 32210849</td>
+                                    <td><a href="https://www.domusserragaucha.org.br"
+                                            target="_blank">https://www.domusserragaucha.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=DOUTOR PAULO ROBERTO ALMEIDA, 471, RS"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CONIACC- CONFEDERAÇÃO NACIONAL DAS INSTITUIÇÕES DE APOIO E ASSISTÊNCIA A CRIANÇA
+                                        E AO ADOLESCENTE COM CÂNCER</td>
+                                    <td>DF</td>
+                                    <td>ST SMAS S/N TRECHO 3, CONJUNTO 3, BLOCO A, SALA 206, ASA SUL</td>
+                                    <td>(84) 40061606</td>
+                                    <td><a href="https://www.coniacc.org.br"
+                                            target="_blank">https://www.coniacc.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=ST SMAS S/N TRECHO 3, CONJUNTO 3, BLOCO A, SALA 206, ASA SUL, DF"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CENTRO INFANTIL BOLDRINI- CENTRO INFANTIL DE INVESTIGAÇÃO HEMATOLÓGICA DR.
+                                        DOMINGOS A. BOLDRINI</td>
+                                    <td>SP</td>
+                                    <td>RUA DR. GABRIEL PORTO, 1270, CIDADE UNIVERSITÁRIA</td>
+                                    <td>(19) 37875115</td>
+                                    <td><a href="https://www.boldrini.org.br"
+                                            target="_blank">https://www.boldrini.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA DR. GABRIEL PORTO, 1270, CIDADE UNIVERSITÁRIA, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CENTRO DE APOIO À CRIANÇA COM CÂNCER</td>
+                                    <td>RS</td>
+                                    <td>ERLI DE ALMEIDA LIMA, 365 - CAMOBI</td>
+                                    <td>(55) 32264949</td>
+                                    <td><a href="https://www.cacc.org.br" target="_blank">https://www.cacc.org.br</a>
+                                    </td>
+                                    <td><a href="https://maps.google.com/?q=ERLI DE ALMEIDA LIMA, 365 - CAMOBI, RS"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA RONALD MCDONALD RIO DE JANEIRO – ASSOCIAÇÃO DE APOIO A CRIANÇA COM
+                                        NEOPLASIA DO RIO DE JANEIRO</td>
+                                    <td>RJ</td>
+                                    <td>RUA PEDRO GUEDES, 44</td>
+                                    <td>(21) 25663200</td>
+                                    <td><a href="https://www.casaronald.org.br"
+                                            target="_blank">https://www.casaronald.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA PEDRO GUEDES, 44, RJ"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA RONALD MCDONALD MOEMA – ASSOCIAÇÃO CASA DA FAMÍLIA</td>
+                                    <td>SP</td>
+                                    <td>AL DOS UAPÉS, 690</td>
+                                    <td>(11) 50555725</td>
+                                    <td><a href="https://www.casaronaldspmoema.org.br"
+                                            target="_blank">https://www.casaronaldspmoema.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=AL DOS UAPÉS, 690, SP" target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA RONALD MCDONALD JAHU- ASSOCIAÇÃO CASA DE APOIO INFANTIL MARIA AUGUSTA DO
+                                        AMARAL CESARINO</td>
+                                    <td>SP</td>
+                                    <td>RUA GAUDÊNCIO GUACELLI, 185</td>
+                                    <td>(14) 36214522</td>
+                                    <td><a href="https://www.casaronaldjahu.org.br"
+                                            target="_blank">https://www.casaronaldjahu.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA GAUDÊNCIO GUACELLI, 185, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA RONALD MCDONALD ITAQUERA – ASSOCIAÇÃO TUCCA</td>
+                                    <td>SP</td>
+                                    <td>CACHOEIRA DA ILHA, 15</td>
+                                    <td>(11) 966211414</td>
+                                    <td>-</td>
+                                    <td><a href="https://maps.google.com/?q=CACHOEIRA DA ILHA, 15, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA RONALD MCDONALD CAMPINAS- ASSOCIAÇÃO DE PAIS E AMIGOS DA CRIANÇA COM CÂNCER
+                                        E HEMOPATIAS</td>
+                                    <td>SP</td>
+                                    <td>RUA NÁDIA HELENA BATTISTONE DA SILVA, 355, BOSQUE DAS PALMEIRAS</td>
+                                    <td>(19) 32572082</td>
+                                    <td><a href="https://www.casaronaldcampinas.org.br"
+                                            target="_blank">https://www.casaronaldcampinas.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA NÁDIA HELENA BATTISTONE DA SILVA, 355, BOSQUE DAS PALMEIRAS, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA RONALD MCDONALD BELÉM – ASSOCIAÇÃO COLORINDO A VIDA</td>
+                                    <td>PA</td>
+                                    <td>RUA MARIANO, 123, CASTANHEIRA</td>
+                                    <td>(91) 32432881</td>
+                                    <td><a href="https://www.casaronaldbelem.org.br"
+                                            target="_blank">https://www.casaronaldbelem.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA MARIANO, 123, CASTANHEIRA, PA"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA RONALD MCDONALD ABC – ASSOCIAÇÃO PROJETO CRESCER DO ABC</td>
+                                    <td>SP</td>
+                                    <td>AVENIDA PRÍNCIPE DE GALES, 821</td>
+                                    <td>(11) 44334490</td>
+                                    <td><a href="https://www.casaronaldabc.org.br"
+                                            target="_blank">https://www.casaronaldabc.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=AVENIDA PRÍNCIPE DE GALES, 821, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CASA DE APOIO À CRIANÇA COM CÂNCER DURVAL PAIVA</td>
+                                    <td>RN</td>
+                                    <td>RUA PROFESSOR CLEMENTINO CÂMARA, Nº 234 BARRO VERMELHO</td>
+                                    <td>(84) 40061602</td>
+                                    <td><a href="https://www.casadurvalpaiva.org.br"
+                                            target="_blank">https://www.casadurvalpaiva.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA PROFESSOR CLEMENTINO CÂMARA, Nº 234 BARRO VERMELHO, RN"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>CAPE- CASA DE ACOLHIDA PADRE EUSTÁQUIO</td>
+                                    <td>MG</td>
+                                    <td>AVENIDA PRESIDENTE ANTONIO CARLOS, 7803, SÃO LUIZ</td>
+                                    <td>(31) 34018000</td>
+                                    <td><a href="https://www.cape-mg.org.br"
+                                            target="_blank">https://www.cape-mg.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=AVENIDA PRESIDENTE ANTONIO CARLOS, 7803, SÃO LUIZ, MG"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>AVOSOS – ASSOCIAÇÃO DOS VOLUNTÁRIOS A SERVIÇO DA ONCOLOGIA EM SERGIPE</td>
+                                    <td>SE</td>
+                                    <td>RUA LEONEL CURVELO, 55, SUÍSSA</td>
+                                    <td>(79) 3212-4700</td>
+                                    <td><a href="https://www.avosos.org.br"
+                                            target="_blank">https://www.avosos.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA LEONEL CURVELO, 55, SUÍSSA, SE"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>AVOS- ASSOCIAÇÃO DOS VOLUNTÁRIOS DE APOIO E ASSISTÊNCIA A CRIANÇA E AO
+                                        ADOLESCENTE</td>
+                                    <td>SC</td>
+                                    <td>RUA RUI BARBOSA, 152 - BAIRRO AGRONÔMICA</td>
+                                    <td>(48) 325192511</td>
+                                    <td><a href="https://www.avos.org.br" target="_blank">https://www.avos.org.br</a>
+                                    </td>
+                                    <td><a href="https://maps.google.com/?q=RUA RUI BARBOSA, 152 - BAIRRO AGRONÔMICA, SC"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ASSOCIAÇÃO PETER PAN- ASSOCIAÇÃO DE COMBATE AO CÂNCER INFANTO JUVENIL</td>
+                                    <td>CE</td>
+                                    <td>RUA ALBERTO MONTEZUMA, 350, VILA UNIÃO</td>
+                                    <td>(85) 40084109</td>
+                                    <td><a href="https://www.app.org.br" target="_blank">https://www.app.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA ALBERTO MONTEZUMA, 350, VILA UNIÃO, CE"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ASSOCIAÇÃO DONOS DO AMANHÃ- ASSOCIAÇÃO PARAIBANA DE COMBATE AO CÂNCER
+                                        INFANTOJUVENIL DONOS DO AMANHÃ</td>
+                                    <td>PB</td>
+                                    <td>AVENIDA CAPITÃO JOSÉ PESSOA, 1097</td>
+                                    <td>(83) 32422710</td>
+                                    <td>-</td>
+                                    <td><a href="https://maps.google.com/?q=AVENIDA CAPITÃO JOSÉ PESSOA, 1097, PB"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ASSOCIAÇÃO BAURUENSE DE COMBATE AO CÂNCER</td>
+                                    <td>SP</td>
+                                    <td>RUA NOBILE DI PIERO Nº 32 - CENTRO</td>
+                                    <td>(14) 32223808</td>
+                                    <td>-</td>
+                                    <td><a href="https://maps.google.com/?q=RUA NOBILE DI PIERO Nº 32 - CENTRO, SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>APALA – ASSOCIAÇÃO DOS PAIS E AMIGOS DOS LEUCÊMICOS DE ALAGOAS</td>
+                                    <td>AL</td>
+                                    <td>TRAVESSA ROBERTO SIMONSEN, 178, GRUTA DE LOURDES</td>
+                                    <td>(82) 21229400</td>
+                                    <td><a href="https://www.apala.org.br" target="_blank">https://www.apala.org.br</a>
+                                    </td>
+                                    <td><a href="https://maps.google.com/?q=TRAVESSA ROBERTO SIMONSEN, 178, GRUTA DE LOURDES, AL"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>APACN – ASSOCIAÇÃO PARANAENSE DE APOIO À CRIANÇA COM NEOPLASIA</td>
+                                    <td>PR</td>
+                                    <td>RUA OSCAR SCHARAPPE SENIOR</td>
+                                    <td>(41) 30247475</td>
+                                    <td><a href="https://www.apacn.com.br" target="_blank">https://www.apacn.com.br</a>
+                                    </td>
+                                    <td><a href="https://maps.google.com/?q=RUA OSCAR SCHARAPPE SENIOR, PR"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>AMO CRIANÇA – ASSOCIAÇÃO DE ASSISTÊNCIA EM ONCOPEDIATRIA</td>
+                                    <td>RS</td>
+                                    <td>RUA VIDAL BRASIL, 1695</td>
+                                    <td>(51) 35824800</td>
+                                    <td><a href="https://www.amocrianca.com.br"
+                                            target="_blank">https://www.amocrianca.com.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=RUA VIDAL BRASIL, 1695, RS"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ACACCI – ASSOCIAÇÃO CAPIXABA CONTRA O CÂNCER INFANTIL</td>
+                                    <td>ES</td>
+                                    <td>AVENIDA MARECHAL CAMPOS, 2235, MARUÍPE</td>
+                                    <td>(27) 36361030</td>
+                                    <td><a href="https://www.acacci.org.br"
+                                            target="_blank">https://www.acacci.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=AVENIDA MARECHAL CAMPOS, 2235, MARUÍPE, ES"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>ABRACE - Associação Brasileira de Assistência às Famílias de Crianças Portadora
+                                        de Câncer e Hemopatias</td>
+                                    <td>DF</td>
+                                    <td>QE 25 AE 1 CAVE-Guará II</td>
+                                    <td>(61) 32098800</td>
+                                    <td><a href="https://www.abrace.com.br"
+                                            target="_blank">https://www.abrace.com.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=QE+25+AE+1+CAVE-Guará+II,DF"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>AAPCMR – Associação de Apoio aos Portadores de Câncer de Mossoró e Região</td>
+                                    <td>RN</td>
+                                    <td>Rua Doutor Moisés da Costa Lopes</td>
+                                    <td>(84) 988995064</td>
+                                    <td>-</td>
+                                    <td><a href="https://maps.google.com/?q=Rua+Doutor+Moises+da+Costa+Lopes,RN"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>AAPC - Associação de Apoio ao Portador de Câncer de Presidente Prudente</td>
+                                    <td>SP</td>
+                                    <td>Av. Cel. José Soares Marcondes, 2.380 - Jardim Paulistano</td>
+                                    <td>(18) 33554907</td>
+                                    <td>-</td>
+                                    <td><a href="https://maps.google.com/?q=Av.+Cel.+José+Soares+Marcondes,2.380+-+Jardim+Paulistano,SP"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>AACCMT – Associação dos Amigos da Criança com Câncer</td>
+                                    <td>MT</td>
+                                    <td>Rua do Caju, 329, Alvorada</td>
+                                    <td>(65) 30250800</td>
+                                    <td><a href="https://www.aaccmt.org.br"
+                                            target="_blank">https://www.aaccmt.org.br</a></td>
+                                    <td><a href="https://maps.google.com/?q=Rua+do+Caju,329,Alvorada,MT"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                                <tr>
+                                    <td>AACC – MS - Associação dos Amigos das Crianças com Câncer – MS</td>
+                                    <td>MS</td>
+                                    <td>Avenida Presidente Ernesto Geisel, 3475, Orpheus Bais</td>
+                                    <td>(67) 33228044</td>
+                                    <td><a href="https://www.aacc-ms.org" target="_blank">https://www.aacc-ms.org</a>
+                                    </td>
+                                    <td><a href="https://maps.google.com/?q=Avenida+Presidente+Ernesto+Geisel,3475,Orpheus+Bais,MS"
+                                            target="_blank"><img
+                                                src="https://img.icons8.com/ios-filled/24/000000/marker.png" /></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>  </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        function getInsitituto() {
+            // Obtendo valores de entrada
+            var uf = document.getElementById('ufs').value.toLowerCase();
+            var instituto = document.getElementById('input-instituto').value.toLowerCase();
+            var tabela = document.getElementById('tabela-rede-referenciada');
+            var linhas = tabela.getElementsByTagName('tr');
+
+            // Iterando sobre as linhas da tabela para filtrar dados
+            for (var i = 0; i < linhas.length; i++) {
+                var colunaInstituto = linhas[i].getElementsByTagName('td')[0];
+                var colunaUf = linhas[i].getElementsByTagName('td')[1];
+
+                if (colunaInstituto && colunaUf) {
+                    var textoInstituto = colunaInstituto.textContent.toLowerCase();
+                    var textoUf = colunaUf.textContent.toLowerCase();
+
+                    if ((uf === '' || textoUf === uf) && (instituto === '' || textoInstituto.includes(instituto))) {
+                        linhas[i].style.display = '';
+                    } else {
+                        linhas[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+
+    </script>
+{% endblock %}

@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="author" content="Jthemes"/>
+    <meta name="description" content="eTreeks - Education & Courses Landing Page Template"/>
+    <meta name="keywords" content="Responsive, HTML5 Template, Jthemes, Courses, Education, Learning, Online Education, Study">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- SITE TITLE -->
+    <title>Instituto Ronald McDonald</title>
+
+    <!-- FAVICON AND TOUCH ICONS -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'images/apple-touch-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'images/apple-touch-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'images/apple-touch-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+    <link rel="icon" href="{% static 'images/apple-touch-icon.png' %}" type="image/x-icon">
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- FONT ICONS -->
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="{% static 'css/flaticon.css' %}" rel="stylesheet">
+
+    <!-- PLUGINS STYLESHEET -->
+    <link href="{% static 'css/menu.css' %}" rel="stylesheet">
+    <link id="effect" href="{% static 'css/dropdown-effects/fade-down.css' %}" media="all" rel="stylesheet">
+    <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
+    <link href="{% static 'css/flexslider.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet">
+
+    <!-- ON SCROLL ANIMATION -->
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+
+    <!-- TEMPLATE CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- RESPONSIVE CSS -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- PRELOADER SPINNER -->
+    <div id="loader-wrapper">
+        <div id="loading">
+            <div id="loading-center">
+                <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    {% include 'navbarLogado.html' %}
+	{% block content %}
+    {% endblock %}
+
+    <!-- PAGE CONTENT -->
+    <div id="page" class="page">
+        <!-- Seu conteúdo aqui -->
+        			<!-- FOOTER-1
+			============================================= -->
+			<footer id="footer-1" class="footer division" style="background-color: #638dc9;">
+				<div class="container">
+
+
+					<!-- FOOTER CONTENT -->
+					<div class="row">
+
+
+						<!-- FOOTER INFO -->
+						<div class="col-md-12 col-xl-3">
+							<div class="footer-info mb-40" style="padding: 0;">
+
+								<!-- Footer Logo -->
+								<!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 344 x 80 pixels) -->
+								<img src="{% static 'images/logo.png' %}" width="172" height="40" alt="footer-logo">
+
+							</div>
+						</div>
+
+
+						<!-- FOOTER PRODUCTS LINKS -->
+						<div class="col-md-4 col-xl-3">
+							<div class="footer-links mb-40">
+
+								<!-- Footer Links -->
+								<ul class="foo-links clearfix">
+									<li>Rua Pedro Guedes, 44 e 29 – Maracanã</li>
+									<li>CEP 20271-040 – Rio de Janeiro</li>
+									<li>CNPJ: 68.782.036/0001-08</li>
+									<li>Inscrição municipal: 01524992</li>
+								</ul>
+
+							</div>
+						</div>
+
+
+						<!-- FOOTER COMPANY LINKS -->
+						<div class="col-md-4 col-xl-3">
+							<div class="footer-links mb-40">
+
+								<!-- Footer Links -->
+								<ul class="clearfix">
+									<li><b>Telefone</b></li>
+									<li><a href="#">+55 11 98765-4321</a></li>
+									<li><b>E-mail</b></li>
+									<li><a href="#">email@email.com.br</a></li>
+								</ul>
+
+							</div>
+						</div>
+
+
+						<!-- FOOTER COMPANY LINKS -->
+						<div class="col-md-4 col-xl-3">
+							<div class="footer-links mb-40">
+
+								<!-- Footer Links -->
+								<ul class="clearfix">
+									<li><a href="#">Termos e Privacidade</a></li>
+								</ul>
+
+							</div>
+						</div>
+
+
+					</div>	  <!-- END FOOTER CONTENT -->
+
+
+					<!-- BOTTOM FOOTER -->
+					<div class="bottom-footer">
+						<div class="row">
+
+
+							<!-- FOOTER COPYRIGHT -->
+							<div class="col-lg-8">
+								<ul class="bottom-footer-list">
+									<li><p>&copy; Copyright Instituto Ronald McDonald 2024</p></li>
+									<li><p><a href="tel:123456789">11 98765-4321</a></p></li>
+									<li><p class="last-li"><a href="mailto:yourdomain@mail.com">hello@domain.com</a></p></li>
+								</ul>
+							</div>
+
+
+							<!-- FOOTER SOCIALS LINKS -->
+							<div class="col-lg-4 text-right">
+								<ul class="foo-socials text-center clearfix">
+
+									<li><a href="#" class="ico-facebook" style="color: white;"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="#" class="ico-twitter" style="color: white;"><i class="fab fa-twitter"></i></a></li>
+									<li><a href="#" class="ico-google-plus" style="color: white;"><i class="fab fa-google-plus-g"></i></a></li>
+									<li><a href="#" class="ico-tumblr" style="color: white;"><i class="fab fa-tumblr"></i></a></li>
+
+									<!--
+									<li><a href="#" class="ico-behance"><i class="fab fa-behance"></i></a></li>
+									<li><a href="#" class="ico-dribbble"><i class="fab fa-dribbble"></i></a></li>
+									<li><a href="#" class="ico-instagram"><i class="fab fa-instagram"></i></a></li>
+									<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="#" class="ico-pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+									<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
+									<li><a href="#" class="ico-vk"><i class="fab fa-vk"></i></a></li>
+									<li><a href="#" class="ico-yelp"><i class="fab fa-yelp"></i></a></li>
+									<li><a href="#" class="ico-yahoo"><i class="fab fa-yahoo"></i></a></li>
+								    -->
+
+								</ul>
+							</div>
+
+
+						</div>
+					</div>	<!-- END BOTTOM FOOTER -->
+
+
+				</div>	   <!-- End container -->
+			</footer>	<!-- END FOOTER-1 -->
+
+    </div>
+
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.js' %}"></script>
+    <script src="{% static 'js/jquery.appear.js' %}"></script>
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollto.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/register-form.js' %}"></script>
+    <script src="{% static 'js/comment-form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+
+    <!-- Custom Script -->
+    <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

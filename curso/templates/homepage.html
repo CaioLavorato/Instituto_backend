@@ -1,313 +1,2025 @@
 {% extends 'base.html' %}
-
-{% block titulo %}
-Programa Diagnóstico Precoce
-{% endblock %}
-
 {% block content %}
 {% load static %}
-<div class="container-xxl container-secundary  mt-4 pt-5 content" style="">
-      <div class="card" style="background-color: white;">
-        <a href="https://www.mcdiafeliz.org.br/" target="_blank" rel="noreferrer noopener">
-          <img decoding="async"
-            src="https://institutoronald.org.br/wp-content/uploads/2024/06/banner-site-mcdia-irm.webp"
-            alt="McDia Feliz 2024 - garanta já seu tíquete antecipado." class="img-fluid wp-image-18623"
-            srcset="https://institutoronald.org.br/wp-content/uploads/2024/06/banner-site-mcdia-irm.webp 1366w,
-                                 https://institutoronald.org.br/wp-content/uploads/2024/06/banner-site-mcdia-irm-300x110.webp 300w,
-                                 https://institutoronald.org.br/wp-content/uploads/2024/06/banner-site-mcdia-irm-1024x375.webp 1024w,
-                                 https://institutoronald.org.br/wp-content/uploads/2024/06/banner-site-mcdia-irm-768x281.webp 768w" sizes="(max-width: 1366px) 100vw, 1366px">
-        </a>
-      </div>
-      <div class="container row mt-4">
+			<!-- HERO-8
+			============================================= -->
+			<section id="hero-8" class="bg-scroll hero-section division">
+				<div class="container">
+					<div class="row">
 
-        <div class="container-md">
-          <h2 style="color:#4872AE;font-weight: bold;">CURSOS MAIS VISTOS</h2>
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card2.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card3.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <div class="card">
-                      <img src="{% static 'images/card4.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card5.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card6.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-          <br><br>
-          <h2 style="color:#4872AE ;font-weight: bold;">RÉCEM ADICIONADOS</h2>
-          <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card2.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card3.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <div class="card">
-                      <img src="{% static 'images/card4.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card5.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card6.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="card">
-                      <img src="{% static 'images/card.jpg' %}" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso 1</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
-                        <a href="curso.html" class="btn btn-primary my-btn">Acesse Aqui</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-      </div>
+
+						<!-- HERO TEXT -->
+						<div class="col-md-12">
+							<div class="hero-txt text-center white-color">
+
+								<!-- Title -->
+								<h4 class="h4-xs">Bem vindo ao Programa Diagnóstico Precoce <br>do Instituto Ronald McDonald</h4>
+								<h2 class="h2-md">Aprenda a transformar o futuro das crianças com os cursos gratuitos do Programa Diagnóstico Precoce.</h2>
+
+								<!-- Button -->
+								<a href="#categories-3" class="btn btn-md btn-blue tra-white-hover">Aprenda já</a>
+
+							</div>
+						</div>	<!-- END HERO TEXT -->
+
+
+					</div>    <!-- End row -->
+				</div>     <!-- End container -->
+			</section>	<!-- END HERO-8 -->
+	        <!-- HERO BOXES-2
+			============================================= -->
+			<section id="hboxes-2" class="hero-boxes-section division">
+				<div class="container">
+					<div class="hero-boxes-holder">
+						<div class="row">
+
+
+							<!-- STATISTIC BLOCK #1 -->
+							<div class="col-md-4">
+								<div class="statistic-block">
+
+									<!-- Digits -->
+									<h5 class="statistic-number"><span class="count-element">208</span></h5>
+
+									<!-- Text -->
+									<div class="statistic-block-txt">
+										<h6 class="h6-lg">Crianças atendidas</h6>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- STATISTIC BLOCK #2 -->
+							<div class="col-md-4">
+								<div class="statistic-block">
+
+									<!-- Digits -->
+									<h5 class="statistic-number"><span class="count-element">823</span></h5>
+
+									<!-- Text -->
+									<div class="statistic-block-txt">
+										<h6 class="h6-lg">Atendimento de Serviço Social</h6>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- STATISTIC BLOCK #3 -->
+							<div class="col-md-4">
+								<div class="statistic-block">
+
+									<!-- Digits -->
+									<h5 class="statistic-number"><span class="count-element">633</span></h5>
+
+									<!-- Text -->
+									<div class="statistic-block-txt">
+										<h6 class="h6-lg">Bolsas distribuídas</h6>
+									</div>
+
+								</div>
+							</div>
+
+
+						</div>    <!-- End row -->
+					</div>    <!-- End hero-boxes-holder -->
+				</div>	   <!-- End container -->
+			</section>	<!-- End HERO BOXES-2 -->
+			<!-- ABOUT-2
+			============================================= -->
+			<section id="about-2" class="wide-60 about-section division">
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+
+						<!-- ABOUT IMAGE -->
+						<div class="col-md-5 col-lg-6">
+							<div class="img-block pc-25 mb-40">
+								<img class="img-fluid" src="{% static 'images/diagnostico_precoce.jpg' %}" alt="about-image">
+					 		</div>
+						</div>
+
+
+						<!-- ABOUT TEXT -->
+					 	<div class="col-md-7 col-lg-6">
+					 		<div class="txt-block pc-25 mb-40">
+
+					 			<!-- Title -->
+								<h3 class="h3-sm">Transforme vidas com o Programa de Diagnóstico Precoce</h3>
+
+								<!-- Text -->
+								<p>Um mundo de oportunidades para crianças com diagnóstico precoce,
+									promovendo acesso a cursos gratuitos e valiosos para profissionais da saúde e educadores.
+									Capacite-se para identificar e intervir precocemente com eficácia e compaixão.
+								</p>
+
+								<p>Aprimore suas habilidades com nossa plataforma online</p>
+
+								<p>Descubra métodos avançados e estratégias práticas para diagnóstico e intervenção precoce.
+									Aprenda com especialistas e aplique o conhecimento para fazer a diferença na vida de crianças e famílias.
+								</p>
+
+								<p>
+									Explore o potencial do diagnóstico precoce
+								</p>
+
+								<p>
+									Acesso a recursos de qualidade, formação contínua e suporte especializado.
+									Transforme sua prática e ajude a criar um futuro melhor para aqueles que mais precisam.
+								</p>
+
+								<!-- List -->
+								<ul class="txt-list mb-15" hidden>
+
+									<li>Nullam rutrum eget nunc varius etiam mollis risus undo</li>
+
+									<li>Integer congue magna at pretium purus pretium ligula at rutrum risus luctus dolor auctor
+										ipsum blandit purus
+									</li>
+
+									<li>Risus at congue etiam aliquam sapien egestas posuere</li>
+
+									<li>At pretium purus integer congue magna pretium ligula at ipsum blandit purus	rutrum risus
+										luctus dolor auctor
+									</li>
+
+								</ul>
+
+					 		</div>
+					 	</div>	  <!-- END ABOUT TEXT -->
+
+
+					</div>    <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- End ABOUT-2 -->
+			<!-- CATEGORIES-3
+			============================================= -->
+			<section hidden id="categories-3" class="bg-whitesmoke wide-100 categories-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title mb-60">
+
+								<!-- Title 	-->
+								<h3 class="h3-sm">Top Trending Categories</h3>
+								<p class="p-md">Discover thousands of online courses from the best experts</p>
+
+								<!-- Button -->
+								<div class="title-btn">
+									<a href="categories-list.html" class="btn btn-tra-grey blue-hover">View All Categories</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+					<!-- CATEGORIE BOXES CAROUSEL -->
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="owl-carousel owl-theme owl-loaded categories-carousel">
+
+
+								<!-- CATEGORIE BOX #1 -->
+								<div class="bg-blue c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/development.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Development</h5>
+											<p>36 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #1 -->
+
+
+								<!-- CATEGORIE BOX #2 -->
+								<div class="bg-green c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/money.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Finance</h5>
+											<p>28 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #2 -->
+
+
+								<!-- CATEGORIE BOX #3 -->
+								<div class="bg-red c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/chip.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">IT & Software</h5>
+											<p>54 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #3 -->
+
+
+								<!-- CATEGORIE BOX #4 -->
+								<div class="bg-teal c3-box text-center white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/gear.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Engineering</h5>
+											<p>68 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #4 -->
+
+
+								<!-- CATEGORIE BOX #5 -->
+								<div class="bg-yellow c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/science.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Science</h5>
+										<p>59 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #5 -->
+
+
+								<!-- CATEGORIE BOX #6 -->
+								<div class="bg-violet c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/marketing.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Marketing</h5>
+											<p>28 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #6 -->
+
+
+								<!-- CATEGORIE BOX #7 -->
+								<div class="bg-orange c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/translation.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Languages</h5>
+											<p>137 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #7 -->
+
+
+								<!-- CATEGORIE BOX #8 -->
+								<div class="bg-lightgreen c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/heartbeat.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Health & Fitness</h5>
+											<p>94 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #8 -->
+
+
+								<!-- CATEGORIE BOX #9 -->
+								<div class="bg-skyblue c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="{% static 'images/icons/categories/design.png' %}" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Design & Arts</h5>
+											<p>72 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #9 -->
+
+
+								<!-- CATEGORIE BOX #10 -->
+								<div class="bg-yellow c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="images/icons/categories/human-mind.png" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Life Science</h5>
+											<p>72 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #10 -->
+
+
+								<!-- CATEGORIE BOX #11 -->
+								<div class="bg-red c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="images/icons/categories/calculator.png" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Mathematics</h5>
+											<p>63 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #11 -->
+
+
+								<!-- CATEGORIE BOX #12 -->
+								<div class="bg-olive c3-box text-center icon-md white-color">
+									<a href="category-details.html">
+
+										<!-- Icon -->
+										<div class="c3-box-icon">
+											<img src="images/icons/categories/photo.png" alt="category-icon" />
+										</div>
+
+										<!-- Text -->
+										<div class="cbox-3-txt">
+											<h5 class="h5-md">Photography</h5>
+											<p>106 Courses</p>
+										</div>
+
+									</a>
+								</div>	<!-- END CATEGORIE BOX #13 -->
+
+
+							</div>
+						</div>
+					</div>	  <!-- END CATEGORIE BOXES CAROUSEL -->
+
+
+				</div>     <!-- End container -->
+			</section>	<!-- END CATEGORIES-3 -->
+			<!-- COURSES-5
+			============================================= -->
+			<section id="courses-5" class="courses-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title mb-60">
+
+								<!-- Title 	-->
+								<h3 class="h3-sm">Nossos cursos mais populares</h3>
+
+								<!-- Text -->
+								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero
+								   tempus, blandit posuere and ligula varius magna a porta
+								</p>
+
+								<!-- Button -->
+								<div class="title-btn">
+									<a href="courses-list.html" class="btn btn-tra-grey blue-hover">Ver todos os Cursos</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+
+
+						<!-- COURSES LIST -->
+						<div class="col-lg-6">
+
+
+							<!-- COURSE #1 -->
+							<div class="cbox-5 b-bottom">
+								<a href="course-details.html">
+									<div class="row">
+
+										<!-- Course Description -->
+										<div class="col-sm-7 cbox-5-txt">
+											<h5 class="h5-xs">Identificação Precoce de Distúrbios do Desenvolvimento Infantil</h5>
+											<p class="p-sm grey-color">11 Horas Totais - Adicionado em 02/2020</p>
+
+											<!-- Rating -->
+											<div class="course-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span class="cr-rating">4.89 (31 Reviews)</span>
+											</div>
+										</div>
+
+										<!-- Course Data -->
+										<div class="col-sm-3 cbox-5-data text-center clearfix">
+											<p class="grey-color"><i class="fas fa-users"></i> 7348</p>
+										</div>
+
+										<!-- Course Price -->
+										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
+											<span class="course-price" hidden>$64.99</span>
+											<span class="old-price">$119.99</span>
+										</div>
+
+									</div>
+								</a>
+							</div>	<!-- END COURSE #1 -->
+
+
+							<!-- COURSE #2 -->
+							<div class="cbox-5 b-bottom">
+								<a href="course-details.html">
+									<div class="row">
+
+										<!-- Course Description -->
+										<div class="col-sm-7 cbox-5-txt">
+											<h5 class="h5-xs">Avaliação e Intervenção Precoce em Condições Crônicas</h5>
+											<p class="p-sm grey-color">8 Horas Totais - Adicionado em 12/2019</p>
+
+											<!-- Rating -->
+											<div class="course-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+												<span class="cr-rating">4.19 (76 Reviews)</span>
+											</div>
+										</div>
+
+										<!-- Course Data -->
+										<div class="col-sm-3 cbox-5-data text-center clearfix">
+											<p class="grey-color"><i class="fas fa-users"></i> 12035</p>
+										</div>
+
+										<!-- Course Price -->
+										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
+											<span class="course-price" hidden>$29.99</span>
+											<span class="old-price">$69.99</span>
+										</div>
+
+									</div>
+								</a>
+							</div>	<!-- END COURSE #2 -->
+
+
+							<!-- COURSE #3 -->
+							<div class="cbox-5">
+								<a href="course-details.html">
+									<div class="row">
+
+										<!-- Course Description -->
+										<div class="col-sm-7 cbox-5-txt">
+											<h5 class="h5-xs">Métodos Avançados para Diagnóstico Precoce de Autismo</h5>
+											<p class="p-sm grey-color">23 Horas Totais - Adicionado em 01/2020</p>
+
+											<!-- Rating -->
+											<div class="course-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span class="cr-rating">4.15 (58 Ratings)</span>
+											</div>
+										</div>
+
+										<!-- Course Data -->
+										<div class="col-sm-3 cbox-5-data text-center clearfix">
+											<p class="grey-color"><i class="fas fa-users"></i> 10651</p>
+										</div>
+
+										<!-- Course Price -->
+										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
+											<span class="course-price">$44.99</span>
+											<span class="old-price">$74.99</span>
+										</div>
+
+									</div>
+								</a>
+							</div>	<!-- END COURSE #3 -->
+
+
+						</div>	<!-- END COURSES LIST -->
+
+
+						<!-- COURSES LIST -->
+						<div class="col-lg-6">
+
+
+							<!-- COURSE #4 -->
+							<div class="cbox-5 b-bottom">
+								<a href="course-details.html">
+									<div class="row">
+
+										<!-- Course Description -->
+										<div class="col-sm-7 cbox-5-txt">
+											<h5 class="h5-xs">Triagem Eficaz para Doenças Neonatais e Infantis</h5>
+											<p class="p-sm grey-color">19 Horas Totais - Adicionado em 2/2020</p>
+
+											<!-- Rating -->
+											<div class="course-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+												<span class="cr-rating">4.08 (164 Reviews)</span>
+											</div>
+										</div>
+
+										<!-- Course Data -->
+										<div class="col-sm-3 cbox-5-data text-center clearfix">
+											<p class="grey-color"><i class="fas fa-users"></i> 15491</p>
+										</div>
+
+										<!-- Course Price -->
+										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
+											<span class="course-price">$39.99</span>
+											<span class="old-price">$84.99</span>
+										</div>
+
+									</div>
+								</a>
+							</div>	<!-- END COURSE #4 -->
+
+
+							<!-- COURSE #5 -->
+							<div class="cbox-5 b-bottom">
+								<a href="course-details.html">
+									<div class="row">
+
+										<!-- Course Description -->
+										<div class="col-sm-7 cbox-5-txt">
+											<h5 class="h5-xs">Estratégias de Diagnóstico Precoce em Distúrbios Comportamentais</h5>
+											<p class="p-sm grey-color">36 Horas Totais - Adicionado em 12/2019</p>
+
+											<!-- Rating -->
+											<div class="course-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span class="cr-rating">4.79 (117 Reviews)</span>
+											</div>
+										</div>
+
+										<!-- Course Data -->
+										<div class="col-sm-3 cbox-5-data text-center clearfix">
+											<p class="grey-color"><i class="fas fa-users"></i> 17035</p>
+										</div>
+
+										<!-- Course Price -->
+										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
+											<span class="course-price">$49.99</span>
+											<span class="old-price">$99.99</span>
+										</div>
+
+									</div>
+								</a>
+							</div>	<!-- END COURSE #5 -->
+
+
+							<!-- COURSE #6 -->
+							<div class="cbox-5">
+								<a href="course-details.html">
+									<div class="row">
+
+										<!-- Course Description -->
+										<div class="col-sm-7 cbox-5-txt">
+											<h5 class="h5-xs">Como Detectar e Intervir em Condições de Saúde Precoce</h5>
+											<p class="p-sm grey-color">24 Horas Totais - Adicionado em 11/2019</p>
+
+											<!-- Rating -->
+											<div class="course-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+												<span class="cr-rating">4.42 (82 Ratings)</span>
+											</div>
+										</div>
+
+										<!-- Course Data -->
+										<div class="col-sm-3 cbox-5-data text-center clearfix">
+											<p class="grey-color"><i class="fas fa-users"></i> 8163</p>
+										</div>
+
+										<!-- Course Price -->
+										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
+											<span class="course-price">$32.99</span>
+											<span class="old-price">$62.99</span>
+										</div>
+
+									</div>
+								</a>
+							</div>	<!-- END COURSE #6 -->
+
+
+						</div>	<!-- END COURSES LIST -->
+
+
+					</div>	  <!-- End row -->
+
+
+				</div>     <!-- End container -->
+			</section>	<!-- END COURSES-5 -->
+			<!-- BANNER-3
+			============================================= -->
+			<section id="banner-3" class="bg-lightdark bg-map banner-section division">
+				<div class="container">
+					<div class="banner-3-holder bg-whitesmoke">
+						<div class="row d-flex align-items-center">
+
+
+							<!-- BANNER IMAGE -->
+							<div class="col-lg-8">
+								<div class="banner-3-img">
+									<img class="img-fluid" src="{% static 'images/banner-3-img.jpg' %}" alt="banner-image" />
+								</div>
+							</div>	<!-- END BANNER IMAGE -->
+
+
+							<!-- BANNER TEXT -->
+							<div class="col-lg-4">
+								<div class="banner-3-txt">
+
+									<!-- Title -->
+									<h4 class="h4-xs">Inscreva-se agora e transforme vidas com conhecimento</h4>
+
+									<!-- Button -->
+									<a href="courses-list.html" class="btn btn-blue tra-black-hover">Cadastre-se</a>
+
+								</div>
+							</div>	<!-- END BANNER TEXT -->
+
+
+						</div>   <!-- End row -->
+					</div>    <!-- End banner-3-holder -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END BANNER-3 -->
+			<!-- COURSES-3
+			============================================= -->
+			<section id="courses-3" class="wide-60 courses-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title title-centered1 mb-60">
+
+								<!-- Title 	-->
+								<h3 class="h3-sm">Nossos cursos mais bem avaliados</h3>
+
+								<!-- Text -->
+								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero
+								   tempus, blandit posuere and ligula varius magna a porta
+								</p>
+
+								<!-- Button -->
+								<div class="title-btn">
+									<a href="courses-list.html" class="btn btn-blue tra-black-hover">Ver todos os Cursos</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+					<!-- COURSES HOLDER -->
+					<div class="row courses-grid">
+
+
+						<!-- COURSE #1 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-1-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Languages</span>
+											<span>English</span>
+										</p>
+
+										<!-- Course Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star-half-alt"></i>
+											<span>4.5 (26 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$149.99</span> $138.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #1 -->
+
+
+						<!-- COURSE #2 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-2-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Languages</span>
+											<span>English</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>5 (118 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$174.99</span> $59.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #2 -->
+
+
+						<!-- COURSE #3 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-3-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>IT Managment</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star-half-alt"></i>
+											<span>4.5 (72 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$119.99</span> $34.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #3 -->
+
+
+						<!-- COURSE #4 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-4-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>SEO</span>
+											<span>Marketing</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>5 (281 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden>Free Course</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #4 -->
+
+
+						<!-- COURSE #5 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-5-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Design</span>
+											<span>WordPress</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>4.15 (58 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$194.99</span> $62.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #5 -->
+
+
+						<!-- COURSE #6 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-9-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Science</span>
+											<span>Diploma</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>5 (31 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$149.99</span> $45.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #6 -->
+
+
+						<!-- COURSE #7 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-8-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Internet</span>
+											<span>Marketing</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>5 (374 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$169.99</span> $33.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #7 -->
+
+
+						<!-- COURSE #8 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-10-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Science</span>
+											<span>Engines</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>5 (374 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$154.99</span> $41.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #8 -->
+
+
+						<!-- COURSE #9 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-11-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>IT</span>
+											<span>Networking</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star-half-alt"></i>
+											<span>4.65 (71 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$194.99</span> $62.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #9 -->
+
+
+						<!-- COURSE #10 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-14-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Marketing</span>
+											<span>Sales</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>5 (85 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$119.99</span> $24.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #10 -->
+
+
+						<!-- COURSE #11 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-12-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>Science</span>
+											<span>Biology</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>4.18 (62 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$199.99</span> $62.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #11 -->
+
+
+						<!-- COURSE #12 -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div class="cbox-1">
+								<a href="course-details.html">
+
+									<!-- Image -->
+									<img class="img-fluid" src="{% static 'images/courses/course-13-img.jpg' %}" alt="course-preview" />
+
+									<!-- Text -->
+									<div class="cbox-4-txt">
+
+										<!-- Course Tags -->
+										<p class="course-tags" hidden>
+											<span>IT Management</span>
+										</p>
+
+										<!-- Title -->
+										<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+
+										<!-- Course Rating -->
+										<div class="course-rating clearfix">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<span>5 (16 Avaliações)</span>
+										</div>
+
+										<!-- Course Price -->
+										<span class="course-price" hidden><span class="old-price">$129.99</span> $23.99</span>
+
+									</div>
+
+								</a>
+							</div>
+						</div>	<!-- END COURSE #12 -->
+
+
+					</div>	  <!-- END COURSES HOLDER -->
+				</div>     <!-- End container -->
+			</section>	<!-- END COURSES-3 -->
+		<!-- VIDEO-1
+			============================================= -->
+			<section id="video-1" class="bg-lightgrey bg-map video-ection division">
+				<div class="container">
+					<div class="video-1-holder">
+						<div class="row d-flex align-items-center">
+
+
+							<!-- VIDEO LINK -->
+				 			<div class="col-md-6">
+				 				<div class="video-link text-center">
+
+									<!-- Change the link HERE!!! -->
+									<div class="play-btn play-btn-blue text-center">
+
+										<a class="video-popup3 video-play-button" href="https://www.youtube.com/embed/0gv7OC9L2s8">
+										  <span></span>
+										</a>
+
+										<!-- Preview Image -->
+										<img class="img-fluid" src="{% static 'images/video-1-img.jpg' %}" alt="video-preview">
+
+									</div>
+
+								</div>
+				 			</div>	<!-- END VIDEO LINK -->
+
+
+							<!-- VIDEO TEXT -->
+				 			<div class="col-md-6">
+				 				<div class="video-txt">
+
+				 					<!-- Title -->
+									<h4 class="h4-xl">Conheça nossa história</h4>
+
+									<!-- Text -->
+									<p class="p-md">Cursus porta, feugiat primis in ultrice ligula risus auctor tempus dolor feugiat,
+									   felis lacinia risus
+									</p>
+
+									<!-- Button -->
+									<a href="courses-list.html" class="btn btn-tra-blue blue-hover">Saiba mais</a>
+
+				 				</div>
+				 			</div>	<!-- END VIDEO TEXT -->
+
+
+						</div>   <!-- End row -->
+					</div>    <!-- End video-1-holder -->
+				</div>     <!-- End container -->
+			</section>	<!-- END VIDEO-1 -->
+		<!-- ABOUT-4
+			============================================= -->
+			<section id="about-4" class="wide-70 about-section division">
+				<div class="container">
+
+
+					<!-- ABOUT TEXT -->
+					<div class="row">
+					 	<div class="col-xl-10 offset-xl-1">
+					 		<div class="a4-txt">
+
+					 			<!-- Title -->
+								<h5 class="h5-xl text-center">Capacite-se para identificar e intervir precocemente. Inscreva-se em nossos cursos gratuitos</h5>
+
+								<!-- Text -->
+								<p>Junte-se a nós para promover a saúde e o bem-estar das crianças.
+									Com nossos cursos de diagnóstico precoce, você adquire as habilidades necessárias para fazer a diferença.
+									Inscreva-se e ajude a criar um mundo mais justo e saudável
+								</p>
+
+							</div>
+						</div>
+					</div> 	<!-- END ABOUT TEXT -->
+
+
+					<!-- ABOUT IMAGE -->
+					<div class="row">
+					 	<div class="col-md-12">
+							<div class="img-block">
+								<img class="img-fluid" src="{% static 'images/banner2.webp' %}" alt="about-image">
+							</div>
+						</div>
+					</div>
+
+
+					<!-- ABOUT BOXES -->
+					<div class="a4-boxes">
+						<div class="row d-flex align-items-center">
+
+							<!-- BOX #1 -->
+							<div class="col-md-4">
+								<div class="abox-4 icon-sm">
+
+									<!-- Icon -->
+									<span class="flaticon-004-computer"></span>
+
+									<!-- Text -->
+									<div class="abox-4-txt">
+										<h5 class="h5-md">Conteúdo Confiável</h5>
+										<p>Conteúdo confiável para um impacto real. Inscreva-se agora</p>
+									</div>
+
+								</div>
+							</div>	<!-- END BOX #1 -->
+
+
+							<!-- BOX #2 -->
+							<div class="col-md-4">
+								<div class="abox-4 icon-sm">
+
+									<!-- Icon -->
+									<span class="flaticon-028-learning-1"></span>
+
+									<!-- Text -->
+									<div class="abox-4-txt">
+										<h5 class="h5-md">Professores Certificados</h5>
+										<p>Aprenda com especialistas certificados. Qualidade garantida em cada curso.</p>
+									</div>
+
+								</div>
+							</div>	<!-- END BOX #2 -->
+
+
+							<!-- BOX #3 -->
+							<div class="col-md-4">
+								<div class="abox-4 icon-sm">
+
+									<!-- Icon -->
+									<span class="flaticon-032-tablet"></span>
+
+									<!-- Text -->
+									<div class="abox-4-txt">
+										<h5 class="h5-md">Acesso Vitalício</h5>
+										<p>Acesso vitalício ao conhecimento. Aprenda no seu ritmo, sempre.</p>
+									</div>
+
+								</div>
+							</div>	<!-- END BOX #3 -->
+
+
+						</div>  <!-- End row -->
+					 </div>	  <!-- END ABOUT BOXES -->
+
+
+				</div>	   <!-- End container -->
+			</section>	<!-- End ABOUT-4 -->
+		<!-- BANNER-2
+			============================================= -->
+			<section id="banner-2" class="bg-01 wide-60 banner-section" hidden>
+				<div class="container">
+					<div class="row d-flex align-items-center">
+
+
+						<!-- BANNER TEXT -->
+						<div class="col-md-7">
+							<div class="banner-2-txt white-color">
+
+								<!-- Title -->
+								<h3 class="h3-lg">Register now for getting <span>200+ courses free access</span>. This offer for limited time</h3>
+
+								<!-- COUNTDOWN ELEMENT -->
+								<div class="countdown"><span class="countdown-txt">Ends in</span> <div id="clock"></div></div>
+
+							</div>
+						</div>
+
+
+						<!-- REGISTER FORM -->
+						<div class="col-md-5">
+							<div id="register-form">
+								<form name="registerForm" class="row register-form">
+
+                                    <!-- Form Input -->
+					                <div id="input-name" class="col-md-12">
+					                	<p>Your Name*</p>
+					                	<input type="text" name="name" autocomplete="off" class="form-control name" placeholder="Enter Your Name*" required>
+					                </div>
+
+					                <!-- Form Input -->
+					                <div id="input-email" class="col-md-12">
+					                	<p>Your Email*</p>
+					                	<input type="email" name="email" autocomplete="off" class="form-control email" placeholder="Enter Your Email*" required>
+					                </div>
+
+									<!-- Form Input -->
+					                <div id="input-phone" class="col-md-12">
+					                	<p>Your Pnone Number*</p>
+					                	<input type="tel" name="phone" autocomplete="off" class="form-control phone" placeholder="Enter Your Phone Number*" required>
+					                </div>
+
+					                <!-- Form Button -->
+					                <div class="col-md-12 form-btn">
+					                	<button type="submit" class="btn btn-md btn-blue tra-black-hover submit">Register Now</button>
+					                </div>
+
+					                <!-- Form Message -->
+					                <div class="col-md-12 register-form-msg text-center">
+					                	<span class="loading"></span>
+					                </div>
+
+					            </form>
+							</div>
+						</div>	<!-- END REGISTER FORM -->
+
+
+					</div>    <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END BANNER-2 -->
+		<!-- TESTIMONIALS-1
+			============================================= -->
+			<section id="reviews-1" class="wide-100 reviews-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title title-centered mb-60">
+
+								<!-- Title 	-->
+								<h3 class="h3-sm">Feedback dos nossos alunos</h3>
+
+								<!-- Text -->
+								<p class="p-md">Receba feedback genuíno de nossos alunos: experiências transformadoras e insights
+									valiosos que mostram como nossos cursos impactam positivamente cada jornada educacional.
+								</p>
+
+								<!-- Button
+								<div class="title-btn">
+									<a href="reviews.html" class="btn btn-tra-grey blue-hover">Read All Reviews</a>
+								</div> -->
+
+							</div>
+						</div>
+					</div>
+
+
+					<!-- TESTIMONIALS CONTENT -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="owl-carousel owl-theme reviews-holder">
+
+
+								<!-- TESTIMONIAL #1 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>Etiam sapien sem at sagittis congue an augue massa and varius egestas at suscipit magna
+									   tempus and aliquet porta vitae purus congue undo cursus magna cubilia augue vitae laoreet
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/1_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+
+											<h5 class="h5-xs">Jim M.</h5>
+										</div>
+
+									</div>
+
+								</div>	<!--END  TESTIMONIAL #1 -->
+
+
+								<!-- TESTIMONIAL #2 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>At sagittis congue augue egestas rhoncus in magna ipsum vitae purus ipsum primis cubilia
+									   laoreet augue egestas luctus and donec diam ociis ultrice ligula magna suscipit
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/2_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+											</div>
+
+											<h5 class="h5-xs">Jennifer</h5>
+										</div>
+
+									</div>
+
+								</div>	<!-- END TESTIMONIAL #2 -->
+
+
+								<!-- TESTIMONIAL #3 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>Mauris donec an ociis magnis sapien etiam a sapien congue augue egestas et ultrice undo
+									   purus and diam integer congue at magna ligula an egestas magna suscipit lectus
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/3_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+
+											<h5 class="h5-xs">Joel Peterson</h5>
+										</div>
+
+									</div>
+
+								</div>	<!-- END TESTIMONIAL #3 -->
+
+
+								<!-- TESTIMONIAL #4 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>Sapien etiam sapien congue pretium augue purus and ligula lectus aenean magna mauris lectus
+										laoreet tempor and egestas magna vitae laoreet
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/4_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+
+											<h5 class="h5-xs">Michael Deal</h5>
+										</div>
+
+									</div>
+
+								</div>	<!-- END TESTIMONIAL #4 -->
+
+
+								<!-- TESTIMONIAL #5 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/4_.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>An augue cubilia laoreet and magna suscipit egestas magna ipsum purus ipsum primis and augue
+									   ultrice ligula egestas suscipit lectus gestas integer congue a lectus porta elementum
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/5_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+											</div>
+
+											<h5 class="h5-xs">Mark Paterson</h5>
+										</div>
+
+									</div>
+
+								</div>	<!-- END TESTIMONIAL #5 -->
+
+
+								<!-- TESTIMONIAL #6 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>An augue cubilia laoreet undo magna a suscipit egestas magna and ipsum ligula vitae purus and
+									   ipsum primis in cubilia mollis risus lectus rutrum
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/6_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+
+											<h5 class="h5-xs">David L.</h5>
+										</div>
+
+									</div>
+
+								</div>	<!-- END TESTIMONIAL #6 -->
+
+
+								<!-- TESTIMONIAL #7 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>Augue egestas volutpat and egestas an augue purus cubilia laoreet magna suscipit luctus and
+									   dolor blandit vitae purus diam tempus aliquet porta at rutrum placerat gestas egestas
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/7_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+
+											<h5 class="h5-xs">Aaron Wall</h5>
+										</div>
+
+									</div>
+
+								</div>	<!-- END TESTIMONIAL #7 -->
+
+
+								<!-- TESTIMONIAL #8 -->
+								<div class="review-1">
+
+									<!-- Quote Icon -->
+									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
+
+									<!-- Testimonial Text -->
+									<p>Augue egestas volutpat and egestas augue in cubilia vitae laoreet a magna suscipit luctus at dolor
+										blandit purus diam tempus elementum massa
+									</p>
+
+									<!-- Author Data -->
+									<div class="review-1-author d-flex align-items-center">
+
+										<!-- Author Avatar -->
+										<div class="author-avatar">
+											<img class="img-fluid" src="{% static 'images/8_.png' %}" alt="review-author-avatar" />
+										</div>
+
+										<!-- Testimonial Author -->
+										<div class="review-author">
+
+											<!-- Rating -->
+											<div class="tst-rating">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+
+											<h5 class="h5-xs">Andre Wisdom</h5>
+										</div>
+
+									</div>
+
+								</div>	<!-- END TESTIMONIAL #8 -->
+
+
+							</div>
+						</div>
+					</div>	<!-- END TESTIMONIALS CONTENT -->
+
+
+				</div>	   <!-- End container -->
+			</section>	 <!-- END TESTIMONIALS-1 -->
+		<!-- BANNER-5
+			============================================= -->
+			<section id="banner-5" class="bg-whitesmoke wide-60 banner-section division">
+				<div class="container">
+					<div class="row">
+
+
+						<!-- BANNER TEXT -->
+						<div class="col-md-6">
+							<div class="banner-5-txt">
+
+								<!-- Icon -->
+								<img src="{% static 'images/image-04.png' %}" alt="banner-icon" />
+
+								<!-- Text -->
+								<div class="b5-txt">
+
+									<!-- Title -->
+									<h4 class="h4-xs">Torne-se um professor</h4>
+
+									<!-- Text -->
+									<p>Feugiat primis ligula a risus auctor egestas an augue mauri and viverra tortor iaculis an
+									   eugiat viverra
+									</p>
+
+									<!-- Button -->
+									<a href="become-a-teacher.html" class="btn btn-blue tra-black-hover">Entre em contato</a>
+
+								</div>
+
+							</div>
+						</div>	<!-- END BANNER TEXT -->
+
+
+						<!-- BANNER TEXT -->
+						<div class="col-md-6">
+							<div class="banner-5-txt">
+
+								<!-- Icon -->
+								<img src="{% static 'images/image-05.png' %}" alt="banner-icon" />
+
+								<!-- Text -->
+								<div class="b5-txt">
+
+									<!-- Title -->
+									<h4 class="h4-xs">Torne-se Aluno</h4>
+
+									<!-- Text -->
+									<p>Feugiat primis ligula a risus auctor egestas an augue mauri and viverra tortor iaculis an
+									   eugiat viverra
+									</p>
+
+									<!-- Button -->
+									<a href="courses-list.html" class="btn btn-blue tra-black-hover">Cadastre-se</a>
+
+								</div>
+
+							</div>
+						</div>	<!-- END BANNER TEXT -->
+
+
+					</div>   <!-- End row -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END BANNER-5 -->
+		<!-- NEWS-2
+			============================================= -->
+			<section id="news-2" class="wide-60 news-section division">
+				<div class="container">
+
+
+					<!-- SECTION TITLE -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title mb-70">
+
+								<!-- Title 	-->
+								<h3 class="h3-sm">Nossas notícias</h3>
+
+								<!-- Text -->
+								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero
+								   tempus, blandit posuere and ligula varius magna a porta
+								</p>
+
+								<!-- Button -->
+								<div class="title-btn">
+									<a href="blog-listing.html" class="btn btn-tra-grey blue-hover">Leia Mais</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+					<!-- NEWS GRID -->
+					<div class="row d-flex align-items-center">
+
+
+						<!-- ARTICLE #1 -->
+						<div class="col-md-6 col-lg-3">
+							<div id="a2-1" class="article-2 b-right">
+
+								<!-- Post Data -->
+								<p class="p-sm">March 11, 2020</p>
+
+								<!-- Title -->
+								<h5 class="h5-sm"><a href="single-post.html">Integer congue magna at pretium purus pretium</a></h5>
+
+								<!-- Text -->
+								<p>An enim nullam tempor sapien gravida donec enim blandit ipsum porta justo integer odio velna
+								   vitae auctor integer
+								</p>
+
+								<!-- Post Author -->
+								<span>By Joel Peterson</span>
+							</div>
+						</div>	<!-- END ARTICLE #1 -->
+
+
+						<!-- ARTICLE #2 -->
+						<div class="col-md-6 col-lg-3">
+							<div id="a2-2" class="article-2 b-right">
+
+								<!-- Post Data -->
+								<p class="p-sm">March 04, 2020</p>
+
+								<!-- Title -->
+								<h5 class="h5-sm"><a href="single-post.html">Congue magna eTreeks purus pretium magnis</a></h5>
+
+								<!-- Text -->
+								<p>Donec enim blandit and ipsum porta justo integer odio a velna vitae auctor an integer congue
+								   magna at pretium nulla
+								</p>
+
+								<!-- Post Author -->
+								<span>By Jennifer K.</span>
+							</div>
+						</div>	<!-- END ARTICLE #2 -->
+
+
+						<!-- ARTICLE #3 -->
+						<div class="col-md-6 col-lg-3">
+							<div id="a2-3" class="article-2 b-right">
+
+								<!-- Post Data -->
+								<p class="p-sm">February 24, 2020</p>
+
+								<!-- Title -->
+								<h5 class="h5-sm"><a href="single-post.html">8 neque dolor primis a libero tempus blandit</a></h5>
+
+								<!-- Text -->
+								<p>Porta justo integer odio velna vitae an auctor integer congue magna at pretium purus ligula
+								   rutrum luctus risus ultrice
+								</p>
+
+								<!-- Post Author -->
+								<span>By Michael Deal</span>
+							</div>
+						</div>	<!-- END ARTICLE #3 -->
+
+
+						<!-- ARTICLE #4 -->
+						<div class="col-md-6 col-lg-3">
+							<div id="a2-4" class="article-2">
+
+								<!-- Post Data -->
+								<p class="p-sm">February 19, 2020</p>
+
+								<!-- Title -->
+								<h5 class="h5-sm"><a href="single-post.html">Ligula varius magna and porta a laoreet pretium</a></h5>
+
+								<!-- Text -->
+								<p>Vitae auctor integer a congue magna undo pretium at purus pretium ligula a rutrum luctus risus
+								   and ultrice blandit
+								</p>
+
+								<!-- Post Author -->
+								<span>By Aaron Wall</span>
+							</div>
+						</div>	<!-- END ARTICLE #4 -->
+
+
+					</div>	<!-- END NEWS GRID -->
+
+
+				</div>	   <!-- End container -->
+			</section>	<!-- END NEWS-2 -->
+		<!-- NEWSLETTER-1
+			============================================= -->
+			<section id="newsletter-1" class="newsletter-section division">
+				<div class="container">
+					<div class="bg-fixed newsletter-holder">
+						<div class="row">
+
+
+							<!-- SECTION TITLE -->
+							<div class="col-md-6 col-lg-5">
+								<div class="newsletter-txt white-color">
+									<h3 class="h3-sm">Receba as notícias recentes</h3>
+									<p>Receba recomendações personalizadas de cursos, acompanhe assuntos e cursos com lembretes e muito mais</p>
+								</div>
+							</div>
+
+
+							<!-- NEWSLETTER FORM -->
+							<div class="col-md-6 col-lg-7">
+								<form class="newsletter-form white-color">
+
+									<div class="input-group">
+										<input type="email" autocomplete="off" class="form-control" placeholder="Seu e-mail" required id="s-email">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-md btn-blue tra-white-hover">Inscreva-se</button>
+										</span>
+									</div>
+
+									<!-- Newsletter Form Notification -->
+									<label for="s-email" class="form-notification"></label>
+
+								</form>
+							</div>	  <!-- END NEWSLETTER FORM -->
+
+
+						</div>	  <!-- End row -->
+					</div>    <!-- End newsletter-holder -->
+				</div>	   <!-- End container -->
+			</section>	<!-- END NEWSLETTER-1 -->
+
+			<br>
 {% endblock %}

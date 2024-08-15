@@ -1,0 +1,900 @@
+{% extends 'baseLogado.html' %}
+{% block content %}
+{% load static %}
+
+			<div class="inner-page-wrapper">
+
+
+
+
+				<!-- BREADCRUMB
+				============================================= -->
+				<div id="breadcrumb" class="division">
+					<div class="container">
+						<div class="row">
+
+							<!-- BREADCRUMB NAV -->
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+								  	<ol class="breadcrumb">
+								    	<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+								    	<li class="breadcrumb-item"><a href="categories-list.html">Categorias</a></li>
+								    	<li class="breadcrumb-item active" aria-current="page">Medicamentos</li>
+								  	</ol>
+								</nav>
+							</div>
+
+						</div>	 <!-- End row -->
+					</div>	<!-- End container -->
+				</div>	<!-- END BREADCRUMB -->
+
+
+
+
+				<!-- PAGE HERO
+				============================================= -->
+			<section class="bg-05 page-hero-section division">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="hero-txt white-color">
+
+								<!-- Title -->
+								<h3 class="h3-xs">Cursos por Categoria</h3>
+
+								<!-- Share Icons -->
+								<div class="share-list">
+									<ul class="share-social-icons text-center clearfix">
+										<li>
+											<p><span>289 Cursos</span> encontrados.
+											<p>
+
+										</li>
+										<li>
+										</li>
+										<!-- <li><a href="#" class="share-ico ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+											<li><a href="#" class="share-ico ico-twitter"><i class="fab fa-twitter"></i></a></li>
+											<li><a href="mailto:yourdomain@mail.com" class="share-ico ico-mail"><i class="far fa-envelope"></i></a></li>
+											<li><a href="#" class="share-ico ico-bookmark"><i class="far fa-bookmark"></i> 8.4k</a></li>			 -->
+									</ul>
+								</div>
+
+								<!-- Text -->
+								<!-- <p><span>9,463 students</span> are learning English Language on eTreeks</p> -->
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<form class="d-flex" role="search">
+								<input class="form-control me-2" type="search" placeholder="Pesquisar Cursos" aria-label="Search">
+								<button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+						      </form>
+						</div>
+						<!-- END PAGE HERO TEXT -->
+					</div> <!-- End row -->
+				</div> <!-- End container -->
+			</section> <!-- END PAGE HERO -->
+
+
+
+
+
+
+
+<!--					&lt;!&ndash; COURSES-5-->
+<!--				============================================= &ndash;&gt;-->
+<!--				<section id="courses-5" class="courses-section division">-->
+<!--					<div class="container">-->
+
+
+<!--						&lt;!&ndash; SECTION TITLE &ndash;&gt;-->
+<!--						<div class="row">-->
+<!--							<div class="col-md-12">-->
+<!--								<div class="section-title mb-40">-->
+
+<!--									&lt;!&ndash; Title 	&ndash;&gt;-->
+<!--									<h4 class="h4-xl">Highest Rated Online Courses</h4>-->
+
+<!--									&lt;!&ndash; Text &ndash;&gt;-->
+<!--									<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero-->
+<!--									   tempus, blandit posuere and ligula varius magna a porta-->
+<!--									</p>-->
+
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+
+
+<!--						<div class="row">-->
+
+
+<!--							&lt;!&ndash; COURSES LIST &ndash;&gt;-->
+<!--							<div class="col-lg-6">-->
+
+
+<!--								&lt;!&ndash; COURSE #1 &ndash;&gt;-->
+<!--								<div class="cbox-5 b-bottom">-->
+<!--									<a href="course-details.html">-->
+<!--										<div class="row">-->
+
+<!--											&lt;!&ndash; Course Description &ndash;&gt;-->
+<!--											<div class="col-sm-7 cbox-5-txt">-->
+<!--												<h5 class="h5-xs">English for Beginners: Intensive English Speaking Course</h5>-->
+<!--												<p class="p-sm grey-color">54 Total Hours - Updated 2/2020</p>-->
+
+<!--												&lt;!&ndash; Rating &ndash;&gt;-->
+<!--												<div class="course-rating">-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<span class="cr-rating">4.92 (731 Reviews)</span>-->
+<!--												</div>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Data &ndash;&gt;-->
+<!--											<div class="col-sm-3 cbox-5-data text-center clearfix">-->
+<!--												<p class="grey-color"><i class="fas fa-users"></i> 37348</p>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Price &ndash;&gt;-->
+<!--											<div class="col-sm-2 cbox-5-price text-right clearfix">-->
+<!--												<span class="course-price">$32.99</span>-->
+<!--												<span class="old-price">$59.99</span>-->
+<!--											</div>-->
+
+<!--										</div>-->
+<!--									</a>-->
+<!--								</div>	&lt;!&ndash; END COURSE #1 &ndash;&gt;-->
+
+
+<!--								&lt;!&ndash; COURSE #2 &ndash;&gt;-->
+<!--								<div class="cbox-5 b-bottom">-->
+<!--									<a href="course-details.html">-->
+<!--										<div class="row">-->
+
+<!--											&lt;!&ndash; Course Description &ndash;&gt;-->
+<!--											<div class="col-sm-7 cbox-5-txt">-->
+<!--												<h5 class="h5-xs">Deutch: Master 120 Common Phrasal Verbs</h5>-->
+<!--												<p class="p-sm grey-color">83 Total Hours - Updated 12/2019</p>-->
+
+<!--												&lt;!&ndash; Rating &ndash;&gt;-->
+<!--												<div class="course-rating">-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<span class="cr-rating">4.89 (576 Reviews)</span>-->
+<!--												</div>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Data &ndash;&gt;-->
+<!--											<div class="col-sm-3 cbox-5-data text-center clearfix">-->
+<!--												<p class="grey-color"><i class="fas fa-users"></i> 29035</p>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Price &ndash;&gt;-->
+<!--											<div class="col-sm-2 cbox-5-price text-right clearfix">-->
+<!--												<span class="course-price">$44.99</span>-->
+<!--												<span class="old-price">$72.99</span>-->
+<!--											</div>-->
+
+<!--										</div>-->
+<!--									</a>-->
+<!--								</div>	&lt;!&ndash; END COURSE #2 &ndash;&gt;-->
+
+
+<!--								&lt;!&ndash; COURSE #3 &ndash;&gt;-->
+<!--								<div class="cbox-5">-->
+<!--									<a href="course-details.html">-->
+<!--										<div class="row">-->
+
+<!--											&lt;!&ndash; Course Description &ndash;&gt;-->
+<!--											<div class="col-sm-7 cbox-5-txt">-->
+<!--												<h5 class="h5-xs">Spanish for Beginners. The Complete Method. Level 2</h5>-->
+<!--												<p class="p-sm grey-color">62 Total Hours - Updated 01/2020</p>-->
+
+<!--												&lt;!&ndash; Rating &ndash;&gt;-->
+<!--												<div class="course-rating">-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<span class="cr-rating">4.85 (458 Ratings)</span>-->
+<!--												</div>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Data &ndash;&gt;-->
+<!--											<div class="col-sm-3 cbox-5-data text-center clearfix">-->
+<!--												<p class="grey-color"><i class="fas fa-users"></i> 24651</p>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Price &ndash;&gt;-->
+<!--											<div class="col-sm-2 cbox-5-price text-right clearfix">-->
+<!--												<span class="course-price">$52.99</span>-->
+<!--												<span class="old-price">$74.99</span>-->
+<!--											</div>-->
+
+<!--										</div>-->
+<!--									</a>-->
+<!--								</div>	&lt;!&ndash; END COURSE #3 &ndash;&gt;-->
+
+
+<!--							</div>	&lt;!&ndash; END COURSES LIST &ndash;&gt;-->
+
+
+<!--							&lt;!&ndash; COURSES LIST &ndash;&gt;-->
+<!--							<div class="col-lg-6">-->
+
+
+<!--								&lt;!&ndash; COURSE #4 &ndash;&gt;-->
+<!--								<div class="cbox-5 b-bottom">-->
+<!--									<a href="course-details.html">-->
+<!--										<div class="row">-->
+
+<!--											&lt;!&ndash; Course Description &ndash;&gt;-->
+<!--											<div class="col-sm-7 cbox-5-txt">-->
+<!--												<h5 class="h5-xs">Complete Spanish Course: Learn Spanish Language | Beginners</h5>-->
+<!--												<p class="p-sm grey-color">48 Total Hours - Updated 2/2020</p>-->
+
+<!--												&lt;!&ndash; Rating &ndash;&gt;-->
+<!--												<div class="course-rating">-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<span class="cr-rating">4.78 (469 Reviews)</span>-->
+<!--												</div>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Data &ndash;&gt;-->
+<!--											<div class="col-sm-3 cbox-5-data text-center clearfix">-->
+<!--												<p class="grey-color"><i class="fas fa-users"></i> 25491</p>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Price &ndash;&gt;-->
+<!--											<div class="col-sm-2 cbox-5-price text-right clearfix">-->
+<!--												<span class="course-price">$24.99</span>-->
+<!--												<span class="old-price">$44.99</span>-->
+<!--											</div>-->
+
+<!--										</div>-->
+<!--									</a>-->
+<!--								</div>	&lt;!&ndash; END COURSE #4 &ndash;&gt;-->
+
+
+<!--								&lt;!&ndash; COURSE #5 &ndash;&gt;-->
+<!--								<div class="cbox-5 b-bottom">-->
+<!--									<a href="course-details.html">-->
+<!--										<div class="row">-->
+
+<!--											&lt;!&ndash; Course Description &ndash;&gt;-->
+<!--											<div class="col-sm-7 cbox-5-txt">-->
+<!--												<h5 class="h5-xs">French - Course 2 | Language Lessons For Beginners</h5>-->
+<!--												<p class="p-sm grey-color">36 Total Hours - Updated 12/2019</p>-->
+
+<!--												&lt;!&ndash; Rating &ndash;&gt;-->
+<!--												<div class="course-rating">-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<span class="cr-rating">4.84 (417 Reviews)</span>-->
+<!--												</div>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Data &ndash;&gt;-->
+<!--											<div class="col-sm-3 cbox-5-data text-center clearfix">-->
+<!--												<p class="grey-color"><i class="fas fa-users"></i> 28035</p>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Price &ndash;&gt;-->
+<!--											<div class="col-sm-2 cbox-5-price text-right clearfix">-->
+<!--												<span class="course-price">$19.99</span>-->
+<!--												<span class="old-price">$39.99</span>-->
+<!--											</div>-->
+
+<!--										</div>-->
+<!--									</a>-->
+<!--								</div>	&lt;!&ndash; END COURSE #5 &ndash;&gt;-->
+
+
+<!--								&lt;!&ndash; COURSE #6 &ndash;&gt;-->
+<!--								<div class="cbox-5">-->
+<!--									<a href="course-details.html">-->
+<!--										<div class="row">-->
+
+<!--											&lt;!&ndash; Course Description &ndash;&gt;-->
+<!--											<div class="col-sm-7 cbox-5-txt">-->
+<!--												<h5 class="h5-xs">Practice and Perfect Your French - Intermediate Level</h5>-->
+<!--												<p class="p-sm grey-color">28 Total Hours - Updated 11/2019</p>-->
+
+<!--												&lt;!&ndash; Rating &ndash;&gt;-->
+<!--												<div class="course-rating">-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<i class="fas fa-star"></i>-->
+<!--													<span class="cr-rating">4.92 (461 Ratings)</span>-->
+<!--												</div>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Data &ndash;&gt;-->
+<!--											<div class="col-sm-3 cbox-5-data text-center clearfix">-->
+<!--												<p class="grey-color"><i class="fas fa-users"></i> 19163</p>-->
+<!--											</div>-->
+
+<!--											&lt;!&ndash; Course Price &ndash;&gt;-->
+<!--											<div class="col-sm-2 cbox-5-price text-right clearfix">-->
+<!--												<span class="course-price">$39.99</span>-->
+<!--												<span class="old-price">$62.99</span>-->
+<!--											</div>-->
+
+<!--										</div>-->
+<!--									</a>-->
+<!--								</div>	&lt;!&ndash; END COURSE #6 &ndash;&gt;-->
+
+
+<!--							</div>	&lt;!&ndash; END COURSES LIST &ndash;&gt;-->
+
+
+<!--						</div>	  &lt;!&ndash; End row &ndash;&gt;-->
+
+
+<!--					</div>     &lt;!&ndash; End container &ndash;&gt;-->
+<!--				</section>	&lt;!&ndash; END COURSES-5 &ndash;&gt;-->
+
+
+
+
+
+				<!-- COURSES-3
+				============================================= -->
+				<section id="courses-3" class="wide-60 courses-section division">
+					<div class="container">
+
+
+						<!-- SECTION TITLE -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="section-title mb-40">
+
+									<!-- Title 	-->
+									<h4 class="h4-xl">Cursos</h4>
+
+									<!-- Text -->
+									<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero
+									   tempus, blandit posuere and ligula varius magna a porta
+									</p>
+
+								</div>
+							</div>
+						</div>
+
+
+						<!-- COURSES HOLDER -->
+						<div class="row courses-grid">
+
+
+							<!-- COURSE #1 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-1-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Sam Richardson</span>
+												<span>English</span>
+											</p>
+
+											<!-- Course Title -->
+											<h5 class="h5-xs">Beginner Level English - Foundations</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+												<span>4.5 (26 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$149.99</span> $138.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #1 -->
+
+
+							<!-- COURSE #2 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-2-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Kally Brooks</span>
+												<span>English</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">Diploma in Basic English Grammar - Revised 2019</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>5 (118 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$174.99</span> $59.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #2 -->
+
+
+							<!-- COURSE #3 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-16-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Becky Reed</span>
+												<span>French</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">The French Subjunctive - Intermediate Level</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+												<span>4.5 (72 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$119.99</span> $34.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #3 -->
+
+
+							<!-- COURSE #4 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-15-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>David Smith</span>
+												<span>English</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">English for Beginners: Intensive English Speaking Course</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>5 (281 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$84.99</span> $64.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #4 -->
+
+
+							<!-- COURSE #5 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-19-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Linda J. Ross</span>
+												<span>Japanese</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">Learn Japanese for Beginners: The Ultimate 30-Lesson Course</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>4.1 (58 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$194.99</span> $62.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #5 -->
+
+
+							<!-- COURSE #6 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-17-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Becky Reed</span>
+												<span>Italian</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">Learn Italian Language: Intermediate Level</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>5 (31 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$149.99</span> $45.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #6 -->
+
+
+							<!-- COURSE #7 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-18-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Robert Coronado</span>
+												<span>Spanish</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">Beginner Spanish Course: Learn to Speak Spanish Like a Pro!</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+												<span>4.8 (74 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$109.99</span> $23.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #7 -->
+
+
+							<!-- COURSE #8 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-20-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Kally Brooks</span>
+												<span>German</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">Deutch: Master 120 Common Phrasal Verbs</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>5 (374 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$169.99</span> $33.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #8 -->
+
+
+							<!-- COURSE #9 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-21-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>David Smith</span>
+												<span>English</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">English Grammar Launch Advanced: Upgrade Your Speaking</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>4.0 (185 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$134.99</span> $72.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #9 -->
+
+
+							<!-- COURSE #10 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-22-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Linda J. Ross</span>
+												<span>Spanish</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">Complete Spanish Course: Learn Spanish | Beginners</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star-half-alt"></i>
+												<span>4.6 (293 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$99.99</span> $39.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #10 -->
+
+
+							<!-- COURSE #11 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-23-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Kally Brooks</span>
+												<span>French</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">Practice and Perfect Your French - Intermediate Level</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>4.7 (401 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$84.99</span> $42.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #11 -->
+
+
+							<!-- COURSE #12 -->
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="cbox-1">
+									<a href="course-details.html">
+
+										<!-- Image -->
+										<img class="img-fluid" src="{% static 'images/courses/course-24-img.jpg' %}" alt="course-preview" />
+
+										<!-- Text -->
+										<div class="cbox-1-txt">
+
+											<!-- Course Tags -->
+											<p class="course-tags">
+												<span>Robert Coronado</span>
+												<span>French</span>
+											</p>
+
+											<!-- Title -->
+											<h5 class="h5-xs">French - Course 2 | Language Lessons For Beginners</h5>
+
+											<!-- Course Rating -->
+											<div class="course-rating clearfix">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<span>4.2 (193 Ratings)</span>
+											</div>
+
+											<!-- Course Price -->
+											<span class="course-price"><span class="old-price">$129.99</span> $63.99</span>
+
+										</div>
+
+									</a>
+								</div>
+							</div>	<!-- END COURSE #12 -->
+
+
+						</div>	  <!-- END COURSES HOLDER -->
+
+
+					</div>     <!-- End container -->
+				</section>	<!-- END COURSES-3 -->
+
+
+
+
+				<!-- PAGE PAGINATION
+				============================================= -->
+				<div class="page-pagination division">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+
+								<nav aria-label="Page navigation">
+									<ul class="pagination justify-content-center">
+										<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+									    <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+									    <li class="page-item"><a class="page-link" href="#">2</a> </li>
+									    <li class="page-item"><a class="page-link" href="#">3</a></li>
+									    <li class="page-item"><a class="page-link" href="#">4</a></li>
+									    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+									</ul>
+								</nav>
+
+							</div>
+						</div>  <!-- End row -->
+					</div> <!-- End container -->
+				</div>	<!-- END PAGE PAGINATION -->
+
+
+
+
+
+
+			</div>	<!-- END INNER PAGE WRAPPER -->
+{% endblock %}

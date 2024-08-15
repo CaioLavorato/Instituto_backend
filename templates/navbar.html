@@ -1,74 +1,119 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg border-body navbar">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img src="{% static 'images/logo2_.png' %}" alt="Programa Diagnóstico Precoce" height="50"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html" style="color: white;">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="curso.html" style="color: white;">Curso</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="perfil.html" style="color: white;">Perfil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="forum.html" style="color: white;">Fórum</a>
-            </li>
+<header id="header" class="header white-menu navbar-dark">
+    <div class="header-wrapper">
 
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                style="color: white;">
-                Conheça
-              </a>
-              <ul class="nav-item dropdown-menu">
-                <li><a class="dropdown-item" style="color: white;" href="sobreoinsitituto.html">Sobre o
-                    Instituto</a></li>
-                <li><a class="dropdown-item" style="color: white;" href="nossahistoria.html">Nossa
-                    História</a></li>
-                <li><a class="dropdown-item" style="color: white;" href="sistemaronaldmcdonald.html">Sistema Ronald
-                    McDonald</a>
-                </li>
-                <li><a class="dropdown-item" style="color: white;" href="#">Rede Referenciada</a></li>
-                <li><a class="dropdown-item" style="color: white;" href="sobreacausa.html">Sobre a
-                    causa</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="diagnosticoprecoce.html" style="color: white;">Diagnóstico
-                Precoce</a>
-            </li>
-            <li class="nav-item" style="margin-right: 10px; background-color: red;border-radius: 20px">
-              <a class="nav-link" href="https://institutoronald.colabore.org/doe/single_step"
-                style="color: white"><img src="{% static 'images/header-heart.svg' %}" alt="" height="25"><strong> DOAÇÃO</strong></a>
-            </li>
-          </ul>
-
-          <form class="d-flex" role="search">
-            <div class="input-group">
-              <button class="btn btn-outline-light" type="button" id="button-addon1"><ion-icon
-                  name="search-outline"></ion-icon></button>
-              <input type="text" class="form-control" placeholder="Pesquisar curso..."
-                aria-label="Example text with button addon" aria-describedby="button-addon1">
-            </div>
-          </form>
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item d-flex align-items-center">
-              <img class="rounded-circle" src="{% static 'images/perfil.png' %}" alt="User" width="50px" style="margin-right: 10px;">
-              <a class="nav-link" href="Login.html" style="color: white;">Login/Registre-se</a>
-            </li>
-          </ul>
+        <!-- MOBILE HEADER -->
+        <div class="wsmobileheader clearfix">
+            <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+            <span class="smllogo smllogo-black"><img src="{% static 'images/logo.png' %}" width="172" height="40" alt="mobile-logo"/></span>
+            <span class="smllogo smllogo-white"><img src="{% static 'images/logo-white.png' %}" width="172" height="40" alt="mobile-logo"/></span>
         </div>
-      </div>
-    </nav>
 
-    <div class="banner" style="background-image: url('{% static 'images/banner/banner.png' %}')">
-      <div class="banner-content">
-      </div>
+        <!-- NAVIGATION MENU -->
+        <div class="wsmainfull menu clearfix">
+            <div class="wsmainwp clearfix">
+
+                <!-- LOGO IMAGE -->
+                <!-- For Retina Ready displays take an image with double the amount of pixels that your image will be displayed (e.g 344 x 80 pixels) -->
+                <div class="desktoplogo">
+                    <a href="#hero-8" class="logo-black"><img src="{% static 'images/logo.png' %}" width="172" height="40" alt="header-logo"></a>
+                </div>
+                <div class="desktoplogo">
+                    <a href="#hero-8" class="logo-white"><img src="{% static 'images/logo-white.png' %}" width="172" height="40" alt="header-logo"></a>
+                </div>
+
+                <!-- MAIN MENU -->
+                <nav class="wsmenu clearfix">
+                    <ul class="wsmenu-list">
+
+                        <!-- SIMPLE NAVIGATION LINK -->
+                        <li class="nl-simple" aria-haspopup="true" hidden><a href="#">About</a></li>
+
+                        <!-- DROPDOWN MENU -->
+                        <li aria-haspopup="true" hidden>
+                            <a href="#">Pages <span class="wsarrow"></span></a>
+                            <div class="wsmegamenu clearfix halfmenu">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <!-- Links -->
+                                        <ul class="col-lg-6 col-md-12 col-xs-12 link-list left-link-list">
+                                            <li><a href="about.html">About Us Page</a></li>
+                                            <li><a href="categories-list.html">Categories Listing</a></li>
+                                            <li><a href="category-details.html">Category Details</a></li>
+                                            <li><a href="courses-list.html">Courses Listing</a></li>
+                                            <li><a href="course-details.html">Course Details</a></li>
+                                            <li><a href="teachers-list.html">Teachers Listing</a></li>
+                                            <li><a href="teacher-profile.html">Teacher Profile</a></li>
+                                        </ul>
+
+                                        <!-- Links -->
+                                        <ul class="col-lg-6 col-md-12 col-xs-12 link-list">
+                                            <li><a href="become-a-teacher.html">Become A Teacher</a></li>
+                                            <li><a href="pricing.html">Pricing Plans Page</a></li>
+                                            <li><a href="reviews.html">Reviews Page</a></li>
+                                            <li><a href="faqs.html">FAQs Page</a></li>
+                                            <li><a href="blog-listing.html">Blog Listing</a></li>
+                                            <li><a href="single-post.html">Single Post</a></li>
+                                            <li><a href="contacts.html">Contacts Page</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- DROPDOWN MENU -->
+                        <li aria-haspopup="true">
+                            <a href="#">Conheça <span class="wsarrow"></span></a>
+                            <ul class="sub-menu">
+                                <li aria-haspopup="true"><a href="courses-list.html">A Causa</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Instituição</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Como Visitar</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Instalações</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Premiações</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN MENU -->
+                        <li aria-haspopup="true">
+                            <a href="#">Como Ajudar <span class="wsarrow"></span></a>
+                            <ul class="sub-menu">
+                                <li aria-haspopup="true"><a href="courses-list.html">Doação</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Doe Alimento</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Amigo Contribuinte</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Bazar Online</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Bazar Solidário</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Estação Cap</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Parceria</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Herança</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Seja um voluntário</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- SIMPLE NAVIGATION LINK -->
+                        <li class="nl-simple" aria-haspopup="true"><a href="blog-listing.html">Cursos</a></li>
+
+                        <!-- SIMPLE NAVIGATION LINK -->
+                        <li class="nl-simple" aria-haspopup="true"><a href="blog-listing.html">Blog</a></li>
+
+                        <!-- SIMPLE NAVIGATION LINK -->
+                        <li class="nl-simple" aria-haspopup="true"><a href="contacts.html">Contato</a></li>
+
+                        <!-- SIMPLE NAVIGATION LINK -->
+                        <li class="nl-simple" aria-haspopup="true"><a href="#">Login</a></li>
+
+                        <!-- DROPDOWN MENU -->
+                        <li aria-haspopup="true">
+                            <a href="#" class="lang-select">
+                                <img src="{% static 'images/icons/flags/brazil.png' %}" alt="flag-icon" /> Pt-Br <span class="wsarrow"></span>
+                            </a>
+                            <ul class="sub-menu last-sub-menu">
+                                <li aria-haspopup="true"><a href="#"><img src="{% static 'images/icons/flags/usa.png' %}" alt="flag-icon" /> English</a></li>
+                                <li aria-haspopup="true"><a href="#"><img src="{% static 'images/icons/flags/spain.png' %}" alt="flag-icon" /> Español</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
+</header>
