@@ -4,17 +4,28 @@ from .models import (
     Aula, Chat, Badge, Forum, Avaliacao, Pergunta, Certificado,
     Alternativas, LaudosMedicos, Agendamento
 )
-from .forms import UsuarioForm,AgendamentoForm  # Certifique-se de criar esse arquivo e formulário
-
+from .forms import UsuarioForm, AgendamentoForm
 
 class UsuarioAdmin(admin.ModelAdmin):
     form = UsuarioForm
-    list_display = ('nome', 'email', 'cpf', 'tipo', 'data_criacao', 'ultimo_acesso')
-    search_fields = ('nome', 'email', 'cpf')
+
+    # Lista de campos a serem exibidos no formulário do admin
+    fields = [
+        'nome', 'cpf', 'email', 'senha', 'foto', 'data_de_nascimento',
+        'data_criacao', 'ultimo_acesso', 'tipo', 'facebook',
+        'linkedin', 'google_plus', 'descricao', 'web_site', 'categorias'
+    ]
+
+    list_display = ['nome', 'email', 'tipo', 'data_criacao']
+    list_filter = ['tipo', 'data_criacao']
+    search_fields = ['nome', 'email']
+
+
+
+
 
 class AgendamentoAdmin(admin.ModelAdmin):
     form = AgendamentoForm
-
 
 admin.site.register(Agendamento, AgendamentoAdmin)
 admin.site.register(Curso)
@@ -32,4 +43,3 @@ admin.site.register(Pergunta)
 admin.site.register(Certificado)
 admin.site.register(Alternativas)
 admin.site.register(LaudosMedicos)
-

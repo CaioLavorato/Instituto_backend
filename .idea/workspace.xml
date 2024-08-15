@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4ffa81-d094-4ebf-bd38-82721cbe8e10" name="Changes" comment="Correçao Layout" />
+    <list default="true" id="4d4ffa81-d094-4ebf-bd38-82721cbe8e10" name="Changes" comment="Correçao Layout">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/templates/perfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/perfil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/base_site.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/base_site.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +63,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.views.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "caio__professores",
     "last_opened_file_path": "D:/Instituto_backend/static/images",
@@ -176,5 +187,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Correçao Layout" />
     <option name="LAST_COMMIT_MESSAGE" value="Correçao Layout" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/curso/views.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/curso/views.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/curso/views.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -30,7 +30,8 @@ class Usuario(models.Model):
     descricao = models.TextField(max_length=5000, null=True, blank=True)
     web_site = models.CharField(max_length=1000, null=True, blank=True)
 
-    categorias = models.ManyToManyField('Categorias', related_name='usuarios')
+    categorias = models.ManyToManyField('Categorias', related_name='usuarios', blank=True)
+
 
     def save(self, *args, **kwargs):
         if not is_password_usable(self.senha):

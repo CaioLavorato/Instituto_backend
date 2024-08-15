@@ -1,9 +1,33 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
+from django.core.cache import cache
+from django.contrib.auth.hashers import check_password
+from . import models
 from . import forms
 
 # Create your views here.
 def login(request):
-    return render(request, "login.html")
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        try:
+            # Encontre o usuário na tabela Usuario
+            user = models.Usuario.objects.get(email=email)
+        except models.Usuario.DoesNotExist:
+            return render(request, 'login.html', {'error': 'Credenciais inválidas'})
+
+        # Verifique a senha
+        if check_password(password, user.senha):
+            # Autenticar o usuário (não é o mesmo que a autenticação padrão do Django)
+            auth_login(request, user)
+            # Salvar usuário em cache
+            cache.set(f'user_{user.id}', user, timeout=None)
+            return redirect('homepage')  # Redireciona para a homepage após o login
+        else:
+            return render(request, 'login.html', {'error': 'Credenciais inválidas'})
+
+    return render(request, 'login.html')
 def homepage(request):
     return render(request, "homepage.html")
 
