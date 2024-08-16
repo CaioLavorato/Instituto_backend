@@ -1,11 +1,9 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.hashers import make_password, is_password_usable
+from django.core.validators import RegexValidator
 
-
-# Create your models here.
-
-class Usuario(models.Model):
+class UserProfile(models.Model):
     PROFESSOR = 'PR'
     MEDICO = 'MD'
     ALUNO = 'AL'
@@ -15,26 +13,30 @@ class Usuario(models.Model):
         (ALUNO, 'Aluno'),
     ]
 
-    nome = models.CharField(max_length=1000)
-    cpf = models.CharField(max_length=11)
-    email = models.CharField(max_length=100)
-    senha = models.CharField(max_length=128)
-    foto = models.ImageField(upload_to='thumb_usuarios')
-    data_de_nascimento = models.DateField()
-    data_criacao = models.DateTimeField(default=timezone.now)
-    ultimo_acesso = models.DateTimeField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    foto = models.ImageField(upload_to='thumb_usuarios', null=True, blank=True)
+    data_de_nascimento = models.DateField(null=True, blank=True)
+    facebook = models.CharField(max_length=1000, null=True, blank=True)
+    linkedin = models.CharField(max_length=1000, null=True, blank=True)
+    google_plus = models.CharField(max_length=1000, null=True, blank=True)
+    descricao = models.TextField(max_length=5000, null=True, blank=True)
+    web_site = models.CharField(max_length=1000, null=True, blank=True)
     tipo = models.CharField(max_length=2, choices=TIPO_USUARIO_CHOICES, default=ALUNO)
+    categorias = models.ManyToManyField('Categorias', related_name='usuarios', blank=True)
 
-    def save(self, *args, **kwargs):
-        if not is_password_usable(self.senha):
-            self.senha = make_password(self.senha)
-        super(Usuario, self).save(*args, **kwargs)
+    # Campo CPF aceitando pontuações
+    cpf = models.CharField(
+        max_length=14,  # Permite o tamanho com pontuações
+        validators=[RegexValidator(regex='^\d{3}\.\d{3}\.\d{3}-\d{2}$', message='CPF deve ter o formato correto (XXX.XXX.XXX-XX).')],
+        unique=True,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
-        return self.nome
+        return self.user.username
 
-# nome, cpf, email, senha, foto, data_de_nascimento, data_de_criacao, ultimo_acesso
-
+# Modelo de Categorias
 class Categorias(models.Model):
     descricao = models.TextField(max_length=1000)
     data_criacao = models.DateTimeField(default=timezone.now)
@@ -42,9 +44,7 @@ class Categorias(models.Model):
     def __str__(self):
         return self.descricao
 
-
-# descricao, data_criacao
-
+# Modelo de Curso
 class Curso(models.Model):
     titulo = models.CharField(max_length=100)
     thumb = models.ImageField(upload_to='thumb_cursos')
@@ -56,9 +56,7 @@ class Curso(models.Model):
     def __str__(self):
         return self.titulo
 
-
-# titulo, descricao, categoria, data_de_criacao, visualizacoes
-
+# Modelo de Modulo
 class Modulo(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
@@ -67,20 +65,16 @@ class Modulo(models.Model):
     def __str__(self):
         return self.titulo
 
-
-# id, curso_id, titulo, ordem
-
+# Modelo de Modulo_usuario
 class Modulo_usuario(models.Model):
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     ind_concluido = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.usuario} - {self.modulo}"
+        return f"{self.usuario.username} - {self.modulo}"
 
-
-# modulo,usuario,ind_concluido
-
+# Modelo de Aula
 class Aula(models.Model):
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
@@ -90,16 +84,14 @@ class Aula(models.Model):
     def __str__(self):
         return self.titulo
 
-
-# modulo_id, titulo, conteudo, ordem
+# Modelo de Questionario
 class Questionario(models.Model):
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.modulo
+        return str(self.modulo)
 
-
-# modulo_id
+# Modelo de Pergunta
 class Pergunta(models.Model):
     questionario = models.ForeignKey(Questionario, on_delete=models.CASCADE)
     enunciado = models.CharField(max_length=1000)
@@ -107,8 +99,7 @@ class Pergunta(models.Model):
     def __str__(self):
         return self.enunciado
 
-
-# questionario_id, enunciado
+# Modelo de Alternativas
 class Alternativas(models.Model):
     descricao = models.TextField(max_length=1000)
     resposta_correta = models.BooleanField(default=False)
@@ -117,32 +108,30 @@ class Alternativas(models.Model):
     def __str__(self):
         return self.descricao
 
-
+# Modelo de Certificado
 class Certificado(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    data_emissao = models.DateTimeField()
+    data_emissao = models.DateTimeField(default=timezone.now)
     codigo = models.CharField(max_length=1000)
 
     def __str__(self):
-        return f"{self.usuario} - {self.curso}"
+        return f"{self.usuario.username} - {self.curso}"
 
-
-# usuario_id, curso_id, data_de_emissao, codigo
+# Modelo de Chat
 class Chat(models.Model):
-    id_remetente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='remetente_chats')
-    id_destinatario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='destinatario_chats')
+    id_remetente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='remetente_chats')
+    id_destinatario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='destinatario_chats')
     mensagem = models.TextField(max_length=1000)
     data_envio = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.id_remetente} - {self.id_destinatario}"
+        return f"{self.id_remetente.username} - {self.id_destinatario.username}"
 
-
-# usuario_remetente,usuario_destinatario,mensagem,data_envio
+# Modelo de Forum
 class Forum(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
     conteudo = models.TextField(max_length=3000)
     data_criacao = models.DateTimeField(default=timezone.now)
@@ -150,48 +139,43 @@ class Forum(models.Model):
     def __str__(self):
         return self.titulo
 
-
-# curso_id, usuario_id, titulo, conteudo, data_criacao.
+# Modelo de Avaliacao
 class Avaliacao(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     estrelas = models.IntegerField()
     data_criacao = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.usuario} - {self.curso} - {self.estrelas}"
+        return f"{self.usuario.username} - {self.curso} - {self.estrelas}"
 
-
-# curso,usuario,estrelas,data_criacao
-
+# Modelo de Badge
 class Badge(models.Model):
     nome = models.CharField(max_length=100)
     descricao = models.TextField(max_length=1000)
     criterio = models.CharField(max_length=1000)
     icone = models.ImageField(upload_to='badge')
-    usuarios = models.ManyToManyField(Usuario, related_name='badges')
+    usuarios = models.ManyToManyField(User, related_name='badges')
 
     def __str__(self):
         return self.nome
 
-
-# nome,descricao,criterio,icone,usuarios
+# Modelo de Agendamento
 class Agendamento(models.Model):
-    id_paciente = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='agendamentos_paciente')
-    id_doutor = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='agendamentos_doutor')
+    id_paciente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agendamentos_paciente')
+    id_doutor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agendamentos_doutor')
     observacao = models.TextField(max_length=1000)
     data_agendamento = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.id_doutor} - {self.data_agendamento}"
+        return f"{self.id_doutor.username} - {self.data_agendamento}"
 
-
+# Modelo de LaudosMedicos
 class LaudosMedicos(models.Model):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='laudos_medicos')
+    id_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='laudos_medicos')
     documento = models.FileField()
     observacao = models.TextField(max_length=1000)
     data_inclusao = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.documento} - {self.id_usuario}"
-
+        return f"{self.documento} - {self.id_usuario.username}"

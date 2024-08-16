@@ -1,7 +1,73 @@
 {% extends 'baseLogado.html' %}
 {% block content %}
 {% load static %}
+<style>
+    /* CSS Customizado */
+    .form-holder {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+    }
 
+    .form-holder h4 {
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .btn-block {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .img-round {
+        border-radius: 50%;
+        width: 100px;  /* Ajuste o tamanho conforme necessário */
+        height: 100px; /* Ajuste o tamanho conforme necessário */
+        object-fit: cover; /* Garante que a imagem preencha o contêiner */
+    }        
+    .alert {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #721c24; /* Cor do texto padrão (vermelho para erros) */
+    background-color: #f8d7da; /* Cor de fundo padrão para erros */
+}
+
+.alert.success {
+    color: #155724; /* Cor do texto para sucesso (verde) */
+    background-color: #d4edda; /* Cor de fundo para sucesso (verde claro) */
+}
+
+.alert .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.25rem;
+    color: inherit; /* Cor do botão de fechar, herda a cor do texto */
+    cursor: pointer;
+}
+</style>
 <!-- INNER PAGE WRAPPER ============================================= -->
 <div class="inner-page-wrapper">
 
@@ -9,7 +75,6 @@
     <div id="breadcrumb" class="division">
         <div class="container">
             <div class="row">
-
                 <!-- BREADCRUMB NAV -->
                 <div class="col-md-12">
                     <nav aria-label="breadcrumb">
@@ -19,7 +84,6 @@
                         </ol>
                     </nav>
                 </div>
-
             </div> <!-- End row -->
         </div> <!-- End container -->
     </div> <!-- END BREADCRUMB -->
@@ -30,10 +94,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="hero-txt white-color">
-
-                        <!-- Title -->
-                        <h3 class="h3-xs">Perfil do Usuário</h3>
-
+                        <div class="row align-items-center">
+                            <!-- Imagem do Usuário -->
+                            <div class="col-auto">
+                                <img src="{% if user.profile.foto %}{{ user.profile.foto.url }}{% else %}{% static 'images/post-author-1.jpg' %}{% endif %}" alt="author-avatar" class="img-round">
+                            </div>
+                            <!-- Título -->
+                            <div class="col">
+                                <h3 class="h3-xs">{{ user.first_name }} {{ user.last_name }}</h3>
+                            </div>
+                        </div> <!-- End row -->
                     </div>
                 </div> <!-- END PAGE HERO TEXT -->
             </div> <!-- End row -->
@@ -44,19 +114,79 @@
     <section class="wide-70 form-section division">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="form-holder">
-
+                <div class="col-lg-12">
+                    <div class="form-holder card p-4 shadow-sm">
                         <!-- Title -->
-                        <h4 class="h4-sm">Atualizar Perfil</h4>
-
-                        <!-- Profile Form -->
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-blue tra-black-hover last-link">Salvar</button>
-                        </form>
-
+                        <h4 class="h4-sm mb-4">Atualizar Perfil - {{ user.first_name }} {{ user.last_name }}</h4>
+                         <!-- Mensagens -->
+                     {% if messages %}
+                         {% for message in messages %}
+                             {% if message.tags == 'success' %}
+                                 <div class="alert success">
+                             {% else %}
+                                 <div class="alert">
+                             {% endif %}
+                                 <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                 <p>{{ message }}</p>
+                             </div>
+                         {% endfor %}
+                     {% endif %}
+                        <!-- Abas do Formulário -->
+                        <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="dados-gerais-tab" data-bs-toggle="tab" href="#dados-gerais" role="tab" aria-controls="dados-gerais" aria-selected="true">Dados Gerais</a>
+                            </li>
+                            <li class="nav-item" role="presentation" id="redes-sociais-tab-item" style="display: none;">
+                                <a class="nav-link" id="redes-sociais-tab" data-bs-toggle="tab" href="#redes-sociais" role="tab" aria-controls="redes-sociais" aria-selected="false">Redes Sociais e Descrição</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="profileTabsContent">
+                            <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
+                                <!-- Dados Gerais Form -->
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="row mb-3 mt-5">
+                                            <div class="col">
+                                                <label for="id_cpf">CPF</label>
+                                                {{ form.cpf }}
+                                            </div>
+                                            <div class="col">
+                                                <label for="id_data_de_nascimento">Data Nascimento</label>
+                                                <input type="date" name="data_de_nascimento" value="{{ form.data_de_nascimento.value|date:'Y-m-d' }}" class="form-control" id="id_data_de_nascimento">
+                                            </div>
+                                            <div class="col">
+                                                <label for="id_foto">Foto</label>
+                                                {{ form.foto }}
+                                            </div>
+                                        </div>
+                                        <!-- Campo 'tipo' não é exibido -->
+                                    </div>
+                                    <button type="submit" class="btn btn-blue tra-black-hover last-link">Salvar</button>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="redes-sociais" role="tabpanel" aria-labelledby="redes-sociais-tab">
+                                <!-- Redes Sociais e Descrição Form -->
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_facebook">Facebook</label>
+                                        {{ form.facebook }}
+                                        <label for="id_linkedin">LinkedIn</label>
+                                        {{ form.linkedin }}
+                                        <label for="id_google_plus">Google+</label>
+                                        {{ form.google_plus }}
+                                        <label for="id_descricao">Descrição</label>
+                                        {{ form.descricao }}
+                                        <label for="id_web_site">Website</label>
+                                        {{ form.web_site }}
+                                        <label for="id_categorias">Categorias</label>
+                                        {{ form.categorias }}
+                                    </div>
+                                    <button type="submit" class="btn btn-blue tra-black-hover last-link">Salvar</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div> <!-- End row -->
@@ -64,5 +194,28 @@
     </section> <!-- END PROFILE FORM SECTION -->
 
 </div> <!-- END INNER PAGE WRAPPER -->
+<script>
+
+    var cpf = document.querySelector("#id_cpf");
+
+    cpf.addEventListener("blur", function(){
+        if(cpf.value) cpf.value = cpf.value.match(/.{1,3}/g).join(".").replace(/\.(?=[^.]*$)/,"-");
+    });      
+
+
+    const redesSociaisTab = document.getElementById('redes-sociais-tab-item');
+    const tipoUsuario = '{{ user.profile.tipo }}'; // Obtém o tipo do usuário diretamente do contexto
+
+    function toggleRedesSociaisTab() {
+        if (tipoUsuario === 'PR') {  // Verifica se o tipo é 'Professor'
+            redesSociaisTab.style.display = 'block';
+        } else {
+            redesSociaisTab.style.display = 'none';
+        }
+    }
+
+    // Executa a função para definir a aba correta ao carregar a página
+    toggleRedesSociaisTab();
+</script>
 
 {% endblock %}

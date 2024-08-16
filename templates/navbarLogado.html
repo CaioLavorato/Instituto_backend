@@ -1,4 +1,34 @@
 {% load static %}
+<style>
+
+.logout-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent; /* Remove cor de fundo se necessário */
+        border: none; /* Remove a borda padrão do botão */
+        cursor: pointer;
+        color: #007bff; /* Azul, ajuste conforme necessário */
+        font-size: 1.5rem; /* Ajusta o tamanho do ícone */
+        padding: 35px; /* Ajuste o padding para centralizar verticalmente */
+        margin: 0;
+        height: 40px; /* Ajuste a altura do botão conforme necessário */
+        width: 40px; /* Ajuste a largura do botão conforme necessário */
+    }
+
+    .logout-button i {
+        margin: 0;
+    }
+
+    /* Certifique-se de que o contêiner do botão está centralizado verticalmente */
+    .center-logout {
+        display: flex;
+        justify-content: center; /* Centraliza horizontalmente o botão */
+        align-items: center; /* Centraliza verticalmente o botão */
+        height: 100%; /* Ajuste conforme necessário */
+    }
+</style>
+
 		<header id="header" class="header white-menu navbar-dark">
 			<div class="header-wrapper">
 
@@ -37,7 +67,7 @@
 
 
 
-
+								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'categorias' %}">Categorias</a></li>
 
 								<!-- DROPDOWN MENU -->
 								<!-- <li aria-haspopup="true"><a href="#">Pages <span class="wsarrow"></span></a>
@@ -75,7 +105,7 @@
 
 
 								<!-- DROPDOWN MENU -->
-								<li aria-haspopup="true"><a href="{% url 'categorias' %}">Categorias <span class="wsarrow"></span></a>
+								<!-- <li aria-haspopup="true"><a href="{% url 'categorias' %}">Categorias <span class="wsarrow"></span></a>
 									<ul class="sub-menu">
 										<li aria-haspopup="true"><a href="courses-list.html">Development</a></li>
 										<li aria-haspopup="true"><a href="courses-list.html">Finance & Accounting</a>
@@ -89,7 +119,7 @@
 										<li aria-haspopup="true"><a href="courses-list.html">Marketing</a></li>
 										<li aria-haspopup="true"><a href="courses-list.html">Health & Fitness</a></li>
 									</ul>
-								</li> <!-- END DROPDOWN MENU -->
+								</li> END DROPDOWN MENU -->
 
 
 								<!-- MEGAMENU -->
@@ -242,10 +272,15 @@
 								<li class="nl-simple" aria-haspopup="true">
 									<a href="{% url 'perfil' %}" class="btn btn-blue tra-black-hover last-link">Perfil</a>
 								</li>
-								<li class="nl-simple" aria-haspopup="true"><a href="{% url 'homepage' %}"><i class="fa fa-power-off"
-											aria-hidden="true"></i>
-									</a></li>
 
+									<li class="nl-simple center-logout" aria-haspopup="true">
+										<form action="{% url 'logout' %}" method="post" style="display: inline;">
+											{% csrf_token %}
+											<button type="submit" class="logout-button">
+												<i class="fa fa-power-off" aria-hidden="true"></i>
+											</button>
+										</form>
+									</li>
 							</ul>
 						</nav> <!-- END MAIN MENU -->
 

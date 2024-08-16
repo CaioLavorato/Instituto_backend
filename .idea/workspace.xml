@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d4ffa81-d094-4ebf-bd38-82721cbe8e10" name="Changes" comment="Correçao Layout">
-      <change afterPath="$PROJECT_DIR$/static/images/bannerlogin.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/curso/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbarLogado.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbarLogado.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/templates/perfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/curso/templates/perfil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curso/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/curso/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/base_site.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/base_site.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +31,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;CaioLavorato&quot;
-  }
-}</component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {}
+}]]></component>
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
+    {
+      "id": {
+        "id": "PR_kwDOMRMV7M50ez8F",
+        "number": 1
+      },
+      "lastSeen": 1723747264889
+    }
+  ]
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/nicholas-ananias/Instituto_backend.git&quot;,
@@ -50,8 +63,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.views.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "caio__professores",
     "last_opened_file_path": "D:/Instituto_backend/static/images",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -140,7 +154,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723698730146</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Correçao Layout">
+      <option name="closed" value="true" />
+      <created>1723700543271</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723700543271</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Correçao Layout">
+      <option name="closed" value="true" />
+      <created>1723747307549</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723747307549</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,5 +187,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Correçao Layout" />
     <option name="LAST_COMMIT_MESSAGE" value="Correçao Layout" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/curso/views.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/curso/views.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/curso/views.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
