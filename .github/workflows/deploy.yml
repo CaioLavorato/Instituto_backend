@@ -65,7 +65,7 @@ jobs:
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-        cd /var/www/myapp &&
+        cd /var/www/Instituto_backend &&
         python3 -m venv venv &&
         source venv/bin/activate &&
         pip install -r requirements.txt &&
