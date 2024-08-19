@@ -67,8 +67,11 @@ jobs:
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
       run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H 89.117.32.80 >> ~/.ssh/known_hosts
-        ssh root@89.117.32.80 '
+        ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
         cd /var/www/myapp &&
         python3 -m venv venv &&
         source venv/bin/activate &&
