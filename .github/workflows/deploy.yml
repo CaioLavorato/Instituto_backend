@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 jobs:
   deploy:
@@ -62,22 +59,24 @@ jobs:
 
     - name: Deploy to the server
       env:
-          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
       run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-          echo "Starting deployment" &&
-          cd /var/www/Instituto_backend &&
-          echo "Current directory contents:" &&
-          ls -la &&
-          python3 -m venv venv &&
-          source venv/bin/activate &&
-          echo "Installing dependencies..." &&
-          pip install -r requirements.txt &&
-          echo "Running migrations..." &&
-          python manage.py migrate &&
-          echo "Collecting static files..." &&
-          python manage.py collectstatic --noinput &&
-          echo "Restarting Gunicorn..." &&
-          systemctl restart gunicorn &&
-          echo "Deployment completed"'
-
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+        echo "Starting deployment" &&
+        cd /var/www/Instituto_backend &&
+        echo "Updating repository..." &&
+        git pull origin master &&
+        echo "Current directory contents:" &&
+        ls -la &&
+        echo "Creating and activating virtual environment..." &&
+        python3 -m venv venv &&
+        source venv/bin/activate &&
+        echo "Installing dependencies..." &&
+        pip install -r requirements.txt &&
+        echo "Running migrations..." &&
+        python manage.py migrate &&
+        echo "Collecting static files..." &&
+        python manage.py collectstatic --noinput &&
+        echo "Restarting Gunicorn..." &&
+        systemctl restart gunicorn &&
+        echo "Deployment completed"'
