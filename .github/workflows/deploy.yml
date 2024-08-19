@@ -16,10 +16,10 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v2
 
-    - name: Set up Python 3.8
+    - name: Set up Python 3.12
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 3.12
 
     - name: Install dependencies
       run: |
@@ -36,7 +36,7 @@ jobs:
 
     - name: Deploy to the server
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         ssh-keyscan -H 89.117.32.80 >> ~/.ssh/known_hosts
         ssh root@89.117.32.80 '
