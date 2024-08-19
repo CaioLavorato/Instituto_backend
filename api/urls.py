@@ -24,6 +24,6 @@ router.register(r'laudos', LaudosMedicosViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('login/', CustomAuthToken.as_view(), name='login'),
+    path('login/', CustomAuthToken.as_view(), name='api_login'),
     path('register/', UserRegistrationView.as_view(), name='user-register'),
 ]
