@@ -64,6 +64,8 @@ jobs:
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
         echo "Starting deployment" &&
         cd /var/www/Instituto_backend &&
+        echo "Configuring Git safe directory..." &&
+        git config --global --add safe.directory /var/www/Instituto_backend &&
         echo "Updating repository..." &&
         git pull origin master &&
         echo "Current directory contents:" &&
