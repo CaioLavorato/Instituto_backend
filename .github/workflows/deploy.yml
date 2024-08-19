@@ -32,6 +32,11 @@ jobs:
         source venv/bin/activate
         pip install -r requirements.txt
 
+    - name: Verify Django Installation
+      run: |
+        source venv/bin/activate
+        pip show django
+
     - name: Run migrations
       run: |
         source venv/bin/activate
