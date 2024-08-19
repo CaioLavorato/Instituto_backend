@@ -58,6 +58,7 @@ jobs:
         source venv/bin/activate
         python manage.py test
 
+        
     - name: Deploy to the server
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
