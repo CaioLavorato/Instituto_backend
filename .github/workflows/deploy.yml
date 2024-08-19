@@ -36,6 +36,12 @@ jobs:
       run: |
         source venv/bin/activate
         pip show django
+        pip show djangorestframework
+
+    - name: List Python Path
+      run: |
+        source venv/bin/activate
+        python -c "import sys; print('\n'.join(sys.path))"
 
     - name: Run migrations
       run: |
