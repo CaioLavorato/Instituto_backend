@@ -58,7 +58,11 @@ jobs:
         source venv/bin/activate
         python manage.py test
 
-        
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H 89.117.32.80 >> ~/.ssh/known_hosts
+
     - name: Deploy to the server
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
