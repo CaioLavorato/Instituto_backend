@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from . import forms
-from .models import Curso, Avaliacao,Modulo,Modulo_usuario,UserProfile
-from django.db.models import Avg, Count
+from .models import Curso, Avaliacao,Modulo,Modulo_usuario,UserProfile,Categorias
+from django.db.models import Avg, Count, Sum
 from django.core.paginator import Paginator
 
 User = get_user_model()  # Obtém o modelo de usuário configurado
@@ -205,7 +205,9 @@ def redecredenciada(request):
 
 @login_required
 def categorias(request):
-    return render(request,"categorias.html")
+    categorias = Categorias.objects.annotate(num_cursos=Count('curso'))
+    total_cursos = categorias.aggregate(total=Sum('num_cursos'))['total'] or 0
+    return render(request, "categorias.html", {'categorias': categorias, 'total_cursos': total_cursos})
 
 @login_required
 def categoriadetalhe(request):
