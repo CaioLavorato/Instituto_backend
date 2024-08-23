@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from django.core.validators import RegexValidator
+from django.db.models import Avg, Count
 
 class UserProfile(models.Model):
     PROFESSOR = 'PR'
@@ -49,13 +50,21 @@ class Curso(models.Model):
     titulo = models.CharField(max_length=100)
     thumb = models.ImageField(upload_to='thumb_cursos')
     descricao = models.TextField(max_length=1000)
-    categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
+    categoria = models.ForeignKey('Categorias', on_delete=models.CASCADE)
     data_criacao = models.DateTimeField(default=timezone.now)
     visualizacoes = models.IntegerField(default=0)
+    duracao = models.IntegerField(default=0) 
+    professor = models.ForeignKey('UserProfile', on_delete=models.SET_NULL, null=True, blank=True, related_name='cursos')
 
     def __str__(self):
         return self.titulo
 
+    def media_avaliacoes(self):
+        return self.avaliacao_set.aggregate(Avg('estrelas'))['estrelas__avg'] or 0
+
+    def num_avaliacoes(self):
+        return self.avaliacao_set.count()
+    
 # Modelo de Modulo
 class Modulo(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
@@ -143,12 +152,12 @@ class Forum(models.Model):
 class Avaliacao(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    estrelas = models.IntegerField()
+    estrelas = models.PositiveSmallIntegerField()  # Assumindo que a avaliação é de 1 a 5
     data_criacao = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.usuario.username} - {self.curso} - {self.estrelas}"
-
+    
 # Modelo de Badge
 class Badge(models.Model):
     nome = models.CharField(max_length=100)

@@ -2,1517 +2,299 @@
 {% block content %}
 {% load static %}
 
-		<!-- INNER PAGE WRAPPER
-			============================================= -->
-		<div class="inner-page-wrapper">
-
-
-
-
-			<!-- BREADCRUMB
-				============================================= -->
-			<div id="breadcrumb" class="division">
-				<div class="container">
-					<div class="row">
-
-						<!-- BREADCRUMB NAV -->
-						<div class="col-md-12">
-							<nav aria-label="breadcrumb">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Cursos</li>
-								</ol>
-							</nav>
-						</div>
-
-					</div> <!-- End row -->
-				</div> <!-- End container -->
-			</div> <!-- END BREADCRUMB -->
-
-
-
-
-			<!-- PAGE HERO
-				============================================= -->
-			<section class="bg-05 page-hero-section division">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="hero-txt white-color">
-
-								<!-- Title -->
-								<h3 class="h3-xs">Cursos</h3>
-
-								<!-- Share Icons -->
-								<div class="share-list">
-									<ul class="share-social-icons text-center clearfix">
-										<li>
-											<p><span>289 Cursos</span> encontrados.
-											<p>
-
-										</li>
-										<li>
-										</li>
-										<!-- <li><a href="#" class="share-ico ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-											<li><a href="#" class="share-ico ico-twitter"><i class="fab fa-twitter"></i></a></li>
-											<li><a href="mailto:yourdomain@mail.com" class="share-ico ico-mail"><i class="far fa-envelope"></i></a></li>
-											<li><a href="#" class="share-ico ico-bookmark"><i class="far fa-bookmark"></i> 8.4k</a></li>			 -->
-									</ul>
-								</div>
-
-								<!-- Text -->
-								<!-- <p><span>9,463 students</span> are learning English Language on eTreeks</p> -->
-
-							</div>
-						</div>
-						<div class="col-md-6">
-							<form class="d-flex" role="search">
-								<input class="form-control me-2" type="search" placeholder="Pesquisar Cursos" aria-label="Search">
-								<button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-						      </form>
-						</div>
-						<!-- END PAGE HERO TEXT -->
-					</div> <!-- End row -->
-				</div> <!-- End container -->
-			</section> <!-- END PAGE HERO -->
-
-
-
-
-
-			<!-- COURSES-1
-				============================================= -->
-			<section id="courses-1" class="wide-100 courses-section division">
-				<div class="container">
-
-
-					<!-- SECTION TITLE -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title mb-40">
-
-								<!-- Title 	-->
-								<h4 class="h4-xl">Cursos Mais Vistos</h4>
-
-								<!-- Text -->
-								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis
-									libero
-									tempus, blandit posuere and ligula varius magna a porta
-								</p>
-
-							</div>
-						</div>
-					</div>
-
-
-					<!-- COURSE BOXES CAROUSEL -->
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="owl-carousel owl-theme owl-loaded courses-carousel">
-
-
-								<!-- COURSE #1 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-1-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>Linda J. Ross</span>
-												<span>16 Hours</span>
-											</p>
-
-											<!-- Course Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span>4.5 (226 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$149.99</span>
-												$138.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #1 -->
-
-
-								<!-- COURSE #2 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-2-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>Becky Reed</span>
-												<span>27 Hours</span>
-											</p>
-
-											<!-- Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span>5 (418 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$174.99</span>
-												$59.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #2 -->
-
-
-								<!-- COURSE #3 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-15-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>Robert Coronado</span>
-												<span>35 Hours</span>
-											</p>
-
-											<!-- Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span>4.5 (372 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$119.99</span>
-												$34.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #3 -->
-
-
-								<!-- COURSE #4 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-16-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>Kally Brooks</span>
-												<span>56 Hours</span>
-											</p>
-
-											<!-- Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span>5 (281 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$119.99</span>
-												$84.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #4 -->
-
-
-								<!-- COURSE #5 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-17-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>Sam Richardson</span>
-												<span>30 Hours</span>
-											</p>
-
-											<!-- Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span>4.1 (358 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$194.99</span>
-												$62.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #5 -->
-
-
-								<!-- COURSE #6 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-19-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>Becky Reed</span>
-												<span>44 Hours</span>
-											</p>
-
-											<!-- Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span>5 (231 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$149.99</span>
-												$45.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #6 -->
-
-
-								<!-- COURSE #7 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-18-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>Linda J. Ross</span>
-												<span>38 Hours</span>
-											</p>
-
-											<!-- Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span>4.8 (474 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$109.99</span>
-												$23.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #7 -->
-
-
-								<!-- COURSE #8 -->
-								<div class="cbox-1">
-									<a href="{% url 'cursodetalhe' %}">
-
-										<!-- Image -->
-										<img class="img-fluid" src="{% static 'images/courses/course-20-img.jpg' %}"
-											alt="course-preview" />
-
-										<!-- Text -->
-										<div class="cbox-1-txt">
-
-											<!-- Course Tags -->
-											<p class="course-tags">
-												<span>David Smith</span>
-												<span>35 Hours</span>
-											</p>
-
-											<!-- Title -->
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-											<!-- Course Rating -->
-											<div class="course-rating clearfix">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span>5 (374 Avaliações)</span>
-											</div>
-
-											<!-- Course Price -->
-											<span class="course-price"><span class="old-price">$169.99</span>
-												$33.99</span>
-
-										</div>
-
-									</a>
-								</div> <!-- END COURSE #8 -->
-
-
-							</div>
-						</div>
-					</div> <!-- END COURSES BOXES CAROUSEL -->
-
-
-				</div> <!-- End container -->
-			</section> <!-- END COURSES-1 -->
-
-
-
-
-<!--			&lt;!&ndash; CATEGORIES-1-->
-<!--				============================================= &ndash;&gt;-->
-<!--			<section id="categories-1" class="bg-whitesmoke categories-section division" hidden>-->
-<!--				<div class="container">-->
-
-
-<!--					&lt;!&ndash; SECTION TITLE &ndash;&gt;-->
-<!--					<div class="row">-->
-<!--						<div class="col-md-12">-->
-<!--							<div class="section-title mb-40">-->
-
-<!--								&lt;!&ndash; Title 	&ndash;&gt;-->
-<!--								<h4 class="h4-xs">English Language Sub-Categories</h4>-->
-
-<!--								&lt;!&ndash; Text &ndash;&gt;-->
-<!--								<p class="p-md">Discover thousands of online courses from the best experts</p>-->
-
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-
-
-<!--					<div class="row d-flex align-items-center">-->
-<!--						<div class="col text-center">-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #1 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">English Grammar</h5>-->
-<!--										<p>36 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #1 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #2 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">English Pronunciation</h5>-->
-<!--										<p>11 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #2 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #3 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">English Conversation</h5>-->
-<!--										<p>14 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #3 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #4 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">English Vocabulary</h5>-->
-<!--										<p>17 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #4 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #5 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">Business English</h5>-->
-<!--										<p>22 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #5 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #6 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">Test Prep</h5>-->
-<!--										<p>13 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #6 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #7 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">Beginner Level</h5>-->
-<!--										<p>78 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #7 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #8 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">Intermediate Level</h5>-->
-<!--										<p>24 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #8 &ndash;&gt;-->
-
-
-<!--							&lt;!&ndash; CATEGORIE BOX #9 &ndash;&gt;-->
-<!--							<div class="c1-box">-->
-<!--								<a href="category-details.html">-->
-<!--									<div class="c1-box-txt">-->
-
-<!--										<h5 class="h5-xs">Expert Level</h5>-->
-<!--										<p>9 Courses</p>-->
-
-<!--									</div>-->
-<!--								</a>-->
-<!--							</div> &lt;!&ndash; END CATEGORIE BOX #9 &ndash;&gt;-->
-
-
-<!--						</div>-->
-<!--					</div> &lt;!&ndash; End row &ndash;&gt;-->
-<!--				</div> &lt;!&ndash; End container &ndash;&gt;-->
-<!--			</section> &lt;!&ndash; End CATEGORIES-1 &ndash;&gt;-->
-
-
-
-
-			<!-- COURSES-3
-				============================================= -->
-			<section id="courses-3" class="wide-60 courses-section division">
-				<div class="container">
-
-
-					<!-- SECTION TITLE -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title mb-40">
-
-								<!-- Title 	-->
-								<h4 class="h4-xl">Para você</h4>
-
-								<!-- Text -->
-								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis
-									libero
-									tempus, blandit posuere and ligula varius magna a porta
-								</p>
-
-							</div>
-						</div>
-					</div>
-
-
-					<!-- COURSES HOLDER -->
-					<div class="row courses-grid">
-
-
-						<!-- COURSE #1 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-1-img.jpg' %}" alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>Linda J. Ross</span>
-											<span>16 Hours</span>
-										</p>
-
-										<!-- Course Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-											<span>4.5 (26 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$149.99</span> $138.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #1 -->
-
-
-						<!-- COURSE #2 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-2-img.jpg' %}" alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>Sam Richardson</span>
-											<span>63 Hours</span>
-										</p>
-
-										<!-- Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span>5 (118 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$174.99</span> $59.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #2 -->
-
-
-						<!-- COURSE #3 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-18-img.jpg' %}"
-										alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>Kally Brooks</span>
-											<span>37 Hours</span>
-										</p>
-
-										<!-- Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-											<span>4.5 (72 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$119.99</span> $34.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #3 -->
-
-
-						<!-- COURSE #4 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-19-img.jpg' %}"
-										alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>Becky Reed</span>
-											<span>42 Hours</span>
-										</p>
-
-										<!-- Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span>5 (281 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$84.99</span> $64.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #4 -->
-
-
-						<!-- COURSE #5 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-21-img.jpg' %}"
-										alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>David Smith</span>
-											<span>28 Hours</span>
-										</p>
-
-										<!-- Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span>4.15 (58 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$194.99</span> $62.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #5 -->
-
-
-						<!-- COURSE #6 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-22-img.jpg' %}"
-										alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>Linda J. Ross</span>
-											<span>37 Hours</span>
-										</p>
-
-										<!-- Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span>5 (31 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$149.99</span> $45.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #6 -->
-
-
-						<!-- COURSE #7 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-23-img.jpg' %}"
-										alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>Becky Reed</span>
-											<span>22 Hours</span>
-										</p>
-
-										<!-- Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-											<span>4.8 (74 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$109.99</span> $23.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #7 -->
-
-
-						<!-- COURSE #8 -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div class="cbox-1">
-								<a href="{% url 'cursodetalhe' %}">
-
-									<!-- Image -->
-									<img class="img-fluid" src="{% static 'images/courses/course-24-img.jpg' %}"
-										alt="course-preview" />
-
-									<!-- Text -->
-									<div class="cbox-1-txt">
-
-										<!-- Course Tags -->
-										<p class="course-tags">
-											<span>Robert Coronado</span>
-											<span>55 Hours</span>
-										</p>
-
-										<!-- Title -->
-										<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-
-										<!-- Course Rating -->
-										<div class="course-rating clearfix">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span>5 (374 Avaliações)</span>
-										</div>
-
-										<!-- Course Price -->
-										<span class="course-price"><span class="old-price">$169.99</span> $33.99</span>
-
-									</div>
-
-								</a>
-							</div>
-						</div> <!-- END COURSE #8 -->
-
-
-					</div> <!-- END COURSES HOLDER -->
-				</div> <!-- End container -->
-			</section> <!-- END COURSES-3 -->
-
-
-
-
-			<!-- BANNER-2
-				============================================= -->
-			<section id="banner-2" class="bg-01 wide-60 banner-section" hidden>
-				<div class="container">
-					<div class="row d-flex align-items-center">
-
-
-						<!-- BANNER TEXT -->
-						<div class="col-md-7">
-							<div class="banner-2-txt white-color">
-
-								<!-- Title -->
-								<h3 class="h3-lg">Register now for getting <span>200+ courses free access</span>. This
-									offer for limited time</h3>
-
-								<!-- COUNTDOWN ELEMENT -->
-								<div class="countdown"><span class="countdown-txt">Ends in</span>
-									<div id="clock"></div>
-								</div>
-
-							</div>
-						</div>
-
-
-						<!-- REGISTER FORM -->
-						<div class="col-md-5">
-							<div id="register-form">
-								<form name="registerForm" class="row register-form">
-
-									<!-- Form Input -->
-									<div id="input-name" class="col-md-12">
-										<p>Your Name*</p>
-										<input type="text" name="name" class="form-control name"
-											placeholder="Enter Your Name*" required>
-									</div>
-
-									<!-- Form Input -->
-									<div id="input-email" class="col-md-12">
-										<p>Your Email*</p>
-										<input type="email" name="email" class="form-control email"
-											placeholder="Enter Your Email*" required>
-									</div>
-
-									<!-- Form Input -->
-									<div id="input-phone" class="col-md-12">
-										<p>Your Pnone Number*</p>
-										<input type="tel" name="phone" class="form-control phone"
-											placeholder="Enter Your Phone Number*" required>
-									</div>
-
-									<!-- Form Button -->
-									<div class="col-md-12 form-btn">
-										<button type="submit"
-											class="btn btn-md btn-blue tra-black-hover submit">Register Now</button>
-									</div>
-
-									<!-- Form Message -->
-									<div class="col-md-12 register-form-msg text-center">
-										<span class="loading"></span>
-									</div>
-
-								</form>
-							</div>
-						</div> <!-- END REGISTER FORM -->
-
-
-					</div> <!-- End row -->
-				</div> <!-- End container -->
-			</section> <!-- END BANNER-2 -->
-
-
-
-
-			<!-- COURSES-5
-				============================================= -->
-			<section id="courses-5" class="courses-section division">
-				<div class="container">
-
-
-					<!-- SECTION TITLE -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title mb-40">
-
-								<!-- Title 	-->
-								<h4 class="h4-xl">Todos os Cursos</h4>
-
-								<!-- Text -->
-								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis
-									libero
-									tempus, blandit posuere and ligula varius magna a porta
-								</p>
-
-							</div>
-						</div>
-					</div>
-
-
-					<div class="row">
-
-
-						<!-- COURSES LIST -->
-						<div class="col-lg-6">
-
-
-							<!-- COURSE #1 -->
-							<div class="cbox-5 b-bottom">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">54 Horas - Adicionado em 2/2020</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.89 (331 Reviews)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 7348</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$24.99</span>
-											<span class="old-price">$59.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #1 -->
-
-
-							<!-- COURSE #2 -->
-							<div class="cbox-5 b-bottom">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">83 Horas - Adicionado em 12/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span class="cr-rating">4.19 (276 Reviews)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 12035</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$39.99</span>
-											<span class="old-price">$72.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #2 -->
-
-
-							<!-- COURSE #3 -->
-							<div class="cbox-5">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">62 Horas - Adicionado em 01/2020</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.15 (458 Avaliações)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 10651</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$52.99</span>
-											<span class="old-price">$74.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #3 -->
-
-
-							<!-- COURSE #4 -->
-							<div class="cbox-5">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">28 Horas - Adicionado em 11/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.72 (303 Avaliações)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 11169</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$49.99</span>
-											<span class="old-price">$92.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #4 -->
-
-
-							<!-- COURSE #5 -->
-							<div class="cbox-5">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">51 Horas - Adicionado em 11/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span class="cr-rating">4.29 (165 Avaliações)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 9751</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$43.99</span>
-											<span class="old-price">$74.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #5 -->
-
-
-						</div> <!-- END COURSES LIST -->
-
-
-						<!-- COURSES LIST -->
-						<div class="col-lg-6">
-
-
-							<!-- COURSE #6 -->
-							<div class="cbox-5 b-bottom">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">48 Horas - Adicionado em 2/2020</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span class="cr-rating">4.08 (264 Reviews)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 15491</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$19.99</span>
-											<span class="old-price">$44.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #6 -->
-
-
-							<!-- COURSE #7 -->
-							<div class="cbox-5 b-bottom">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">36 Horas - Adicionado em 12/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.79 (417 Reviews)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 17035</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$44.99</span>
-											<span class="old-price">$69.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #7 -->
-
-
-							<!-- COURSE #8 -->
-							<div class="cbox-5">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">28 Horas - Adicionado em 11/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span class="cr-rating">4.42 (282 Avaliações)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 8163</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$29.99</span>
-											<span class="old-price">$62.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #8 -->
-
-
-							<!-- COURSE #9 -->
-							<div class="cbox-5">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">28 Horas - Adicionado em 11/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.32 (371 Avaliações)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 10368</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$34.99</span>
-											<span class="old-price">$59.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #9 -->
-
-
-							<!-- COURSE #10 -->
-							<div class="cbox-5">
-								<a href="{% url 'cursodetalhe' %}">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Aliquam a augue suscipit</h5>
-											<p class="p-sm grey-color">62 Horas - Adicionado em 11/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.91 (418 Avaliações)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 12047</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix">
-											<span class="course-price">$24.99</span>
-											<span class="old-price">$54.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div> <!-- END COURSE #10 -->
-
-
-						</div> <!-- END COURSES LIST -->
-
-
-					</div> <!-- End row -->
-
-
-				</div> <!-- End container -->
-			</section> <!-- END COURSES-5 -->
-
-
-
-
-			<!-- PAGE PAGINATION
-				============================================= -->
-			<div class="page-pagination division">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-
-							<nav aria-label="Page navigation">
-								<ul class="pagination justify-content-center">
-									<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i
-												class="fas fa-angle-left"></i></a></li>
-									<li class="page-item active"><a class="page-link" href="#">1 <span
-												class="sr-only">(current)</span></a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a> </li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">4</a></li>
-									<li class="page-item"><a class="page-link" href="#"><i
-												class="fas fa-angle-right"></i></a></li>
-								</ul>
-							</nav>
-
-						</div>
-					</div> <!-- End row -->
-				</div> <!-- End container -->
-			</div> <!-- END PAGE PAGINATION -->
-
-
-
-
-			<!-- BANNER-3
-				============================================= -->
-			<section id="banner-3" class="bg-whitesmoke bg-map banner-section division" hidden>
-				<div class="container">
-					<div class="banner-3-holder bg-lightdark">
-						<div class="row d-flex align-items-center">
-
-
-							<!-- BANNER IMAGE -->
-							<div class="col-lg-8">
-								<div class="banner-3-img">
-									<img class="img-fluid" src="images/banner-3-img.jpg" alt="banner-image" />
-								</div>
-							</div> <!-- END BANNER IMAGE -->
-
-
-							<!-- BANNER TEXT -->
-							<div class="col-lg-4">
-								<div class="banner-3-txt white-color">
-
-									<!-- Title -->
-									<h4 class="h4-xs">Find the right English language course for you</h4>
-
-									<!-- Button -->
-									<a href="#courses-5" class="btn btn-blue tra-white-hover">Select Course</a>
-
-								</div>
-							</div> <!-- END BANNER TEXT -->
-
-
-						</div> <!-- End row -->
-					</div> <!-- End banner-3-holder -->
-				</div> <!-- End container -->
-			</section> <!-- END BANNER-3 -->
-
-
-
-
-
-		</div> <!-- END INNER PAGE WRAPPER -->
+<!-- INNER PAGE WRAPPER ============================================= -->
+<div class="inner-page-wrapper">
+    <!-- BREADCRUMB ============================================= -->
+    <div id="breadcrumb" class="division">
+        <div class="container">
+            <div class="row">
+                <!-- BREADCRUMB NAV -->
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cursos</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </div> <!-- END BREADCRUMB -->
+    
+    <!-- PAGE HERO ============================================= -->
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hero-txt white-color">
+                        <!-- Title -->
+                        <h3 class="h3-xs">Cursos</h3>
+
+                        <!-- Share Icons -->
+                        <div class="share-list">
+                            <ul class="share-social-icons text-center clearfix">
+                                <li>
+                                    <p><span>{{ todos_cursos.count }} Cursos</span> encontrados.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form class="d-flex" role="search" method="get" action="{% url 'cursos' %}">
+                        <input class="form-control me-2" type="search" placeholder="Pesquisar Cursos" aria-label="Search" name="search" value="{{ busca }}">
+                        <button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- END PAGE HERO -->
+    
+    <!-- Busca (Quando há uma busca) ============================================= -->
+    {% if busca %}
+    <section id="search-results" class="wide-60 courses-section division">
+        <div class="container">
+            <!-- SECTION TITLE -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-40">
+                        <h4 class="h4-xl">Busca</h4>
+                        <p class="p-md">Cursos encontrados para "{{ busca }}".</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- COURSES HOLDER -->
+            <div class="row courses-grid">
+                {% for curso in cursos %}
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="cbox-1">
+                        <a href="{% url 'cursodetalhe' curso.id %}">
+                            <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
+                            <div class="cbox-1-txt">
+                                <p class="course-tags">
+                                    <span>{{ curso.categoria.nome }}</span>
+                                    <span>{{ curso.duracao }}</span>
+                                </p>
+                                <h5 class="h5-xs">{{ curso.titulo }}</h5>
+                                <div class="course-rating clearfix">
+                                    {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
+                                        {% with media_avaliacoes|floatformat:1 as rounded_media %}
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= rounded_media|floatformat:0 %}
+                                                    <i class="fas fa-star"></i>
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
+                                                <i class="fas fa-star-half-alt"></i>
+                                            {% endif %}
+                                        {% endwith %}
+                                    {% endwith %}
+                                    <span>{{ media_avaliacoes|floatformat:1 }} ({{ curso.num_avaliacoes }} Avaliações)</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div> <!-- END COURSES HOLDER -->
+        </div> <!-- End container -->
+    </section> <!-- END BUSCA -->
+    {% else %}
+    
+    <!-- Cursos Mais Vistos ============================================= -->
+    <section id="courses-1" class="wide-100 courses-section division">
+        <div class="container">
+            <!-- SECTION TITLE -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-40">
+                        <h4 class="h4-xl">Cursos Mais Vistos</h4>
+                        <p class="p-md">Descubra os cursos que estão em alta entre os alunos.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- COURSE BOXES CAROUSEL -->
+            <div class="row courses-grid">
+                {% for curso in cursos_mais_vistos %}
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="cbox-1">
+                        <a href="{% url 'cursodetalhe' curso.id %}">
+                            <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
+                            <div class="cbox-1-txt">
+                                <p class="course-tags">
+                                    <span>{{ curso.categoria.nome }}</span>
+                                    <span>{{ curso.duracao }}</span>
+                                </p>
+                                <h5 class="h5-xs">{{ curso.titulo }}</h5>
+                                <div class="course-rating clearfix">
+                                    {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
+                                        {% with media_avaliacoes|floatformat:1 as rounded_media %}
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= rounded_media|floatformat:0 %}
+                                                    <i class="fas fa-star"></i>
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
+                                                <i class="fas fa-star-half-alt"></i>
+                                            {% endif %}
+                                        {% endwith %}
+                                    {% endwith %}
+                                    <span>{{ media_avaliacoes|floatformat:1 }} ({{ curso.num_avaliacoes }} Avaliações)</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div> <!-- END COURSE BOXES CAROUSEL -->
+        </div> <!-- End container -->
+    </section> <!-- END CURSOS MAIS VISTOS -->
+    
+    <!-- Para Você ============================================= -->
+    <section id="courses-3" class="wide-60 courses-section division">
+        <div class="container">
+            <!-- SECTION TITLE -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-40">
+                        <h4 class="h4-xl">Para você</h4>
+                        <p class="p-md">Cursos que têm a sua cara.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- COURSES HOLDER -->
+            <div class="row courses-grid">
+                {% for curso in cursos_para_voce %}
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="cbox-1">
+                        <a href="{% url 'cursodetalhe' curso.id %}">
+                            <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
+                            <div class="cbox-1-txt">
+                                <p class="course-tags">
+                                    <span>{{ curso.categoria.nome }}</span>
+                                    <span>{{ curso.duracao }}</span>
+                                </p>
+                                <h5 class="h5-xs">{{ curso.titulo }}</h5>
+                                <div class="course-rating clearfix">
+                                    {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
+                                        {% with media_avaliacoes|floatformat:1 as rounded_media %}
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= rounded_media|floatformat:0 %}
+                                                    <i class="fas fa-star"></i>
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
+                                                <i class="fas fa-star-half-alt"></i>
+                                            {% endif %}
+                                        {% endwith %}
+                                    {% endwith %}
+                                    <span>{{ media_avaliacoes|floatformat:1 }} ({{ curso.num_avaliacoes }} Avaliações)</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div> <!-- END COURSES HOLDER -->
+        </div> <!-- End container -->
+    </section> <!-- END PARA VOCÊ -->
+    
+    <!-- Todos os Cursos ============================================= -->
+    <section id="courses-5" class="courses-section division">
+        <div class="container">
+            <!-- SECTION TITLE -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-40">
+                        <h4 class="h4-xl">Todos os Cursos</h4>
+                        <p class="p-md">Encontre todos os cursos disponíveis na nossa plataforma.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- COURSES LIST -->
+            <div class="row">
+                {% for curso in todos_cursos %}
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="cbox-5">
+                        <a href="{% url 'cursodetalhe' curso.id %}">
+                            <div class="cbox-5-img">
+                                <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
+                            </div>
+                            <div class="cbox-5-txt">
+                                <div class="row">
+                                    <!-- Course Title -->
+                                    <div class="col-sm-10 cbox-5-title">
+                                        <h5 class="h5-xs">{{ curso.titulo }}</h5>
+                                    </div>
+                                    <!-- Course Rating -->
+                                    <div class="col-sm-2 cbox-5-rating text-right">
+                                        {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
+                                            {% with media_avaliacoes|floatformat:1 as rounded_media %}
+                                                {% for i in "12345" %}
+                                                    {% if forloop.counter <= rounded_media|floatformat:0 %}
+                                                        <i class="fas fa-star"></i>
+                                                    {% else %}
+                                                        <i class="far fa-star"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                {% endif %}
+                                            {% endwith %}
+                                        {% endwith %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Course Description -->
+                                    <div class="col-sm-10 cbox-5-description">
+                                        <p>{{ curso.descricao }}</p>
+                                    </div>
+                                    <!-- Course Price -->
+                                    <div class="col-sm-2 cbox-5-price text-right clearfix">
+                                        <span class="course-price">${{ curso.preco_atual }}</span>
+                                        {% if curso.preco_anterior %}
+                                        <span class="old-price">${{ curso.preco_anterior }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div> <!-- END COURSE -->
+                {% endfor %}
+            </div> <!-- END COURSES LIST -->
+        </div> <!-- End container -->
+    </section> <!-- END TODOS OS CURSOS -->
+
+    <!-- PAGE PAGINATION ============================================= -->
+    <div class="page-pagination division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </div> <!-- END PAGE PAGINATION -->
+	{% endif %}
+</div> <!-- END INNER PAGE WRAPPER -->
 {% endblock %}

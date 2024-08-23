@@ -2,49 +2,34 @@
 {% block content %}
 {% load static %}
 			<div class="inner-page-wrapper">
-
-			<section class="bg-05 page-hero-section division">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="hero-txt white-color">
-
-								<!-- Title -->
-								<h3 class="h3-xs">Fórum's</h3>
-
-								<!-- Share Icons -->
-								<div class="share-list">
-									<ul class="share-social-icons text-center clearfix">
-										<li>
-											<p><span>64 Professores</span> encontrados.
-											<p>
-
-										</li>
-										<li>
-										</li>
-										<!-- <li><a href="#" class="share-ico ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-											<li><a href="#" class="share-ico ico-twitter"><i class="fab fa-twitter"></i></a></li>
-											<li><a href="mailto:yourdomain@mail.com" class="share-ico ico-mail"><i class="far fa-envelope"></i></a></li>
-											<li><a href="#" class="share-ico ico-bookmark"><i class="far fa-bookmark"></i> 8.4k</a></li>			 -->
-									</ul>
+				<section class="bg-05 page-hero-section division">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="hero-txt white-color">
+									<!-- Title -->
+									<h3 class="h3-xs">Professor</h3>
+				
+									<!-- Share Icons -->
+									<div class="share-list">
+										<ul class="share-social-icons text-center clearfix">
+											<li>
+												<p><span>{{ total_professores }}</span> Professores encontrados.</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-
-								<!-- Text -->
-								<!-- <p><span>9,463 students</span> are learning English Language on eTreeks</p> -->
-
 							</div>
-						</div>
-						<div class="col-md-6">
-							<form class="d-flex" role="searchProfessor">
-                   				<input type="text" class="form-control" placeholder="Professor" id="input-instituto">
-								<button class="btn btn-md" type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
-						      </form>
-						</div>
-						<!-- END PAGE HERO TEXT -->
-					</div> <!-- End row -->
-				</div> <!-- End container -->
-			</section> <!-- END PAGE HERO -->
-
+							<div class="col-md-6">
+								<!-- Formulário de Busca -->
+								<form class="d-flex" role="search" method="get" action="{% url 'professores' %}">
+									<input type="text" class="form-control" placeholder="Buscar Professor" name="nome" id="input-instituto">
+									<button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+								</form>
+							</div>
+						</div> <!-- End row -->
+					</div> <!-- End container -->
+				</section> <!-- END PAGE HERO -->
 
 				<!-- BREADCRUMB
 				============================================= -->
@@ -69,557 +54,103 @@
 
 
 
-				<!-- TEAM-1
-				============================================= -->
-				<section id="team-1" class="wide-60 team-ection division">
-					<div class="container">
-						<div class="row">
-
-
-							<!-- TEAM MEMBER #1 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo clearfix">
-
-										<img class="img-fluid" src="{%static 'images/team-1.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Sam Richardson</a></h5>
-										<span>Head Of Department</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.89</span>
-										</div>
-
-										<p class="p-sm">31 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #1 -->
-
-
-							<!-- TEAM MEMBER #2 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-2.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-google-plus"><i class="fab fa-google-plus-g"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Kally Brooks</a></h5>
-										<span>Business & Management</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-											<span class="tm-rating">4.38</span>
-										</div>
-
-										<p class="p-sm">17 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #2 -->
-
-
-							<!-- TEAM MEMBER #3 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-3.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Robert Coronado</a></h5>
-										<span>Engineering & Technology</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-											<span class="tm-rating">4.64</span>
-										</div>
-
-										<p class="p-sm">23 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #3 -->
-
-
-							<!-- TEAM MEMBER #4 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-4.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Becky Reed</a></h5>
-										<span>Design & Art</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.78</span>
-										</div>
-
-										<p class="p-sm">31 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #4 -->
-
-
-							<!-- TEAM MEMBER #5 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-5.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">David Smith</a></h5>
-										<span>IT & Software</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.64</span>
-										</div>
-
-										<p class="p-sm">62 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #5 -->
-
-
-							<!-- TEAM MEMBER #6 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-6.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Linda J. Ross</a></h5>
-										<span>Teacher of English</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-											<span class="tm-rating">4.33</span>
-										</div>
-
-										<p class="p-sm">59 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #6 -->
-
-
-							<!-- TEAM MEMBER #7 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-7.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Sergio Arriero</a></h5>
-										<span>Teacher of Spanish</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.19</span>
-										</div>
-
-										<p class="p-sm">42 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #7 -->
-
-
-							<!-- TEAM MEMBER #8 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-8.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Linda Ferell</a></h5>
-										<span>Healt & Fitness</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.81</span>
-										</div>
-
-										<p class="p-sm">74 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #8 -->
-
-
-							<!-- TEAM MEMBER #9 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-9.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Lea Victoria</a></h5>
-										<span>Life Science</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.82</span>
-										</div>
-
-										<p class="p-sm">51 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #9 -->
-
-
-							<!-- TEAM MEMBER #10 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-10.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Anthony Backer</a></h5>
-										<span>Photography</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.91</span>
-										</div>
-
-										<p class="p-sm">86 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #10 -->
-
-
-							<!-- TEAM MEMBER #11 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-11.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Jorge Stucky</a></h5>
-										<span>Science & Math</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<span class="tm-rating">4.38</span>
-										</div>
-
-										<p class="p-sm">70 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #11 -->
-
-
-							<!-- TEAM MEMBER #12 -->
-							<div class="col-sm-6 col-lg-3">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo">
-
-										<img class="img-fluid" src="{%static 'images/team-12.jpg' %}" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-youtube"><i class="fab fa-youtube"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-md"><a href="{% url 'professordetalhe' %}">Jilly Buchanan</a></h5>
-										<span>Real Estate</span>
-
-										<!-- Rating -->
-										<div class="tm-rating">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star-half-alt"></i>
-											<span class="tm-rating">4.46</span>
-										</div>
-
-										<p class="p-sm">96 Reviews</p>
-
-									</div>
-
-								</div>
-							</div>	<!-- END TEAM MEMBER #12 -->
-
-
-						</div>	  <!-- End row -->
-					</div>     <!-- End container -->
-				</section>	<!-- END TEAM-1 -->
-
-
-
-
-				<!-- PAGE PAGINATION
-				============================================= -->
-				<div class="page-pagination division">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-
-								<nav aria-label="Page navigation">
-									<ul class="pagination justify-content-center">
-										<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
-									    <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-									    <li class="page-item"><a class="page-link" href="#">2</a> </li>
-									    <li class="page-item"><a class="page-link" href="#">3</a></li>
-									    <li class="page-item"><a class="page-link" href="#">4</a></li>
-									    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
-									</ul>
-								</nav>
-
-							</div>
-						</div>  <!-- End row -->
-					</div> <!-- End container -->
-				</div>	<!-- END PAGE PAGINATION -->
-
+<!-- TEAM SECTION -->
+<section id="team-1" class="wide-60 team-section division">
+    <div class="container">
+        <div class="row">
+            {% for professor in page_obj %}
+                <div class="col-sm-6 col-lg-3">
+                    <div class="team-member">
+                        <!-- Team Member Photo -->
+                        <div class="team-member-photo clearfix">
+                            <img class="img-fluid" src="{{ professor.foto.url }}" alt="team-member-photo">
+
+                            <!-- Social Icons -->
+                            <div class="tm-social clearfix">
+                                <ul class="text-center clearfix">
+                                    {% if professor.facebook %}
+                                        <li><a href="{{ professor.facebook }}" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    {% endif %}
+                                    {% if professor.linkedin %}
+                                        <li><a href="{{ professor.linkedin }}" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                                    {% endif %}
+                                    {% if professor.google_plus %}
+                                        <li><a href="{{ professor.google_plus }}" class="ico-google-plus"><i class="fab fa-google-plus-g"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Team Member Meta -->
+                        <div class="tm-meta">
+                            <h5 class="h5-md"><a href="{% url 'professordetalhe' professor.user.id %}">{{ professor.user.username }}</a></h5>
+                            <span>{{ professor.descricao }}</span>
+
+                            <!-- Rating -->
+                            <div class="tm-rating">
+                                <!-- Você pode adicionar a lógica para a classificação aqui se necessário -->
+                                <span class="tm-rating">4.5</span> <!-- Exemplo fixo -->
+                            </div>
+
+                            <p class="p-sm">{{ professor.user.profile.num_avaliacoes }} Reviews</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Nenhum professor encontrado.</p>
+            {% endfor %}
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="page-pagination division">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?q={{ query }}&page=1" tabindex="-1"><i class="fas fa-angle-left"></i></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?q={{ query }}&page={{ page_obj.previous_page_number }}">«</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+                                    <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == num %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="?q={{ query }}&page={{ num }}">{{ num }} <span class="sr-only">(current)</span></a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?q={{ query }}&page={{ num }}">{{ num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?q={{ query }}&page={{ page_obj.next_page_number }}">»</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?q={{ query }}&page={{ page_obj.paginator.num_pages }}"><i class="fas fa-angle-right"></i></a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link" href="#">»</a></li>
+                                    <li class="page-item disabled"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>  <!-- End row -->
+            </div> <!-- End container -->
+        </div>	<!-- END PAGE PAGINATION -->
+    </div>
+</section>
 
 
 			</div>	<!-- END INNER PAGE WRAPPER -->
