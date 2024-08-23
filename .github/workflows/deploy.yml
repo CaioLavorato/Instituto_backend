@@ -57,30 +57,34 @@ jobs:
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 'echo SSH connection successful'
 
-    - name: Deploy to the server
-      env:
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-      run: |
-        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-        echo "Starting deployment" &&
-        cd /var/www/Instituto_backend &&
-        echo "Configuring Git safe directory..." &&
-        git config --global --add safe.directory /var/www/Instituto_backend &&
-        echo "Stashing local changes..." &&
-        git stash push --include-untracked &&
-        echo "Updating repository..." &&
-        git pull origin master &&
-        echo "Current directory contents:" &&
-        ls -la &&
-        echo "Creating and activating virtual environment..." &&
-        python3 -m venv venv &&
-        source venv/bin/activate &&
-        echo "Installing dependencies..." &&
-        pip install -r requirements.txt &&
-        echo "Running migrations..." &&
-        python manage.py migrate &&
-        echo "Collecting static files..." &&
-        python manage.py collectstatic --noinput &&
-        echo "Restarting Gunicorn..." &&
-        systemctl restart gunicorn &&
-        echo "Deployment completed"'
+        - name: Deploy to the server
+        env:
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+          echo "Starting deployment" &&
+          cd /var/www/Instituto_backend &&
+          echo "Configuring Git safe directory..." &&
+          git config --global --add safe.directory /var/www/Instituto_backend &&
+          echo "Checking for uncommitted changes..." &&
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Uncommitted changes detected, discarding them..." &&
+            git reset --hard &&
+            git clean -fd
+          fi &&
+          echo "Updating repository..." &&
+          git pull origin master &&
+          echo "Current directory contents:" &&
+          ls -la &&
+          echo "Creating and activating virtual environment..." &&
+          python3 -m venv venv &&
+          source venv/bin/activate &&
+          echo "Installing dependencies..." &&
+          pip install -r requirements.txt &&
+          echo "Running migrations..." &&
+          python manage.py migrate &&
+          echo "Collecting static files..." &&
+          python manage.py collectstatic --noinput &&
+          echo "Restarting Gunicorn..." &&
+          systemctl restart gunicorn &&
+          echo "Deployment completed"'
