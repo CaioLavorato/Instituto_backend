@@ -1,13 +1,56 @@
 {% extends 'baseLogado.html' %}
 
 {% block content %}
-<h1>Criar Novo Tópico</h1>
+<div class="inner-page-wrapper">
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb" class="division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'lista_forum' %}">Fórum</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Criar Tópico</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-    <button type="submit" class="btn btn-success">Criar Tópico</button>
-</form>
+    <!-- PAGE HERO -->
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-txt white-color">
+                        <h3 class="h3-xs">Criar Novo Tópico</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="{% url 'lista_forum' %}" class="btn btn-secondary">Voltar para a Lista</a>
+    <!-- CREATE TOPIC FORM -->
+    <section id="contacts-2" class="wide-60 contacts-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-holder mb-40">
+                        <form method="post" class="row contact-form">
+                            {% csrf_token %}
+                            <div class="col-md-12">
+                                {{ formulario.as_p }}
+                            </div>
+                            <div class="col-md-12 mt-15 form-btn text-right">
+                                <button type="submit" class="btn btn-md btn-rose tra-black-hover submit">Criar Tópico</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}
