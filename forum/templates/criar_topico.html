@@ -1,0 +1,13 @@
+{% extends 'baseLogado.html' %}
+
+{% block content %}
+<h1>Criar Novo Tópico</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit" class="btn btn-success">Criar Tópico</button>
+</form>
+
+<a href="{% url 'lista_forum' %}" class="btn btn-secondary">Voltar para a Lista</a>
+{% endblock %}

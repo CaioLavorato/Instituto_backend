@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Fórum</h1>
+
+<a href="{% url 'criar_topico' %}" class="btn btn-primary">Criar Novo Tópico</a>
+
+<div class="lista-topicos">
+    {% for topico in topicos %}
+    <div class="topico">
+        <h2><a href="{% url 'detalhe_forum' pk=topico.pk %}">{{ topico.titulo }}</a></h2>
+        <p>Curso: {{ topico.curso.titulo }}</p>
+        <p>Criado por: {{ topico.usuario.username }} em {{ topico.data_criacao|date:"d/m/Y H:i" }}</p>
+    </div>
+    {% empty %}
+    <p>Nenhum tópico foi criado ainda.</p>
+    {% endfor %}
+</div>
+{% endblock %}
