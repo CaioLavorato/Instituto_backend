@@ -1,34 +1,85 @@
-{% extends 'base.html' %}
+{% extends 'baseLogado.html' %}
 
 {% block content %}
-<h1>{{ topico.titulo }}</h1>
-
-<div class="detalhes-topico">
-    <p>Curso: {{ topico.curso.titulo }}</p>
-    <p>Criado por: {{ topico.usuario.username }} em {{ topico.data_criacao|date:"d/m/Y H:i" }}</p>
-    <p>{{ topico.conteudo }}</p>
-</div>
-
-<h2>Respostas</h2>
-
-<div class="respostas">
-    {% for resposta in respostas %}
-    <div class="resposta">
-        <p>{{ resposta.conteudo }}</p>
-        <p>Respondido por: {{ resposta.usuario.username }} em {{ resposta.data_criacao|date:"d/m/Y H:i" }}</p>
+<div class="inner-page-wrapper">
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb" class="division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'lista_forum' %}">Fórum</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ topico.titulo }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
-    {% empty %}
-    <p>Nenhuma resposta ainda.</p>
-    {% endfor %}
+
+    <!-- PAGE HERO -->
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-txt white-color">
+                        <h3 class="h3-xs">{{ topico.titulo }}</h3>
+                        <div class="share-list">
+                            <ul class="share-social-icons text-center clearfix">
+                                <li>
+                                    <p>Criado por: <span>{{ topico.usuario.username }}</span> em {{ topico.data_criacao|date:"d/m/Y H:i" }}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOPIC DETAILS -->
+    <section id="course-details" class="wide-60 course-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="course-txt">
+                        <p>{{ topico.conteudo }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESPONSES -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="h4-sm mt-60">Respostas</h4>
+                    {% for resposta in respostas %}
+                    <div class="review-2">
+                        <div class="review-2-txt">
+                            <h5 class="h5-sm">{{ resposta.usuario.username }}</h5>
+                            <span>{{ resposta.data_criacao|date:"d/m/Y H:i" }}</span>
+                            <p>{{ resposta.conteudo }}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>Nenhuma resposta ainda.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- RESPONSE FORM -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="h4-sm mt-60">Adicionar Resposta</h4>
+                    <form method="post" class="comment-form">
+                        {% csrf_token %}
+                        {{ formulario.as_p }}
+                        <button type="submit" class="btn btn-md btn-rose tra-black-hover">Enviar Resposta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-
-<h3>Adicionar Resposta</h3>
-
-<form method="post">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-    <button type="submit" class="btn btn-primary">Enviar Resposta</button>
-</form>
-
-<a href="{% url 'lista_forum' %}" class="btn btn-secondary">Voltar para a Lista</a>
 {% endblock %}

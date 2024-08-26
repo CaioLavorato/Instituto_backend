@@ -1,19 +1,77 @@
-{% extends 'base.html' %}
+{% extends 'baseLogado.html' %}
 
 {% block content %}
-<h1>Fórum</h1>
-
-<a href="{% url 'criar_topico' %}" class="btn btn-primary">Criar Novo Tópico</a>
-
-<div class="lista-topicos">
-    {% for topico in topicos %}
-    <div class="topico">
-        <h2><a href="{% url 'detalhe_forum' pk=topico.pk %}">{{ topico.titulo }}</a></h2>
-        <p>Curso: {{ topico.curso.titulo }}</p>
-        <p>Criado por: {{ topico.usuario.username }} em {{ topico.data_criacao|date:"d/m/Y H:i" }}</p>
+<div class="inner-page-wrapper">
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb" class="division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Fórum</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
-    {% empty %}
-    <p>Nenhum tópico foi criado ainda.</p>
-    {% endfor %}
+
+    <!-- PAGE HERO -->
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="hero-txt white-color">
+                        <h3 class="h3-xs">Fórum de Discussão</h3>
+                        <div class="share-list">
+                            <ul class="share-social-icons text-center clearfix">
+                                <li>
+                                    <p><span>{{ topicos.count }} Tópicos</span> encontrados.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="hero-btn">
+                        <a href="{% url 'criar_topico' %}" class="btn btn-md btn-rose tra-white-hover">Criar Novo Tópico</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORUM TOPICS -->
+    <section id="courses-1" class="wide-100 courses-section division">
+        <div class="container">
+            <div class="row courses-grid">
+                {% for topico in topicos %}
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="cbox-1">
+                        <a href="{% url 'detalhe_forum' pk=topico.pk %}">
+                            <div class="cbox-1-txt">
+                                <p class="course-tags">
+                                    <span>{{ topico.curso.titulo }}</span>
+                                    <span>{{ topico.data_criacao|date:"d/m/Y H:i" }}</span>
+                                </p>
+                                <h5 class="h5-xs">{{ topico.titulo }}</h5>
+                                <div class="course-rating clearfix">
+                                    <i class="fas fa-user"></i>
+                                    <span>{{ topico.usuario.username }}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-md-12">
+                    <p>Nenhum tópico foi criado ainda.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %}
