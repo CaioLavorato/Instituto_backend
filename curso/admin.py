@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from .models import (
     Curso, UserProfile, Modulo_usuario, Modulo, Categorias, Questionario,
-    Aula, Chat, Badge, Forum, Avaliacao, Pergunta, Certificado,
+    Aula, Chat, Badge, Avaliacao, Pergunta, Certificado,
     Alternativas, LaudosMedicos, Agendamento
 )
 from .forms import UserProfileForm, AgendamentoForm
@@ -43,7 +43,6 @@ admin.site.register(Questionario)
 admin.site.register(Aula)
 admin.site.register(Chat)
 admin.site.register(Badge)
-admin.site.register(Forum)
 admin.site.register(Avaliacao)
 admin.site.register(Pergunta)
 admin.site.register(Certificado)

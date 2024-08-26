@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfile, Agendamento, Forum
+from .models import UserProfile, Agendamento
 from django.core.exceptions import ValidationError
 import re
 
@@ -73,14 +73,6 @@ class AgendamentoForm(forms.ModelForm):
             'id_doutor': 'Doutor',
         }
 
-class ForumForm(forms.ModelForm):
-    class Meta:
-        model = Forum
-        fields = ['curso', 'usuario', 'titulo', 'conteudo']
-        widgets = {
-            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o título do fórum'}),
-            'conteudo': forms.Textarea(attrs={'class': 'form-control', 'rows': 6, 'placeholder': 'Escreva o conteúdo do fórum'}),
-        }
 
 class LoginForm(forms.Form):
     email = forms.CharField(max_length=100)

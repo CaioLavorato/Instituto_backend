@@ -2,7 +2,7 @@
 import re
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from curso.models import UserProfile, Curso, Modulo, Aula, Questionario, Pergunta, Alternativas, Certificado, Chat, Forum, \
+from curso.models import UserProfile, Curso, Modulo, Aula, Questionario, Pergunta, Alternativas, Certificado, Chat, \
     Avaliacao, Badge, Agendamento, LaudosMedicos
 
 
@@ -112,12 +112,6 @@ class CertificadoSerializer(serializers.ModelSerializer):
 class ChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chat
-        fields = '__all__'
-
-
-class ForumSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Forum
         fields = '__all__'
 
 

@@ -7,10 +7,9 @@ from rest_framework.views import APIView
 from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.models import User
-from curso.models import UserProfile, Curso, Modulo, Aula, Questionario, Pergunta, Alternativas, Certificado, Chat, Forum, Avaliacao, Badge, Agendamento, LaudosMedicos
+from curso.models import UserProfile, Curso, Modulo, Aula, Questionario, Pergunta, Alternativas, Certificado, Chat, Avaliacao, Badge, Agendamento, LaudosMedicos
 from .serializers import UserSerializer, UserProfileSerializer, CursoSerializer, ModuloSerializer, AulaSerializer, \
-    QuestionarioSerializer, PerguntaSerializer, AlternativasSerializer, CertificadoSerializer, ChatSerializer, \
-    ForumSerializer, AvaliacaoSerializer, BadgeSerializer, AgendamentoSerializer, LaudosMedicosSerializer, \
+    QuestionarioSerializer, PerguntaSerializer, AlternativasSerializer, CertificadoSerializer, ChatSerializer, AvaliacaoSerializer, BadgeSerializer, AgendamentoSerializer, LaudosMedicosSerializer, \
     UserRegistrationSerializer
 
 
@@ -62,11 +61,6 @@ class CertificadoViewSet(viewsets.ModelViewSet):
 class ChatViewSet(viewsets.ModelViewSet):
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
-    permission_classes = [IsAuthenticated]
-
-class ForumViewSet(viewsets.ModelViewSet):
-    queryset = Forum.objects.all()
-    serializer_class = ForumSerializer
     permission_classes = [IsAuthenticated]
 
 class AvaliacaoViewSet(viewsets.ModelViewSet):
