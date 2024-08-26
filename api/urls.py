@@ -2,7 +2,7 @@
 from django.urls import path, include
 from .views import CustomAuthToken, UserRegistrationView
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet, UserProfileViewSet, CursoViewSet, ModuloViewSet, AulaViewSet, QuestionarioViewSet, PerguntaViewSet, AlternativasViewSet, CertificadoViewSet, ChatViewSet, ForumViewSet, AvaliacaoViewSet, BadgeViewSet, AgendamentoViewSet, LaudosMedicosViewSet
+from .views import UserViewSet, UserProfileViewSet, CursoViewSet, ModuloViewSet, AulaViewSet, QuestionarioViewSet, PerguntaViewSet, AlternativasViewSet, CertificadoViewSet, ChatViewSet, AvaliacaoViewSet, BadgeViewSet, AgendamentoViewSet, LaudosMedicosViewSet
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -15,7 +15,6 @@ router.register(r'perguntas', PerguntaViewSet)
 router.register(r'alternativas', AlternativasViewSet)
 router.register(r'certificados', CertificadoViewSet)
 router.register(r'chats', ChatViewSet)
-router.register(r'forums', ForumViewSet)
 router.register(r'avaliacoes', AvaliacaoViewSet)
 router.register(r'badges', BadgeViewSet)
 router.register(r'agendamentos', AgendamentoViewSet)

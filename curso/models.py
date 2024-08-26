@@ -137,16 +137,6 @@ class Chat(models.Model):
     def __str__(self):
         return f"{self.id_remetente.username} - {self.id_destinatario.username}"
 
-# Modelo de Forum
-class Forum(models.Model):
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=100)
-    conteudo = models.TextField(max_length=3000)
-    data_criacao = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return self.titulo
 
 # Modelo de Avaliacao
 class Avaliacao(models.Model):
