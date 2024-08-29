@@ -1,12 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import TopicoForum, RespostaForum
 from curso.models import Curso
 from .forms import FormularioTopico, FormularioResposta
 
+@login_required
 def lista_forum(request):
-    topicos = TopicoForum.objects.all().order_by('-data_criacao')
-    return render(request, 'lista_forum.html', {'topicos': topicos})
+    query = request.GET.get('q')  # Captura o termo de busca do input
+    
+    if query:
+        topicos = TopicoForum.objects.filter(titulo__icontains=query).order_by('-data_criacao')
+    else:
+        topicos = TopicoForum.objects.all().order_by('-data_criacao')
+    
+    return render(request, 'lista_forum.html', {'topicos': topicos, 'query': query})
 
 @login_required
 def criar_topico(request):
@@ -16,7 +24,10 @@ def criar_topico(request):
             topico = formulario.save(commit=False)
             topico.usuario = request.user
             topico.save()
+            messages.success(request, 'Fórum criado com sucesso!')
             return redirect('detalhe_forum', pk=topico.pk)
+        else:
+            messages.error(request, 'Por favor, corrija os erros abaixo.')
     else:
         formulario = FormularioTopico()
     return render(request, 'criar_topico.html', {'formulario': formulario})

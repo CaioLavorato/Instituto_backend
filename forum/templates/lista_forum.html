@@ -1,18 +1,21 @@
 {% extends 'baseLogado.html' %}
-
+{% load static %}
 {% block content %}
 <div class="inner-page-wrapper">
     <!-- BREADCRUMB -->
     <div id="breadcrumb" class="division">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-10">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Fórum</li>
                         </ol>
                     </nav>
+                </div>
+                <div class="col-md-2 mt-2">
+                    <a href="{% url 'criar_topico' %}" class="btn btn-blue tra-black-hover last-link">Novo Tópico</a>
                 </div>
             </div>
         </div>
@@ -31,13 +34,16 @@
                                     <p><span>{{ topicos.count }} Tópicos</span> encontrados.</p>
                                 </li>
                             </ul>
+     
                         </div>
+      
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="hero-btn">
-                        <a href="{% url 'criar_topico' %}" class="btn btn-md btn-rose tra-white-hover">Criar Novo Tópico</a>
-                    </div>
+                    <form class="d-flex" role="searchForum" method="GET" action="{% url 'lista_forum' %}">
+                        <input type="text" class="form-control" placeholder="Fórum" id="input-instituto" name="q" value="{{ query|default:''  }}">
+                        <button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -46,32 +52,58 @@
     <!-- FORUM TOPICS -->
     <section id="courses-1" class="wide-100 courses-section division">
         <div class="container">
-            <div class="row courses-grid">
-                {% for topico in topicos %}
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="cbox-1">
-                        <a href="{% url 'detalhe_forum' pk=topico.pk %}">
-                            <div class="cbox-1-txt">
-                                <p class="course-tags">
-                                    <span>{{ topico.curso.titulo }}</span>
-                                    <span>{{ topico.data_criacao|date:"d/m/Y H:i" }}</span>
-                                </p>
-                                <h5 class="h5-xs">{{ topico.titulo }}</h5>
-                                <div class="course-rating clearfix">
-                                    <i class="fas fa-user"></i>
-                                    <span>{{ topico.usuario.username }}</span>
-                                </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="posts-holder pr-25">
+
+                    {% for topico in topicos %}
+                        <div class="article-3 row d-flex align-items-center b-bottom">
+                            <!-- Article Preview -->
+                            <div class="col-md-4">
+                                <img class="img-fluid" src="{{ topico.thumb.url }}" alt="{{ topico.titulo }}">
                             </div>
-                        </a>
+
+                            <!-- Article Text -->
+                            <div class="col-md-8">
+
+                                <!-- Title -->
+                                <h4 class="h4-sm">
+                                    <a href="{% url 'detalhe_forum' pk=topico.pk %}">{{ topico.curso.titulo }}</a>
+                                </h4>
+
+                                <!-- Post Author -->
+                                <span>{{ topico.data_criacao|date:"d/m/Y H:i" }} - By {{ topico.usuario.username }}</span>
+
+                                <!-- Text -->
+                                <p>
+                                    {% if topico.conteudo|length > 100 %}
+                                        {{ topico.conteudo|slice:":100" }}...
+                                    {% else %}
+                                        {{ topico.conteudo }}
+                                    {% endif %}
+                                </p>
+
+                                <!-- Post Tags -->
+                                <div class="tags-cloud">
+                                    <span class="badge"><a href="#">Ideas & Opinions</a></span>
+                                    <span class="badge"><a href="#">Students</a></span>
+                                    <span class="badge"><a href="#">eTreeks News</a></span>
+                                </div>
+
+                            </div>
+
+                        </div>	<!-- END ARTICLE #1 -->
+                        {% empty %}
+                        <div class="col-md-12">
+                            <p>Nenhum tópico foi criado ainda.</p>
+                        </div>
+                    {% endfor %}
                     </div>
                 </div>
-                {% empty %}
-                <div class="col-md-12">
-                    <p>Nenhum tópico foi criado ainda.</p>
-                </div>
-                {% endfor %}
             </div>
+
         </div>
+ 
     </section>
 </div>
 {% endblock %}

@@ -1,6 +1,73 @@
 {% extends 'baseLogado.html' %}
-
 {% block content %}
+{% load static %}
+<style>
+    /* CSS Customizado */
+    .form-holder {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .form-holder h4 {
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .btn-block {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .img-round {
+        border-radius: 50%;
+        width: 100px;  /* Ajuste o tamanho conforme necessário */
+        height: 100px; /* Ajuste o tamanho conforme necessário */
+        object-fit: cover; /* Garante que a imagem preencha o contêiner */
+    }        
+    .alert {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #721c24; /* Cor do texto padrão (vermelho para erros) */
+    background-color: #f8d7da; /* Cor de fundo padrão para erros */
+}
+
+.alert.success {
+    color: #155724; /* Cor do texto para sucesso (verde) */
+    background-color: #d4edda; /* Cor de fundo para sucesso (verde claro) */
+}
+
+.alert .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.25rem;
+    color: inherit; /* Cor do botão de fechar, herda a cor do texto */
+    cursor: pointer;
+}
+</style>
 <div class="inner-page-wrapper">
     <!-- BREADCRUMB -->
     <div id="breadcrumb" class="division">
@@ -33,24 +100,53 @@
     </section>
 
     <!-- CREATE TOPIC FORM -->
-    <section id="contacts-2" class="wide-60 contacts-section division">
+    <section id="forum-form" class="wide-70 form-section division">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="form-holder mb-40">
-                        <form method="post" class="row contact-form">
-                            {% csrf_token %}
-                            <div class="col-md-12">
-                                {{ formulario.as_p }}
+                <!-- FORM CONTAINER -->
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="form-holder card p-4 shadow-sm">
+                        <!-- Display messages -->
+                        {% if messages %}
+                            <div class="alert alert-info">
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
                             </div>
-                            <div class="col-md-12 mt-15 form-btn text-right">
-                                <button type="submit" class="btn btn-md btn-rose tra-black-hover submit">Criar Tópico</button>
+                        {% endif %}
+                        
+                        <!-- Form -->
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+
+                            <!-- Form Group -->
+                            <div class="form-group">
+                                <label for="{{ formulario.curso.id_for_label }}">Curso</label>
+                                {{ formulario.curso }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ formulario.titulo.id_for_label }}">Título</label>
+                                {{ formulario.titulo }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ formulario.conteudo.id_for_label }}">Conteúdo</label>
+                                {{ formulario.conteudo }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ formulario.thumb.id_for_label }}">Imagem</label>
+                                {{ formulario.thumb }}
+                            </div>
+                            <!-- Submit Button -->
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-blue tra-black-hover last-link">Criar Fórum</button>
+
                             </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </div> <!-- END FORM HOLDER -->
+                </div> <!-- END FORM CONTAINER -->
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- END FORUM FORM -->
 </div>
 {% endblock %}
