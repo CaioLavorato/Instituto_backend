@@ -159,6 +159,14 @@ def cursodetalhe(request):
     return render(request,"cursodetalhe.html")
 
 @login_required
+def foruns(request):
+    return render(request,"foruns.html")
+
+@login_required
+def forumdetalhe(request):
+    return render(request,"forumdetalhe.html")
+
+@login_required
 def documentos(request):
     return render(request,"documentos.html")
 
