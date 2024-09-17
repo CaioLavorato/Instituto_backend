@@ -1,6 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<style>
+	.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5); /* Botões semi-transparentes */
+    border-radius: 50%; /* Torna os botões circulares */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-control-prev {
+    left: 10px; /* Margem para a esquerda */
+}
+
+.carousel-control-next {
+    right: 10px; /* Margem para a direita */
+}
+
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Torna os botões mais visíveis no hover */
+}
+</style>
 			<!-- HERO-8
 			============================================= -->
 			<section id="hero-8" class="bg-scroll hero-section division">
@@ -39,11 +67,11 @@
 								<div class="statistic-block">
 
 									<!-- Digits -->
-									<h5 class="statistic-number"><span class="count-element">208</span></h5>
+									<h5 class="statistic-number"><span class="count-element">3.2</span></h5>
 
 									<!-- Text -->
 									<div class="statistic-block-txt">
-										<h6 class="h6-lg">Crianças atendidas</h6>
+										<h6 class="h6-lg">Milhões de crianças e adolescentes impactadas</h6>
 									</div>
 
 								</div>
@@ -55,11 +83,11 @@
 								<div class="statistic-block">
 
 									<!-- Digits -->
-									<h5 class="statistic-number"><span class="count-element">823</span></h5>
+									<h5 class="statistic-number"><span class="count-element">37</span></h5>
 
 									<!-- Text -->
 									<div class="statistic-block-txt">
-										<h6 class="h6-lg">Atendimento de Serviço Social</h6>
+										<h6 class="h6-lg">Mil Profissionais Capacitados</h6>
 									</div>
 
 								</div>
@@ -71,11 +99,11 @@
 								<div class="statistic-block">
 
 									<!-- Digits -->
-									<h5 class="statistic-number"><span class="count-element">633</span></h5>
+									<h5 class="statistic-number"><span class="count-element">22</span></h5>
 
 									<!-- Text -->
 									<div class="statistic-block-txt">
-										<h6 class="h6-lg">Bolsas distribuídas</h6>
+										<h6 class="h6-lg">Estados + DF</h6>
 									</div>
 
 								</div>
@@ -88,13 +116,13 @@
 			</section>	<!-- End HERO BOXES-2 -->
 			<!-- ABOUT-2
 			============================================= -->
-			<section id="about-2" class="wide-60 about-section division">
+			<section id="about-2" class="wide-60 about-section division" hidden>
 				<div class="container">
 					<div class="row d-flex align-items-center">
 
 
 						<!-- ABOUT IMAGE -->
-						<div class="col-md-5 col-lg-6">
+						<div class="col-md-5 col-lg-6" >
 							<div class="img-block pc-25 mb-40">
 								<img class="img-fluid" src="{% static 'images/diagnostico_precoce.jpg' %}" alt="about-image">
 					 		</div>
@@ -102,7 +130,7 @@
 
 
 						<!-- ABOUT TEXT -->
-					 	<div class="col-md-7 col-lg-6">
+					 	<div class="col-md-7 col-lg-6" >
 					 		<div class="txt-block pc-25 mb-40">
 
 					 			<!-- Title -->
@@ -424,274 +452,268 @@
 			============================================= -->
 			<section id="courses-5" class="courses-section division">
 				<div class="container">
-
-
 					<!-- SECTION TITLE -->
 					<div class="row">
 						<div class="col-md-12">
-							<div class="section-title mb-60">
-
-								<!-- Title 	-->
-								<h3 class="h3-sm">Nossos cursos mais populares</h3>
-
+							<div class="section-title title-centered1 mb-60">
+								<!-- Title -->
+								<h3 class="h3-sm">Nossos cursos mais vistos</h3>
 								<!-- Text -->
-								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero
-								   tempus, blandit posuere and ligula varius magna a porta
+								<p class="p-md">
+									Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero tempus, blandit posuere and ligula varius magna a porta
 								</p>
-
 								<!-- Button -->
 								<div class="title-btn">
-									<a href="courses-list.html" class="btn btn-tra-grey blue-hover">Ver todos os Cursos</a>
+									<a href="{% url 'cursos' %}" class="btn btn-blue tra-black-hover">Ver todos os Cursos</a>
 								</div>
-
 							</div>
 						</div>
 					</div>
-
-
+			
+					<!-- COURSES CAROUSEL -->
+					<div id="coursesCarousel" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<!-- Slide 1 -->
+							<div class="carousel-item active">
+								<div class="row justify-content-center">
+									<!-- COURSE #1 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-1-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star-half-alt"></i>
+														<span>4.5 (26 Avaliações)</span>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<!-- COURSE #2 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-2-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<span>5 (118 Avaliações)</span>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+			
+							<!-- Slide 2 -->
+							<div class="carousel-item">
+								<div class="row justify-content-center">
+									<!-- COURSE #3 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-5-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<span>4.15 (58 Avaliações)</span>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<!-- COURSE #4 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-9-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<span>5 (31 Avaliações)</span>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+			
+							<!-- Add more slides as needed -->
+						</div>
+			
+						<!-- Carousel Controls -->
+						<button class="carousel-control-prev" type="button" data-bs-target="#coursesCarousel" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#coursesCarousel" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						</button>
+					</div>
+				</div>
+			</section>
+			<section id="courses-6" class="courses-section division">
+				<div class="container">
+					<!-- SECTION TITLE -->
 					<div class="row">
-
-
-						<!-- COURSES LIST -->
-						<div class="col-lg-6">
-
-
-							<!-- COURSE #1 -->
-							<div class="cbox-5 b-bottom">
-								<a href="course-details.html">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Identificação Precoce de Distúrbios do Desenvolvimento Infantil</h5>
-											<p class="p-sm grey-color">11 Horas Totais - Adicionado em 02/2020</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.89 (31 Reviews)</span>
-											</div>
+						<div class="col-md-12">
+							<div class="section-title title-centered1 mb-60">
+								<!-- Title -->
+								<h3 class="h3-sm">Recém adicionados</h3>
+								<!-- Text -->
+								<p class="p-md">
+									Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero tempus, blandit posuere and ligula varius magna a porta
+								</p>
+								<!-- Button -->
+								<div class="title-btn">
+									<a href="{% url 'cursos' %}" class="btn btn-blue tra-black-hover">Ver todos os Cursos</a>
+								</div>
+							</div>
+						</div>
+					</div>
+			
+					<!-- COURSES CAROUSEL -->
+					<div id="coursesCarousel2" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<!-- Slide 1 -->
+							<div class="carousel-item active">
+								<div class="row justify-content-center">
+									<!-- COURSE #1 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-1-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star-half-alt"></i>
+														<span>4.5 (26 Avaliações)</span>
+													</div>
+												</div>
+											</a>
 										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 7348</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
-											<span class="course-price" hidden>$64.99</span>
-											<span class="old-price">$119.99</span>
-										</div>
-
 									</div>
-								</a>
-							</div>	<!-- END COURSE #1 -->
-
-
-							<!-- COURSE #2 -->
-							<div class="cbox-5 b-bottom">
-								<a href="course-details.html">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Avaliação e Intervenção Precoce em Condições Crônicas</h5>
-											<p class="p-sm grey-color">8 Horas Totais - Adicionado em 12/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span class="cr-rating">4.19 (76 Reviews)</span>
-											</div>
+									<!-- COURSE #2 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-2-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<span>5 (118 Avaliações)</span>
+													</div>
+												</div>
+											</a>
 										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 12035</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
-											<span class="course-price" hidden>$29.99</span>
-											<span class="old-price">$69.99</span>
-										</div>
-
 									</div>
-								</a>
-							</div>	<!-- END COURSE #2 -->
-
-
-							<!-- COURSE #3 -->
-							<div class="cbox-5">
-								<a href="course-details.html">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Métodos Avançados para Diagnóstico Precoce de Autismo</h5>
-											<p class="p-sm grey-color">23 Horas Totais - Adicionado em 01/2020</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.15 (58 Ratings)</span>
-											</div>
+								</div>
+							</div>
+			
+							<!-- Slide 2 -->
+							<div class="carousel-item">
+								<div class="row justify-content-center">
+									<!-- COURSE #3 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-5-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<span>4.15 (58 Avaliações)</span>
+													</div>
+												</div>
+											</a>
 										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 10651</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
-											<span class="course-price">$44.99</span>
-											<span class="old-price">$74.99</span>
-										</div>
-
 									</div>
-								</a>
-							</div>	<!-- END COURSE #3 -->
-
-
-						</div>	<!-- END COURSES LIST -->
-
-
-						<!-- COURSES LIST -->
-						<div class="col-lg-6">
-
-
-							<!-- COURSE #4 -->
-							<div class="cbox-5 b-bottom">
-								<a href="course-details.html">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Triagem Eficaz para Doenças Neonatais e Infantis</h5>
-											<p class="p-sm grey-color">19 Horas Totais - Adicionado em 2/2020</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span class="cr-rating">4.08 (164 Reviews)</span>
-											</div>
+									<!-- COURSE #4 -->
+									<div class="col-md-6 col-lg-4">
+										<div class="cbox-1">
+											<a href="course-details.html">
+												<!-- Image -->
+												<img class="img-fluid" src="{% static 'images/courses/course-9-img.jpg' %}" alt="course-preview" />
+												<!-- Text -->
+												<div class="cbox-4-txt">
+													<h5 class="h5-xs">Lorem ipsum dolor sit amet</h5>
+													<div class="course-rating clearfix">
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<i class="fas fa-star"></i>
+														<span>5 (31 Avaliações)</span>
+													</div>
+												</div>
+											</a>
 										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 15491</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
-											<span class="course-price">$39.99</span>
-											<span class="old-price">$84.99</span>
-										</div>
-
 									</div>
-								</a>
-							</div>	<!-- END COURSE #4 -->
-
-
-							<!-- COURSE #5 -->
-							<div class="cbox-5 b-bottom">
-								<a href="course-details.html">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Estratégias de Diagnóstico Precoce em Distúrbios Comportamentais</h5>
-											<p class="p-sm grey-color">36 Horas Totais - Adicionado em 12/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<span class="cr-rating">4.79 (117 Reviews)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 17035</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
-											<span class="course-price">$49.99</span>
-											<span class="old-price">$99.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div>	<!-- END COURSE #5 -->
-
-
-							<!-- COURSE #6 -->
-							<div class="cbox-5">
-								<a href="course-details.html">
-									<div class="row">
-
-										<!-- Course Description -->
-										<div class="col-sm-7 cbox-5-txt">
-											<h5 class="h5-xs">Como Detectar e Intervir em Condições de Saúde Precoce</h5>
-											<p class="p-sm grey-color">24 Horas Totais - Adicionado em 11/2019</p>
-
-											<!-- Rating -->
-											<div class="course-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-												<span class="cr-rating">4.42 (82 Ratings)</span>
-											</div>
-										</div>
-
-										<!-- Course Data -->
-										<div class="col-sm-3 cbox-5-data text-center clearfix">
-											<p class="grey-color"><i class="fas fa-users"></i> 8163</p>
-										</div>
-
-										<!-- Course Price -->
-										<div class="col-sm-2 cbox-5-price text-right clearfix" hidden>
-											<span class="course-price">$32.99</span>
-											<span class="old-price">$62.99</span>
-										</div>
-
-									</div>
-								</a>
-							</div>	<!-- END COURSE #6 -->
-
-
-						</div>	<!-- END COURSES LIST -->
-
-
-					</div>	  <!-- End row -->
-
-
-				</div>     <!-- End container -->
-			</section>	<!-- END COURSES-5 -->
+								</div>
+							</div>
+			
+							<!-- Add more slides as needed -->
+						</div>
+			
+						<button class="carousel-control-prev" type="button" data-bs-target="#coursesCarousel2" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				
+						</button>
+						
+						<button class="carousel-control-next" type="button" data-bs-target="#coursesCarousel2" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						
+						</button>
+					</div>
+				</div>
+			</section>
 			<!-- BANNER-3
 			============================================= -->
 			<section id="banner-3" class="bg-lightdark bg-map banner-section division">
@@ -713,7 +735,7 @@
 								<div class="banner-3-txt">
 
 									<!-- Title -->
-									<h4 class="h4-xs">Inscreva-se agora e transforme vidas com conhecimento</h4>
+									<h4 class="h4-xs">Juntos podemos levar ainda mais conhecimento e salvar vidas</h4>
 
 									<!-- Button -->
 									<a href="courses-list.html" class="btn btn-blue tra-black-hover">Cadastre-se</a>
@@ -728,7 +750,7 @@
 			</section>	<!-- END BANNER-3 -->
 			<!-- COURSES-3
 			============================================= -->
-			<section id="courses-3" class="wide-60 courses-section division">
+			<section id="courses-3" class="wide-60 courses-section division" hidden>
 				<div class="container">
 
 
@@ -1235,58 +1257,7 @@
 					</div>	  <!-- END COURSES HOLDER -->
 				</div>     <!-- End container -->
 			</section>	<!-- END COURSES-3 -->
-		<!-- VIDEO-1
-			============================================= -->
-			<section id="video-1" class="bg-lightgrey bg-map video-ection division">
-				<div class="container">
-					<div class="video-1-holder">
-						<div class="row d-flex align-items-center">
-
-
-							<!-- VIDEO LINK -->
-				 			<div class="col-md-6">
-				 				<div class="video-link text-center">
-
-									<!-- Change the link HERE!!! -->
-									<div class="play-btn play-btn-blue text-center">
-
-										<a class="video-popup3 video-play-button" href="https://www.youtube.com/embed/0gv7OC9L2s8">
-										  <span></span>
-										</a>
-
-										<!-- Preview Image -->
-										<img class="img-fluid" src="{% static 'images/video-1-img.jpg' %}" alt="video-preview">
-
-									</div>
-
-								</div>
-				 			</div>	<!-- END VIDEO LINK -->
-
-
-							<!-- VIDEO TEXT -->
-				 			<div class="col-md-6">
-				 				<div class="video-txt">
-
-				 					<!-- Title -->
-									<h4 class="h4-xl">Conheça nossa história</h4>
-
-									<!-- Text -->
-									<p class="p-md">Cursus porta, feugiat primis in ultrice ligula risus auctor tempus dolor feugiat,
-									   felis lacinia risus
-									</p>
-
-									<!-- Button -->
-									<a href="courses-list.html" class="btn btn-tra-blue blue-hover">Saiba mais</a>
-
-				 				</div>
-				 			</div>	<!-- END VIDEO TEXT -->
-
-
-						</div>   <!-- End row -->
-					</div>    <!-- End video-1-holder -->
-				</div>     <!-- End container -->
-			</section>	<!-- END VIDEO-1 -->
-		<!-- ABOUT-4
+					<!-- ABOUT-4
 			============================================= -->
 			<section id="about-4" class="wide-70 about-section division">
 				<div class="container">
@@ -1298,7 +1269,7 @@
 					 		<div class="a4-txt">
 
 					 			<!-- Title -->
-								<h5 class="h5-xl text-center">Capacite-se para identificar e intervir precocemente. Inscreva-se em nossos cursos gratuitos</h5>
+								<h5 class="h5-xl text-center">Conheça nossa trilha formativa para capacitação de  profissionais da saúde</h5>
 
 								<!-- Text -->
 								<p>Junte-se a nós para promover a saúde e o bem-estar das crianças.
@@ -1382,6 +1353,58 @@
 
 				</div>	   <!-- End container -->
 			</section>	<!-- End ABOUT-4 -->
+		<!-- VIDEO-1
+			============================================= -->
+			<section id="video-1" class="bg-lightgrey bg-map video-ection division">
+				<div class="container">
+					<div class="video-1-holder">
+						<div class="row d-flex align-items-center">
+
+
+							<!-- VIDEO LINK -->
+				 			<div class="col-md-6">
+				 				<div class="video-link text-center">
+
+									<!-- Change the link HERE!!! -->
+									<div class="play-btn play-btn-blue text-center">
+
+										<a class="video-popup3 video-play-button" href="https://www.youtube.com/watch?v=6CRCLKe-W_Q">
+										  <span></span>
+										</a>
+
+										<!-- Preview Image -->
+										<img class="img-fluid" src="{% static 'images/video-1-img.jpg' %}" alt="video-preview">
+
+									</div>
+
+								</div>
+				 			</div>	<!-- END VIDEO LINK -->
+
+
+							<!-- VIDEO TEXT -->
+				 			<div class="col-md-6">
+				 				<div class="video-txt">
+
+				 					<!-- Title -->
+									<h4 class="h4-xl">Conheça nossa história</h4>
+
+									<!-- Text -->
+									<p class="p-md">Cursus porta, feugiat primis in ultrice ligula risus auctor tempus dolor feugiat,
+									   felis lacinia risus
+									</p>
+
+									<!-- Button -->
+									<a href="courses-list.html" class="btn btn-tra-blue blue-hover">Saiba mais</a>
+
+				 				</div>
+				 			</div>	<!-- END VIDEO TEXT -->
+
+
+						</div>   <!-- End row -->
+					</div>    <!-- End video-1-holder -->
+				</div>     <!-- End container -->
+			</section>	<!-- END VIDEO-1 -->
+
 		<!-- BANNER-2
 			============================================= -->
 			<section id="banner-2" class="bg-01 wide-60 banner-section" hidden>
@@ -1456,10 +1479,10 @@
 							<div class="section-title title-centered mb-60">
 
 								<!-- Title 	-->
-								<h3 class="h3-sm">Feedback dos nossos alunos</h3>
+								<h3 class="h3-sm">Feedback de quem nos conhece</h3>
 
 								<!-- Text -->
-								<p class="p-md">Receba feedback genuíno de nossos alunos: experiências transformadoras e insights
+								<p class="p-md">Veja os depoimentos de quem já nos conhece: experiências transformadoras e insights
 									valiosos que mostram como nossos cursos impactam positivamente cada jornada educacional.
 								</p>
 
@@ -1510,7 +1533,7 @@
 												<i class="fas fa-star"></i>
 											</div>
 
-											<h5 class="h5-xs">Jim M.</h5>
+											<h5 class="h5-xs">Dra. Carmem</h5>
 										</div>
 
 									</div>
@@ -1549,7 +1572,7 @@
 												<i class="fas fa-star-half-alt"></i>
 											</div>
 
-											<h5 class="h5-xs">Jennifer</h5>
+											<h5 class="h5-xs">Dr Renato</h5>
 										</div>
 
 									</div>
@@ -1588,7 +1611,7 @@
 												<i class="fas fa-star"></i>
 											</div>
 
-											<h5 class="h5-xs">Joel Peterson</h5>
+											<h5 class="h5-xs">Dra. Renata</h5>
 										</div>
 
 									</div>
@@ -1626,7 +1649,7 @@
 												<i class="fas fa-star"></i>
 											</div>
 
-											<h5 class="h5-xs">Michael Deal</h5>
+											<h5 class="h5-xs">Membro comissão médica</h5>
 										</div>
 
 									</div>
@@ -1634,158 +1657,6 @@
 								</div>	<!-- END TESTIMONIAL #4 -->
 
 
-								<!-- TESTIMONIAL #5 -->
-								<div class="review-1">
-
-									<!-- Quote Icon -->
-									<div class="quote-ico"><img src="{% static 'images/4_.png' %}" alt="quote-image" /></div>
-
-									<!-- Testimonial Text -->
-									<p>An augue cubilia laoreet and magna suscipit egestas magna ipsum purus ipsum primis and augue
-									   ultrice ligula egestas suscipit lectus gestas integer congue a lectus porta elementum
-									</p>
-
-									<!-- Author Data -->
-									<div class="review-1-author d-flex align-items-center">
-
-										<!-- Author Avatar -->
-										<div class="author-avatar">
-											<img class="img-fluid" src="{% static 'images/5_.png' %}" alt="review-author-avatar" />
-										</div>
-
-										<!-- Testimonial Author -->
-										<div class="review-author">
-
-											<!-- Rating -->
-											<div class="tst-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star-half-alt"></i>
-											</div>
-
-											<h5 class="h5-xs">Mark Paterson</h5>
-										</div>
-
-									</div>
-
-								</div>	<!-- END TESTIMONIAL #5 -->
-
-
-								<!-- TESTIMONIAL #6 -->
-								<div class="review-1">
-
-									<!-- Quote Icon -->
-									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
-
-									<!-- Testimonial Text -->
-									<p>An augue cubilia laoreet undo magna a suscipit egestas magna and ipsum ligula vitae purus and
-									   ipsum primis in cubilia mollis risus lectus rutrum
-									</p>
-
-									<!-- Author Data -->
-									<div class="review-1-author d-flex align-items-center">
-
-										<!-- Author Avatar -->
-										<div class="author-avatar">
-											<img class="img-fluid" src="{% static 'images/6_.png' %}" alt="review-author-avatar" />
-										</div>
-
-										<!-- Testimonial Author -->
-										<div class="review-author">
-
-											<!-- Rating -->
-											<div class="tst-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-
-											<h5 class="h5-xs">David L.</h5>
-										</div>
-
-									</div>
-
-								</div>	<!-- END TESTIMONIAL #6 -->
-
-
-								<!-- TESTIMONIAL #7 -->
-								<div class="review-1">
-
-									<!-- Quote Icon -->
-									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
-
-									<!-- Testimonial Text -->
-									<p>Augue egestas volutpat and egestas an augue purus cubilia laoreet magna suscipit luctus and
-									   dolor blandit vitae purus diam tempus aliquet porta at rutrum placerat gestas egestas
-									</p>
-
-									<!-- Author Data -->
-									<div class="review-1-author d-flex align-items-center">
-
-										<!-- Author Avatar -->
-										<div class="author-avatar">
-											<img class="img-fluid" src="{% static 'images/7_.png' %}" alt="review-author-avatar" />
-										</div>
-
-										<!-- Testimonial Author -->
-										<div class="review-author">
-
-											<!-- Rating -->
-											<div class="tst-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-
-											<h5 class="h5-xs">Aaron Wall</h5>
-										</div>
-
-									</div>
-
-								</div>	<!-- END TESTIMONIAL #7 -->
-
-
-								<!-- TESTIMONIAL #8 -->
-								<div class="review-1">
-
-									<!-- Quote Icon -->
-									<div class="quote-ico"><img src="{% static 'images/left-quote.png' %}" alt="quote-image" /></div>
-
-									<!-- Testimonial Text -->
-									<p>Augue egestas volutpat and egestas augue in cubilia vitae laoreet a magna suscipit luctus at dolor
-										blandit purus diam tempus elementum massa
-									</p>
-
-									<!-- Author Data -->
-									<div class="review-1-author d-flex align-items-center">
-
-										<!-- Author Avatar -->
-										<div class="author-avatar">
-											<img class="img-fluid" src="{% static 'images/8_.png' %}" alt="review-author-avatar" />
-										</div>
-
-										<!-- Testimonial Author -->
-										<div class="review-author">
-
-											<!-- Rating -->
-											<div class="tst-rating">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-
-											<h5 class="h5-xs">Andre Wisdom</h5>
-										</div>
-
-									</div>
-
-								</div>	<!-- END TESTIMONIAL #8 -->
 
 
 							</div>
@@ -1874,14 +1745,13 @@
 								<h3 class="h3-sm">Nossas notícias</h3>
 
 								<!-- Text -->
-								<p class="p-md">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero
-								   tempus, blandit posuere and ligula varius magna a porta
+								<p class="p-md">Fique por dentro...
 								</p>
 
 								<!-- Button -->
-								<div class="title-btn">
+								<!-- <div class="title-btn">
 									<a href="blog-listing.html" class="btn btn-tra-grey blue-hover">Leia Mais</a>
-								</div>
+								</div> -->
 
 							</div>
 						</div>
@@ -1897,18 +1767,17 @@
 							<div id="a2-1" class="article-2 b-right">
 
 								<!-- Post Data -->
-								<p class="p-sm">March 11, 2020</p>
+								<p class="p-sm">Março 11, 2023</p>
 
 								<!-- Title -->
-								<h5 class="h5-sm"><a href="single-post.html">Integer congue magna at pretium purus pretium</a></h5>
+								<h5 class="h5-sm"><a href="https://institutoronald.org.br/conheca-a-historia-da-larissa-de-paciente-a-profissional-capacitada-pelo-programa-diagnostico-precoce/">Conheça a história da Larissa:</a></h5>
 
 								<!-- Text -->
-								<p>An enim nullam tempor sapien gravida donec enim blandit ipsum porta justo integer odio velna
-								   vitae auctor integer
+								<p>De paciente à profissional capacitada pelo Programa Diagnóstico Precoce
 								</p>
 
 								<!-- Post Author -->
-								<span>By Joel Peterson</span>
+								<span>By Instituto Ronald McDonald</span>
 							</div>
 						</div>	<!-- END ARTICLE #1 -->
 
@@ -1918,18 +1787,17 @@
 							<div id="a2-2" class="article-2 b-right">
 
 								<!-- Post Data -->
-								<p class="p-sm">March 04, 2020</p>
+								<p class="p-sm">Maio 04, 2024</p>
 
 								<!-- Title -->
-								<h5 class="h5-sm"><a href="single-post.html">Congue magna eTreeks purus pretium magnis</a></h5>
+								<h5 class="h5-sm"><a href="https://institutoronald.org.br/ajuda-vitimas-enchentes-rio-grande-do-sul/">Enchentes no Rio Grande do Sul</a></h5>
 
 								<!-- Text -->
-								<p>Donec enim blandit and ipsum porta justo integer odio a velna vitae auctor an integer congue
-								   magna at pretium nulla
+								<p>Instituto Ronald McDonald une esforços para ajudar vítimas das enchentes no Rio Grande do Sul
 								</p>
 
 								<!-- Post Author -->
-								<span>By Jennifer K.</span>
+								<span>By Instituto Ronald McDonald</span>
 							</div>
 						</div>	<!-- END ARTICLE #2 -->
 
@@ -1939,18 +1807,17 @@
 							<div id="a2-3" class="article-2 b-right">
 
 								<!-- Post Data -->
-								<p class="p-sm">February 24, 2020</p>
+								<p class="p-sm">Outubro 21, 2024</p>
 
 								<!-- Title -->
-								<h5 class="h5-sm"><a href="single-post.html">8 neque dolor primis a libero tempus blandit</a></h5>
+								<h5 class="h5-sm"><a href="https://economia.uol.com.br/noticias/redacao/2024/08/21/mcdia-feliz-que-acontece-sabado-24-espera-superar-recorde-de-2023.htm">McDia Feliz espera superar recorde de arrecadação de 2023</a></h5>
 
 								<!-- Text -->
-								<p>Porta justo integer odio velna vitae an auctor integer congue magna at pretium purus ligula
-								   rutrum luctus risus ultrice
+								<p>Acontece no próximo sábado (24), a 36ª edição do McDia Feliz, evento beneficente promovido…
 								</p>
 
 								<!-- Post Author -->
-								<span>By Michael Deal</span>
+								<span>By Renato Pezzoni</span>
 							</div>
 						</div>	<!-- END ARTICLE #3 -->
 
@@ -1960,18 +1827,17 @@
 							<div id="a2-4" class="article-2">
 
 								<!-- Post Data -->
-								<p class="p-sm">February 19, 2020</p>
+								<p class="p-sm">Outubro 23, 2024</p>
 
 								<!-- Title -->
-								<h5 class="h5-sm"><a href="single-post.html">Ligula varius magna and porta a laoreet pretium</a></h5>
+								<h5 class="h5-sm"><a href="https://g1.globo.com/sp/sorocaba-jundiai/noticia/2024/08/23/sete-meses-apos-ser-alagado-em-temporal-espaco-de-acolhimento-de-pacientes-e-familiares-do-gpaci-e-reinaugurado.ghtml?utm_source=whatsapp&utm_medium=share-bar-mobile&utm_campaign=materias">Sete meses após ser alagado em temporal...</a></h5>
 
 								<!-- Text -->
-								<p>Vitae auctor integer a congue magna undo pretium at purus pretium ligula a rutrum luctus risus
-								   and ultrice blandit
+								<p>Evento ocorreu nesta sexta-feira (23). Espaço é uma das áreas do Gpaci que precisaram ser reformadas depois que um temporal, em janeiro deste ano.
 								</p>
 
 								<!-- Post Author -->
-								<span>By Aaron Wall</span>
+								<span>By TV TEM</span>
 							</div>
 						</div>	<!-- END ARTICLE #4 -->
 
@@ -1992,8 +1858,8 @@
 							<!-- SECTION TITLE -->
 							<div class="col-md-6 col-lg-5">
 								<div class="newsletter-txt white-color">
-									<h3 class="h3-sm">Receba as notícias recentes</h3>
-									<p>Receba recomendações personalizadas de cursos, acompanhe assuntos e cursos com lembretes e muito mais</p>
+									<h3 class="h3-sm">Gostaria de receber mais notícias?</h3>
+									<p>Fique por dentro das novidades e conquistas do Instituto Ronald McDonald</p>
 								</div>
 							</div>
 
@@ -2022,4 +1888,5 @@
 			</section>	<!-- END NEWSLETTER-1 -->
 
 			<br>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
 {% endblock %}

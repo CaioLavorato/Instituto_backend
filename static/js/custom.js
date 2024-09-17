@@ -223,7 +223,7 @@
 					patterns: {
 						youtube: {			   
 							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/0gv7OC9L2s8'					
+							src: 'https://www.youtube.com/embed/6CRCLKe-W_Q'					
 								}
 							}
 						}		  		  
@@ -236,18 +236,26 @@
 	
 		$('.count-element').each(function () {
 			$(this).appear(function() {
-				$(this).prop('Counter',0).animate({
-					Counter: $(this).text()
+				var element = $(this);
+				var finalValue = parseFloat(element.text().replace(',', '.')); // Converte o texto para float
+				element.prop('Counter', 0).animate({
+					Counter: finalValue
 				}, {
 					duration: 4000,
 					easing: 'swing',
 					step: function (now) {
-						$(this).text(Math.ceil(now));
+						// Verifica se a parte decimal é zero
+						if (now % 1 === 0) {
+							// Se for número inteiro, mostra sem casas decimais
+							element.text(Math.floor(now).toString().replace('.', ','));
+						} else {
+							// Se for número decimal, mostra com duas casas decimais
+							element.text(now.toFixed(1).replace('.', ','));
+						}
 					}
 				});
-			},{accX: 0, accY: 0});
+			}, { accX: 0, accY: 0 });
 		});
-
 
 		/*----------------------------------------------------*/
 		/*	Testimonials Rotator
