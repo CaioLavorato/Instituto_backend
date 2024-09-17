@@ -1,6 +1,67 @@
 {% load static %}
+<style>
+    .header-social {
+        height: 30px;
+        background-color: #c9c9c9; /* Cor de fundo opcional */
+        text-align: right; /* Alinha os ícones à direita */
+        padding-right: 21%; /* Ajusta o espaçamento à direita */
+        position: fixed; /* Fixa a barra na tela */
+        top: 0; /* Alinha no topo da página */
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .header-social ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+    }
+
+    .header-social ul li {
+        margin-right: 10px;
+    }
+
+    .header-social ul li:last-child {
+        margin-right: 0;
+    }
+
+    .header-social img {
+        height: 20px;
+    }
+
+    .header-wrapper {
+        margin-top: 35px; /* Garante que o menu fique abaixo da barra de redes sociais */
+    }
+
+    /* Oculta a barra de redes sociais no mobile */
+    @media (max-width: 991px) {
+        .header-social {
+            display: none;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1399.98px) {
+        .header-social {
+            padding-right: 90px;
+        }
+    }
+</style>
+
+
 <header id="header" class="header white-menu navbar-dark">
-    <div class="header-wrapper">
+<div class="header-social">
+    <ul>
+        <li><img src="{% static 'images/icons/socials/instagram.png' %}" alt="Instagram"></li>
+        <li><img src="{% static 'images/icons/socials/linkedin.png' %}" alt="LinkedIn"></li>
+        <li><img src="{% static 'images/icons/socials/youtube.png' %}" alt="YouTube"></li>
+    </ul>
+</div>
+    <div class="header-wrapper" style="margin-top: 0; padding-top: 15px">
 
         <!-- MOBILE HEADER -->
         <div class="wsmobileheader clearfix">
@@ -62,20 +123,8 @@
                         </li>
 
                         <!-- DROPDOWN MENU -->
-                        <li aria-haspopup="true">
-                            <a href="#">Conheça <span class="wsarrow"></span></a>
-                            <ul class="sub-menu">
-                                <li aria-haspopup="true"><a href="courses-list.html">A Causa</a></li>
-                                <li aria-haspopup="true"><a href="courses-list.html">Instituição</a></li>
-                                <li aria-haspopup="true"><a href="courses-list.html">Como Visitar</a></li>
-                                <li aria-haspopup="true"><a href="courses-list.html">Instalações</a></li>
-                                <li aria-haspopup="true"><a href="courses-list.html">Premiações</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- DROPDOWN MENU -->
-                        <li aria-haspopup="true">
-                            <a href="#">Como Ajudar <span class="wsarrow"></span></a>
+                        <li aria-haspopup="true" hidden>
+                            <a href="#">Site Map<span class="wsarrow"></span></a>
                             <ul class="sub-menu">
                                 <li aria-haspopup="true"><a href="courses-list.html">Doação</a></li>
                                 <li aria-haspopup="true"><a href="courses-list.html">Doe Alimento</a></li>
@@ -90,16 +139,45 @@
                         </li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
+                        <li class="nl-simple" aria-haspopup="true"><a href="blog-listing.html">Site Map</a></li>
+
+                        <!-- SIMPLE NAVIGATION LINK -->
                         <li class="nl-simple" aria-haspopup="true"><a href="blog-listing.html">Cursos</a></li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
-                        <li class="nl-simple" aria-haspopup="true"><a href="blog-listing.html">Blog</a></li>
+                        <li class="nl-simple" aria-haspopup="true"><a href="blog-listing.html">Conheça</a></li>
+
+                        <!-- DROPDOWN MENU -->
+                        <li aria-haspopup="true" hidden>
+                            <a href="#">Conheça <span class="wsarrow"></span></a>
+                            <ul class="sub-menu">
+                                <li aria-haspopup="true"><a href="courses-list.html">A Causa</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Instituição</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Como Visitar</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Instalações</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Premiações</a></li>
+                            </ul>
+                        </li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
-                        <li class="nl-simple" aria-haspopup="true"><a href="contacts.html">Contato</a></li>
+                        <li class="nl-simple" aria-haspopup="true" hidden><a href="blog-listing.html">Blog</a></li>
+
+                        <!-- SIMPLE NAVIGATION LINK -->
+                        <li class="nl-simple" aria-haspopup="true" hidden><a href="contacts.html">Contato</a></li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
                         <li class="nl-simple" aria-haspopup="true"><a href="{% url 'login' %}">Login</a></li>
+
+                        <!-- DROPDOWN MENU -->
+                        <li aria-haspopup="true">
+                            <a href="#"><img src="{% static 'images/icons/question-sign-in-circles.png' %}" alt="flag-icon" /> <span class="wsarrow"></span></a>
+                            <ul class="sub-menu">
+                                <li aria-haspopup="true"><a href="courses-list.html">Fale Conosco</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Conheça o Instituto</a></li>
+                                <li aria-haspopup="true"><a href="courses-list.html">Como Ajudar</a></li>
+                            </ul>
+                        </li>
+
 
                         <!-- DROPDOWN MENU -->
                         <li aria-haspopup="true">
