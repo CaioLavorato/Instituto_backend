@@ -84,7 +84,7 @@ jobs:
         echo "Running migrations..." &&
         python manage.py migrate &&
         echo "Collecting static files..." &&
-        python manage.py collectstatic --noinput &&
+        python manage.py collectstatic --dry-run &&
         sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles && # Ajuste de permissões
         sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
         echo "Restarting Gunicorn..." &&
