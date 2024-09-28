@@ -29,6 +29,17 @@ jobs:
         source venv/bin/activate
         pip install -r requirements.txt
 
+    - name: Verify Django Installation
+      run: |
+        source venv/bin/activate
+        pip show django
+        pip show djangorestframework
+
+    - name: List Python Path
+      run: |
+        source venv/bin/activate
+        python -c "import sys; print('\n'.join(sys.path))"
+
     - name: Run migrations
       run: |
         source venv/bin/activate
@@ -42,26 +53,53 @@ jobs:
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
 
+    - name: Debug SSH Connection
+      run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 'echo SSH connection successful'
+
     - name: Deploy to the server
       env:
-          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-        set -e
         echo "Starting deployment" &&
         cd /var/www/Instituto_backend &&
+        echo "Configuring Git safe directory..." &&
         git config --global --add safe.directory /var/www/Instituto_backend &&
+        echo "Checking for uncommitted changes..." &&
         if [ -n "$(git status --porcelain)" ]; then
+          echo "Uncommitted changes detected, discarding them..." &&
           git reset --hard &&
           git clean -fd
         fi &&
+        echo "Updating repository..." &&
         git pull origin master &&
+        echo "Current directory contents:" &&
+        ls -la &&
+        echo "Creating and activating virtual environment..." &&
         python3 -m venv venv &&
         source venv/bin/activate &&
+        echo "Installing dependencies..." &&
         pip install -r requirements.txt &&
+        echo "Running migrations..." &&
         python manage.py migrate &&
+        echo "Collecting static files..." &&
         python manage.py collectstatic --noinput &&
+        echo "Adjusting static files permissions..." &&
         sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
         sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
+        echo "Restarting Gunicorn..." &&
         systemctl restart gunicorn &&
-        echo "Deployment completed"'
+        echo "Restarting Nginx..." &&
+        sudo systemctl restart nginx &&
+        echo "Deployment completed" &&
+        echo "Checking Nginx status..." &&
+        sudo systemctl status nginx'
+
+    - name: Check Static Files after Deployment
+      run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+        echo "Verifying static files presence..." &&
+        ls -la /var/www/Instituto_backend/staticfiles &&
+        echo "Checking Nginx logs for static file errors..." &&
+        tail -n 50 /var/log/nginx/error.log'
