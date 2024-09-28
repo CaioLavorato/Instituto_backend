@@ -104,4 +104,3 @@ jobs:
         ls -la /var/www/Instituto_backend/staticfiles &&
         echo "Checking Nginx logs for static file errors..." &&
         tail -n 50 /var/log/nginx/error.log'
-        
