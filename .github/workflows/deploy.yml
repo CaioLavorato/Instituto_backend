@@ -86,8 +86,8 @@ jobs:
         echo "Collecting static files..." &&
         python manage.py collectstatic --noinput &&
         echo "Adjusting static files permissions..." &&
-        sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
-        sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
+        sudo chown -R www-data:www-data /var/www/Instituto_backend/static &&
+        sudo chmod -R 755 /var/www/Instituto_backend/static &&
         echo "Restarting Gunicorn..." &&
         systemctl restart gunicorn &&
         echo "Restarting Nginx..." &&
@@ -100,6 +100,6 @@ jobs:
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
         echo "Verifying static files presence..." &&
-        ls -la /var/www/Instituto_backend/staticfiles &&
+        ls -la /var/www/Instituto_backend/static &&
         echo "Checking Nginx logs for static file errors..." &&
         tail -n 50 /var/log/nginx/error.log'
