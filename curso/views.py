@@ -3,22 +3,25 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.views.generic import DetailView
+
 from . import forms
-from .models import Curso, Avaliacao,Modulo,Modulo_usuario,UserProfile,Categorias
-from django.db.models import Avg, Count, Sum
+from .models import Curso, Avaliacao, Modulo, Modulo_usuario, UserProfile, Categorias, Aula
+from django.db.models import Avg, Count, Sum, Q
 from django.core.paginator import Paginator
 
 User = get_user_model()  # Obtém o modelo de usuário configurado
+
 
 def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         senha = request.POST.get('senha')
-        
+
         if not email or not senha:
             messages.error(request, 'Por favor, preencha todos os campos.')
             return render(request, 'login.html')
-        
+
         # Autenticar usuário usando email e senha
         user = authenticate(request, username=email, password=senha)
         if user is not None:
@@ -28,7 +31,7 @@ def login_view(request):
             return redirect('cursos')
         else:
             messages.error(request, 'Credenciais inválidas. Por favor, tente novamente.')
-    
+
     return render(request, 'login.html')
 
 
@@ -63,7 +66,8 @@ def cursos(request):
         ).order_by('-visualizacoes')[:5].prefetch_related('avaliacao')
 
         # Obter os módulos concluídos pelo usuário e filtrar cursos correspondentes
-        modulos_concluidos = Modulo_usuario.objects.filter(usuario=request.user, ind_concluido=True).values_list('modulo__curso', flat=True)
+        modulos_concluidos = Modulo_usuario.objects.filter(usuario=request.user, ind_concluido=True).values_list(
+            'modulo__curso', flat=True)
         cursos_para_voce = Curso.objects.filter(
             id__in=modulos_concluidos
         ).annotate(
@@ -92,7 +96,7 @@ def cursos(request):
         }
 
         return render(request, "cursos.html", context)
-    
+
     except Exception as e:
         # Lidar com erros de consulta ou renderização
         print(f"Erro ao obter cursos: {e}")
@@ -101,6 +105,7 @@ def cursos(request):
         }
         return render(request, "cursos.html", context)
 
+
 @login_required
 def meuscursos(request):
     try:
@@ -108,7 +113,8 @@ def meuscursos(request):
         busca = request.GET.get('search', '')
 
         # Filtrar cursos iniciados
-        modulos_concluidos = Modulo_usuario.objects.filter(usuario=request.user, ind_concluido=False).values_list('modulo__curso', flat=True).distinct()
+        modulos_concluidos = Modulo_usuario.objects.filter(usuario=request.user, ind_concluido=False).values_list(
+            'modulo__curso', flat=True).distinct()
         cursos_iniciados = Curso.objects.filter(
             id__in=modulos_concluidos,
             titulo__icontains=busca
@@ -118,7 +124,9 @@ def meuscursos(request):
         ).prefetch_related('avaliacao')
 
         # Filtrar cursos recomendados
-        modulos_concluidos_recomendados = Modulo_usuario.objects.filter(usuario=request.user, ind_concluido=True).values_list('modulo__curso', flat=True).distinct()
+        modulos_concluidos_recomendados = Modulo_usuario.objects.filter(usuario=request.user,
+                                                                        ind_concluido=True).values_list('modulo__curso',
+                                                                                                        flat=True).distinct()
         cursos_para_voce = Curso.objects.filter(
             id__in=modulos_concluidos_recomendados,
             titulo__icontains=busca
@@ -143,7 +151,7 @@ def meuscursos(request):
         }
 
         return render(request, "meuscursos.html", context)
-    
+
     except Exception as e:
         # Lidar com erros de consulta ou renderização
         print(f"Erro ao obter cursos: {e}")
@@ -155,28 +163,65 @@ def meuscursos(request):
 
 
 @login_required
-def cursodetalhe(request):
-    return render(request,"cursodetalhe.html")
+def cursodetalhe(request, pk):
+    try:
+        # Busca o curso pelo ID (pk)
+        curso = Curso.objects.get(pk=pk)
+        avaliacoes = Avaliacao.objects.filter(curso=curso).order_by('-data_criacao')
+        modulos = Modulo.objects.filter(curso=curso).prefetch_related('aulas')
+
+        # Obter a primeira aula do primeiro módulo
+        primeira_aula = None
+        if modulos.exists():
+            primeira_aula = modulos.first().aulas.first()  # Pega a primeira aula do primeiro módulo
+
+        media_avaliacoes = Avaliacao.objects.filter(curso=curso).aggregate(Avg('estrelas'))['estrelas__avg']
+        estrelas_inteiras = int(media_avaliacoes)
+        meia_estrela = (media_avaliacoes - estrelas_inteiras) >= 0.5
+        estrelas_vazias = 5 - estrelas_inteiras - (1 if meia_estrela else 0)
+
+        context = {
+            'curso': curso,
+            'modulos': modulos,
+            'avaliacoes': avaliacoes,
+            'media_avaliacoes': media_avaliacoes,
+            'estrelas_inteiras': range(estrelas_inteiras),
+            'estrelas_vazias': range(estrelas_vazias),
+            'meia_estrela': meia_estrela,
+            'primeira_aula': primeira_aula,
+        }
+        return render(request, "cursodetalhe.html", context)
+
+
+    except Curso.DoesNotExist:
+        messages.error(request, 'Curso não encontrado.')
+        return redirect('cursos')
+
 
 @login_required
 def foruns(request):
-    return render(request,"foruns.html")
+    return render(request, "foruns.html")
+
 
 @login_required
 def forumdetalhe(request):
-    return render(request,"forumdetalhe.html")
+    return render(request, "forumdetalhe.html")
+
 
 @login_required
 def documentos(request):
-    return render(request,"documentos.html")
+    return render(request, "documentos.html")
+
 
 @login_required
 def perfil(request):
-    return render(request,"perfil.html")
+    return render(request, "perfil.html")
+
 
 @login_required
 def professordetalhe(request):
-    return render(request,"professordetalhe.html")
+    return render(request, "professordetalhe.html")
+
 
 @login_required
 def professores(request):
@@ -186,7 +231,7 @@ def professores(request):
         professores = UserProfile.objects.filter(user__username__icontains=query, tipo=UserProfile.PROFESSOR)
     else:
         professores = UserProfile.objects.filter(tipo=UserProfile.PROFESSOR)
-    
+
     # Paginação
     paginator = Paginator(professores, 6)  # Mostra 6 professores por página
     page_number = request.GET.get('page')  # Obtém o número da página da requisição
@@ -196,12 +241,14 @@ def professores(request):
         'page_obj': page_obj,
         'query': query
     }
-    
+
     return render(request, "professores.html", context)
+
 
 @login_required
 def redecredenciada(request):
-    return render(request,"redecredenciada.html")
+    return render(request, "redecredenciada.html")
+
 
 @login_required
 def categorias(request):
@@ -209,9 +256,11 @@ def categorias(request):
     total_cursos = categorias.aggregate(total=Sum('num_cursos'))['total'] or 0
     return render(request, "categorias.html", {'categorias': categorias, 'total_cursos': total_cursos})
 
+
 @login_required
 def categoriadetalhe(request):
-    return render(request,"categoriadetalhe.html")
+    return render(request, "categoriadetalhe.html")
+
 
 @login_required
 def perfil_view(request):
@@ -240,6 +289,7 @@ def perfil_view(request):
 
     return render(request, 'perfil.html', {'form': form})
 
+
 @login_required
 def criar_forum(request):
     if request.method == 'POST':
@@ -254,6 +304,5 @@ def criar_forum(request):
             messages.error(request, 'Por favor, corrija os erros abaixo.')
     else:
         form = forms.ForumForm()
-
 
     return render(request, 'novoforum.html', {'form': form})
