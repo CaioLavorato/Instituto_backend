@@ -85,6 +85,8 @@ jobs:
         python manage.py migrate &&
         echo "Collecting static files..." &&
         python manage.py collectstatic --noinput &&
+        sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles && # Ajuste de permissões
+        sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
         echo "Restarting Gunicorn..." &&
         systemctl restart gunicorn &&
         echo "Deployment completed"'
