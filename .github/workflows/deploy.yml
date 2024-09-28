@@ -88,6 +88,7 @@ jobs:
         echo "Adjusting static files permissions..." &&
         sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
         sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
+        cp -r staticfiles/admin static/admin &&
         echo "Restarting Gunicorn..." &&
         systemctl restart gunicorn &&
         echo "Restarting Nginx..." &&
