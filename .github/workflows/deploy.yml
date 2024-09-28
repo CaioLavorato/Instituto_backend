@@ -59,7 +59,7 @@ jobs:
 
     - name: Deploy to the server
       env:
-          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
         echo "Starting deployment" &&
@@ -85,6 +85,22 @@ jobs:
         python manage.py migrate &&
         echo "Collecting static files..." &&
         python manage.py collectstatic --noinput &&
+        echo "Adjusting static files permissions..." &&
+        sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
+        sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
+        cp -r staticfiles/admin static/admin &&
         echo "Restarting Gunicorn..." &&
         systemctl restart gunicorn &&
-        echo "Deployment completed"'
+        echo "Restarting Nginx..." &&
+        sudo systemctl restart nginx &&
+        echo "Deployment completed" &&
+        echo "Checking Nginx status..." &&
+        sudo systemctl status nginx'
+
+    - name: Check Static Files after Deployment
+      run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+        echo "Verifying static files presence..." &&
+        ls -la /var/www/Instituto_backend/staticfiles &&
+        echo "Checking Nginx logs for static file errors..." &&
+        tail -n 50 /var/log/nginx/error.log'
