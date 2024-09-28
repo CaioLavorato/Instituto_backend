@@ -28,6 +28,16 @@
 .carousel-control-next:hover {
     background-color: rgba(0, 0, 0, 0.8); /* Torna os botões mais visíveis no hover */
 }
+
+	.carousel-caption {
+            top: 0;
+            background-color: white;
+            bottom: auto;
+            width: 100%;
+            left: 0;
+            right: 0;
+            padding: 20px;
+        }
 </style>
 			<!-- HERO-8
 			============================================= -->
@@ -45,8 +55,8 @@
 						  <img src="{% static 'images/slider/slide1.jpeg' %}" class="d-block w-100" alt="...">
 						  <div class="carousel-caption d-none d-md-block">
 							  <a href="https://storage.googleapis.com/instituto-ronald-mcdonalds-br.appspot.com/1/2024/04/Guia-Rapido-web-1.pdf">
-							<h5 style="color: white">Diagnosticar hoje, salvar amanhã</h5>
-							<p style="color: white">Juntos, podemos mudar o cenário da oncologia pediátrica do Brasil. Baixe o Guia rápido do Programa Diagnóstico Precoce do Instituto Ronald McDonald</p>
+							<h5 style="color: black">Diagnosticar hoje, salvar amanhã</h5>
+							<p style="color: black">Juntos, podemos mudar o cenário da oncologia pediátrica do Brasil. Baixe o Guia rápido do Programa Diagnóstico Precoce do Instituto Ronald McDonald</p>
 								  </a>
 						  </div>
 						</div>
@@ -54,14 +64,14 @@
 						<div class="carousel-item">
 						  <img src="{% static 'images/slider/slide2.jpeg' %}" class="d-block w-100" alt="...">
 						  <div class="carousel-caption d-none d-md-block">
-							<p style="color: white">Ao fazer seu login, você terá acesso a todos os nossos conteúdos personalizados.</p>
+							<p style="color: black">Ao fazer seu login, você terá acesso a todos os nossos conteúdos personalizados.</p>
 							  <a href="{% url 'login' %}" class="btn btn-blue tra-black-hover"> Cadastre-se</a>
 						  </div>
 						</div>
 						<div class="carousel-item">
 						  <img src="{% static 'images/slider/slide3.jpeg' %}" class="d-block w-100" alt="...">
 						  <div class="carousel-caption d-none d-md-block">
-							<h5 style="color: white">Conheça mais sobre a Jornada da Família do Instituto Ronald McDonald</h5>
+							<h5 style="color: black">Conheça mais sobre a Jornada da Família do Instituto Ronald McDonald</h5>
 						  </div>
 						</div>
 					  </div>

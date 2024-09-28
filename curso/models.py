@@ -85,7 +85,7 @@ class Modulo_usuario(models.Model):
 
 # Modelo de Aula
 class Aula(models.Model):
-    modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
+    modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE, related_name='aulas')
     titulo = models.CharField(max_length=100)
     conteudo = models.FileField(upload_to='videos_aula')
     ordem = models.IntegerField()
@@ -140,7 +140,7 @@ class Chat(models.Model):
 
 # Modelo de Avaliacao
 class Avaliacao(models.Model):
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, related_name='avaliacao')
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     estrelas = models.PositiveSmallIntegerField()  # Assumindo que a avaliação é de 1 a 5
     data_criacao = models.DateTimeField(default=timezone.now)
