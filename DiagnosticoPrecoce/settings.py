@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['srv542814.online', 'www.srv542814.online', '127.0.0.1', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ['https://srv542814.online']
+CSRF_TRUSTED_ORIGINS = ['https://srv542814.online', 'srv542814.online', 'www.srv542814.online', '127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
