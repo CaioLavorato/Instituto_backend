@@ -225,40 +225,31 @@
             <div class="row">
                 {% for curso in todos_cursos %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="cbox-5">
+                    <div class="cbox-1">
                         <a href="{% url 'cursodetalhe' curso.id %}">
-                            <div class="cbox-5-img">
-                                <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
-                            </div>
-                            <div class="cbox-5-txt">
-                                <div class="row">
-                                    <!-- Course Title -->
-                                    <div class="col-sm-10 cbox-5-title">
-                                        <h5 class="h5-xs">{{ curso.titulo }}</h5>
-                                    </div>
-                                    <!-- Course Rating -->
-                                    <div class="col-sm-2 cbox-5-rating text-right">
-                                        {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
-                                            {% with media_avaliacoes|floatformat:1 as rounded_media %}
-                                                {% for i in "12345" %}
-                                                    {% if forloop.counter <= rounded_media|floatformat:0 %}
-                                                        <i class="fas fa-star"></i>
-                                                    {% else %}
-                                                        <i class="far fa-star"></i>
-                                                    {% endif %}
-                                                {% endfor %}
-                                                {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
-                                                    <i class="fas fa-star-half-alt"></i>
+                            <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
+                            <div class="cbox-1-txt">
+                                <p class="course-tags">
+                                    <span>{{ curso.categoria.nome }}</span>
+                                    <span>{{ curso.duracao }}</span>
+                                </p>
+                                <h5 class="h5-xs">{{ curso.titulo }}</h5>
+                                <div class="course-rating clearfix">
+                                    {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
+                                        {% with media_avaliacoes|floatformat:1 as rounded_media %}
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= rounded_media|floatformat:0 %}
+                                                    <i class="fas fa-star"></i>
+                                                {% else %}
+                                                    <i class="far fa-star"></i>
                                                 {% endif %}
-                                            {% endwith %}
+                                            {% endfor %}
+                                            {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
+                                                <i class="fas fa-star-half-alt"></i>
+                                            {% endif %}
                                         {% endwith %}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!-- Course Description -->
-                                    <div class="col-sm-10 cbox-5-description">
-                                        <p>{{ curso.descricao }}</p>
-                                    </div>
+                                    {% endwith %}
+                                    <span>{{ media_avaliacoes|floatformat:1 }} ({{ curso.num_avaliacoes }} Avaliações)</span>
                                 </div>
                             </div>
                         </a>
