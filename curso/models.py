@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     # Campo CPF aceitando pontuações
     cpf = models.CharField(
         max_length=14,  # Permite o tamanho com pontuações
-        validators=[RegexValidator(regex='^\d{3}\.\d{3}\.\d{3}-\d{2}$', message='CPF deve ter o formato correto (XXX.XXX.XXX-XX).')],
+        validators=[RegexValidator(regex=r'^\d{3}\.\d{3}\.\d{3}-\d{2}$', message='CPF deve ter o formato correto (XXX.XXX.XXX-XX).')],
         unique=True,
         null=True,
         blank=True
