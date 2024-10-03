@@ -68,9 +68,9 @@
 
                                 <!-- Title -->
                                 <h4 class="h4-sm">
-                                    <a href="{% url 'detalhe_forum' pk=topico.pk %}">{{ topico.curso.titulo }}</a>
+                                    <a href="{% url 'detalhe_forum' pk=topico.pk %}">{{ topico.titulo }}</a>
                                 </h4>
-
+                                <span>Curso - {{ topico.curso.titulo }}</span>
                                 <!-- Post Author -->
                                 <span>{{ topico.data_criacao|date:"d/m/Y H:i" }} - By {{ topico.usuario.username }}</span>
 
@@ -84,11 +84,11 @@
                                 </p>
 
                                 <!-- Post Tags -->
-                                <div class="tags-cloud">
+                                <!-- <div class="tags-cloud">
                                     <span class="badge"><a href="#">Ideas & Opinions</a></span>
                                     <span class="badge"><a href="#">Students</a></span>
                                     <span class="badge"><a href="#">eTreeks News</a></span>
-                                </div>
+                                </div> -->
 
                             </div>
 
