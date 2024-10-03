@@ -36,7 +36,24 @@ def login_view(request):
 
 
 def homepage(request):
-    return render(request, "homepage.html")
+    # Consulta para obter os cursos mais vistos
+    cursos_mais_vistos = Curso.objects.annotate(
+            media_avaliacoes=Avg('avaliacao__estrelas'),
+            num_avaliacoes=Count('avaliacao')
+        ).order_by('-visualizacoes')[:5].prefetch_related('avaliacao')
+    
+    # Consulta para obter os cursos recém-adicionados (ordenados por data de criação)
+    cursos_recem_adicionados = Curso.objects.annotate(
+            media_avaliacoes=Avg('avaliacao__estrelas'),
+            num_avaliacoes=Count('avaliacao')
+        ).order_by('-data_criacao')[:5].prefetch_related('avaliacao')
+
+    context = {
+            'cursos_mais_vistos': cursos_mais_vistos,
+            'cursos_recem_adicionados': cursos_recem_adicionados,
+    }
+
+    return render(request, "homepage.html", context)
 
 
 @login_required
