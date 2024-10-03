@@ -20,7 +20,7 @@ class TopicoForum(models.Model):
     titulo = models.CharField(max_length=100)
     conteudo = models.TextField(max_length=3000)
     data_criacao = models.DateTimeField(default=timezone.now)
-    thumb = models.ImageField(upload_to='thumb_forum', default='thumb_forum/default_thumb.jpg', validators=[validate_image])
+    thumb = models.ImageField(upload_to='thumb_forum', validators=[validate_image])
 
     def __str__(self):
         return self.titulo

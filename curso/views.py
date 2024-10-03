@@ -258,8 +258,32 @@ def categorias(request):
 
 
 @login_required
-def categoriadetalhe(request):
-    return render(request, "categoriadetalhe.html")
+def categoriadetalhe(request, id):
+    busca = request.GET.get('search', '')
+    
+    # Obtém a categoria pelo id
+    categoria = Categorias.objects.get(pk=id)
+
+    # Filtra cursos por categoria e, opcionalmente, por busca
+    if busca:
+        todos_cursos = Curso.objects.filter(
+            categoria=categoria,
+            titulo__icontains=busca
+        ).annotate(
+            media_avaliacoes=Avg('avaliacao__estrelas'),
+            num_avaliacoes=Count('avaliacao')
+        ).prefetch_related('avaliacao')
+    else:
+        todos_cursos = Curso.objects.filter(categoria=categoria).annotate(
+            media_avaliacoes=Avg('avaliacao__estrelas'),
+            num_avaliacoes=Count('avaliacao')
+        ).prefetch_related('avaliacao')
+    
+    context = {
+        'todos_cursos': todos_cursos,
+        'categoria': categoria  # Passa a categoria para o template
+    }
+    return render(request, "categoriadetalhe.html", context)
 
 
 @login_required

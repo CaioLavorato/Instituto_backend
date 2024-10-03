@@ -19,7 +19,7 @@ def lista_forum(request):
 @login_required
 def criar_topico(request):
     if request.method == 'POST':
-        formulario = FormularioTopico(request.POST)
+        formulario = FormularioTopico(request.POST, request.FILES)  # Adicione request.FILES aqui
         if formulario.is_valid():
             topico = formulario.save(commit=False)
             topico.usuario = request.user
@@ -32,9 +32,11 @@ def criar_topico(request):
         formulario = FormularioTopico()
     return render(request, 'criar_topico.html', {'formulario': formulario})
 
+@login_required
 def detalhe_forum(request, pk):
     topico = get_object_or_404(TopicoForum, pk=pk)
     respostas = topico.respostas.all().order_by('data_criacao')
+    
     if request.method == 'POST':
         formulario = FormularioResposta(request.POST)
         if formulario.is_valid():
@@ -42,7 +44,9 @@ def detalhe_forum(request, pk):
             resposta.topico = topico
             resposta.usuario = request.user
             resposta.save()
+            messages.success(request, 'Sua resposta foi enviada com sucesso!')
             return redirect('detalhe_forum', pk=pk)
     else:
         formulario = FormularioResposta()
+    
     return render(request, 'detalhe_forum.html', {'topico': topico, 'respostas': respostas, 'formulario': formulario})

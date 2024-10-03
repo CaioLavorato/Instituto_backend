@@ -71,12 +71,22 @@
             <!-- RESPONSE FORM -->
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="h4-sm mt-60">Adicionar Resposta</h4>
-                    <form method="post" class="comment-form">
-                        {% csrf_token %}
-                        {{ formulario.as_p }}
-                        <button type="submit" class="btn btn-md btn-rose tra-black-hover">Enviar Resposta</button>
-                    </form>
+                        <h4 class="h4-sm mt-60">Adicionar Resposta</h4>
+                        <form method="post" action="{% url 'detalhe_forum' topico.pk %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_conteudo">Conteúdo</label>
+                                <textarea id="id_conteudo" name="conteudo" class="form-control" rows="5" placeholder="Digite sua resposta aqui...">{{ formulario.conteudo.value|default_if_none:"" }}</textarea>
+                                {% if formulario.conteudo.errors %}
+                                    <div class="alert alert-danger mt-2">
+                                        {% for error in formulario.conteudo.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn btn-md btn-blue tra-black-hover">Enviar Resposta</button>
+                        </form>
                 </div>
             </div>
         </div>

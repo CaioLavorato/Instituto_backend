@@ -13,11 +13,11 @@ urlpatterns = [
     path('documentos/', views.documentos, name='documentos'),
     path('professores/', views.professores, name='professores'),
     path('redecredenciada/', views.redecredenciada, name='redecredenciada'),
-    path('professordetalhe/', views.professordetalhe, name='professordetalhe'),
+    path('professordetalhe/<int:pk>', views.professordetalhe, name='professordetalhe'),
     path('categorias/', views.categorias, name='categorias'),
-    path('categoriadetalhe/<int:id>', views.categoriadetalhe, name='categoriadetalhe'),
+    path('categoriadetalhe/<int:id>/', views.categoriadetalhe, name='categoriadetalhe'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('foruns/', views.foruns,name='foruns'),
     path('criar_forum/', views.criar_forum,name='criar_forum'),
-    path('forumdetalhe/', views.forumdetalhe,name='forumdetalhe')
+    path('forumdetalhe/<int:pk>', views.forumdetalhe,name='forumdetalhe')
 ]

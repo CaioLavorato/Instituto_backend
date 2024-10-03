@@ -120,7 +120,7 @@
                         {% endif %}
                         
                         <!-- Form -->
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.non_field_errors }}
 
