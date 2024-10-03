@@ -45,28 +45,32 @@
         object-fit: cover; /* Garante que a imagem preencha o contêiner */
     }        
     .alert {
-    position: relative;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #721c24; /* Cor do texto padrão (vermelho para erros) */
-    background-color: #f8d7da; /* Cor de fundo padrão para erros */
-}
+        position: relative;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #721c24; /* Cor do texto padrão (vermelho para erros) */
+        background-color: #f8d7da; /* Cor de fundo padrão para erros */
+    }
 
-.alert.success {
-    color: #155724; /* Cor do texto para sucesso (verde) */
-    background-color: #d4edda; /* Cor de fundo para sucesso (verde claro) */
-}
+    .alert.success {
+        color: #155724; /* Cor do texto para sucesso (verde) */
+        background-color: #d4edda; /* Cor de fundo para sucesso (verde claro) */
+    }
 
-.alert .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.25rem;
-    color: inherit; /* Cor do botão de fechar, herda a cor do texto */
-    cursor: pointer;
-}
+    .alert .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.25rem;
+        color: inherit; /* Cor do botão de fechar, herda a cor do texto */
+        cursor: pointer;
+    }
+
+    .text-danger {
+        color: red; /* Define a cor do texto para os erros */
+    }
 </style>
 <div class="inner-page-wrapper">
     <!-- BREADCRUMB -->
@@ -124,23 +128,50 @@
                             <div class="form-group">
                                 <label for="{{ formulario.curso.id_for_label }}">Curso</label>
                                 {{ formulario.curso }}
+                                {% if formulario.curso.errors %}
+                                    <div class="text-danger">
+                                        {% for error in formulario.curso.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 <label for="{{ formulario.titulo.id_for_label }}">Título</label>
                                 {{ formulario.titulo }}
+                                {% if formulario.titulo.errors %}
+                                    <div class="text-danger">
+                                        {% for error in formulario.titulo.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 <label for="{{ formulario.conteudo.id_for_label }}">Conteúdo</label>
                                 {{ formulario.conteudo }}
+                                {% if formulario.conteudo.errors %}
+                                    <div class="text-danger">
+                                        {% for error in formulario.conteudo.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 <label for="{{ formulario.thumb.id_for_label }}">Imagem</label>
                                 {{ formulario.thumb }}
+                                {% if formulario.thumb.errors %}
+                                    <div class="text-danger">
+                                        {% for error in formulario.thumb.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <!-- Submit Button -->
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-blue tra-black-hover last-link">Criar Fórum</button>
-
                             </div>
                         </form>
                     </div> <!-- END FORM HOLDER -->
