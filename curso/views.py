@@ -34,38 +34,36 @@ def login_view(request):
 
     return render(request, 'login.html')
 
-
 def homepage(request):
-    # Consulta para obter os cursos mais vistos
     cursos_mais_vistos = Curso.objects.annotate(
-            media_avaliacoes=Avg('avaliacao__estrelas'),
-            num_avaliacoes=Count('avaliacao')
-        ).order_by('-visualizacoes')[:5].prefetch_related('avaliacao')
+        media_avaliacoes=Avg('avaliacao__estrelas'),
+        num_avaliacoes=Count('avaliacao')
+    ).order_by('-visualizacoes').prefetch_related('avaliacao')
     
-    # Consulta para obter os cursos recém-adicionados (ordenados por data de criação)
     cursos_recem_adicionados = Curso.objects.annotate(
-            media_avaliacoes=Avg('avaliacao__estrelas'),
-            num_avaliacoes=Count('avaliacao')
-        ).order_by('-data_criacao')[:5].prefetch_related('avaliacao')
+        media_avaliacoes=Avg('avaliacao__estrelas'),
+        num_avaliacoes=Count('avaliacao')
+    ).order_by('-data_criacao').prefetch_related('avaliacao')
 
     context = {
-            'cursos_mais_vistos': cursos_mais_vistos,
-            'cursos_recem_adicionados': cursos_recem_adicionados,
+        'cursos_mais_vistos': cursos_mais_vistos,
+        'cursos_recem_adicionados': cursos_recem_adicionados,
     }
 
     return render(request, "homepage.html", context)
 
 
+
 @login_required
 def cursos(request):
     try:
-        # Obter o termo de pesquisa
         busca = request.GET.get('search', '')
+        print(f"Termo de busca: '{busca}'")
 
-        # Filtrar cursos pelo nome, se o termo de busca estiver presente
         if busca:
             todos_cursos = Curso.objects.filter(
-                Q(titulo__icontains=busca) | Q(categoria__nome__icontains=busca)
+                Q(titulo__icontains=busca) | 
+                Q(descricao__icontains=busca)
             ).annotate(
                 media_avaliacoes=Avg('avaliacao__estrelas'),
                 num_avaliacoes=Count('avaliacao')
@@ -76,52 +74,27 @@ def cursos(request):
                 num_avaliacoes=Count('avaliacao')
             ).prefetch_related('avaliacao')
 
-        # Obter os cursos mais vistos
-        cursos_mais_vistos = Curso.objects.annotate(
-            media_avaliacoes=Avg('avaliacao__estrelas'),
-            num_avaliacoes=Count('avaliacao')
-        ).order_by('-visualizacoes')[:5].prefetch_related('avaliacao')
-
-        # Obter os módulos concluídos pelo usuário e filtrar cursos correspondentes
-        modulos_concluidos = Modulo_usuario.objects.filter(usuario=request.user, ind_concluido=True).values_list(
-            'modulo__curso', flat=True)
-        cursos_para_voce = Curso.objects.filter(
-            id__in=modulos_concluidos
-        ).annotate(
-            media_avaliacoes=Avg('avaliacao__estrelas'),
-            num_avaliacoes=Count('avaliacao')
-        ).prefetch_related('avaliacao')[:5]
+        print(f"Número de todos os cursos: {todos_cursos.count()}")
 
         # Formatar dados para o template
         for curso in todos_cursos:
-            curso.media_avaliacoes_formatado = f"{curso.media_avaliacoes:.1f}"
-            curso.media_avaliacoes_rounded = round(curso.media_avaliacoes)
-
-        for curso in cursos_mais_vistos:
-            curso.media_avaliacoes_formatado = f"{curso.media_avaliacoes:.1f}"
-            curso.media_avaliacoes_rounded = round(curso.media_avaliacoes)
-
-        for curso in cursos_para_voce:
-            curso.media_avaliacoes_formatado = f"{curso.media_avaliacoes:.1f}"
-            curso.media_avaliacoes_rounded = round(curso.media_avaliacoes)
+            if curso.media_avaliacoes is not None:
+                curso.media_avaliacoes_formatado = f"{curso.media_avaliacoes:.1f}"
+                curso.media_avaliacoes_rounded = round(curso.media_avaliacoes)
+            else:
+                curso.media_avaliacoes_formatado = "0.0"
+                curso.media_avaliacoes_rounded = 0
 
         context = {
             'todos_cursos': todos_cursos,
-            'cursos_mais_vistos': cursos_mais_vistos,
-            'cursos_para_voce': cursos_para_voce,
-            'busca': busca,
+            'busca': busca  # Para manter o valor de busca no formulário
         }
 
         return render(request, "cursos.html", context)
 
     except Exception as e:
-        # Lidar com erros de consulta ou renderização
-        print(f"Erro ao obter cursos: {e}")
-        context = {
-            'error_message': "Ocorreu um erro ao carregar os cursos."
-        }
-        return render(request, "cursos.html", context)
-
+        print(f"Erro ao buscar cursos: {e}")
+        return render(request, "cursos.html", {"error": "Erro ao carregar cursos."})
 
 @login_required
 def meuscursos(request):

@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form class="d-flex" role="search" method="get" action="{% url 'cursos' %}">
+                    <form class="d-flex" role="search" method="GET" action="{% url 'cursos' %}">
                         <input class="form-control me-2" type="search" placeholder="Pesquisar Cursos" aria-label="Search" name="search" value="{{ busca }}">
                         <button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
@@ -51,7 +51,7 @@
     </section> <!-- END PAGE HERO -->
     
     <!-- Busca (Quando há uma busca) ============================================= -->
-    {% if busca %}
+    {% if busca.exists %}
     <section id="search-results" class="wide-60 courses-section division">
         <div class="container">
             <!-- SECTION TITLE -->
@@ -103,115 +103,12 @@
         </div> <!-- End container -->
     </section> <!-- END BUSCA -->
     {% else %}
-    
-    <!-- Cursos Mais Vistos ============================================= -->
-    <section id="courses-1" class="wide-100 courses-section division">
-        <div class="container">
-            <!-- SECTION TITLE -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title mb-40">
-                        <h4 class="h4-xl">Cursos Mais Vistos</h4>
-                        <p class="p-md">Descubra os cursos que estão em alta entre os alunos.</p>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- COURSE BOXES CAROUSEL -->
-            <div class="row courses-grid">
-                {% for curso in cursos_mais_vistos %}
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="cbox-1">
-                        <a href="{% url 'cursodetalhe' curso.id %}">
-                            <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
-                            <div class="cbox-1-txt">
-                                <p class="course-tags">
-                                    <span>{{ curso.categoria.nome }}</span>
-                                    <span>{{ curso.duracao }}</span>
-                                </p>
-                                <h5 class="h5-xs">{{ curso.titulo }}</h5>
-                                <div class="course-rating clearfix">
-                                    {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
-                                        {% with media_avaliacoes|floatformat:1 as rounded_media %}
-                                            {% for i in "12345" %}
-                                                {% if forloop.counter <= rounded_media|floatformat:0 %}
-                                                    <i class="fas fa-star"></i>
-                                                {% else %}
-                                                    <i class="far fa-star"></i>
-                                                {% endif %}
-                                            {% endfor %}
-                                            {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
-                                                <i class="fas fa-star-half-alt"></i>
-                                            {% endif %}
-                                        {% endwith %}
-                                    {% endwith %}
-                                    <span>{{ media_avaliacoes|floatformat:1 }} ({{ curso.num_avaliacoes }} Avaliações)</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                {% endfor %}
-            </div> <!-- END COURSE BOXES CAROUSEL -->
-        </div> <!-- End container -->
-    </section> <!-- END CURSOS MAIS VISTOS -->
-    
-    <!-- Para Você ============================================= -->
-    <section id="courses-3" class="wide-60 courses-section division">
-        <div class="container">
-            <!-- SECTION TITLE -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title mb-40">
-                        <h4 class="h4-xl">Para você</h4>
-                        <p class="p-md">Cursos que têm a sua cara.</p>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- COURSES HOLDER -->
-            <div class="row courses-grid">
-                {% for curso in cursos_para_voce %}
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="cbox-1">
-                        <a href="{% url 'cursodetalhe' curso.id %}">
-                            <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
-                            <div class="cbox-1-txt">
-                                <p class="course-tags">
-                                    <span>{{ curso.categoria.nome }}</span>
-                                    <span>{{ curso.duracao }}</span>
-                                </p>
-                                <h5 class="h5-xs">{{ curso.titulo }}</h5>
-                                <div class="course-rating clearfix">
-                                    {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
-                                        {% with media_avaliacoes|floatformat:1 as rounded_media %}
-                                            {% for i in "12345" %}
-                                                {% if forloop.counter <= rounded_media|floatformat:0 %}
-                                                    <i class="fas fa-star"></i>
-                                                {% else %}
-                                                    <i class="far fa-star"></i>
-                                                {% endif %}
-                                            {% endfor %}
-                                            {% if rounded_media|floatformat:1|slice:":-1" != rounded_media|floatformat:0 %}
-                                                <i class="fas fa-star-half-alt"></i>
-                                            {% endif %}
-                                        {% endwith %}
-                                    {% endwith %}
-                                    <span>{{ media_avaliacoes|floatformat:1 }} ({{ curso.num_avaliacoes }} Avaliações)</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                {% endfor %}
-            </div> <!-- END COURSES HOLDER -->
-        </div> <!-- End container -->
-    </section> <!-- END PARA VOCÊ -->
-    
+
+    <!-- Verifique se existem cursos antes de exibir -->
+    {% if todos_cursos.exists %}
     <!-- Todos os Cursos ============================================= -->
     <section id="courses-5" class="courses-section division">
         <div class="container">
-            <!-- SECTION TITLE -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title mb-40">
@@ -220,9 +117,7 @@
                     </div>
                 </div>
             </div>
-    
-            <!-- COURSES LIST -->
-            <div class="row">
+            <div class="row courses-grid">
                 {% for curso in todos_cursos %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="cbox-1">
@@ -259,7 +154,10 @@
             </div> <!-- END COURSES LIST -->
         </div> <!-- End container -->
     </section> <!-- END TODOS OS CURSOS -->
-
+    {% else %}
+    <p>Nenhum curso encontrado.</p>
+    {% endif %}
+{% endif %}
     <!-- PAGE PAGINATION ============================================= -->
     <!-- <div class="page-pagination division">
         <div class="container">
@@ -279,6 +177,5 @@
             </div> 
         </div> 
     </div>  -->
-	{% endif %}
 </div> <!-- END INNER PAGE WRAPPER -->
 {% endblock %}

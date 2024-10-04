@@ -38,6 +38,13 @@
             right: 0;
             padding: 20px;
         }
+		.carousel-caption p {
+    margin-bottom: 20px;
+}
+
+.carousel-caption .btn {
+    margin-top: 10px;
+}
 </style>
 			<!-- HERO-8
 			============================================= -->
@@ -506,17 +513,19 @@
 					<div id="maisVistosCarousel" class="carousel slide" data-ride="carousel">
 						<!-- Indicadores -->
 						<ol class="carousel-indicators">
-							{% for curso in cursos_mais_vistos|slice:":4" %}
-								<li data-target="#maisVistosCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+							{% for curso in cursos_mais_vistos %}
+								{% if forloop.counter0|divisibleby:2 %}
+									<li data-target="#maisVistosCarousel" data-slide-to="{{ forloop.counter0|divisibleby:2 }}" class="{% if forloop.first %}active{% endif %}"></li>
+								{% endif %}
 							{% endfor %}
 						</ol>
 					
 						<!-- Slides -->
 						<div class="carousel-inner">
 							{% for curso in cursos_mais_vistos %}
-								{% if forloop.first or forloop.counter|divisibleby:2 %}
-								<div class="carousel-item {% if forloop.first %}active{% endif %}">
-									<div class="row">
+								{% if forloop.counter0|divisibleby:2 %}
+									<div class="carousel-item {% if forloop.first %}active{% endif %}">
+										<div class="row">
 								{% endif %}
 								
 								<div class="col-md-6">
@@ -552,8 +561,8 @@
 								</div>
 					
 								{% if forloop.counter|divisibleby:2 or forloop.last %}
-									</div> <!-- .row -->
-								</div> <!-- .carousel-item -->
+										</div> <!-- .row -->
+									</div> <!-- .carousel-item -->
 								{% endif %}
 							{% endfor %}
 						</div>
@@ -592,31 +601,33 @@
 			
 					<!-- COURSES RECÉM ADICIONADOS CAROUSEL -->
 					<div id="recentesCarousel" class="carousel slide" data-ride="carousel">
-					    <!-- Indicadores -->
-					    <ol class="carousel-indicators">
-					        {% for curso in cursos_recem_adicionados|slice:":4" %}
-					            <li data-target="#recentesCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
-					        {% endfor %}
-					    </ol>
+						<!-- Indicadores -->
+						<ol class="carousel-indicators">
+							{% for curso in cursos_recem_adicionados %}
+								{% if forloop.counter0|divisibleby:2 %}
+									<li data-target="#recentesCarousel" data-slide-to="{{ forloop.counter0|divisibleby:2 }}" class="{% if forloop.first %}active{% endif %}"></li>
+								{% endif %}
+							{% endfor %}
+						</ol>
 					
-					    <!-- Slides -->
-					    <div class="carousel-inner">
-					        {% for curso in cursos_recem_adicionados %}
-					            {% if forloop.first or forloop.counter|divisibleby:2 %}
-					            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-					                <div class="row">
-					            {% endif %}
-									
-					            <div class="col-md-6">
-					                <div class="cbox-1">
-					                    <a href="{% url 'cursodetalhe' curso.id %}">
-					                        <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
-					                        <div class="cbox-1-txt">
-					                            <p class="course-tags">
-					                                <span>{{ curso.categoria.nome }}</span>
-					                                <span>{{ curso.duracao }}</span>
-					                            </p>
-					                            <h5 class="h5-xs">{{ curso.titulo }}</h5>
+						<!-- Slides -->
+						<div class="carousel-inner">
+							{% for curso in cursos_recem_adicionados %}
+								{% if forloop.counter0|divisibleby:2 %}
+									<div class="carousel-item {% if forloop.first %}active{% endif %}">
+										<div class="row">
+								{% endif %}
+								
+								<div class="col-md-6">
+									<div class="cbox-1">
+										<a href="{% url 'cursodetalhe' curso.id %}">
+											<img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
+											<div class="cbox-1-txt">
+												<p class="course-tags">
+													<span>{{ curso.categoria.nome }}</span>
+													<span>{{ curso.duracao }}</span>
+												</p>
+												<h5 class="h5-xs">{{ curso.titulo }}</h5>
 												<div class="course-rating clearfix">
 													{% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
 														{% with media_avaliacoes|floatformat:1 as rounded_media %}
@@ -634,28 +645,34 @@
 													{% endwith %}
 													<span>{{ media_avaliacoes|floatformat:1 }} ({{ curso.num_avaliacoes }} Avaliações)</span>
 												</div>
-					                        </div>
-					                    </a>
-					                </div>
-					            </div>
-							
-					            {% if forloop.counter|divisibleby:2 or forloop.last %}
-					                </div> <!-- .row -->
-					            </div> <!-- .carousel-item -->
-					            {% endif %}
-					        {% endfor %}
-					    </div>
+											</div>
+										</a>
+									</div>
+								</div>
 					
-					    <!-- Controles do carrossel -->
-					    <a class="carousel-control-prev" href="#recentesCarousel" role="button" data-slide="prev">
-					        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					        <span class="sr-only">Anterior</span>
-					    </a>
-					    <a class="carousel-control-next" href="#recentesCarousel" role="button" data-slide="next">
-					        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-					        <span class="sr-only">Próximo</span>
-					    </a>
+								{% if forloop.counter|divisibleby:2 or forloop.last %}
+										</div> <!-- .row -->
+									</div> <!-- .carousel-item -->
+								{% endif %}
+							{% endfor %}
+						</div>
+					
+						<!-- Controles do carrossel -->
+						<a class="carousel-control-prev" href="#recentesCarousel" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Anterior</span>
+						</a>
+						<a class="carousel-control-next" href="#recentesCarousel" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Próximo</span>
+						</a>
 					</div>
+					
+					
+					
+					
+					
+					
 				</div>
 			</section>
 			<!-- BANNER-3
