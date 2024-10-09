@@ -19,5 +19,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('foruns/', views.foruns,name='foruns'),
     path('criar_forum/', views.criar_forum,name='criar_forum'),
-    path('forumdetalhe/<int:pk>', views.forumdetalhe,name='forumdetalhe')
+    path('forumdetalhe/<int:pk>', views.forumdetalhe,name='forumdetalhe'),
+    path('conheca/', views.conheca, name='conheca'),
 ]

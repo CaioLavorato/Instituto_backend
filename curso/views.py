@@ -320,3 +320,7 @@ def criar_forum(request):
         form = forms.ForumForm()
 
     return render(request, 'novoforum.html', {'form': form})
+
+
+def conheca(request):
+    return render(request, "conheca.html")

@@ -145,7 +145,7 @@
                         <li class="nl-simple" aria-haspopup="true"><a href="{% url 'cursos' %}">Cursos</a></li>
 
                         <!-- SIMPLE NAVIGATION LINK -->
-                        <li class="nl-simple" aria-haspopup="true"><a href="https://institutoronald.org.br/home/diagnostico-precoce/">Conheça</a></li>
+                        <li class="nl-simple" aria-haspopup="true"><a href="{% url 'conheca' %}">Conheça</a></li>
 
                         <!-- DROPDOWN MENU -->
                         <li aria-haspopup="true" hidden>
@@ -173,22 +173,22 @@
                             <a href="#"><img src="{% static 'images/icons/question-sign-in-circles.png' %}" alt="flag-icon" /> <span class="wsarrow"></span></a>
                             <ul class="sub-menu">
                                 <li aria-haspopup="true"><a href="courses-list.html">Fale Conosco</a></li>
-                                <li aria-haspopup="true"><a href="courses-list.html">Conheça o Instituto</a></li>
+                                <li aria-haspopup="true"><a href="{% url 'conheca' %}">Conheça o Instituto</a></li>
                                 <li aria-haspopup="true"><a href="https://doe.institutoronald.org.br/app/single_step">Como Ajudar</a></li>
                             </ul>
                         </li>
 
 
-                        <!-- DROPDOWN MENU
+                        <!-- DROPDOWN MENU -->
                         <li aria-haspopup="true">
                             <a href="#" class="lang-select">
-                                <img src="{% static 'images/icons/flags/brazil.png' %}" alt="flag-icon" /> Pt-Br <span class="wsarrow"></span>
+                                <img src="{% static 'images/icons/flags/brazil.png' %}" alt="flag-icon" /><span class="wsarrow"></span>
                             </a>
-                            <ul class="sub-menu last-sub-menu" hidden>
+                            <ul class="sub-menu last-sub-menu">
                                 <li aria-haspopup="true"><a href="#"><img src="{% static 'images/icons/flags/usa.png' %}" alt="flag-icon" /> English</a></li>
                                 <li aria-haspopup="true"><a href="#"><img src="{% static 'images/icons/flags/spain.png' %}" alt="flag-icon" /> Español</a></li>
                             </ul>
-                        </li>-->
+                        </li>
                     </ul>
                 </nav>
             </div>
