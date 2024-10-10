@@ -24,15 +24,11 @@ jobs:
         venv/bin/python -m pip install --upgrade pip
         venv/bin/python -m pip install -r requirements.txt
 
-    - name: Install dependencies
-      run: |
-        source venv/bin/activate
-        pip install -r requirements.txt
+    # Removed the redundant installation step as dependencies are already installed above
 
     - name: Verify requests Installation
       run: |
-        source venv/bin/activate
-        pip show requests
+        venv/bin/python -m pip show requests
 
     - name: Run migrations
       run: |
@@ -53,36 +49,36 @@ jobs:
       env:
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
       run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-          echo "Starting deployment" &&
-          cd /var/www/Instituto_backend &&
-          echo "Configuring Git safe directory..." &&
-          git config --global --add safe.directory /var/www/Instituto_backend &&
-          echo "Updating repository..." &&
-          git pull origin master &&
-          echo "Current directory contents:" &&
-          ls -la &&
-          echo "Activating virtual environment..." &&
-          source venv/bin/activate &&
-          echo "Installing dependencies..." &&
-          pip install -r requirements.txt &&
-          echo "Running migrations (without resetting database)..." &&
-          python manage.py migrate --no-input &&
-          echo "Collecting static files (without deleting existing)..." &&
-          python manage.py collectstatic --no-input --clear &&
-          echo "Adjusting static files permissions..." &&
-          sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
-          sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
-          echo "Restarting Gunicorn..." &&
-          systemctl restart gunicorn &&
-          echo "Restarting Nginx..." &&
-          sudo systemctl restart nginx &&
-          echo "Deployment completed"'
-  
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+        echo "Starting deployment" &&
+        cd /var/www/Instituto_backend &&
+        echo "Configuring Git safe directory..." &&
+        git config --global --add safe.directory /var/www/Instituto_backend &&
+        echo "Updating repository..." &&
+        git pull origin master &&
+        echo "Current directory contents:" &&
+        ls -la &&
+        echo "Activating virtual environment..." &&
+        source venv/bin/activate &&
+        echo "Installing dependencies..." &&
+        pip install -r requirements.txt &&
+        echo "Running migrations (without resetting database)..." &&
+        python manage.py migrate --no-input &&
+        echo "Collecting static files (without deleting existing)..." &&
+        python manage.py collectstatic --no-input --clear &&
+        echo "Adjusting static files permissions..." &&
+        sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
+        sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
+        echo "Restarting Gunicorn..." &&
+        sudo systemctl restart gunicorn &&
+        echo "Restarting Nginx..." &&
+        sudo systemctl restart nginx &&
+        echo "Deployment completed"'
+
     - name: Check Static Files after Deployment
       run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-          echo "Verifying static files presence..." &&
-          ls -la /var/www/Instituto_backend/staticfiles &&
-          echo "Checking Nginx logs for static file errors..." &&
-          tail -n 50 /var/log/nginx/error.log'
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+        echo "Verifying static files presence..." &&
+        ls -la /var/www/Instituto_backend/staticfiles &&
+        echo "Checking Nginx logs for static file errors..." &&
+        tail -n 50 /var/log/nginx/error.log'
