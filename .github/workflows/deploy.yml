@@ -77,11 +77,11 @@ jobs:
         sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles
         sudo chmod -R 755 /var/www/Instituto_backend/staticfiles
         echo "Restarting Gunicorn..."
-        sudo systemctl restart gunicorn
+        sudo systemctl restart gunicorn || echo "Failed to restart Gunicorn"
         echo "Checking Gunicorn status..."
         sudo systemctl status gunicorn
         echo "Restarting Nginx..."
-        sudo systemctl restart nginx
+        sudo systemctl restart nginx || echo "Failed to restart Nginx"
         echo "Checking Nginx status..."
         sudo systemctl status nginx
         echo "Checking Nginx configuration..."
