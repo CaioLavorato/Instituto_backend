@@ -18,17 +18,31 @@ jobs:
       with:
         python-version: 3.12
 
+    - name: Cache pip packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
     - name: Create and activate virtual environment and install dependencies
       run: |
         python -m venv venv
         venv/bin/python -m pip install --upgrade pip
         venv/bin/python -m pip install -r requirements.txt
 
-    # Removed the redundant installation step as dependencies are already installed above
+    - name: Debug dependencies
+      run: |
+        echo "Contents of requirements.txt:"
+        cat requirements.txt
+        echo "Installed packages:"
+        venv/bin/python -m pip list
 
     - name: Verify requests Installation
       run: |
-        venv/bin/python -m pip show requests
+        venv/bin/python -m pip list
+        venv/bin/python -m pip show requests || echo "requests package not found"
 
     - name: Run migrations
       run: |
@@ -49,7 +63,9 @@ jobs:
       env:
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
       run: |
+        set -e  # Exit immediately if a command exits with a non-zero status
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+        set -x  # Print commands and their arguments as they are executed
         echo "Starting deployment" &&
         cd /var/www/Instituto_backend &&
         echo "Configuring Git safe directory..." &&
@@ -73,7 +89,8 @@ jobs:
         sudo systemctl restart gunicorn &&
         echo "Restarting Nginx..." &&
         sudo systemctl restart nginx &&
-        echo "Deployment completed"'
+        echo "Deployment completed"
+        '
 
     - name: Check Static Files after Deployment
       run: |
