@@ -1,107 +1,86 @@
 name: Django CI/CD
-
 on:
   push:
     branches:
       - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Check out the repository
       uses: actions/checkout@v2
-
     - name: Set up Python 3.12
       uses: actions/setup-python@v2
       with:
         python-version: 3.12
-
-    - name: Cache pip packages
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-
-    - name: Install dependencies
+    - name: Create and activate virtual environment
       run: |
         python -m venv venv
         source venv/bin/activate
         python -m pip install --upgrade pip
+    - name: Install dependencies
+      run: |
+        source venv/bin/activate
         pip install -r requirements.txt
-        pip install requests  # Ensure requests is installed
-
-    - name: Debug dependencies
+    - name: Verify Django Installation
       run: |
         source venv/bin/activate
-        echo "Contents of requirements.txt:"
-        cat requirements.txt
-        echo "Installed packages:"
-        pip list
-
-    - name: Verify requests Installation
+        pip show django
+        pip show djangorestframework
+    - name: List Python Path
       run: |
         source venv/bin/activate
-        python -c "import requests; print(requests.__version__)"
-
-    - name: Run migrations
-      run: |
-        source venv/bin/activate
-        python manage.py migrate
-
+        python -c "import sys; print('\n'.join(sys.path))"
     - name: Run tests
       run: |
         source venv/bin/activate
         python manage.py test
-
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
-
     - name: Debug SSH Connection
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 'echo SSH connection successful'
-
     - name: Deploy to the server
       env:
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
       run: |
-        set -e  # Exit immediately if a command exits with a non-zero status
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-        set -x  # Print commands and their arguments as they are executed
         echo "Starting deployment" &&
         cd /var/www/Instituto_backend &&
         echo "Configuring Git safe directory..." &&
         git config --global --add safe.directory /var/www/Instituto_backend &&
-        echo "Stashing local changes..." &&
-        git stash --include-untracked &&
+        echo "Checking for uncommitted changes..." &&
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "Uncommitted changes detected, discarding them..." &&
+          git reset --hard &&
+          git clean -fd
+        fi &&
+        echo "Backing up the database..." &&
+        pg_dump -U your_db_user your_db_name > db_backup.sql &&
         echo "Updating repository..." &&
         git pull origin master &&
-        echo "Applying stashed changes..." &&
-        git stash pop || true &&  # The `|| true` ensures the script continues even if there are conflicts
         echo "Current directory contents:" &&
         ls -la &&
-        echo "Activating virtual environment..." &&
+        echo "Creating and activating virtual environment..." &&
+        python3 -m venv venv &&
         source venv/bin/activate &&
         echo "Installing dependencies..." &&
         pip install -r requirements.txt &&
-        pip install requests &&
-        echo "Running migrations (without resetting database)..." &&
-        python manage.py migrate --no-input &&
-        echo "Collecting static files (without deleting existing)..." &&
-        python manage.py collectstatic --no-input --clear &&
+        echo "Running migrations..." &&
+        python manage.py migrate --fake-initial &&
+        echo "Collecting static files..." &&
+        python manage.py collectstatic --noinput &&
         echo "Adjusting static files permissions..." &&
         sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
         sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
+        cp -r staticfiles/admin static/admin &&
         echo "Restarting Gunicorn..." &&
-        sudo systemctl restart gunicorn &&
+        systemctl restart gunicorn &&
         echo "Restarting Nginx..." &&
         sudo systemctl restart nginx &&
-        echo "Deployment completed"
-        '
-
+        echo "Deployment completed" &&
+        echo "Checking Nginx status..." &&
+        sudo systemctl status nginx'
     - name: Check Static Files after Deployment
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
