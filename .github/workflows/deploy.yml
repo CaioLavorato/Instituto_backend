@@ -42,48 +42,54 @@ jobs:
     - name: Debug SSH Connection
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 'echo SSH connection successful'
-    - name: Deploy to the server
-      env:
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-      run: |
-        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-        echo "Starting deployment" &&
-        cd /var/www/Instituto_backend &&
-        echo "Configuring Git safe directory..." &&
-        git config --global --add safe.directory /var/www/Instituto_backend &&
-        echo "Checking for uncommitted changes..." &&
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "Uncommitted changes detected, discarding them..." &&
-          git reset --hard &&
-          git clean -fd
-        fi &&
-        echo "Backing up the database..." &&
-        pg_dump -U your_db_user your_db_name > db_backup.sql &&
-        echo "Updating repository..." &&
-        git pull origin master &&
-        echo "Current directory contents:" &&
-        ls -la &&
-        echo "Creating and activating virtual environment..." &&
-        python3 -m venv venv &&
-        source venv/bin/activate &&
-        echo "Installing dependencies..." &&
-        pip install -r requirements.txt &&
-        pip install requests &&  # Add this line to install requests on the server
-        echo "Running migrations..." &&
-        python manage.py migrate --fake-initial &&
-        echo "Collecting static files..." &&
-        python manage.py collectstatic --noinput &&
-        echo "Adjusting static files permissions..." &&
-        sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
-        sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
-        cp -r staticfiles/admin static/admin &&
-        echo "Restarting Gunicorn..." &&
-        systemctl restart gunicorn &&
-        echo "Restarting Nginx..." &&
-        sudo systemctl restart nginx &&
-        echo "Deployment completed" &&
-        echo "Checking Nginx status..." &&
-        sudo systemctl status nginx'
+        - name: Deploy to the server
+        env:
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
+          echo "Starting deployment" &&
+          cd /var/www/Instituto_backend &&
+          echo "Configuring Git safe directory..." &&
+          git config --global --add safe.directory /var/www/Instituto_backend &&
+          echo "Checking for uncommitted changes..." &&
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Uncommitted changes detected, discarding them..." &&
+            git reset --hard &&
+            git clean -fd
+          fi &&
+          echo "Installing PostgreSQL client tools..." &&
+          sudo apt-get update && sudo apt-get install -y postgresql-client &&
+          echo "Attempting to back up the database..." &&
+          if command -v pg_dump &> /dev/null; then
+            pg_dump -U your_db_user your_db_name > db_backup.sql || echo "Database backup failed, but continuing deployment"
+          else
+            echo "pg_dump not found, skipping database backup"
+          fi &&
+          echo "Updating repository..." &&
+          git pull origin master &&
+          echo "Current directory contents:" &&
+          ls -la &&
+          echo "Creating and activating virtual environment..." &&
+          python3 -m venv venv &&
+          source venv/bin/activate &&
+          echo "Installing dependencies..." &&
+          pip install -r requirements.txt &&
+          pip install requests &&
+          echo "Running migrations..." &&
+          python manage.py migrate --fake-initial &&
+          echo "Collecting static files..." &&
+          python manage.py collectstatic --noinput &&
+          echo "Adjusting static files permissions..." &&
+          sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
+          sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
+          cp -r staticfiles/admin static/admin &&
+          echo "Restarting Gunicorn..." &&
+          systemctl restart gunicorn &&
+          echo "Restarting Nginx..." &&
+          sudo systemctl restart nginx &&
+          echo "Deployment completed" &&
+          echo "Checking Nginx status..." &&
+          sudo systemctl status nginx'
     - name: Check Static Files after Deployment
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
