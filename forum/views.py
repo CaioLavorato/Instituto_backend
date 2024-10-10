@@ -33,6 +33,7 @@ def criar_topico(request):
         formulario = FormularioTopico()
     return render(request, 'criar_topico.html', {'formulario': formulario})
 
+
 @login_required
 def detalhe_forum(request, pk):
     topico = get_object_or_404(TopicoForum, pk=pk)
