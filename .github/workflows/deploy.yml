@@ -75,8 +75,12 @@ jobs:
         cd /var/www/Instituto_backend &&
         echo "Configuring Git safe directory..." &&
         git config --global --add safe.directory /var/www/Instituto_backend &&
+        echo "Stashing local changes..." &&
+        git stash --include-untracked &&
         echo "Updating repository..." &&
         git pull origin master &&
+        echo "Applying stashed changes..." &&
+        git stash pop || true &&  # The `|| true` ensures the script continues even if there are conflicts
         echo "Current directory contents:" &&
         ls -la &&
         echo "Activating virtual environment..." &&
