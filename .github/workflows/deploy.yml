@@ -22,11 +22,13 @@ jobs:
       run: |
         source venv/bin/activate
         pip install -r requirements.txt
+        pip install requests  # Add this line to install the requests library
     - name: Verify Django Installation
       run: |
         source venv/bin/activate
         pip show django
         pip show djangorestframework
+        pip show requests  # Add this line to verify requests installation
     - name: List Python Path
       run: |
         source venv/bin/activate
@@ -66,6 +68,7 @@ jobs:
         source venv/bin/activate &&
         echo "Installing dependencies..." &&
         pip install -r requirements.txt &&
+        pip install requests &&  # Add this line to install requests on the server
         echo "Running migrations..." &&
         python manage.py migrate --fake-initial &&
         echo "Collecting static files..." &&
