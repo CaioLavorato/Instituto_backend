@@ -18,37 +18,23 @@ jobs:
       with:
         python-version: 3.12
 
-    - name: Create and activate virtual environment
+    - name: Create and activate virtual environment and install dependencies
       run: |
         python -m venv venv
-        source venv/bin/activate
-        python -m pip install --upgrade pip
+        venv/bin/python -m pip install --upgrade pip
+        venv/bin/python -m pip install -r requirements.txt
 
-    - name: Install dependencies
+    - name: Verify installations
       run: |
-        source venv/bin/activate
-        pip install -r requirements.txt
-
-    - name: Verify Django Installation
-      run: |
-        source venv/bin/activate
-        pip show django
-        pip show djangorestframework
-
-    - name: List Python Path
-      run: |
-        source venv/bin/activate
-        python -c "import sys; print('\n'.join(sys.path))"
+        venv/bin/python -m pip show django djangorestframework requests
 
     - name: Run migrations
       run: |
-        source venv/bin/activate
-        python manage.py migrate
+        venv/bin/python manage.py migrate
 
     - name: Run tests
       run: |
-        source venv/bin/activate
-        python manage.py test
+        venv/bin/python manage.py test
 
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
@@ -67,8 +53,7 @@ jobs:
           echo "Configuring Git safe directory..." &&
           git config --global --add safe.directory /var/www/Instituto_backend &&
           echo "Updating repository..." &&
-          git fetch origin master &&
-          git merge origin/master &&
+          git pull origin master &&
           echo "Current directory contents:" &&
           ls -la &&
           echo "Activating virtual environment..." &&
@@ -95,4 +80,3 @@ jobs:
           ls -la /var/www/Instituto_backend/staticfiles &&
           echo "Checking Nginx logs for static file errors..." &&
           tail -n 50 /var/log/nginx/error.log'
-          
