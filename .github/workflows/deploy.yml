@@ -26,31 +26,36 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pip-
 
-    - name: Create and activate virtual environment and install dependencies
+    - name: Install dependencies
       run: |
         python -m venv venv
-        venv/bin/python -m pip install --upgrade pip
-        venv/bin/python -m pip install -r requirements.txt
+        source venv/bin/activate
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install requests  # Ensure requests is installed
 
     - name: Debug dependencies
       run: |
+        source venv/bin/activate
         echo "Contents of requirements.txt:"
         cat requirements.txt
         echo "Installed packages:"
-        venv/bin/python -m pip list
+        pip list
 
     - name: Verify requests Installation
       run: |
-        venv/bin/python -m pip list
-        venv/bin/python -m pip show requests || echo "requests package not found"
+        source venv/bin/activate
+        python -c "import requests; print(requests.__version__)"
 
     - name: Run migrations
       run: |
-        venv/bin/python manage.py migrate
+        source venv/bin/activate
+        python manage.py migrate
 
     - name: Run tests
       run: |
-        venv/bin/python manage.py test
+        source venv/bin/activate
+        python manage.py test
 
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
@@ -78,6 +83,7 @@ jobs:
         source venv/bin/activate &&
         echo "Installing dependencies..." &&
         pip install -r requirements.txt &&
+        pip install requests &&
         echo "Running migrations (without resetting database)..." &&
         python manage.py migrate --no-input &&
         echo "Collecting static files (without deleting existing)..." &&
