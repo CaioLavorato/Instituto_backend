@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="inner-page-wrapper">
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hero-txt white-color">
+                        <!-- Title -->
+                        <h3 class="h3-xs">Fale Conosco</h3>
+
+                    </div>
+                </div>
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section>
+    <section class="wide-40 course-section division">
+<div class="container ">
+    <div class="row">
+        <div class="col-md-6">
+
+            <p>Precisando de uma ajudinha nossa? Conta para gente o que está acontecendo!</p>
+            <p class="text-muted">* Campos obrigatórios</p>
+            <p><i class="fas fa-envelope"></i> diagnosticoPrecoce@institutoronald.org.br</p>
+            <div>
+                <a href="https://www.instagram.com/institutoronald/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/InstitutoRonaldMcDonald/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/InstitutoRonaldMcDonald/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/user/institutoronald"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <form method="post" action="{% url 'fale_conosco' %}">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nome" style="font-weight: bold;">Nome *</label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="sobrenome" style="font-weight: bold;">Sobrenome *</label>
+                        <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" style="font-weight: bold;">Email *</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="assunto" style="font-weight: bold;">Assunto *</label>
+                    <select id="assunto" class="form-control" name="assunto" required>
+                        <option value="" disabled selected>Selecione um assunto</option>
+                        <option value="suporte">Suporte</option>
+                        <option value="duvida">Dúvida</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem" style="font-weight: bold;">Mensagem *</label>
+                    <textarea id="mensagem" class="form-control" name="mensagem" rows="4" required></textarea>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="termos" name="termos" required>
+                    <label class="form-check-label" for="termos">Li e concordo com os termos da Política de Privacidade *</label>
+                </div>
+
+                <!-- reCAPTCHA Placeholder -->
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="sua-chave-do-recaptcha"></div>
+                    {% if form.errors %}
+                        <p class="text-danger">A verificação expirou. Marque a caixa de seleção novamente.</p>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-blue tra-black-hover last-link">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div></section></div>
+{% endblock %}

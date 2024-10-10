@@ -21,4 +21,5 @@ urlpatterns = [
     path('criar_forum/', views.criar_forum,name='criar_forum'),
     path('forumdetalhe/<int:pk>', views.forumdetalhe,name='forumdetalhe'),
     path('conheca/', views.conheca, name='conheca'),
+    path('faleconosco/', views.fale_conosco, name='fale_conosco'),
 ]

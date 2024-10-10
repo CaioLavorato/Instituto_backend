@@ -160,3 +160,18 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_URL = '/login/'
 # Logout redirection
 LOGOUT_REDIRECT_URL = '/'
+
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'seu-email@dominio.com'
+DEFAULT_TO_EMAIL = 'destinatario@dominio.com'
+
+# Configuração do SMTP (exemplo com Gmail)
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'seu-email@gmail.com'
+EMAIL_HOST_PASSWORD = 'sua-senha'
+
+RECAPTCHA_PUBLIC_KEY = 'sua-chave-publica'
+RECAPTCHA_PRIVATE_KEY = 'sua-chave-privada'

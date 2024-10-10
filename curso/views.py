@@ -1,9 +1,12 @@
+import requests
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.views.generic import DetailView
+from django.core.mail import send_mail
+from django.conf import settings
 
 from . import forms
 from .models import Curso, Avaliacao, Modulo, Modulo_usuario, UserProfile, Categorias, Aula
@@ -324,3 +327,39 @@ def criar_forum(request):
 
 def conheca(request):
     return render(request, "conheca.html")
+
+def fale_conosco(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        sobrenome = request.POST.get('sobrenome')
+        email = request.POST.get('email')
+        assunto = request.POST.get('assunto')
+        mensagem = request.POST.get('mensagem')
+        termos = request.POST.get('termos')
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        
+        # Verifica o reCAPTCHA
+        recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
+        recaptcha_data = {
+            'secret': settings.RECAPTCHA_PRIVATE_KEY,
+            'response': recaptcha_response
+        }
+        recaptcha_result = requests.post(recaptcha_url, data=recaptcha_data)
+        result_json = recaptcha_result.json()
+
+        # Verifica se o reCAPTCHA foi bem-sucedido
+        if result_json.get('success'):
+            # Enviar email
+            send_mail(
+                f"{assunto} - de {nome} {sobrenome}",
+                mensagem,
+                email,  # De quem é o email
+                ['seu_email@exemplo.com'],  # Para onde o email vai
+                fail_silently=False,
+            )
+            messages.success(request, 'Sua mensagem foi enviada com sucesso.')
+            return redirect('faleconosco')  # Redireciona de volta para a página
+        else:
+            messages.error(request, 'Erro no reCAPTCHA. Por favor, tente novamente.')
+    
+    return render(request, 'faleconosco.html')
