@@ -1,6 +1,16 @@
 {% extends 'baseLogado.html' %}
 
 {% block content %}
+<style>.course-image, .aula-image {
+    text-align: center; /* Centraliza as imagens */
+    margin: 20px 0; /* Margem em cima e embaixo das imagens */
+}
+
+.course-image img, .aula-image img {
+    max-width: 80%; /* Garante que as imagens não ultrapassem o tamanho do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Bordas arredondadas para um visual mais suave */
+}</style>
 <div class="inner-page-wrapper">
     <!-- BREADCRUMB -->
     <div id="breadcrumb" class="division">
@@ -45,7 +55,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="course-txt">
+                        <!-- Exibir imagem do curso -->
+                        <div class="course-image">
+                            <img src="{{ topico.thumb.url }}" alt="Imagem do Forum" class="img-fluid" />
+                        </div>
+                        <h3>Curso - {{ topico.curso.titulo }} / Vídeo - {{ topico.aula.titulo }}</h3>
                         <p>{{ topico.conteudo }}</p>
+    
+                        <!-- Exibir imagem da aula
+                        <div class="aula-image">
+                            <img src="{{ topico.aula.conteudo.url }}" alt="Imagem da Aula" class="img-fluid" />
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.lista_forum, name='lista_forum'),
     path('criar/', views.criar_topico, name='criar_topico'),
     path('<int:pk>/', views.detalhe_forum, name='detalhe_forum'),
+    path('buscar-aulas-por-modulo/', views.buscar_aulas_por_modulo, name='buscar_aulas_por_modulo'),
+
 ]

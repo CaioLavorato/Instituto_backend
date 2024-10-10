@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import TopicoForum, RespostaForum
-from curso.models import Curso
+from curso.models import Curso,Aula
+from django.http import JsonResponse
 from .forms import FormularioTopico, FormularioResposta
 
 @login_required
@@ -50,3 +51,14 @@ def detalhe_forum(request, pk):
         formulario = FormularioResposta()
     
     return render(request, 'detalhe_forum.html', {'topico': topico, 'respostas': respostas, 'formulario': formulario})
+
+
+@login_required
+def buscar_aulas_por_modulo(request):
+    if request.method == 'GET' and request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        modulo_id = request.GET.get('modulo_id')
+        aulas = Aula.objects.filter(modulo_id=modulo_id).values('id', 'titulo')  # Ajuste os campos conforme necessário
+        return JsonResponse(list(aulas), safe=False)
+    else:
+        # Lógica para requisições que não são AJAX ou não são GET
+        return JsonResponse({'error': 'Invalid request'}, status=400)

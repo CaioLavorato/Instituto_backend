@@ -70,7 +70,8 @@
                                 <h4 class="h4-sm">
                                     <a href="{% url 'detalhe_forum' pk=topico.pk %}">{{ topico.titulo }}</a>
                                 </h4>
-                                <span>Curso - {{ topico.curso.titulo }}</span>
+
+                                <span>Curso - {{ topico.curso.titulo }} / Vídeo - {{ topico.aula.titulo }}</span>
                                 <!-- Post Author -->
                                 <span>{{ topico.data_criacao|date:"d/m/Y H:i" }} - By {{ topico.usuario.username }}</span>
 

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from curso.models import Curso
+from curso.models import Curso,Aula
 from django.core.exceptions import ValidationError
 from PIL import Image
 
@@ -18,6 +18,7 @@ class TopicoForum(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
+    aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
     conteudo = models.TextField(max_length=3000)
     data_criacao = models.DateTimeField(default=timezone.now)
     thumb = models.ImageField(upload_to='thumb_forum', validators=[validate_image])

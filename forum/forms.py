@@ -4,7 +4,7 @@ from .models import TopicoForum, RespostaForum
 class FormularioTopico(forms.ModelForm):
     class Meta:
         model = TopicoForum
-        fields = ['curso', 'titulo', 'conteudo', 'thumb']
+        fields = ['curso', 'aula' ,'titulo', 'conteudo', 'thumb']
 
 class FormularioResposta(forms.ModelForm):
     class Meta:
