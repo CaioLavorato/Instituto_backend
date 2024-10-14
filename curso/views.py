@@ -161,7 +161,7 @@ def cursodetalhe(request, pk):
         # Busca o curso pelo ID (pk)
         curso = Curso.objects.get(pk=pk)
         avaliacoes = Avaliacao.objects.filter(curso=curso).order_by('-data_criacao')
-        modulos = Modulo.objects.filter(curso=curso).prefetch_related('aulas')
+        modulos = Modulo.objects.filter(curso=curso).order_by('ordem').prefetch_related('aulas')
 
         # Obter a primeira aula do primeiro módulo
         primeira_aula = None
