@@ -4,147 +4,128 @@
 
 
 <style>
-    body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-}
-.container-conheca {
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-    overflow: hidden;
-}
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .container-conheca {
+            display: flex;
+            flex-direction: column; /* Mobile default: vertical */
+            height: 100vh;
+            overflow: hidden;
+        }
+        .section {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f0f0f0;
+            transition: flex 1s ease, max-height 1s ease;
+            cursor: pointer;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+        .section-header {
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+        }
+        .section-header img {
+            height: 40px;
+        }
+        .section-content {
+            padding: 25px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 1s ease, max-height 1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Garantir alinhamento vertical correto dos elementos internos */
+            text-align: center; /* Para centralizar o texto */
+        }
+        .section-content h1 {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+        }
 
-.section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #3671c1;
-    transition: flex 1s ease;
-    cursor: pointer;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-}
+        .section-content img {
+            margin-left: 10px;
+        }
+        .section.active {
+            flex: 20;
+        }
+        .section.active .section-content {
+            opacity: 1;
+            max-height: 500px;
+        }
 
-.section-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-}
+        /* Botão para próximo dentro de cada seção */
+        .next-btn {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #3671c1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
 
-.section-header img {
-    height: 30px;
-    margin-top: 5px;
-}
+        /* Mostra o botão apenas no mobile */
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column; /* Alinha os itens em uma coluna no mobile */
+                text-align: center; /* Centraliza o texto no mobile */
+            }
+            .section-content h1 {
+                flex-direction: column; /* Alinha o texto e a imagem em coluna no mobile */
+                text-align: center; /* Centraliza o texto no mobile */
+            }
+            .section-content h1 img {
+                height: 100px;
+                margin-left: 0;
+                margin-top: 10px; /* Adiciona espaçamento entre o texto e a imagem no mobile */
+            }
+            .next-btn {
+                display: block;
+            }
 
-.section-content {
-    flex-grow: 1;
-    padding: 20px;
-    opacity: 0;
-    max-height: 0;
-    overflow-y: auto;
-    transition: opacity 1s ease, max-height 1s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-}
+        }
 
-.section.active {
-    flex: 20;
-}
-
-.section.active .section-content {
-    opacity: 1;
-    max-height: calc(100% - 60px);
-}
-
-.section-content h1 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.section-content p {
-    margin-bottom: 10px;
-    white-space: normal;
-    overflow-wrap: break-word;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.align-left {
-    text-align: left !important;
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .section-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .section-content h1 {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .section-content h1 img {
-        height: 80px;
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    .next-btn {
-        display: block;
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #3671c1;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-    }
-}
-
-@media (min-width: 768px) {
-    .container-conheca {
-        flex-direction: row;
-    }
-
-    .section {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .section-header {
-        margin-top: auto;
-    }
-
-    .section-content {
-        max-width: 0;
-        transition: opacity 1s ease, max-width 1s ease;
-    }
-
-    .section.active .section-content {
-        max-width: 100%;
-    }
-}
-.align-left img {
-    width: 10px;
-    height: 10px;
-    /* ... outros estilos ... */
-}
-
-</style>
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+            .section {
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start;
+            }
+            .section-header {
+                margin-bottom: 0;
+                margin-top: auto;
+            }
+            .section-content {
+                max-height: none;
+                max-width: 0;
+                transition: opacity 1s ease, max-width 1s ease;
+            }
+            .section.active .section-content {
+                max-width: 100%;
+            }
+        }
+    </style>
 
 <section id="single-post" class="wide-80 single-post-section division">
 <div class="container-conheca conheca">
