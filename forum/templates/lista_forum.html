@@ -29,7 +29,9 @@
                     <div class="hero-txt white-color">
                         <h3 class="h3-xs">Fórum de Discussão</h3>
                         <div class="share-list">
+                            <p>Aqui você fará suas perguntas.</p>
                             <ul class="share-social-icons text-center clearfix">
+                                
                                 <li>
                                     <p><span>{{ topicos.count }} Tópicos</span> encontrados.</p>
                                 </li>
@@ -39,7 +41,7 @@
       
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5" >
                     <form class="d-flex" role="searchForum" method="GET" action="{% url 'lista_forum' %}">
                         <input type="text" class="form-control" placeholder="Fórum" id="input-instituto" name="q" value="{{ query|default:''  }}">
                         <button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
