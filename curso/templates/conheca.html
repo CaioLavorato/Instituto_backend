@@ -2,21 +2,15 @@
 {% block content %}
 {% load static %}
 
-
 <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
         .container-conheca {
             display: flex;
             flex-direction: column; /* Mobile default: vertical */
             height: 100vh;
             overflow: hidden;
+            padding-top: 5em;
         }
-        .section {
+        .section-conheca {
             flex: 1;
             overflow: hidden;
             display: flex;
@@ -29,17 +23,17 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
         }
-        .section-header {
+        .section-conheca-header {
             padding: 10px;
             font-weight: bold;
             text-align: center;
             margin-bottom: 10px;
             flex-shrink: 0;
         }
-        .section-header img {
+        .section-conheca-header img {
             height: 40px;
         }
-        .section-content {
+        .section-conheca-content {
             padding: 25px;
             opacity: 0;
             max-height: 0;
@@ -51,19 +45,19 @@
             flex-direction: column; /* Garantir alinhamento vertical correto dos elementos internos */
             text-align: center; /* Para centralizar o texto */
         }
-        .section-content h1 {
+        .section-conheca-content h1 {
             font-size: 2rem;
             display: flex;
             align-items: center;
         }
 
-        .section-content img {
+        .section-conheca-content img {
             margin-left: 10px;
         }
-        .section.active {
+        .section-conheca.active {
             flex: 20;
         }
-        .section.active .section-content {
+        .section-conheca.active .section-conheca-content {
             opacity: 1;
             max-height: 500px;
         }
@@ -83,15 +77,15 @@
 
         /* Mostra o botão apenas no mobile */
         @media (max-width: 768px) {
-            .section-content {
+            .section-conheca-content {
                 flex-direction: column; /* Alinha os itens em uma coluna no mobile */
                 text-align: center; /* Centraliza o texto no mobile */
             }
-            .section-content h1 {
+            .section-conheca-content h1 {
                 flex-direction: column; /* Alinha o texto e a imagem em coluna no mobile */
                 text-align: center; /* Centraliza o texto no mobile */
             }
-            .section-content h1 img {
+            .section-conheca-content h1 img {
                 height: 100px;
                 margin-left: 0;
                 margin-top: 10px; /* Adiciona espaçamento entre o texto e a imagem no mobile */
@@ -104,105 +98,105 @@
 
         /* Desktop styles */
         @media (min-width: 768px) {
-            .container {
+            .container-conheca {
                 flex-direction: row;
             }
-            .section {
+            .section-conheca {
                 flex-direction: column;
                 align-items: stretch;
                 justify-content: flex-start;
             }
-            .section-header {
+            .section-conheca-header {
                 margin-bottom: 0;
                 margin-top: auto;
             }
-            .section-content {
+            .section-conheca-content {
                 max-height: none;
                 max-width: 0;
                 transition: opacity 1s ease, max-width 1s ease;
             }
-            .section.active .section-content {
+            .section-conheca.active .section-conheca-content {
                 max-width: 100%;
             }
         }
     </style>
-<div class="container">
-        <div class="section active" onclick="toggleSection(this)" style="background-color: #ffbf04;">
-            <div class="section-content">
-                <h1>Celebre nossa jornada de </h1><img src="images/50-img.png" alt="" height="200px"><h1> anos</h1>
-                <button class="next-btn" onclick="nextSection(1)">Próxima</button>
+<div class="container-conheca">
+        <div class="section-conheca active" onclick="togglesection(this)" style="background-color: #ffbf04;">
+            <div class="section-conheca-content">
+                <h1>Celebre nossa jornada de </h1><img src="{% static 'images/50-img.png' %}" alt="" height="200px"><h1> anos</h1>
+                <button class="next-btn" onclick="nextsection(1)">Próxima</button>
             </div>
-            <div class="section-header"><img src="images/icon--50.png" alt="Icone Seção 1"></div>
+            <div class="section-conheca-header"><img src="{% static 'images/icon--50.png' %}" alt="Icone Seção 1"></div>
         </div>
-        <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
-            <div class="section-content">
-                <h2>Começando um Jornada do Cuidado</h2>
+        <div class="section-conheca" onclick="togglesection(this)" style="background-color: #3671c1;">
+            <div class="section-conheca-content">
+                <h3>Começando um Jornada do Cuidado</h3>
                 <p>Missão começa a fornecer melhores resultados para famílias com crianças doentes nos EUA</p>
-                <h3>11</h3><p>Programas totais para familias</p>
-                <h3>1</h3><p>País</p>
-                <h2>Apoiar as famílias através de:</h2>
+                <p><span>11</span> Programas totais para familias</p>
+                <p><span>1</span> País</p>
+                <h3>Apoiar as famílias através de:</h3>
                 <p><b>1974</b> Primeiro programa da Casa Ronald McDonald</p>
                 <p><b>1977</b> Segunda Casa abre, dando início a um movimento</p>
                 <p><b>1979</b> 11 programas de casa disponíveis nos EUA</p>
-                <button class="next-btn" onclick="nextSection(2)">Próxima</button>
+                <button class="next-btn" onclick="nextsection(2)">Próxima</button>
             </div>
-            <div class="section-header"><img src="images/icon--70.png" alt="Icone Seção 2"></div>
+            <div class="section-conheca-header"><img src="{% static 'images/icon--70.png' %}" alt="Icone Seção 2"></div>
         </div>
-        <div class="section" onclick="toggleSection(this)" style="background-color: white;">
-            <div class="section-content">
+        <div class="section-conheca" onclick="togglesection(this)" style="background-color: white;">
+            <div class="section-conheca-content">
                 <h2>Conteúdo da Seção 3</h2>
                 <p>Este é o conteúdo da terceira seção.</p>
-                <button class="next-btn" onclick="nextSection(3)">Próxima</button>
+                <button class="next-btn" onclick="nextsection(3)">Próxima</button>
             </div>
-            <div class="section-header"><img src="images/icon--80s.png" alt="Icone Seção 3"></div>
+            <div class="section-conheca-header"><img src="{% static 'images/icon--80s.png' %}" alt="Icone Seção 3"></div>
         </div>
-        <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
-            <div class="section-content">
+        <div class="section-conheca" onclick="togglesection(this)" style="background-color: #3671c1;">
+            <div class="section-conheca-content">
                 <h2>Conteúdo da Seção 4</h2>
                 <p>Este é o conteúdo da quarta seção.</p>
-                <button class="next-btn" onclick="nextSection(4)">Próxima</button>
+                <button class="next-btn" onclick="nextsection(4)">Próxima</button>
             </div>
-            <div class="section-header"><img src="images/icon--90s.png" alt="Icone Seção 4"></div>
+            <div class="section-conheca-header"><img src="{% static 'images/icon--90s.png' %}" alt="Icone Seção 4"></div>
         </div>
-        <div class="section" onclick="toggleSection(this)" style="background-color: white;">
-            <div class="section-content">
+        <div class="section-conheca" onclick="togglesection(this)" style="background-color: white;">
+            <div class="section-conheca-content">
                 <h2>Conteúdo da Seção 5</h2>
                 <p>Este é o conteúdo da quinta seção.</p>
-                <button class="next-btn" onclick="nextSection(5)">Próxima</button>
+                <button class="next-btn" onclick="nextsection(5)">Próxima</button>
             </div>
-            <div class="section-header"><img src="images/icon--00s.png" alt="Icone Seção 5"></div>
+            <div class="section-conheca-header"><img src="{% static 'images/icon--00s.png' %}" alt="Icone Seção 5"></div>
         </div>
-        <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
-            <div class="section-content">
+        <div class="section-conheca" onclick="togglesection(this)" style="background-color: #3671c1;">
+            <div class="section-conheca-content">
                 <h2>Conteúdo da Seção 6</h2>
                 <p>Este é o conteúdo da sexta seção.</p>
-                <button class="next-btn" onclick="nextSection(6)">Próxima</button>
+                <button class="next-btn" onclick="nextsection(6)">Próxima</button>
             </div>
-            <div class="section-header"><img src="images/icon--10s.png" alt="Icone Seção 6"></div>
+            <div class="section-conheca-header"><img src="{% static 'images/icon--10s.png' %}" alt="Icone Seção 6"></div>
         </div>
-        <div class="section" onclick="toggleSection(this)" style="background-color: white;">
-            <div class="section-content">
+        <div class="section-conheca" onclick="togglesection(this)" style="background-color: white;">
+            <div class="section-conheca-content">
                 <h2>Conteúdo da Seção 7</h2>
                 <p>Este é o conteúdo da sétima seção.</p>
-                <button class="next-btn" onclick="nextSection(7)">Próxima</button>
+                <button class="next-btn" onclick="nextsection(7)">Próxima</button>
             </div>
-            <div class="section-header"><img src="images/icon--20s.png" alt="Icone Seção 7"></div>
+            <div class="section-conheca-header"><img src="{% static 'images/icon--20s.png' %}" alt="Icone Seção 7"></div>
         </div>
     </div>
 
     <script>
-        function toggleSection(section) {
-            document.querySelectorAll('.section').forEach(s => {
+        function togglesection(section) {
+            document.querySelectorAll('.section-conheca').forEach(s => {
                 s.classList.remove('active');
             });
             section.classList.add('active');
         }
 
         // Inicializa a primeira seção como ativa
-        document.querySelector('.section').classList.add('active');
+        document.querySelector('.section-conheca').classList.add('active');
 
-        function nextSection(currentIndex) {
-            const sections = document.querySelectorAll('.section');
+        function nextsection(currentIndex) {
+            const sections = document.querySelectorAll('.section-conheca');
             sections[currentIndex - 1].classList.remove('active');
 
             const nextIndex = currentIndex % sections.length;
