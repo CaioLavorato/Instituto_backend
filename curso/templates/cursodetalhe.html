@@ -44,7 +44,7 @@
                 <div class="col-lg-8">
                     <div class="course-txt pr-30">
                         <h3 class="h3-sm">{{ curso.titulo }}</h3>
-                        <p class="course-short-data">
+                        <p class="course-short-data" hidden>
                             Criado por: {{ curso.professor }} &bull;
                             Alterado: {{ curso.data_atualizacao|date:"d/m/Y" }}
                         </p>
@@ -64,7 +64,7 @@
 
                         <div class="cs-description cd-block">
                             <h5 class="h5-xl">Descrição do Curso</h5>
-                            <p>{{ curso.descricao }}</p>
+                            <p>{{ curso.descricao|linebreaksbr }}</p>
                         </div> <!-- END COURSE DESCRIPTION -->
 
                         <div class="cs-content cd-block">
