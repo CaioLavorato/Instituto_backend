@@ -126,294 +126,90 @@
             }
         }
     </style>
-
-<section id="single-post" class="wide-80 single-post-section division">
-<div class="container-conheca conheca">
-    <div class="section active" onclick="toggleSection(this)" style="background-color: #ffbf04;">
-        <div class="section-content row" style="position: relative; align-items: center; justify-content: center;">
-            <!-- Texto "Celebre nossa jornada de" -->
-            <div class="col-auto text-content">
-                <h5 style="color: #0055a4; font-weight: bold;">Celebre nossa jornada de</h5>
+<div class="container">
+        <div class="section active" onclick="toggleSection(this)" style="background-color: #ffbf04;">
+            <div class="section-content">
+                <h1>Celebre nossa jornada de </h1><img src="images/50-img.png" alt="" height="200px"><h1> anos</h1>
+                <button class="next-btn" onclick="nextSection(1)">Próxima</button>
             </div>
-            
-            <!-- Imagem e número grande com posicionamento -->
-            <div class="col-auto">
-                <div class="image-text-container" style="position: relative;">
-                    <img src="{% static 'images/50-img.png' %}" alt="Imagem 50 anos" height="200px" style="border-radius: 50%; z-index: 1;">
-                    <span class="large-number" style="position: absolute; top: 0; left: 0; font-size: 150px; font-weight: bold; color: #0055a4; z-index: -1;">5</span>
-                </div>
-            </div>
-    
-            <!-- Texto "Anos" -->
-            <div class="col-auto text-content">
-                <h5 style="color: #0055a4; font-weight: bold;">Anos</h5>
-            </div>
+            <div class="section-header"><img src="images/icon--50.png" alt="Icone Seção 1"></div>
         </div>
-        
-        <!-- Botão "Explore the timeline" -->
-        <button class="next-btn" onclick="nextSection(1)" style="margin-top: 10px; background-color: #0055a4; color: white;">Explore a Linha do Tempo →</button>
-        
-        <!-- Cabeçalho da seção -->
-        <div class="section-header">
-            <img src="{% static 'images/icon--50.png' %}" alt="Icone Seção 50" style="margin-top: 10px;">
+        <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
+            <div class="section-content">
+                <h2>Começando um Jornada do Cuidado</h2>
+                <p>Missão começa a fornecer melhores resultados para famílias com crianças doentes nos EUA</p>
+                <h3>11</h3><p>Programas totais para familias</p>
+                <h3>1</h3><p>País</p>
+                <h2>Apoiar as famílias através de:</h2>
+                <p><b>1974</b> Primeiro programa da Casa Ronald McDonald</p>
+                <p><b>1977</b> Segunda Casa abre, dando início a um movimento</p>
+                <p><b>1979</b> 11 programas de casa disponíveis nos EUA</p>
+                <button class="next-btn" onclick="nextSection(2)">Próxima</button>
+            </div>
+            <div class="section-header"><img src="images/icon--70.png" alt="Icone Seção 2"></div>
+        </div>
+        <div class="section" onclick="toggleSection(this)" style="background-color: white;">
+            <div class="section-content">
+                <h2>Conteúdo da Seção 3</h2>
+                <p>Este é o conteúdo da terceira seção.</p>
+                <button class="next-btn" onclick="nextSection(3)">Próxima</button>
+            </div>
+            <div class="section-header"><img src="images/icon--80s.png" alt="Icone Seção 3"></div>
+        </div>
+        <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
+            <div class="section-content">
+                <h2>Conteúdo da Seção 4</h2>
+                <p>Este é o conteúdo da quarta seção.</p>
+                <button class="next-btn" onclick="nextSection(4)">Próxima</button>
+            </div>
+            <div class="section-header"><img src="images/icon--90s.png" alt="Icone Seção 4"></div>
+        </div>
+        <div class="section" onclick="toggleSection(this)" style="background-color: white;">
+            <div class="section-content">
+                <h2>Conteúdo da Seção 5</h2>
+                <p>Este é o conteúdo da quinta seção.</p>
+                <button class="next-btn" onclick="nextSection(5)">Próxima</button>
+            </div>
+            <div class="section-header"><img src="images/icon--00s.png" alt="Icone Seção 5"></div>
+        </div>
+        <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
+            <div class="section-content">
+                <h2>Conteúdo da Seção 6</h2>
+                <p>Este é o conteúdo da sexta seção.</p>
+                <button class="next-btn" onclick="nextSection(6)">Próxima</button>
+            </div>
+            <div class="section-header"><img src="images/icon--10s.png" alt="Icone Seção 6"></div>
+        </div>
+        <div class="section" onclick="toggleSection(this)" style="background-color: white;">
+            <div class="section-content">
+                <h2>Conteúdo da Seção 7</h2>
+                <p>Este é o conteúdo da sétima seção.</p>
+                <button class="next-btn" onclick="nextSection(7)">Próxima</button>
+            </div>
+            <div class="section-header"><img src="images/icon--20s.png" alt="Icone Seção 7"></div>
         </div>
     </div>
-    <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
-        <div class="section-content">
-            <h1 style="color: white;">Iniciando uma Jornada de Cuidado</h1>
-            <p style="color: white;">A missão começa a proporcionar melhores resultados para famílias com crianças doentes nos EUA.</p>
-            <div style="display: flex; justify-content: space-around; color: white;">
-                <div class="col-5">
-                    <h3 style="color:#ffbf04; font-size: 2.5rem; margin: 0;">11</h3>
-                    <p style="color: white;">Total de programas para famílias</p>
-                </div>
-                <div class="col-5"> 
-                    <h3 style="color: #ffbf04; font-size: 2.5rem; margin: 0;">1</h3>
-                    <p style="color: white;">Países e regiões</p>
-                </div>
-            </div>
-            <h2 style="color: white;">Apoiando famílias através de:</h2>
-            <div class="align-left">
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1981</span> Primeiro programa Ronald McDonald House
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1985</span> Abertura da segunda casa, iniciando um movimento
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1986</span> 11 programas House disponíveis em todo os EUA
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1989</span> 11 programas House disponíveis em todo os EUA
-            </p>
-        </div>
-            <button class="next-btn" onclick="nextSection(2)">Próximo</button>
-        </div>
-        <div class="section-header">
-            <h5 style="color: #ffbf04; font-weight: bold;">Anos 70</h5>
-            <img src="{% static 'images/icon--70.png' %}" alt="Ícone Seção Anos 70">
-        </div>
-    </div>
-    
 
-            <div class="section" onclick="toggleSection(this)" style="background-color: white;">
-                <div class="section-content">
-                    <h1 style="color: #3671c1;">Cuidado Familiar Cresce Globalmente.</h1>
-                    <p style="color: #3671c1;">Famílias que precisam de acomodações e suporte perto de hospitais pediátricos em todo o mundo impulsionam a RMHC a expandir seus serviços na Áustria, Austrália, Canadá, Países Baixos e EUA.</p>
-                    <div style="display: flex; justify-content: space-around;">
-                        <div class="col-5">
-                            <h3 style="color:red; font-size: 2.5rem; margin: 0;">117</h3>
-                            <p style="color: #3671c1;">Total de programas para famílias</p>
-                        </div>
-                        <div class="col-5"> 
-                            <h3 style="color: red; font-size: 2.5rem; margin: 0;">5</h3>
-                            <p style="color: #3671c1;">Países e regiões</p>
-                        </div>
-                    </div>
-                    <h2 style="color: #3671c1;">Apoiando famílias através de:</h2>
-                    <div class="align-left">
-                        <p class="align-left" style="color: black;">
-                        <span style="font-weight: bold;">1981</span> Primeiras casas abertas no Canadá e na Austrália
-                    </p>
-                    <p class="align-left" style="color: black;">
-                        <span style="font-weight: bold;">1985</span> Primeira casa aberta na Europa (Países Baixos)
-                    </p>
-                    <p class="align-left" style="color: black;">
-                        <span style="font-weight: bold;">1986</span> Acampamentos e atividades para famílias e irmãos
-                    </p>
-                    <p class="align-left" style="color: black;">
-                        <span style="font-weight: bold;">1989</span> Mais de 100 novos programas em 5 países diferentes
-                    </p>
-                </div>
-                    
-                    <button class="next-btn" onclick="nextSection(3)" style="margin-top: 10px; background-color: #ffbf04; color: #3671c1;">Próximo</button>
-                </div>
-                <div class="section-header" style="text-align: center;">
-                    <h5 style="color: #3671c1; font-weight: bold;">Anos 80</h5>
-                    <img src="{% static 'images/icon--80s.png' %}" alt="Ícone Seção Anos 80">
-                </div>
-            </div>
-    
-    
-    
-    <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
-        <div class="section-content">
-            <h1 style="color: white;">Expandindo o Apoio Familiar</h1>
-            <p style="color: white;">A RMHC continua a identificar novas maneiras de apoiar as famílias ao longo da jornada de cuidados de saúde de seus filhos, incluindo a oferta de espaços de descanso acolhedores dentro do hospital.</p>
-            <div style="display: flex; justify-content: space-around; color: white;">
-                <div class="col-5">
-                    <h3 style="color:#ffbf04; font-size: 2.5rem; margin: 0;">205</h3>
-                    <p style="color: white;">Total de programas para famílias</p>
-                </div>
-                <div class="col-5"> 
-                    <h3 style="color: #ffbf04; font-size: 2.5rem; margin: 0;">26</h3>
-                    <p style="color: white;">Países e regiões</p>
-                </div>
-            </div>
-            <h2 style="color: white;">Apoiando famílias através de:</h2>
-            <div class="align-left">
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1992</span> Primeiro programa Ronald McDonald House
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1994</span> Abertura da segunda casa, iniciando um movimento
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1996</span> 11 programas House disponíveis em todo os EUA
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">1997</span> 11 programas House disponíveis em todo os EUA
-            </p>
-        </div>
-            <button class="next-btn" onclick="nextSection(4)">Próximo</button>
-        </div>
-        <div class="section-header">
-            <h5 style="color: #ffbf04; font-weight: bold;">Anos 90</h5>
-            <img src="{% static 'images/icon--90s.png' %}" alt="Ícone Seção Anos 90">
-        </div>
-    </div>
-    <div class="section" onclick="toggleSection(this)" style="background-color: white;">
-        <div class="section-content">
-            <h1 style="color: #3671c1;">Abordando as Lacunas na Saúde</h1>
-            <p style="color: #3671c1;">Preenchendo as lacunas no acesso aos cuidados para famílias em comunidades carentes, a RMHC começa a se associar a provedores de serviços clínicos locais para oferecer serviços de saúde essenciais onde são escassos.</p>
-            <div style="display: flex; justify-content: space-around;">
-                <div class="col-5">
-                    <h3 style="color:red; font-size: 2.5rem; margin: 0;">398</h3>
-                    <p style="color: #3671c1;">Total de programas para famílias</p>
-                </div>
-                <div class="col-5"> 
-                    <h3 style="color: red; font-size: 2.5rem; margin: 0;">43</h3>
-                    <p style="color: #3671c1;">Países e regiões</p>
-                </div>
-            </div>
-            <h2 style="color: #3671c1;">Apoiando famílias através de:</h2>
-            <div class="align-left">
-                <p class="align-left" style="color: black;">
-                <span style="font-weight: bold;">2000</span> Programa Ronald McDonald Care Mobile lançado nos EUA.
-            </p>
-            <p class="align-left" style="color: black;">
-                <span style="font-weight: bold;">2001</span> Primeiro Care Mobile lançado na América Latina (Argentina).
-            </p>
-            <p class="align-left" style="color: black;">
-                <span style="font-weight: bold;">2002</span> Programas de bem-estar infantil iniciam nas Filipinas.
-            </p>
-            <p class="align-left" style="color: black;">
-                <span style="font-weight: bold;">2004</span> Acomodações para mães gestantes em situação de risco nos EUA, conforme pesquisa publicada.
-            </p>
-            <p class="align-left" style="color: black;">
-                <span style="font-weight: bold;">2009</span> Programas de educação sobre Detecção Precoce de Câncer disponíveis no Brasil e na Polônia.
-            </p>
-        </div>
-            
-            <button class="next-btn" onclick="nextSection(5)" style="margin-top: 10px; background-color: #ffbf04; color: #3671c1;">Próximo</button>
-        </div>
-        <div class="section-header" style="text-align: center;">
-            <h5 style="color: #3671c1; font-weight: bold;">Anos 00</h5>
-            <img src="{% static 'images/icon--00s.png' %}" alt="Ícone Seção Anos 00">
-        </div>
-    </div>
-    <div class="section" onclick="toggleSection(this)" style="background-color: #3671c1;">
-        <div class="section-content">
-            <h1 style="color: white;">Avançando o Cuidado Centrado na Família</h1>
-            <p style="color: white;">Advogando em nome das famílias, a RMHC começa a avançar no cuidado centrado na família com líderes globais do governo e da saúde, impactando ainda mais famílias em todo o mundo.</p>
-            <div style="display: flex; justify-content: space-around; color: white;">
-                <div class="col-5">
-                    <h3 style="color:#ffbf04; font-size: 2.5rem; margin: 0;">767</h3>
-                    <p style="color: white;">Total de programas para famílias</p>
-                </div>
-                <div class="col-5"> 
-                    <h3 style="color: #ffbf04; font-size: 2.5rem; margin: 0;">59</h3>
-                    <p style="color: white;">Países e regiões</p>
-                </div>
-            </div>
-            <h2 style="color: white;">Apoiando famílias através de:</h2>
-            <div class="align-left">
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">2011</span> Primeiro Care Mobile na Indonésia
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">2014</span> Capacitando a participação da família nos cuidados de saúde das crianças, conforme pesquisa publicada
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">2015</span> Primeira conferência defendendo a participação da família nos cuidados de saúde das crianças (Países Baixos)
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">2018</span> Primeiro programa da RMHC na África (África do Sul)
-            </p>
-            <p class="align-left" style="color: white;">
-                <span style="font-weight: bold;">2019</span> Conferências defendendo a participação da família nos cuidados de saúde das crianças (Curaçao, Portugal e Ucrânia)
-            </p>
-        </div>
-            <button class="next-btn" onclick="nextSection(6)">Próximo</button>
-        </div>
-        <div class="section-header">
-            <h5 style="color: #ffbf04; font-weight: bold;">Anos 10</h5>
-            <img src="{% static 'images/icon--10s.png' %}" alt="Ícone Seção Anos 10">
-        </div>
-    </div>
-    <div class="section" onclick="toggleSection(this)" style="background-color: white;">
-        <div class="section-content">
-            <h1 style="color: #3671c1;">As Necessidades da Família Levam ao Crescimento e Inovação</h1>
-            <p style="color: #3671c1;">A RMHC traça um caminho para atender mais famílias de forma mais eficaz, adaptando programas e serviços para garantir os melhores resultados para toda a família, com base em pesquisas e dados globais sobre as necessidades familiares.</p>
-            <div style="display: flex; justify-content: space-around;">
-                <div class="col-5">
-                    <h3 style="color:red; font-size: 2.5rem; margin: 0;">1032</h3>
-                    <p style="color: #3671c1;">Total de programas para famílias</p>
-                </div>
-                <div class="col-5"> 
-                    <h3 style="color: red; font-size: 2.5rem; margin: 0;">62</h3>
-                    <p style="color: #3671c1;">Países e regiões</p>
-                </div>
-            </div>
-            <h2 style="color: #3671c1;">Programas e serviços em todo o mundo que:</h2>
-            <div class="align-left">
-                <p class="align-left" style="color: black;">
-                    <img src="{% static 'images/Heart--icon.png' %}" alt="Ícone Seção Anos 10"> Promovem a educação em saúde, facilitam cuidados preventivos e informam sobre diagnósticos precoces.
-            </p>
-            <p class="align-left" style="color: black;">
-                <img src="{% static 'images/Heart--icon.png' %}" alt="Ícone Seção Anos 10"> Garantem acomodações saudáveis, refeições regulares e apoio à saúde mental.
-            </p>
-            <p class="align-left" style="color: black;">
-                <img src="{% static 'images/Heart--icon.png' %}" alt="Ícone Seção Anos 10"> Fornecem comunidades de apoio, conexões com serviços de suporte locais e abordam necessidades únicas localmente.
-            </p>
-            <p class="align-left" style="color: black;">
-                <img src="{% static 'images/Heart--icon.png' %}" alt="Ícone Seção Anos 10"> Defendem as famílias para garantir os melhores resultados de saúde para as crianças.
-            </p>
-            <p class="align-left" style="color: black;">
-                <img src="{% static 'images/Heart--icon.png' %}" alt="Ícone Seção Anos 10"> Programas de educação sobre Detecção Precoce de Câncer disponíveis no Brasil e na Polônia.
-            </p>
-        </div>
-            
-            <button class="next-btn" onclick="nextSection(7)" style="margin-top: 10px; background-color: #ffbf04; color: #3671c1;">Próximo</button>
-        </div>
-        <div class="section-header" style="text-align: center;">
-            <h5 style="color: #3671c1; font-weight: bold;">Anos 20</h5>
-            <img src="{% static 'images/icon--20s.png' %}" alt="Ícone Seção Anos 20">
-        </div>
-    </div>
-</div>
-</section>
+    <script>
+        function toggleSection(section) {
+            document.querySelectorAll('.section').forEach(s => {
+                s.classList.remove('active');
+            });
+            section.classList.add('active');
+        }
 
-<script>
-    function toggleSection(section) {
-        document.querySelectorAll('.section').forEach(s => {
-            s.classList.remove('active');
-        });
-        section.classList.add('active');
-    }
+        // Inicializa a primeira seção como ativa
+        document.querySelector('.section').classList.add('active');
 
-    // Inicializa a primeira seção como ativa
-    document.querySelector('.section').classList.add('active');
+        function nextSection(currentIndex) {
+            const sections = document.querySelectorAll('.section');
+            sections[currentIndex - 1].classList.remove('active');
 
-    function nextSection(currentIndex) {
-        const sections = document.querySelectorAll('.section');
-        sections[currentIndex - 1].classList.remove('active');
+            const nextIndex = currentIndex % sections.length;
+            sections[nextIndex].classList.add('active');
 
-        const nextIndex = currentIndex % sections.length;
-        sections[nextIndex].classList.add('active');
-
-        // Previne que o clique no botão ative o evento de clique na seção
-        event.stopPropagation();
-    }
-</script>
+            // Previne que o clique no botão ative o evento de clique na seção
+            event.stopPropagation();
+        }
+    </script>
 {% endblock %}
