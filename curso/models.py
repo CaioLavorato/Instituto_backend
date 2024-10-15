@@ -178,3 +178,13 @@ class LaudosMedicos(models.Model):
 
     def __str__(self):
         return f"{self.documento} - {self.id_usuario.username}"
+
+# Progresso de Aulas    
+class Progresso(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
+    completado = models.BooleanField(default=False)
+    data_conclusao = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Progresso de {self.usuario.username} - {self.aula.titulo}"

@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect ,get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -7,9 +7,12 @@ from django.contrib.auth import get_user_model
 from django.views.generic import DetailView
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 from . import forms
-from .models import Curso, Avaliacao, Modulo, Modulo_usuario, UserProfile, Categorias, Aula
+from .models import Curso, Avaliacao, Modulo, Modulo_usuario, UserProfile, Categorias, Aula,Progresso
 from django.db.models import Avg, Count, Sum, Q
 from django.core.paginator import Paginator
 
@@ -363,3 +366,25 @@ def fale_conosco(request):
             messages.error(request, 'Erro no reCAPTCHA. Por favor, tente novamente.')
     
     return render(request, 'faleconosco.html')
+
+@csrf_exempt
+def salvar_progresso(request, aula_id):
+    if request.method == 'POST' and request.user.is_authenticated:
+        try:
+            aula = Aula.objects.get(id=aula_id)
+            progresso, created = Progresso.objects.get_or_create(usuario=request.user, aula=aula)
+
+            # Marcar como completado
+            progresso.completado = True
+            progresso.save()
+
+            return JsonResponse({'status': 'ok', 'message': 'Progresso salvo com sucesso!'})
+        except Aula.DoesNotExist:
+            return JsonResponse({'status': 'error', 'message': 'Aula não encontrada'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Requisição inválida'})
+    
+    
+    
+def politica_privacidade(request):
+    return render(request, "politicaPrivacidade.html")

@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form class="d-flex" role="search" method="GET" action="{% url 'cursos' %}">
+                    <form class="d-flex" role="search" method="GET" action="{% url 'cursos' %}" hidden>
                         <input class="form-control me-2" type="search" placeholder="Pesquisar Cursos" aria-label="Search" name="search" value="{{ busca }}">
                         <button class="btn btn-md" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
