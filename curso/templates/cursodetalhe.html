@@ -251,6 +251,7 @@
         </div>
     </div>
 </div>
+<script src="{% static 'js/materialize.js' %}"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const quizButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
@@ -304,27 +305,28 @@
     
         // Evento para abrir o vídeo no modal
         $('#videoModal').on('show.bs.modal', function(event) {
-            const button = $(event.relatedTarget); 
+            const button = $(event.relatedTarget);
             const videoUrl = button.data('video');
             const aulaId = button.data('aula-id');
             const modal = $(this);
             const videoPlayer = modal.find('#modal-video-player');
-    
+                
             videoPlayer.attr('src', videoUrl);
-    
-            videoPlayer.on('ended', function() {
-                fetch(`/marcar-aula-concluida/${aulaId}/`, {
+                
+            // Remover o evento anterior para evitar múltiplos registros
+            videoPlayer.off('ended').on('ended', function() {
+                fetch(`/salvar_progresso/${aulaId}/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRFToken': '{{ csrf_token }}',
+                        'X-CSRFToken': '{{ csrf_token }}',  // Certifique-se de que o token CSRF está correto
                     },
                     body: JSON.stringify({ aula_id: aulaId }),
                 })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        modal.modal('hide');
+                    if (data.status === 'ok') {  // Verificando o status correto
+
                         location.reload(); // Recarrega a página para refletir o progresso
                     } else {
                         console.error('Erro ao salvar o progresso:', data.message);
@@ -334,7 +336,7 @@
                     console.error('Erro:', error);
                 });
             });
-    
+        
             // Limpar o vídeo ao fechar o modal
             modal.on('hidden.bs.modal', function() {
                 videoPlayer.attr('src', ''); // Limpa o src para parar o vídeo
