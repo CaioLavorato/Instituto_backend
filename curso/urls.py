@@ -24,4 +24,5 @@ urlpatterns = [
     path('faleconosco/', views.fale_conosco, name='fale_conosco'),
     path('salvar_progresso/<int:aula_id>/', views.salvar_progresso, name='salvar_progresso'),
     path('politica_privacidade/', views.politica_privacidade, name='politica_privacidade' ),
+    path('processa_quiz/', views.processa_quiz, name='processa_quiz'),
 ]

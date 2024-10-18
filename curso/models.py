@@ -67,7 +67,7 @@ class Curso(models.Model):
     
 # Modelo de Modulo
 class Modulo(models.Model):
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, related_name='modulos')
     titulo = models.CharField(max_length=100)
     ordem = models.IntegerField()
 

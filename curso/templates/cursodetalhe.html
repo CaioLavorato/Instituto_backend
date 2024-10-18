@@ -1,23 +1,78 @@
 {% extends 'baseLogado.html' %}
 {% block content %}
 {% load static %}
-<style>.d-flex {
-    display: flex;
-}
+<style>
+    .d-flex {
+        display: flex;
+    }
+    .justify-content-between {
+        justify-content: space-between;
+    }
+    .align-items-center {
+        align-items: center;
+    }
+    .ml-auto {
+        margin-left: auto; /* Garante que o botão vá para a extrema direita */
+    }
+    .progress-bar {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #course-content {
+        display: none;
+    }
+    #start-course-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    #start-course-btn:hover {
+        background-color: #0056b3;
+    }
 
-.justify-content-between {
-    justify-content: space-between;
-}
+    .progress-bar:hover {
+        background-color: #0056b3 !important;
+    }
 
-.align-items-center {
-    align-items: center;
-}
+    .course-data {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
 
-.ml-auto {
-    margin-left: auto; /* Garante que o botão vá para a extrema direita */
-}</style>
+    .course-data-price {
+        padding: 20px;
+    }
+
+    .progress-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .progress-percentage {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .course-data {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .course-data img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
 <div class="inner-page-wrapper">
-
     <!-- BREADCRUMB -->
     <div id="breadcrumb" class="division">
         <div class="container">
@@ -65,126 +120,253 @@
                         <div class="cs-description cd-block">
                             <h5 class="h5-xl">Descrição do Curso</h5>
                             <p>{{ curso.descricao|linebreaksbr }}</p>
-                        </div> <!-- END COURSE DESCRIPTION -->
+                        </div>
 
-                        <div class="cs-content cd-block">
-                            <h5 class="h5-xl">Conteúdo do curso</h5>
-                            <p>{{ curso.duracao_total }}</p>
-                            <div id="accordion" role="tablist">
-                                {% for modulo in modulos %}
-                                    <div class="card">
-                                        <div class="card-header" role="tab" id="heading{{ modulo.id }}">
-                                            <h5 class="h5-xs">
-                                                <a data-toggle="collapse" href="#collapse{{ modulo.id }}" role="button">
-                                                    {{ modulo.titulo }}
-                                                </a>
-                                            </h5>
-                                            <div class="hdr-data"><p>{{ modulo.aulas.count }} aulas</p></div>
-                                        </div>
-                                        <div id="collapse{{ modulo.id }}" class="collapse">
-                                            <div class="card-body">
-                                                <ul class="txt-list mb-10">
-                                                    {% for aula in modulo.aulas.all %}
+                        <button id="start-course-btn" class="btn btn-blue tra-black-hover btn-lg">Iniciar Curso</button>
+
+                        <div id="course-content" style="display: none;">
+                            <div class="cs-content cd-block">
+                                <h5 class="h5-xl">Conteúdo do curso</h5>
+                                <p>{{ curso.duracao_total }}</p>
+                                <div id="accordion" role="tablist">
+                                    {% for modulo in modulos %}
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="heading{{ modulo.id }}">
+                                                <h5 class="h5-xs">
+                                                    <a data-toggle="collapse" href="#collapse{{ modulo.id }}" role="button">
+                                                        {{ modulo.titulo }}
+                                                    </a>
+                                                </h5>
+                                                <div class="hdr-data"><p>{{ modulo.aulas.count }} aulas</p></div>
+                                            </div>
+                                            <div id="collapse{{ modulo.id }}" class="collapse">
+                                                <div class="card-body">
+                                                    <ul class="txt-list mb-10">
+                                                        {% for aula in modulo.aulas.all %}
                                                         <li>
                                                             <div class="d-flex justify-content-between align-items-center">
                                                                 <h5 class="h5-xs">{{ aula.titulo }}</h5>
-                                                                <button class="btn btn-md btn-tra-grey blue-hover ml-5" style="margin-left:auto;" data-toggle="modal" data-target="#videoModal" data-video="{{ aula.conteudo.url }}">
-                                                                    Assistir
-                                                                </button>
+                                                                <div class="d-flex align-items-center">
+                                                                    <button class="btn btn-md btn-tra-grey blue-hover ml-5" 
+                                                                        data-toggle="modal" 
+                                                                        data-target="#videoModal" 
+                                                                        data-video="{{ aula.conteudo.url }}" 
+                                                                        data-aula-id="{{ aula.id }}">Assistir</button>
+                                                                    {% if aula.id in aulas_concluidas %}
+                                                                        <span style="color: green;" class="ml-2"><i class="fas fa-check-circle fa-2x"></i></span>
+                                                                    {% else %}
+                                                                        <span style="color: orange;" class="ml-2"><i class="fas fa-clock fa-2x"></i></span>
+                                                                    {% endif %}
+                                                                </div>
                                                             </div>
                                                         </li>
-                                                    {% endfor %}
-                                                </ul>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    
+                                                    {% if modulo.questionario_set.exists %}
+                                                    <div class="quiz-container mb-4" id="quiz-{{ modulo.id }}">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <h5 class="mb-0">Quiz do {{ modulo.titulo }}</h5>
+                                                            <button
+                                                            
+                                                            data-bs-toggle="collapse" 
+                                                            data-bs-target="#collapseQuiz{{ modulo.id }}" 
+                                                            aria-expanded="false" 
+                                                            aria-controls="collapseQuiz{{ modulo.id }}">
+                                                            <i class="fas fa-chevron-down"></i>
+                                                        </button>
+                                                        </div>
+                                                        <div class="collapse mt-3" id="collapseQuiz{{ modulo.id }}">
+                                                            <form class="quiz-form" data-modulo-id="{{ modulo.id }}">
+                                                                {% for pergunta in modulo.questionario_set.first.pergunta_set.all %}
+                                                                    <div class="quiz-question mb-3">
+                                                                        <p class="fw-bold">{{ pergunta.enunciado }}</p>
+                                                                        <ul class="list-unstyled">
+                                                                            {% for alternativa in pergunta.alternativas_set.all %}
+                                                                                <li class="mb-2">
+                                                                                    <input type="radio" name="pergunta_{{ pergunta.id }}" value="{{ alternativa.id }}" id="alt_{{ alternativa.id }}">
+                                                                                    <label for="alt_{{ alternativa.id }}">{{ alternativa.descricao }}</label>
+                                                                                </li>
+                                                                            {% endfor %}
+                                                                        </ul>
+                                                                    </div>
+                                                                {% endfor %}
+                                                                <div class="d-flex justify-content-end">
+                                                                    <button type="submit" class="btn btn-tra-grey blue-hover ml-5 quiz-submit-btn">Enviar Respostas</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                                
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                {% endfor %}
+                                    {% endfor %}
+                                </div>
                             </div>
-                        </div> <!-- END COURSE CONTENT -->
-
-
+                        </div>
                     </div>
-                </div> <!-- END COURSE DESCRIPTION -->
+                </div>
 
                 <!-- COURSE DATA -->
                 <div class="col-lg-4">
-                    <div class="course-data">
-                        <img class="img-fluid" src="{{ curso.thumb.url }}" alt="course-preview" />
-                        <div class="course-data-price text-center">
-                            <!-- Price information can go here -->
+                    <div class="course-data" style="background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 20px;">
+                        <img class="img-fluid" src="{{ curso.thumb.url }}" alt="course-preview" style="width: 100%; margin-bottom: 20px;" />
+                        
+                        <div style="margin-bottom: 15px;">
+                            <h5>Porcentagem de conclusão</h5>
+                            <div style="color: #638DC9; font-size: 24px; font-weight: bold; margin: 5px 0;">
+                                {{ porcentagem_conclusao|floatformat:1 }}%
+                            </div>
                         </div>
-                        <div class="course-data-links">
-
+                
+                        <!-- Barra de progresso -->
+                        <div style="background-color: #f5f5f5; border-radius: 4px; height: 8px; overflow: hidden;">
+                            <div style="background-color: #638DC9; width: {{ porcentagem_conclusao|stringformat:'.1f' }}%; height: 100%; transition: width 0.3s ease;"></div>
                         </div>
                     </div>
-                </div> <!-- END COURSE DATA -->
-
-            </div> <!-- End row -->
-        </div> <!-- End container -->
-    </section> <!-- END COURSE DETAILS -->
-</div> <!-- END INNER PAGE WRAPPER -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 <!-- Modal for Video -->
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="videoModalLabel">Vídeo da Aula</h5>
+                <h5 class="modal-title" id="videoModalLabel">Assistindo Aula</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <video id="videoPlayer" class="w-100" controls controlsList="nodownload">
-                    <source src="" type="video/mp4"> <!-- Fonte será definida via JavaScript -->
-                    Seu navegador não suporta o elemento de vídeo.
+                <video controls id="modal-video-player" style="width: 100%; height: auto;">
+                    <source src="" type="video/mp4">
+                    Seu navegador não suporta reprodução de vídeo.
                 </video>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Incluir jQuery e Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
 <script>
-    // Adiciona o evento para carregar o vídeo no modal
-    $('#videoModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Botão que acionou o modal
-        var videoUrl = button.data('video') // Extrai a informação do atributo data-video
-        var modal = $(this)
-        modal.find('#videoPlayer source').attr('src', videoUrl) // Define a fonte do vídeo
-        modal.find('#videoPlayer')[0].load() // Carrega o vídeo
-    })
-
-
-    const videoPlayer = document.getElementById('videoPlayer');
+    document.addEventListener("DOMContentLoaded", function() {
+        const quizButtons = document.querySelectorAll('[data-bs-toggle="collapse"]');
     
-    videoPlayer.onended = function() {
-        const aulaId = videoPlayer.getAttribute('data-aula-id');  // Defina o ID da aula na inicialização da modal
-        if (aulaId) {
-            // Envia solicitação AJAX para salvar o progresso
-            fetch(`/salvar_progresso/${aulaId}/`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}',  // Inclua o CSRF token
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    aula_id: aulaId
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'ok') {
-                    alert('Progresso salvo com sucesso!');
-                }
-            })
-            .catch(error => console.error('Erro ao salvar o progresso:', error));
+        quizButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-bs-target');
+                    const quizContent = document.querySelector(target);
+                    const icon = this.querySelector('i'); // Seleciona o ícone dentro do botão
+                
+                    console.log('Quiz toggled:', target);
+
+                    // Alterna a classe 'show' para o conteúdo do quiz
+                    if (quizContent.classList.contains('show')) {
+                        quizContent.classList.remove('show');
+                    } else {
+                        quizContent.classList.add('show');
+                    }
+                
+                    // Alterna o ícone entre seta para cima e para baixo
+                    if (this.getAttribute('aria-expanded') === 'false') {
+                        icon.classList.remove('fa-chevron-down'); // Remove seta para baixo
+                        icon.classList.add('fa-chevron-up'); // Adiciona seta para cima
+                        this.setAttribute('aria-expanded', 'true'); // Atualiza o atributo aria-expanded
+                    } else {
+                        icon.classList.remove('fa-chevron-up'); // Remove seta para cima
+                        icon.classList.add('fa-chevron-down'); // Adiciona seta para baixo
+                        this.setAttribute('aria-expanded', 'false'); // Atualiza o atributo aria-expanded
+                    }
+                });
+            });
+        // Botão para iniciar o curso
+        const startCourseBtn = document.getElementById('start-course-btn');
+        const courseContent = document.getElementById('course-content');
+        let porcentagemConclusao = "{{ porcentagem_conclusao|default:0 }}".replace(",", "."); // Substituir vírgula por ponto
+    
+        // Converter para número
+        porcentagemConclusao = parseFloat(porcentagemConclusao);
+    
+        // Evento de clique para iniciar o curso
+        startCourseBtn.addEventListener('click', function() {
+            startCourseBtn.style.display = 'none';
+            courseContent.style.display = 'block';
+        });
+    
+        // Verificar se o curso já foi iniciado ou se a porcentagem de conclusão é maior que 0
+        if (porcentagemConclusao > 0) {
+            startCourseBtn.style.display = 'none';
+            courseContent.style.display = 'block';
         }
-    };
+    
+        // Evento para abrir o vídeo no modal
+        $('#videoModal').on('show.bs.modal', function(event) {
+            const button = $(event.relatedTarget); 
+            const videoUrl = button.data('video');
+            const aulaId = button.data('aula-id');
+            const modal = $(this);
+            const videoPlayer = modal.find('#modal-video-player');
+    
+            videoPlayer.attr('src', videoUrl);
+    
+            videoPlayer.on('ended', function() {
+                fetch(`/marcar-aula-concluida/${aulaId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({ aula_id: aulaId }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        modal.modal('hide');
+                        location.reload(); // Recarrega a página para refletir o progresso
+                    } else {
+                        console.error('Erro ao salvar o progresso:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+            });
+    
+            // Limpar o vídeo ao fechar o modal
+            modal.on('hidden.bs.modal', function() {
+                videoPlayer.attr('src', ''); // Limpa o src para parar o vídeo
+            });
+        });
+    
+        // Lógica para o quiz
 
-</script>
+        $('.quiz-form').on('submit', function(event) {
+    event.preventDefault();
+    const formData = $(this).serialize();
 
+    fetch('/processa_quiz/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': '{{ csrf_token }}',
+        },
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        // Você pode adicionar lógica adicional para lidar com a pontuação
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
+});
+    });
+    
+
+    </script>
+    
 {% endblock %}

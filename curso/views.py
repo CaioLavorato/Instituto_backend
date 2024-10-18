@@ -9,10 +9,11 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 
 from . import forms
-from .models import Curso, Avaliacao, Modulo, Modulo_usuario, UserProfile, Categorias, Aula,Progresso
+from .models import Curso, Avaliacao, Modulo, Modulo_usuario, UserProfile, Categorias, Aula,Progresso,Alternativas,Questionario,Pergunta
 from django.db.models import Avg, Count, Sum, Q
 from django.core.paginator import Paginator
 
@@ -164,17 +165,39 @@ def cursodetalhe(request, pk):
         # Busca o curso pelo ID (pk)
         curso = Curso.objects.get(pk=pk)
         avaliacoes = Avaliacao.objects.filter(curso=curso).order_by('-data_criacao')
-        modulos = Modulo.objects.filter(curso=curso).order_by('ordem').prefetch_related('aulas')
-
+        
+        # Usando 'modulos' instead of 'modulo_set' to access the módulos do curso
+        modulos = curso.modulos.all().order_by('ordem').prefetch_related('aulas')
+        
         # Obter a primeira aula do primeiro módulo
         primeira_aula = None
         if modulos.exists():
-            primeira_aula = modulos.first().aulas.first()  # Pega a primeira aula do primeiro módulo
-
+            primeira_aula = modulos.first().aulas.first()
+        
+        # Cálculo de média das avaliações
         media_avaliacoes = Avaliacao.objects.filter(curso=curso).aggregate(Avg('estrelas'))['estrelas__avg']
-        estrelas_inteiras = int(media_avaliacoes)
-        meia_estrela = (media_avaliacoes - estrelas_inteiras) >= 0.5
+        estrelas_inteiras = int(media_avaliacoes) if media_avaliacoes else 0
+        meia_estrela = (media_avaliacoes - estrelas_inteiras) >= 0.5 if media_avaliacoes else False
         estrelas_vazias = 5 - estrelas_inteiras - (1 if meia_estrela else 0)
+        
+        # Obter as aulas já concluídas pelo usuário
+        progresso_usuario = Progresso.objects.filter(usuario=request.user, aula__modulo__curso=curso)
+        aulas_concluidas = progresso_usuario.filter(completado=True).values_list('aula_id', flat=True)
+        
+        # Contar total de aulas do curso
+        total_aulas = curso.modulos.annotate(total_aulas=Count('aulas')).aggregate(total=Sum('total_aulas'))['total'] or 0
+        
+        # Contar aulas concluídas pelo usuário
+        total_aulas_concluidas = progresso_usuario.filter(completado=True).count()
+        
+        # Calcular porcentagem de conclusão
+        porcentagem_conclusao = (total_aulas_concluidas / total_aulas * 100) if total_aulas > 0 else 0
+        
+        # Obter questionários e perguntas para cada módulo
+        for modulo in modulos:
+            modulo.questionario = Questionario.objects.filter(modulo=modulo).first()
+            if modulo.questionario:
+                modulo.perguntas = Pergunta.objects.filter(questionario=modulo.questionario).prefetch_related('alternativas_set')
 
         context = {
             'curso': curso,
@@ -185,10 +208,12 @@ def cursodetalhe(request, pk):
             'estrelas_vazias': range(estrelas_vazias),
             'meia_estrela': meia_estrela,
             'primeira_aula': primeira_aula,
+            'aulas_concluidas': aulas_concluidas,
+            'porcentagem_conclusao': porcentagem_conclusao,
         }
+        
         return render(request, "cursodetalhe.html", context)
-
-
+    
     except Curso.DoesNotExist:
         messages.error(request, 'Curso não encontrado.')
         return redirect('cursos')
@@ -388,3 +413,32 @@ def salvar_progresso(request, aula_id):
     
 def politica_privacidade(request):
     return render(request, "politicaPrivacidade.html")
+
+@login_required
+@require_POST
+def processa_quiz(request):
+    respostas = {key: value for key, value in request.POST.items() if key.startswith('pergunta_')}
+    
+    pontuacao = 0
+    total_perguntas = len(respostas)
+    
+    for pergunta_id, alternativa_id in respostas.items():
+        pergunta_id = pergunta_id.split('_')[1]  # Extrair o ID da pergunta
+        try:
+            alternativa = Alternativas.objects.get(id=alternativa_id)
+            if alternativa.resposta_correta:
+                pontuacao += 1
+        except Alternativas.DoesNotExist:
+            # Opcional: Logar ou tratar caso a alternativa não exista
+            continue  # Pular para a próxima pergunta
+    
+    porcentagem_acertos = (pontuacao / total_perguntas) * 100 if total_perguntas > 0 else 0
+    passou = porcentagem_acertos >= 70
+    
+    # Lógica para atualizar o progresso do usuário (opcional)
+    
+    return JsonResponse({
+        'message': f'Você acertou {pontuacao} de {total_perguntas} perguntas.',
+        'porcentagem': porcentagem_acertos,
+        'passou': passou
+    })
