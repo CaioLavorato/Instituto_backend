@@ -55,6 +55,7 @@ class Curso(models.Model):
     visualizacoes = models.IntegerField(default=0)
     duracao = models.IntegerField(default=0) 
     professor = models.ForeignKey('UserProfile', on_delete=models.SET_NULL, null=True, blank=True, related_name='cursos')
+    emBreve = models.BooleanField(default=False)
 
     def __str__(self):
         return self.titulo
