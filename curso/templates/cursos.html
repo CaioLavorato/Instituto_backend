@@ -121,7 +121,7 @@
                 {% for curso in todos_cursos %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="cbox-1">
-                        <a href="{% if curso.emBreve %} # {% else %} {% url 'cursodetalhe' curso.id %} {%endif %}">
+                        <a href="{% if curso.emBreve %}#{% else %}{% url 'cursodetalhe' curso.id %}{% endif %}">
                             <img class="img-fluid" src="{{ curso.thumb.url }}" alt="{{ curso.titulo }}" />
                             <div class="cbox-1-txt">
                                 <p class="course-tags">
