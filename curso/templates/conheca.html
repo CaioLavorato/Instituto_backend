@@ -77,11 +77,15 @@
 
         /* Mostra o botão apenas no mobile */
         @media (max-width: 768px) {
+            .container-conheca {
+                height: 250vh;
+            }
             .section-conheca-content {
                 flex-direction: column; /* Alinha os itens em uma coluna no mobile */
                 text-align: center; /* Centraliza o texto no mobile */
             }
             .section-conheca-content h1 {
+                padding-top: 20px;
                 flex-direction: column; /* Alinha o texto e a imagem em coluna no mobile */
                 text-align: center; /* Centraliza o texto no mobile */
             }
@@ -115,6 +119,13 @@
                 max-width: 0;
                 transition: opacity 1s ease, max-width 1s ease;
             }
+            .section-conheca-content h1 {
+                padding-top: 25%;
+            }
+            .section-conheca-content p {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
             .section-conheca.active .section-conheca-content {
                 max-width: 100%;
             }
@@ -123,67 +134,165 @@
 <div class="container-conheca">
         <div class="section-conheca active" onclick="togglesection(this)" style="background-color: #ffbf04;">
             <div class="section-conheca-content">
-                <h1>Celebre nossa jornada de </h1><img src="{% static 'images/50-img.png' %}" alt="" height="200px"><h1> anos</h1>
+                <h1>{{ diferenca }} anos fazendo a diferença</h1>
                 <button class="next-btn" onclick="nextsection(1)">Próxima</button>
             </div>
             <div class="section-conheca-header"><img src="{% static 'images/icon--50.png' %}" alt="Icone Seção 1"></div>
         </div>
         <div class="section-conheca" onclick="togglesection(this)" style="background-color: #3671c1;">
             <div class="section-conheca-content">
-                <h3>Começando um Jornada do Cuidado</h3>
-                <p>Missão começa a fornecer melhores resultados para famílias com crianças doentes nos EUA</p>
-                <p><span>11</span> Programas totais para familias</p>
-                <p><span>1</span> País</p>
-                <h3>Apoiar as famílias através de:</h3>
-                <p><b>1974</b> Primeiro programa da Casa Ronald McDonald</p>
-                <p><b>1977</b> Segunda Casa abre, dando início a um movimento</p>
-                <p><b>1979</b> 11 programas de casa disponíveis nos EUA</p>
+                <h1>1999</h1>
+                <p>O Instituto Ronald McDonald é uma organização sem fins lucrativos, 100% mantida por doações de pessoas físicas e jurídicas, que se concentra em ajudar crianças e adolescentes, antes, durante e depois do tratamento contra o câncer.
+                Fundado em 8 de abril de 1999, o Instituto beneficia, anualmente, milhares de crianças e jovens que precisam de apoio. Com sede no Rio de Janeiro, foi uma das instituições pioneiras no ramo e desde sempre vem promovendo saúde e bem-estar para milhares de famílias que lutam pela vida de seus filhos.
+                Por meio de seus programas e projetos apoiados, o Instituto está presente de norte a sul do Brasil.
+                </p>
                 <button class="next-btn" onclick="nextsection(2)">Próxima</button>
             </div>
             <div class="section-conheca-header"><img src="{% static 'images/icon--70.png' %}" alt="Icone Seção 2"></div>
         </div>
         <div class="section-conheca" onclick="togglesection(this)" style="background-color: white;">
             <div class="section-conheca-content">
-                <h2>Conteúdo da Seção 3</h2>
-                <p>Este é o conteúdo da terceira seção.</p>
+                <h1>Missão</h1>
+                <p>Promover saúde e bem-estar para crianças, adolescentes e suas famílias e contribuir com o aumento das chances de cura do câncer infantojuvenil no Brasil.</p>
                 <button class="next-btn" onclick="nextsection(3)">Próxima</button>
             </div>
             <div class="section-conheca-header"><img src="{% static 'images/icon--80s.png' %}" alt="Icone Seção 3"></div>
         </div>
         <div class="section-conheca" onclick="togglesection(this)" style="background-color: #3671c1;">
             <div class="section-conheca-content">
-                <h2>Conteúdo da Seção 4</h2>
-                <p>Este é o conteúdo da quarta seção.</p>
+                <h1>Visão</h1>
+                <p>Ser reconhecida como uma organização que promove programas e ações que viabilizem a melhoria das condições de saúde e bem-estar de crianças, adolescentes e suas famílias, contribuindo, prioritariamente, para o aumento das chances de cura do câncer infantojuvenil no Brasil.</p>
                 <button class="next-btn" onclick="nextsection(4)">Próxima</button>
             </div>
             <div class="section-conheca-header"><img src="{% static 'images/icon--90s.png' %}" alt="Icone Seção 4"></div>
         </div>
         <div class="section-conheca" onclick="togglesection(this)" style="background-color: white;">
             <div class="section-conheca-content">
-                <h2>Conteúdo da Seção 5</h2>
-                <p>Este é o conteúdo da quinta seção.</p>
+                <h1 style="padding-top: 10%">Programas</h1>
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/programas/s4-01.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Casa Ronald McDonald</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/programas/s4-02.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Espaço da Família Ronald McDonald</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/programas/s4-03.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Atenção Integral</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/programas/s4-04.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Diagnóstico Precoce</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button class="next-btn" onclick="nextsection(5)">Próxima</button>
             </div>
             <div class="section-conheca-header"><img src="{% static 'images/icon--00s.png' %}" alt="Icone Seção 5"></div>
         </div>
         <div class="section-conheca" onclick="togglesection(this)" style="background-color: #3671c1;">
             <div class="section-conheca-content">
-                <h2>Conteúdo da Seção 6</h2>
-                <p>Este é o conteúdo da sexta seção.</p>
+                <h1 style="padding-top: 5%">Nossos números nos últimos {{ diferenca }} anos</h1>
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/icons/instituto/s2-01.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Mais de 3 milhões</h5>
+                                <p class="card-text">de crianças e adolescentes beneficiados diretamente com nossos projetos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto img-fluid" style="max-height: 100px; width: auto" src="{% static 'images/icons/instituto/s2-02.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Cerca de  1.961</h5>
+                                <p class="card-text">projetos de 108 instituições contemplados de norte a sul do Brasil.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/icons/instituto/s2-03.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Mais de 40 mil</h5>
+                                <p class="card-text">profissionais e estudantes de saúde capacitados em diagnóstico precoce.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/icons/instituto/s2-04.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Mais de 95 mil</h5>
+                                <p class="card-text">atendimentos a crianças e adolescentes realizados anualmente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button class="next-btn" onclick="nextsection(6)">Próxima</button>
             </div>
             <div class="section-conheca-header"><img src="{% static 'images/icon--10s.png' %}" alt="Icone Seção 6"></div>
         </div>
         <div class="section-conheca" onclick="togglesection(this)" style="background-color: white;">
             <div class="section-conheca-content">
-                <h2>Conteúdo da Seção 7</h2>
-                <p>Este é o conteúdo da sétima seção.</p>
+                <h1 style="padding-top: 15%">{{ diferenca }} anos inovando</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto" style="max-height: 100px; width: auto" src="{% static 'images/icons/instituto/s2-01.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Mais de 3 milhões</h5>
+                                <p class="card-text">de crianças e adolescentes beneficiados diretamente com nossos projetos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card" style="border: none">
+                            <img class="card-img-top d-block mx-auto img-fluid" style="max-height: 100px; width: auto" src="{% static 'images/icons/instituto/s2-02.png' %}" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Cerca de  1.961</h5>
+                                <p class="card-text">projetos de 108 instituições contemplados de norte a sul do Brasil.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button class="next-btn" onclick="nextsection(7)">Próxima</button>
             </div>
             <div class="section-conheca-header"><img src="{% static 'images/icon--20s.png' %}" alt="Icone Seção 7"></div>
         </div>
     </div>
-
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe style="embed-responsive-item" src="https://www.youtube.com/embed/6CRCLKe-W_Q?si=ktJ9p1XkYFpa6DY3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
     <script>
         function togglesection(section) {
             document.querySelectorAll('.section-conheca').forEach(s => {

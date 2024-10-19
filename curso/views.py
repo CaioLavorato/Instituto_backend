@@ -1,3 +1,4 @@
+from datetime import datetime
 
 from django.shortcuts import render, redirect ,get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
@@ -354,7 +355,10 @@ def criar_forum(request):
 
 
 def conheca(request):
-    return render(request, "conheca.html")
+    ano_atual = datetime.now().year
+    ano_fundacao = 1999
+    diferenca = ano_atual - ano_fundacao
+    return render(request, "conheca.html", {'diferenca': diferenca})
 
 def fale_conosco(request):
     if request.method == 'POST':
@@ -442,3 +446,4 @@ def processa_quiz(request):
         'porcentagem': porcentagem_acertos,
         'passou': passou
     })
+
