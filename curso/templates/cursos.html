@@ -128,7 +128,7 @@
                                     <span>{{ curso.categoria.nome }}</span>
                                     <span>{{ curso.duracao }}</span>
                                 </p>
-                                <h5 class="h5-xs">{{ curso.titulo }} - {% if curso.emBreve %} EM BREVE {% endif %}</h5>
+                                <h5 class="h5-xs">{{ curso.titulo }} {% if curso.emBreve %} - EM BREVE {% endif %}</h5>
                                 <div class="course-rating clearfix">
                                     {% with curso.media_avaliacoes|default:0 as media_avaliacoes %}
                                         {% with media_avaliacoes|floatformat:1 as rounded_media %}
