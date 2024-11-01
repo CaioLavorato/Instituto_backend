@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="inner-page-wrapper">
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hero-txt white-color">
+                        <h3 class="h3-xs">Criação de Usuário</h3>
+                    </div>
+                </div>
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section>
+    <section class="wide-40 course-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Preencha os dados abaixo para criar um novo usuário.</p>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}  <!-- Renderizando todos os campos do formulário -->
+                        <button type="submit" class="btn btn-blue tra-black-hover last-link">Criar Usuário</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

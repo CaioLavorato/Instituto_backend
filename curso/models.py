@@ -14,9 +14,42 @@ class UserProfile(models.Model):
         (ALUNO, 'Aluno'),
     ]
 
+    # Campos novos
+    SEXO_CHOICES = [
+        ('M', 'Masculino'),
+        ('F', 'Feminino'),
+        ('O', 'Outro'),
+    ]
+    
+    ESCOLARIDADE_CHOICES = [
+        ('EF', 'Ensino Fundamental'),
+        ('EM', 'Ensino Médio'),
+        ('ES', 'Ensino Superior'),
+        ('PG', 'Pós-graduação'),
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    foto = models.ImageField(upload_to='thumb_usuarios', null=True, blank=True)
+    nome_completo = models.CharField(max_length=255, null=True, blank=True)
     data_de_nascimento = models.DateField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    telefone = models.CharField(max_length=15, null=True, blank=True)  # Campo opcional
+    cpf = models.CharField(
+        max_length=14, 
+        validators=[RegexValidator(regex=r'^\d{3}\.\d{3}\.\d{3}-\d{2}$', message='CPF deve ter o formato correto (XXX.XXX.XXX-XX).')],
+        unique=True,
+        null=True,
+        blank=True
+    )
+    sexo = models.CharField(max_length=1, choices=SEXO_CHOICES, null=True, blank=True)
+    auto_declaracao_raca = models.CharField(max_length=100, null=True, blank=True)
+    grau_de_escolaridade = models.CharField(max_length=2, choices=ESCOLARIDADE_CHOICES, null=True, blank=True)
+    categoria_profissional = models.CharField(max_length=255, null=True, blank=True)
+    especialidade = models.CharField(max_length=255, null=True, blank=True)  # Apenas para médicos
+    vinculado_instituicao = models.BooleanField(default=False)
+    ja_participou_capacitacao = models.BooleanField(default=False)
+    aceito_termos = models.BooleanField(default=False)
+
+    foto = models.ImageField(upload_to='thumb_usuarios', null=True, blank=True)
     facebook = models.CharField(max_length=1000, null=True, blank=True)
     linkedin = models.CharField(max_length=1000, null=True, blank=True)
     google_plus = models.CharField(max_length=1000, null=True, blank=True)
@@ -24,15 +57,6 @@ class UserProfile(models.Model):
     web_site = models.CharField(max_length=1000, null=True, blank=True)
     tipo = models.CharField(max_length=2, choices=TIPO_USUARIO_CHOICES, default=ALUNO)
     categorias = models.ManyToManyField('Categorias', related_name='usuarios', blank=True)
-
-    # Campo CPF aceitando pontuações
-    cpf = models.CharField(
-        max_length=14,  # Permite o tamanho com pontuações
-        validators=[RegexValidator(regex=r'^\d{3}\.\d{3}\.\d{3}-\d{2}$', message='CPF deve ter o formato correto (XXX.XXX.XXX-XX).')],
-        unique=True,
-        null=True,
-        blank=True
-    )
 
     def __str__(self):
         return self.user.username

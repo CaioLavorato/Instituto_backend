@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>.success-message {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 80px; /* Ajuste conforme necessário */
+    height: 80px; /* Ajuste conforme necessário */
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 1.5em;
+    color: #4CAF50; /* Verde para sucesso */
+    margin: 10px 0;
+}</style>
+<div class="inner-page-wrapper">
+    <section class="bg-05 page-hero-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hero-txt white-color">
+                        <h3 class="h3-xs">Sucesso na Criação do Usuário</h3>
+                    </div>
+                </div>
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section>
+    <section class="wide-40 success-section division">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="success-message text-center">
+                        <img src="{% static 'images\success-icon.png' %}" alt="Ícone de Sucesso" class="success-icon">
+                        <p class="message">O usuário foi criado com sucesso!</p>
+                        <a href="{% url 'homepage' %}" class="btn btn-blue tra-black-hover last-link">Voltar para a Página Inicial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

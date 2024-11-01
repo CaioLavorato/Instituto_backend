@@ -10,6 +10,8 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 from . import forms
@@ -315,24 +317,37 @@ def perfil_view(request):
         user_profile = None
 
     if request.method == 'POST':
-        form = forms.UserProfileForm(request.POST, request.FILES, instance=user_profile)
-        if form.is_valid():
-            print("Formulário válido!")
-            print(f"Data de Nascimento: {form.cleaned_data.get('data_de_nascimento')}")
-            form.instance.user = request.user  # Assegura que o perfil está vinculado ao usuário logado
-            form.save()
-            messages.success(request, 'Seu perfil foi atualizado com sucesso!')
-            return redirect('perfil')  # Substitua 'perfil' pelo nome da sua URL para essa view
-        else:
-            print("Formulário inválido!")
-            # Mensagens de erro detalhadas
+        if 'change_password' in request.POST:  # Verifica se o formulário de senha foi enviado
+            password_form = forms.UserPasswordChangeForm(user=request.user, data=request.POST)
+            if password_form.is_valid():
+                password_form.save()  # Salva a nova senha
+                update_session_auth_hash(request, password_form.user)  # Mantém o usuário logado após a troca de senha
+                messages.success(request, 'Sua senha foi atualizada com sucesso!')
+                return redirect('perfil')  # Substitua 'perfil' pelo nome da sua URL para essa view
+            else:
+                # Mensagens de erro se o formulário de senha não for válido
+                for field, errors in password_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f'Erro no campo "{field}": {error}')
+
+        else:  # Caso contrário, assume-se que é o formulário de perfil que foi enviado
+            form = forms.UserProfileForm(request.POST, request.FILES, instance=user_profile)
+            if form.is_valid():
+                form.instance.user = request.user  # Assegura que o perfil está vinculado ao usuário logado
+                form.save()
+                messages.success(request, 'Seu perfil foi atualizado com sucesso!')
+                return redirect('perfil')  # Substitua 'perfil' pelo nome da sua URL para essa view
+
+            # Mensagens de erro se o formulário de perfil não for válido
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f'Erro no campo "{field}": {error}')
+
     else:
         form = forms.UserProfileForm(instance=user_profile)
+        password_form = forms.UserPasswordChangeForm(user=request.user)
 
-    return render(request, 'perfil.html', {'form': form})
+    return render(request, 'perfil.html', {'form': form, 'password_form': password_form})
 
 
 @login_required
@@ -442,3 +457,28 @@ def processa_quiz(request):
         'porcentagem': porcentagem_acertos,
         'passou': passou
     })
+
+def criar_usuario(request):
+    if request.method == 'POST':
+        user_form = forms.UserProfileForm(request.POST, request.FILES)
+        if user_form.is_valid():
+            user_profile = user_form.save(commit=False)
+
+            # Criação do usuário
+            user = User.objects.create_user(
+                username=user_profile.cpf,  # Usando CPF como nome de usuário
+                email=user_profile.email,
+                password=user_form.cleaned_data['password']  # Usando a senha do formulário
+            )
+            user_profile.user = user
+            user_profile.save()
+
+            messages.success(request, "Usuário criado com sucesso!")
+            return redirect('sucesso')  # Mude para a URL desejada após a criação do usuário
+    else:
+        user_form = forms.UserProfileForm()
+
+    return render(request, 'criar_usuario.html', {'form': user_form})
+
+def sucesso_view(request):
+    return render(request, 'sucesso.html') 
