@@ -5,6 +5,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 import re
 
 class UserProfileForm(forms.ModelForm):
+    password = forms.CharField(
+                widget=forms.PasswordInput(attrs={'class': 'form-control col-6'}),
+                label="Senha *"
+        )
     class Meta:
         model = UserProfile
         fields = [
@@ -91,22 +95,22 @@ class LoginForm(forms.Form):
     email = forms.CharField(max_length=100)
     senha = forms.CharField(widget=forms.PasswordInput)
 
-class UserProfileForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput, label="Senha *")
+# class UserProfileForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput, label="Senha *")
 
-    class Meta:
-        model = UserProfile
-        fields = [
-            'nome_completo', 'data_de_nascimento', 'email', 'telefone', 
-            'cpf', 'sexo', 'auto_declaracao_raca', 'grau_de_escolaridade', 
-            'categoria_profissional', 'especialidade', 'vinculado_instituicao', 
-            'ja_participou_capacitacao', 'aceito_termos', 'foto', 
-            'facebook', 'linkedin', 'google_plus', 'descricao', 'web_site', 'tipo', 
-            'password'  # Campo de senha
-        ]
+#     class Meta:
+#         model = UserProfile
+#         fields = [
+#             'nome_completo', 'data_de_nascimento', 'email', 'telefone', 
+#             'cpf', 'sexo', 'auto_declaracao_raca', 'grau_de_escolaridade', 
+#             'categoria_profissional', 'especialidade', 'vinculado_instituicao', 
+#             'ja_participou_capacitacao', 'aceito_termos', 'foto', 
+#             'facebook', 'linkedin', 'google_plus', 'descricao', 'web_site', 'tipo', 
+#             'password'  # Campo de senha
+#         ]
         
-    def clean_cpf(self):
-        cpf = self.cleaned_data.get('cpf')
-        if UserProfile.objects.filter(cpf=cpf).exists():
-            raise forms.ValidationError("Esse CPF já está cadastrado.")
-        return cpf
+#     def clean_cpf(self):
+#         cpf = self.cleaned_data.get('cpf')
+#         if UserProfile.objects.filter(cpf=cpf).exists():
+#             raise forms.ValidationError("Esse CPF já está cadastrado.")
+#         return cpf

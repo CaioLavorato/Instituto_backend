@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-
+from django.db import IntegrityError
 
 from . import forms
 from .models import Curso, Avaliacao, Modulo, Modulo_usuario, UserProfile, Categorias, Aula,Progresso,Alternativas,Questionario,Pergunta
@@ -468,22 +468,32 @@ def criar_usuario(request):
         user_form = forms.UserProfileForm(request.POST, request.FILES)
         if user_form.is_valid():
             user_profile = user_form.save(commit=False)
+            cpf = user_profile.cpf  # Assuming CPF is the unique identifier
 
-            # Criação do usuário
-            user = User.objects.create_user(
-                username=user_profile.cpf,  # Usando CPF como nome de usuário
-                email=user_profile.email,
-                password=user_form.cleaned_data['password']  # Usando a senha do formulário
-            )
-            user_profile.user = user
-            user_profile.save()
+            # Check if a user with this CPF (username) already exists
+            if User.objects.filter(username=cpf).exists():
+                messages.error(request, "Um usuário com este CPF já existe.")
+                return redirect('criar_usuario')
 
-            messages.success(request, "Usuário criado com sucesso!")
-            return redirect('sucesso')  # Mude para a URL desejada após a criação do usuário
+            try:
+                # Create the user
+                user = User.objects.create_user(
+                    username=cpf,
+                    email=user_profile.email,
+                    password=user_form.cleaned_data['password']
+                )
+                user_profile.user = user
+                user_profile.save()
+
+                messages.success(request, "Usuário criado com sucesso!")
+                return redirect('sucesso')  # Change to the desired success URL
+            except IntegrityError:
+                messages.error(request, "Houve um problema ao criar o usuário. Tente novamente.")
+                return redirect('criar_usuario')
     else:
         user_form = forms.UserProfileForm()
 
     return render(request, 'criar_usuario.html', {'form': user_form})
 
 def sucesso_view(request):
-    return render(request, 'sucesso.html') 
+    return render(request, 'sucesso.html')

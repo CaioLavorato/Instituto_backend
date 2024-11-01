@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'api',
     'forum',
+    'widget_tweaks',
 ]
 
 REST_FRAMEWORK = {
