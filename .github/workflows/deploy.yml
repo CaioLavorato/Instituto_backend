@@ -8,55 +8,36 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Check out the repository
       uses: actions/checkout@v2
-
+    
     - name: Set up Python 3.12
       uses: actions/setup-python@v2
       with:
         python-version: 3.12
-
+    
     - name: Create and activate virtual environment
       run: |
         python -m venv venv
         source venv/bin/activate
         python -m pip install --upgrade pip
-
+    
     - name: Install dependencies
       run: |
         source venv/bin/activate
         pip install -r requirements.txt
-
-    - name: Verify Django Installation
-      run: |
-        source venv/bin/activate
-        pip show django
-        pip show djangorestframework
-
-    - name: List Python Path
-      run: |
-        source venv/bin/activate
-        python -c "import sys; print('\n'.join(sys.path))"
-
-    - name: Run migrations
+    
+    - name: Run migrations and tests
       run: |
         source venv/bin/activate
         python manage.py migrate
-
-    - name: Run tests
-      run: |
-        source venv/bin/activate
         python manage.py test
-
+    
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
-
-    - name: Debug SSH Connection
-      run: |
-        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 'echo SSH connection successful'
-
+    
     - name: Deploy to the server
       env:
         SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
@@ -64,45 +45,43 @@ jobs:
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
         echo "Starting deployment" &&
         cd /var/www/Instituto_backend &&
-        echo "Configuring Git safe directory..." &&
+        
+        # Git configuration and updates
         git config --global --add safe.directory /var/www/Instituto_backend &&
-        echo "Checking for uncommitted changes..." &&
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "Uncommitted changes detected, discarding them..." &&
-          git reset --hard &&
-          git clean -fd
-        fi &&
-        echo "Updating repository..." &&
+        git reset --hard &&
+        git clean -fd &&
         git pull origin master &&
-        echo "Current directory contents:" &&
-        ls -la &&
-        echo "Creating and activating virtual environment..." &&
+        
+        # Setup virtual environment
         python3 -m venv venv &&
         source venv/bin/activate &&
-        echo "Installing dependencies..." &&
         pip install -r requirements.txt &&
-        echo "Running migrations..." &&
+        
+        # Django commands
         python manage.py migrate &&
-        echo "Collecting static files..." &&
         python manage.py collectstatic --noinput &&
-        echo "Adjusting static files permissions..." &&
-        sudo chown -R www-data:www-data /var/www/Instituto_backend/staticfiles &&
-        sudo chmod -R 755 /var/www/Instituto_backend/staticfiles &&
-        cp -r staticfiles/admin static/admin &&
-        echo "Restarting Gunicorn..." &&
-        systemctl restart gunicorn &&
-        echo "Restarting Nginx..." &&
+        
+        # Fix permissions
+        sudo chown -R www-data:www-data /var/www/Instituto_backend &&
+        sudo chmod -R 755 /var/www/Instituto_backend &&
+        
+        # Ensure static directories exist
+        mkdir -p /var/www/Instituto_backend/static/rest_framework/js &&
+        mkdir -p /var/www/Instituto_backend/static/admin &&
+        
+        # Copy static files
+        cp -r staticfiles/* static/ &&
+        
+        # Restart services
+        sudo systemctl restart gunicorn &&
         sudo systemctl restart nginx &&
-        echo "Deployment completed" &&
-        echo "Checking Nginx status..." &&
-        sudo systemctl status nginx'
-
-    - name: Check Static Files after Deployment
-      run: |
-        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
-        echo "Verifying static files presence..." &&
-        source venv/bin/activate
-        python manage.py collectstatic 
-        ls -la /var/www/Instituto_backend/staticfiles &&
-        echo "Checking Nginx logs for static file errors..." &&
-        tail -n 50 /var/log/nginx/error.log'
+        
+        # Verify services
+        echo "Checking Gunicorn status:" &&
+        sudo systemctl status gunicorn &&
+        echo "Checking Nginx status:" &&
+        sudo systemctl status nginx &&
+        
+        # Check logs
+        echo "Recent Nginx error logs:" &&
+        tail -n 20 /var/log/nginx/error.log'
