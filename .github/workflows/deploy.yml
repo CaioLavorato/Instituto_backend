@@ -101,8 +101,6 @@ jobs:
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@89.117.32.80 '
         echo "Verifying static files presence..." &&
-        source venv/bin/activate
-        python manage.py collectstatic 
         ls -la /var/www/Instituto_backend/staticfiles &&
         echo "Checking Nginx logs for static file errors..." &&
         tail -n 50 /var/log/nginx/error.log'
