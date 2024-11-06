@@ -75,6 +75,7 @@ jobs:
         # Restart services
         sudo systemctl restart gunicorn &&
         sudo systemctl restart nginx &&
+
         
         # Verify services
         echo "Checking Gunicorn status:" &&
@@ -85,3 +86,4 @@ jobs:
         # Check logs
         echo "Recent Nginx error logs:" &&
         tail -n 20 /var/log/nginx/error.log'
+
