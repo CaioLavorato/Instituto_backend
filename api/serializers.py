@@ -137,3 +137,40 @@ class LaudosMedicosSerializer(serializers.ModelSerializer):
     class Meta:
         model = LaudosMedicos
         fields = '__all__'
+
+class AulaNestedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Aula
+        fields = ['id', 'titulo', 'ordem']
+
+class ModuloNestedSerializer(serializers.ModelSerializer):
+    aulas = AulaNestedSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Modulo
+        fields = ['id', 'titulo', 'ordem', 'aulas']
+
+class CursoDetailSerializer(serializers.ModelSerializer):
+    modulos = ModuloNestedSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Curso
+        fields = '__all__'
+        depth = 1
+
+class ModuloDetailSerializer(serializers.ModelSerializer):
+    curso = CursoSerializer(read_only=True)
+    aulas = AulaNestedSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Modulo
+        fields = '__all__'
+        depth = 1
+
+class AulaDetailSerializer(serializers.ModelSerializer):
+    modulo = ModuloNestedSerializer(read_only=True)
+    
+    class Meta:
+        model = Aula
+        fields = '__all__'
+        depth = 1

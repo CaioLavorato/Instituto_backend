@@ -3,6 +3,9 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -28,15 +31,44 @@ class CursoViewSet(viewsets.ModelViewSet):
     serializer_class = CursoSerializer
     permission_classes = [IsAuthenticated]
 
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return CursoDetailSerializer
+        return CursoSerializer
+
+    @action(detail=True, methods=['get'])
+    def modulos(self, request, pk=None):
+        curso = self.get_object()
+        modulos = curso.modulos.all()
+        serializer = ModuloNestedSerializer(modulos, many=True)
+        return Response(serializer.data)
+
 class ModuloViewSet(viewsets.ModelViewSet):
     queryset = Modulo.objects.all()
     serializer_class = ModuloSerializer
     permission_classes = [IsAuthenticated]
 
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return ModuloDetailSerializer
+        return ModuloSerializer
+
+    @action(detail=True, methods=['get'])
+    def aulas(self, request, pk=None):
+        modulo = self.get_object()
+        aulas = modulo.aulas.all()
+        serializer = AulaNestedSerializer(aulas, many=True)
+        return Response(serializer.data)
+
 class AulaViewSet(viewsets.ModelViewSet):
     queryset = Aula.objects.all()
     serializer_class = AulaSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return AulaDetailSerializer
+        return AulaSerializer
 
 class QuestionarioViewSet(viewsets.ModelViewSet):
     queryset = Questionario.objects.all()
